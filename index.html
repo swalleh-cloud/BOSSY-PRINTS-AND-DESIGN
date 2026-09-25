@@ -5,132 +5,409 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bossy Prints & Design | Printing & Branding Solutions</title>
+<title>Bossy Prints & Design | Printing, Branding & Design</title>
 
-<meta name="description" content="Bossy Prints & Design provides T-shirt printing, graphic design, branding, banners, posters, stickers, labels, caps and custom printing solutions in Kenya.">
+<meta name="description" content="Bossy Prints & Design offers professional T-shirt printing, graphic design, branding, banners, posters, stickers, labels, caps and custom printing solutions in Kenya.">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background: #f5f5f5;
-    color: #222;
+html{
+    scroll-behavior:smooth;
 }
 
-header {
-    background: #111;
-    color: white;
-    padding: 20px;
-    text-align: center;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#08090d;
+    color:#fff;
+    line-height:1.6;
 }
 
-header h1 {
-    font-size: 30px;
-    letter-spacing: 1px;
+a{
+    text-decoration:none;
 }
 
-header p {
-    color: #ddd;
-    margin-top: 5px;
+/* HEADER */
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(8,9,13,.96);
+    border-bottom:1px solid #22252e;
+    backdrop-filter:blur(10px);
 }
 
-nav {
-    background: #222;
-    text-align: center;
-    padding: 12px;
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    padding:15px 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 12px;
-    font-weight: bold;
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.hero {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
+.logo-mark{
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    background:linear-gradient(135deg,#00e5ff,#7c3cff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    font-weight:900;
+    color:#08090d;
+    box-shadow:0 0 22px rgba(0,229,255,.25);
 }
 
-.hero h2 {
-    font-size: 42px;
-    margin-bottom: 15px;
+.logo-text{
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
-.hero p {
-    font-size: 20px;
-    margin-bottom: 25px;
+.logo-text span{
+    display:block;
+    font-size:9px;
+    letter-spacing:2px;
+    color:#00e5ff;
+    margin-top:2px;
 }
 
-.button {
-    display: inline-block;
-    background: #25D366;
-    color: white;
-    padding: 14px 25px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
+nav{
+    display:flex;
+    gap:25px;
 }
 
-section {
-    padding: 55px 20px;
-    max-width: 1100px;
-    margin: auto;
+nav a{
+    color:#ddd;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
 }
 
-section h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 30px;
+nav a:hover{
+    color:#00e5ff;
 }
 
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+/* HERO */
+.hero{
+    min-height:88vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 20px;
+    background:
+    radial-gradient(circle at 20% 20%,rgba(0,229,255,.12),transparent 30%),
+    radial-gradient(circle at 80% 30%,rgba(124,60,255,.14),transparent 30%),
+    #08090d;
 }
 
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+.hero-content{
+    max-width:900px;
 }
 
-.card h3 {
-    margin-bottom: 10px;
+.badge{
+    display:inline-block;
+    border:1px solid #30343e;
+    padding:8px 16px;
+    border-radius:30px;
+    color:#00e5ff;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:25px;
 }
 
-.contact {
-    text-align: center;
-    background: white;
-    border-radius: 10px;
+.hero h1{
+    font-size:clamp(42px,8vw,82px);
+    line-height:1;
+    font-weight:950;
+    letter-spacing:-3px;
 }
 
-footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 25px;
+.hero h1 span{
+    background:linear-gradient(90deg,#00e5ff,#7c3cff);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
-@media (max-width: 600px) {
-    .hero h2 {
-        font-size: 32px;
+.hero p{
+    max-width:680px;
+    margin:25px auto;
+    color:#b8bbc5;
+    font-size:19px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.btn{
+    padding:14px 24px;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#00e5ff;
+    color:#08090d;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(0,229,255,.25);
+}
+
+.btn-secondary{
+    border:1px solid #383c47;
+    color:white;
+}
+
+.btn-secondary:hover{
+    border-color:#00e5ff;
+    color:#00e5ff;
+}
+
+/* GENERAL SECTIONS */
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:90px 25px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title small{
+    color:#00e5ff;
+    letter-spacing:3px;
+    font-weight:bold;
+}
+
+.section-title h2{
+    font-size:40px;
+    margin-top:8px;
+}
+
+.section-title p{
+    color:#999eaa;
+    max-width:650px;
+    margin:12px auto;
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.card{
+    background:#101218;
+    border:1px solid #242832;
+    border-radius:16px;
+    padding:30px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#00e5ff;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.icon{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:#191c25;
+    font-size:27px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#999eaa;
+    font-size:14px;
+}
+
+/* ABOUT */
+.about{
+    background:#0d0f14;
+    max-width:none;
+}
+
+.about-inner{
+    max-width:1000px;
+    margin:auto;
+    text-align:center;
+}
+
+.about-inner p{
+    color:#adb1bc;
+    font-size:17px;
+}
+
+/* WHY US */
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    padding:25px;
+    background:#101218;
+    border-radius:14px;
+    border:1px solid #242832;
+}
+
+.feature h3{
+    margin-bottom:8px;
+}
+
+.feature p{
+    color:#999eaa;
+    font-size:14px;
+}
+
+/* CTA */
+.cta{
+    margin:50px auto 90px;
+    max-width:1100px;
+    text-align:center;
+    padding:70px 25px;
+    border-radius:20px;
+    background:
+    radial-gradient(circle at 50% 0%,rgba(0,229,255,.16),transparent 50%),
+    #101218;
+    border:1px solid #292e39;
+}
+
+.cta h2{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.cta p{
+    color:#aeb2bd;
+    margin-bottom:25px;
+}
+
+/* CONTACT */
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.contact-box{
+    text-align:center;
+    background:#101218;
+    border:1px solid #242832;
+    padding:30px;
+    border-radius:14px;
+}
+
+.contact-box .icon{
+    margin:0 auto 15px;
+}
+
+.contact-box p{
+    color:#a8adb8;
+}
+
+/* FOOTER */
+footer{
+    background:#050608;
+    border-top:1px solid #22252e;
+    text-align:center;
+    padding:35px 20px;
+}
+
+.footer-logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.footer-logo span{
+    color:#00e5ff;
+}
+
+footer p{
+    color:#777c87;
+    font-size:13px;
+    margin-top:8px;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    .navbar{
+        padding:12px 15px;
     }
 
-    nav a {
-        display: inline-block;
-        margin: 5px;
+    nav{
+        display:none;
+    }
+
+    .services,
+    .features,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:65px 18px;
+    }
+
+    .hero{
+        min-height:82vh;
+        padding:60px 18px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .cta h2{
+        font-size:30px;
     }
 }
 </style>
@@ -139,10 +416,22 @@ footer {
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-    <h1>BOSSY PRINTS & DESIGN</h1>
-    <p>PRINTING • BRANDING • DESIGN</p>
-</header>
+<div class="navbar">
+
+```
+<a href="#home" class="logo">
+
+    <div class="logo-mark">B</div>
+
+    <div class="logo-text">
+        BOSSY PRINTS
+        <span>PRINTING • BRANDING • DESIGN</span>
+    </div>
+
+</a>
 
 <nav>
     <a href="#home">Home</a>
@@ -150,94 +439,275 @@ footer {
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
 </nav>
+```
+
+</div>
+</header>
+
+<!-- HERO -->
 
 <section class="hero" id="home">
-    <h2>PRINTING & BRANDING SOLUTIONS</h2>
-    <p>Turn Your Ideas Into Something Real.</p>
+
+<div class="hero-content">
 
 ```
-<a class="button" href="https://wa.me/254724566417">
-    Get a Quote on WhatsApp
-</a>
-```
+<div class="badge">
+    PRINTING • BRANDING • DESIGN
+</div>
 
-</section>
+<h1>
+    TURN YOUR<br>
+    <span>IDEAS INTO REALITY.</span>
+</h1>
 
-<section id="services">
-    <h2>Our Services</h2>
+<p>
+    Professional printing, branding and graphic design solutions
+    for individuals, businesses, teams and events.
+</p>
 
-```
-<div class="services">
+<div class="buttons">
 
-    <div class="card">
-        <h3>👕 T-Shirt Printing</h3>
-        <p>Custom T-shirts for individuals, businesses, teams, events and special occasions.</p>
-    </div>
+    <a class="btn btn-primary"
+       href="https://wa.me/254724566417"
+       target="_blank">
+        WhatsApp Us
+    </a>
 
-    <div class="card">
-        <h3>🎨 Graphic Design</h3>
-        <p>Professional logos, posters, flyers, social media graphics and custom designs.</p>
-    </div>
-
-    <div class="card">
-        <h3>🏢 Branding</h3>
-        <p>Business branding solutions to help your brand stand out.</p>
-    </div>
-
-    <div class="card">
-        <h3>📢 Banners & Posters</h3>
-        <p>Quality banners and posters for advertising, events and promotions.</p>
-    </div>
-
-    <div class="card">
-        <h3>🏷️ Stickers & Labels</h3>
-        <p>Custom stickers and product labels for businesses and personal projects.</p>
-    </div>
-
-    <div class="card">
-        <h3>🧢 Caps & Merchandise</h3>
-        <p>Custom caps and other branded merchandise for your business or event.</p>
-    </div>
+    <a class="btn btn-secondary" href="#services">
+        Explore Services
+    </a>
 
 </div>
 ```
 
+</div>
+
 </section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="section-title">
+    <small>WHAT WE DO</small>
+    <h2>Our Services</h2>
+    <p>
+        From an idea on paper to a finished branded product,
+        we help bring your vision to life.
+    </p>
+</div>
+
+<div class="services">
+
+```
+<div class="card">
+    <div class="icon">👕</div>
+    <h3>T-Shirt Printing</h3>
+    <p>
+        Custom T-shirts for businesses, teams, events,
+        organizations and personal occasions.
+    </p>
+</div>
+
+<div class="card">
+    <div class="icon">🎨</div>
+    <h3>Graphic Design</h3>
+    <p>
+        Logos, posters, flyers, social media artwork
+        and other professional designs.
+    </p>
+</div>
+
+<div class="card">
+    <div class="icon">🏢</div>
+    <h3>Business Branding</h3>
+    <p>
+        Build a recognizable brand with professional
+        visual branding solutions.
+    </p>
+</div>
+
+<div class="card">
+    <div class="icon">📢</div>
+    <h3>Banners & Posters</h3>
+    <p>
+        Promotional banners and posters for businesses,
+        events, campaigns and advertising.
+    </p>
+</div>
+
+<div class="card">
+    <div class="icon">🏷️</div>
+    <h3>Stickers & Labels</h3>
+    <p>
+        Custom stickers and product labels designed
+        to give your products a professional look.
+    </p>
+</div>
+
+<div class="card">
+    <div class="icon">🧢</div>
+    <h3>Caps & Merchandise</h3>
+    <p>
+        Custom caps and branded merchandise for
+        businesses, teams and special occasions.
+    </p>
+</div>
+```
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<div class="about">
 
 <section id="about">
-    <h2>About Bossy Prints & Design</h2>
 
-```
-<p style="text-align:center;">
-    Bossy Prints & Design is a printing, branding and graphic design business
-    focused on turning ideas into quality printed products and professional
-    visual designs.
+<div class="about-inner">
+
+<div class="section-title">
+    <small>ABOUT US</small>
+    <h2>Bossy Prints & Design</h2>
+</div>
+
+<p>
+    Bossy Prints & Design is a printing, branding and graphic design
+    business focused on creating quality custom products and
+    professional visual designs. Whether you need a single custom
+    T-shirt or branding for your business, we aim to turn your idea
+    into something real.
 </p>
-```
+
+</div>
 
 </section>
 
-<section id="contact" class="contact">
-    <h2>Contact Us</h2>
+</div>
+
+<!-- WHY US -->
+
+<section>
+
+<div class="section-title">
+    <small>WHY CHOOSE US</small>
+    <h2>Built Around Your Idea</h2>
+</div>
+
+<div class="features">
 
 ```
-<p>Ready to bring your idea to life?</p>
-<br>
+<div class="feature">
+    <h3>✨ Custom Designs</h3>
+    <p>
+        Your project is created around your own idea,
+        message and brand.
+    </p>
+</div>
 
-<p><strong>WhatsApp:</strong> 0724 566 417</p>
+<div class="feature">
+    <h3>🎯 Professional Look</h3>
+    <p>
+        We focus on clean designs and quality presentation
+        for your printing and branding needs.
+    </p>
+</div>
 
-<br>
+<div class="feature">
+    <h3>💬 Easy Ordering</h3>
+    <p>
+        Contact us directly through WhatsApp to discuss
+        your project and request a quote.
+    </p>
+</div>
+```
 
-<a class="button" href="https://wa.me/254724566417">
-    Chat With Us on WhatsApp
+</div>
+
+</section>
+
+<!-- CALL TO ACTION -->
+
+<div class="cta">
+
+```
+<h2>Have an Idea?</h2>
+
+<p>
+    Let's turn your idea into something people can see,
+    wear and remember.
+</p>
+
+<a class="btn btn-primary"
+   href="https://wa.me/254724566417"
+   target="_blank">
+    Get a Quote on WhatsApp
 </a>
 ```
 
+</div>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="section-title">
+    <small>GET IN TOUCH</small>
+    <h2>Contact Bossy</h2>
+    <p>
+        Ready to start your project? Contact us today.
+    </p>
+</div>
+
+<div class="contact-grid">
+
+```
+<div class="contact-box">
+    <div class="icon">💬</div>
+    <h3>WhatsApp</h3>
+    <p>0724 566 417</p>
+    <br>
+    <a class="btn btn-primary"
+       href="https://wa.me/254724566417"
+       target="_blank">
+        Chat Now
+    </a>
+</div>
+
+<div class="contact-box">
+    <div class="icon">🎨</div>
+    <h3>Printing</h3>
+    <p>T-Shirts • Banners • Posters • Stickers</p>
+</div>
+
+<div class="contact-box">
+    <div class="icon">💡</div>
+    <h3>Design</h3>
+    <p>Logos • Graphics • Branding • Custom Designs</p>
+</div>
+```
+
+</div>
+
 </section>
 
+<!-- FOOTER -->
+
 <footer>
-    <p>© 2026 Bossy Prints & Design. All Rights Reserved.</p>
-    <p>Printing • Branding • Design</p>
+
+<div class="footer-logo">
+    BOSSY <span>PRINTS & DESIGN</span>
+</div>
+
+<p>
+    PRINTING • BRANDING • DESIGN
+</p>
+
+<p>
+    © 2026 Bossy Prints & Design. All Rights Reserved.
+</p>
+
 </footer>
 
 </body>
