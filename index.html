@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +10,7 @@
 <meta name="description" content="Bossy Prints & Design offers professional T-shirt printing, graphic design, branding, banners, posters, stickers, labels, caps and custom printing solutions in Kenya.">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -21,9 +22,9 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     background:#08090d;
-    color:#fff;
+    color:#ffffff;
     line-height:1.6;
 }
 
@@ -31,13 +32,12 @@ a{
     text-decoration:none;
 }
 
-/* HEADER */
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(8,9,13,.96);
-    border-bottom:1px solid #22252e;
+    background:rgba(8,9,13,.97);
+    border-bottom:1px solid #252832;
     backdrop-filter:blur(10px);
 }
 
@@ -50,7 +50,6 @@ header{
     justify-content:space-between;
 }
 
-/* LOGO */
 .logo{
     display:flex;
     align-items:center;
@@ -68,7 +67,7 @@ header{
     font-size:25px;
     font-weight:900;
     color:#08090d;
-    box-shadow:0 0 22px rgba(0,229,255,.25);
+    box-shadow:0 0 25px rgba(0,229,255,.25);
 }
 
 .logo-text{
@@ -101,7 +100,9 @@ nav a:hover{
     color:#00e5ff;
 }
 
+
 /* HERO */
+
 .hero{
     min-height:88vh;
     display:flex;
@@ -109,9 +110,10 @@ nav a:hover{
     justify-content:center;
     text-align:center;
     padding:80px 20px;
+
     background:
-    radial-gradient(circle at 20% 20%,rgba(0,229,255,.12),transparent 30%),
-    radial-gradient(circle at 80% 30%,rgba(124,60,255,.14),transparent 30%),
+    radial-gradient(circle at 20% 20%,rgba(0,229,255,.13),transparent 30%),
+    radial-gradient(circle at 80% 30%,rgba(124,60,255,.15),transparent 30%),
     #08090d;
 }
 
@@ -160,6 +162,7 @@ nav a:hover{
 }
 
 .btn{
+    display:inline-block;
     padding:14px 24px;
     border-radius:8px;
     font-weight:bold;
@@ -178,7 +181,7 @@ nav a:hover{
 
 .btn-secondary{
     border:1px solid #383c47;
-    color:white;
+    color:#ffffff;
 }
 
 .btn-secondary:hover{
@@ -186,7 +189,9 @@ nav a:hover{
     color:#00e5ff;
 }
 
+
 /* GENERAL SECTIONS */
+
 section{
     max-width:1200px;
     margin:auto;
@@ -215,7 +220,9 @@ section{
     margin:12px auto;
 }
 
+
 /* SERVICES */
+
 .services{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -258,10 +265,73 @@ section{
     font-size:14px;
 }
 
-/* ABOUT */
-.about{
+
+/* PORTFOLIO */
+
+.portfolio{
     background:#0d0f14;
     max-width:none;
+}
+
+.portfolio-inner{
+    max-width:1200px;
+    margin:auto;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.gallery-item{
+    position:relative;
+    height:300px;
+    overflow:hidden;
+    border-radius:16px;
+    border:1px solid #292e39;
+    background:#101218;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+.gallery-overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:45px 20px 20px;
+
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.9)
+    );
+}
+
+.gallery-overlay h3{
+    font-size:20px;
+}
+
+.gallery-overlay p{
+    color:#c7c9d0;
+    font-size:13px;
+}
+
+
+/* ABOUT */
+
+.about{
+    background:#08090d;
 }
 
 .about-inner{
@@ -275,7 +345,9 @@ section{
     font-size:17px;
 }
 
-/* WHY US */
+
+/* FEATURES */
+
 .features{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -298,16 +370,24 @@ section{
     font-size:14px;
 }
 
+
 /* CTA */
+
 .cta{
     margin:50px auto 90px;
     max-width:1100px;
     text-align:center;
     padding:70px 25px;
     border-radius:20px;
+
     background:
-    radial-gradient(circle at 50% 0%,rgba(0,229,255,.16),transparent 50%),
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(0,229,255,.16),
+        transparent 50%
+    ),
     #101218;
+
     border:1px solid #292e39;
 }
 
@@ -321,7 +401,9 @@ section{
     margin-bottom:25px;
 }
 
+
 /* CONTACT */
+
 .contact-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -344,7 +426,9 @@ section{
     color:#a8adb8;
 }
 
+
 /* FOOTER */
+
 footer{
     background:#050608;
     border-top:1px solid #22252e;
@@ -368,7 +452,9 @@ footer p{
     margin-top:8px;
 }
 
+
 /* MOBILE */
+
 @media(max-width:800px){
 
     .navbar{
@@ -381,7 +467,8 @@ footer p{
 
     .services,
     .features,
-    .contact-grid{
+    .contact-grid,
+    .gallery{
         grid-template-columns:1fr;
     }
 
@@ -409,40 +496,75 @@ footer p{
     .cta h2{
         font-size:30px;
     }
+
+    .gallery-item{
+        height:280px;
+    }
+
 }
+
 </style>
 
 </head>
 
+
 <body>
+
 
 <!-- HEADER -->
 
 <header>
+
 <div class="navbar">
 
-```
-<a href="#home" class="logo">
+    <a href="#home" class="logo">
 
-    <div class="logo-mark">B</div>
+        <div class="logo-mark">
+            B
+        </div>
 
-    <div class="logo-text">
-        BOSSY PRINTS
-        <span>PRINTING • BRANDING • DESIGN</span>
-    </div>
+        <div class="logo-text">
 
-</a>
+            BOSSY PRINTS
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-</nav>
-```
+            <span>
+                PRINTING • BRANDING • DESIGN
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <nav>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#services">
+            Services
+        </a>
+
+        <a href="#portfolio">
+            Portfolio
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
 
 </div>
+
 </header>
+
+
 
 <!-- HERO -->
 
@@ -450,265 +572,634 @@ footer p{
 
 <div class="hero-content">
 
-```
-<div class="badge">
-    PRINTING • BRANDING • DESIGN
-</div>
+    <div class="badge">
+        PRINTING • BRANDING • DESIGN
+    </div>
 
-<h1>
-    TURN YOUR<br>
-    <span>IDEAS INTO REALITY.</span>
-</h1>
 
-<p>
-    Professional printing, branding and graphic design solutions
-    for individuals, businesses, teams and events.
-</p>
+    <h1>
 
-<div class="buttons">
+        TURN YOUR<br>
 
-    <a class="btn btn-primary"
-       href="https://wa.me/254724566417"
-       target="_blank">
-        WhatsApp Us
-    </a>
+        <span>
+            IDEAS INTO REALITY.
+        </span>
 
-    <a class="btn btn-secondary" href="#services">
-        Explore Services
-    </a>
+    </h1>
 
-</div>
-```
+
+    <p>
+
+        Professional printing, branding and graphic design
+        solutions for individuals, businesses, teams and events.
+
+    </p>
+
+
+    <div class="buttons">
+
+        <a
+        class="btn btn-primary"
+        href="https://wa.me/254724566417"
+        target="_blank">
+
+            WhatsApp Us
+
+        </a>
+
+
+        <a
+        class="btn btn-secondary"
+        href="#services">
+
+            Explore Services
+
+        </a>
+
+    </div>
 
 </div>
 
 </section>
+
+
 
 <!-- SERVICES -->
 
 <section id="services">
 
 <div class="section-title">
-    <small>WHAT WE DO</small>
-    <h2>Our Services</h2>
+
+    <small>
+        WHAT WE DO
+    </small>
+
+    <h2>
+        Our Services
+    </h2>
+
     <p>
         From an idea on paper to a finished branded product,
         we help bring your vision to life.
     </p>
+
 </div>
+
 
 <div class="services">
 
-```
-<div class="card">
-    <div class="icon">👕</div>
-    <h3>T-Shirt Printing</h3>
-    <p>
-        Custom T-shirts for businesses, teams, events,
-        organizations and personal occasions.
-    </p>
-</div>
 
-<div class="card">
-    <div class="icon">🎨</div>
-    <h3>Graphic Design</h3>
-    <p>
-        Logos, posters, flyers, social media artwork
-        and other professional designs.
-    </p>
-</div>
+    <div class="card">
 
-<div class="card">
-    <div class="icon">🏢</div>
-    <h3>Business Branding</h3>
-    <p>
-        Build a recognizable brand with professional
-        visual branding solutions.
-    </p>
-</div>
+        <div class="icon">
+            👕
+        </div>
 
-<div class="card">
-    <div class="icon">📢</div>
-    <h3>Banners & Posters</h3>
-    <p>
-        Promotional banners and posters for businesses,
-        events, campaigns and advertising.
-    </p>
-</div>
+        <h3>
+            T-Shirt Printing
+        </h3>
 
-<div class="card">
-    <div class="icon">🏷️</div>
-    <h3>Stickers & Labels</h3>
-    <p>
-        Custom stickers and product labels designed
-        to give your products a professional look.
-    </p>
-</div>
+        <p>
+            Custom T-shirts for businesses, teams,
+            events, organizations and personal occasions.
+        </p>
 
-<div class="card">
-    <div class="icon">🧢</div>
-    <h3>Caps & Merchandise</h3>
-    <p>
-        Custom caps and branded merchandise for
-        businesses, teams and special occasions.
-    </p>
-</div>
-```
+    </div>
+
+
+
+    <div class="card">
+
+        <div class="icon">
+            🎨
+        </div>
+
+        <h3>
+            Graphic Design
+        </h3>
+
+        <p>
+            Logos, posters, flyers, social media artwork
+            and other professional designs.
+        </p>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <div class="icon">
+            🏢
+        </div>
+
+        <h3>
+            Business Branding
+        </h3>
+
+        <p>
+            Build a recognizable brand with professional
+            visual branding solutions.
+        </p>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <div class="icon">
+            📢
+        </div>
+
+        <h3>
+            Banners & Posters
+        </h3>
+
+        <p>
+            Promotional banners and posters for businesses,
+            events and advertising.
+        </p>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <div class="icon">
+            🏷️
+        </div>
+
+        <h3>
+            Stickers & Labels
+        </h3>
+
+        <p>
+            Custom stickers and product labels designed
+            to give your products a professional look.
+        </p>
+
+    </div>
+
+
+
+    <div class="card">
+
+        <div class="icon">
+            🧢
+        </div>
+
+        <h3>
+            Caps & Merchandise
+        </h3>
+
+        <p>
+            Custom caps and branded merchandise for
+            businesses, teams and special occasions.
+        </p>
+
+    </div>
 
 </div>
 
 </section>
 
-<!-- ABOUT -->
 
-<div class="about">
+
+<!-- PORTFOLIO -->
+
+<div class="portfolio" id="portfolio">
+
+<div class="portfolio-inner">
+
+<section>
+
+<div class="section-title">
+
+    <small>
+        OUR WORK
+    </small>
+
+    <h2>
+        Printing & Design Portfolio
+    </h2>
+
+    <p>
+        Explore examples of the type of printing,
+        branding and design work we can create.
+    </p>
+
+</div>
+
+
+<div class="gallery">
+
+
+    <!-- T-SHIRTS -->
+
+    <div class="gallery-item">
+
+        <img
+        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+        alt="Custom T-shirt printing">
+
+        <div class="gallery-overlay">
+
+            <h3>
+                Custom T-Shirts
+            </h3>
+
+            <p>
+                Branded clothing for teams, businesses and events.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- DESIGN -->
+
+    <div class="gallery-item">
+
+        <img
+        src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80"
+        alt="Graphic design workspace">
+
+        <div class="gallery-overlay">
+
+            <h3>
+                Graphic Design
+            </h3>
+
+            <p>
+                Creative designs made around your ideas.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- BRANDING -->
+
+    <div class="gallery-item">
+
+        <img
+        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80"
+        alt="Business branding">
+
+        <div class="gallery-overlay">
+
+            <h3>
+                Business Branding
+            </h3>
+
+            <p>
+                Professional visual identity for your business.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- BANNER -->
+
+    <div class="gallery-item">
+
+        <img
+        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
+        alt="Business promotional display">
+
+        <div class="gallery-overlay">
+
+            <h3>
+                Banners & Advertising
+            </h3>
+
+            <p>
+                Promotional materials designed to attract attention.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- STICKERS -->
+
+    <div class="gallery-item">
+
+        <img
+        src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=80"
+        alt="Printed labels and materials">
+
+        <div class="gallery-overlay">
+
+            <h3>
+                Stickers & Labels
+            </h3>
+
+            <p>
+                Custom labels and stickers for products and brands.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- MERCHANDISE -->
+
+    <div class="gallery-item">
+
+        <img
+        src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=900&q=80"
+        alt="Custom merchandise">
+
+        <div class="gallery-overlay">
+
+            <h3>
+                Branded Merchandise
+            </h3>
+
+            <p>
+                Merchandise created to represent your brand.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+
+
+<!-- ABOUT -->
 
 <section id="about">
 
 <div class="about-inner">
 
 <div class="section-title">
-    <small>ABOUT US</small>
-    <h2>Bossy Prints & Design</h2>
+
+    <small>
+        ABOUT US
+    </small>
+
+    <h2>
+        Bossy Prints & Design
+    </h2>
+
 </div>
 
+
 <p>
-    Bossy Prints & Design is a printing, branding and graphic design
-    business focused on creating quality custom products and
-    professional visual designs. Whether you need a single custom
-    T-shirt or branding for your business, we aim to turn your idea
-    into something real.
+
+    Bossy Prints & Design is a printing, branding and graphic
+    design business focused on creating quality custom products
+    and professional visual designs.
+
+    Whether you need a single custom T-shirt or branding
+    for your business, we aim to turn your idea into something real.
+
 </p>
 
 </div>
 
 </section>
 
-</div>
 
-<!-- WHY US -->
+
+<!-- WHY CHOOSE US -->
 
 <section>
 
 <div class="section-title">
-    <small>WHY CHOOSE US</small>
-    <h2>Built Around Your Idea</h2>
+
+    <small>
+        WHY BOSSY
+    </small>
+
+    <h2>
+        Built Around Your Idea
+    </h2>
+
 </div>
+
 
 <div class="features">
 
-```
-<div class="feature">
-    <h3>✨ Custom Designs</h3>
-    <p>
-        Your project is created around your own idea,
-        message and brand.
-    </p>
-</div>
 
-<div class="feature">
-    <h3>🎯 Professional Look</h3>
-    <p>
-        We focus on clean designs and quality presentation
-        for your printing and branding needs.
-    </p>
-</div>
+    <div class="feature">
 
-<div class="feature">
-    <h3>💬 Easy Ordering</h3>
-    <p>
-        Contact us directly through WhatsApp to discuss
-        your project and request a quote.
-    </p>
-</div>
-```
+        <h3>
+            ✨ Custom Designs
+        </h3>
+
+        <p>
+            Your project is created around your own idea,
+            message and brand.
+        </p>
+
+    </div>
+
+
+
+    <div class="feature">
+
+        <h3>
+            🎯 Professional Look
+        </h3>
+
+        <p>
+            We focus on clean designs and quality presentation
+            for your printing and branding needs.
+        </p>
+
+    </div>
+
+
+
+    <div class="feature">
+
+        <h3>
+            💬 Easy Ordering
+        </h3>
+
+        <p>
+            Contact us directly through WhatsApp to discuss
+            your project and request a quote.
+        </p>
+
+    </div>
+
 
 </div>
 
 </section>
 
-<!-- CALL TO ACTION -->
+
+
+<!-- CTA -->
 
 <div class="cta">
 
-```
-<h2>Have an Idea?</h2>
+    <h2>
+        Have an Idea?
+    </h2>
 
-<p>
-    Let's turn your idea into something people can see,
-    wear and remember.
-</p>
+    <p>
+        Let's turn your idea into something people can see,
+        wear and remember.
+    </p>
 
-<a class="btn btn-primary"
-   href="https://wa.me/254724566417"
-   target="_blank">
-    Get a Quote on WhatsApp
-</a>
-```
+
+    <a
+    class="btn btn-primary"
+    href="https://wa.me/254724566417"
+    target="_blank">
+
+        Get a Quote on WhatsApp
+
+    </a>
 
 </div>
+
+
 
 <!-- CONTACT -->
 
 <section id="contact">
 
 <div class="section-title">
-    <small>GET IN TOUCH</small>
-    <h2>Contact Bossy</h2>
+
+    <small>
+        GET IN TOUCH
+    </small>
+
+    <h2>
+        Contact Bossy
+    </h2>
+
     <p>
         Ready to start your project? Contact us today.
     </p>
+
 </div>
+
 
 <div class="contact-grid">
 
-```
-<div class="contact-box">
-    <div class="icon">💬</div>
-    <h3>WhatsApp</h3>
-    <p>0724 566 417</p>
-    <br>
-    <a class="btn btn-primary"
-       href="https://wa.me/254724566417"
-       target="_blank">
-        Chat Now
-    </a>
-</div>
 
-<div class="contact-box">
-    <div class="icon">🎨</div>
-    <h3>Printing</h3>
-    <p>T-Shirts • Banners • Posters • Stickers</p>
-</div>
+    <div class="contact-box">
 
-<div class="contact-box">
-    <div class="icon">💡</div>
-    <h3>Design</h3>
-    <p>Logos • Graphics • Branding • Custom Designs</p>
-</div>
-```
+        <div class="icon">
+            💬
+        </div>
+
+        <h3>
+            WhatsApp
+        </h3>
+
+        <p>
+            0724 566 417
+        </p>
+
+        <br>
+
+        <a
+        class="btn btn-primary"
+        href="https://wa.me/254724566417"
+        target="_blank">
+
+            Chat Now
+
+        </a>
+
+    </div>
+
+
+
+    <div class="contact-box">
+
+        <div class="icon">
+            🎨
+        </div>
+
+        <h3>
+            Printing
+        </h3>
+
+        <p>
+            T-Shirts • Banners • Posters • Stickers
+        </p>
+
+    </div>
+
+
+
+    <div class="contact-box">
+
+        <div class="icon">
+            💡
+        </div>
+
+        <h3>
+            Design
+        </h3>
+
+        <p>
+            Logos • Graphics • Branding • Custom Designs
+        </p>
+
+    </div>
+
 
 </div>
 
 </section>
+
+
 
 <!-- FOOTER -->
 
 <footer>
 
 <div class="footer-logo">
-    BOSSY <span>PRINTS & DESIGN</span>
+
+    BOSSY
+    <span>
+        PRINTS & DESIGN
+    </span>
+
 </div>
+
 
 <p>
     PRINTING • BRANDING • DESIGN
 </p>
+
 
 <p>
     © 2026 Bossy Prints & Design. All Rights Reserved.
 </p>
 
 </footer>
+
 
 </body>
 </html>
