@@ -3,13 +3,36 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bossy Prints & Design | Printing, Branding & Design</title>
+<title>Bossy Prints & Design | Printing, Branding & Graphic Design</title>
 
-<meta name="description" content="Bossy Prints & Design offers professional T-shirt printing, graphic design, branding, banners, posters, stickers, labels, caps and custom printing solutions in Kenya.">
+<meta name="description" content="Bossy Prints & Design offers T-shirt printing, graphic design, business branding, banners, posters, stickers, labels, caps and custom printing solutions.">
+
+<meta name="keywords" content="Bossy Prints and Design, T-shirt printing, printing Kenya, graphic design, branding, custom T-shirts, banners, posters, stickers, labels, caps">
+
+<meta name="author" content="Bossy Prints & Design">
+
+<meta name="robots" content="index, follow">
+
+<meta name="theme-color" content="#08090d">
+
+
+<!-- SOCIAL SHARING -->
+
+<meta property="og:title" content="Bossy Prints & Design">
+
+<meta property="og:description" content="Printing • Branding • Design">
+
+<meta property="og:type" content="website">
+
 
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
     margin:0;
@@ -30,21 +53,32 @@ body{
 
 a{
     text-decoration:none;
+    color:inherit;
 }
+
+img{
+    max-width:100%;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(8,9,13,.97);
+    background:rgba(8,9,13,.96);
     border-bottom:1px solid #252832;
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(12px);
 }
 
 .navbar{
     max-width:1200px;
     margin:auto;
-    padding:15px 25px;
+    padding:14px 22px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -59,15 +93,26 @@ header{
 .logo-mark{
     width:48px;
     height:48px;
-    border-radius:12px;
-    background:linear-gradient(135deg,#00e5ff,#7c3cff);
+
+    border-radius:13px;
+
+    background:linear-gradient(
+        135deg,
+        #00e5ff,
+        #7c3cff
+    );
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:25px;
+
+    font-size:26px;
     font-weight:900;
+
     color:#08090d;
-    box-shadow:0 0 25px rgba(0,229,255,.25);
+
+    box-shadow:
+        0 0 25px rgba(0,229,255,.25);
 }
 
 .logo-text{
@@ -78,21 +123,30 @@ header{
 
 .logo-text span{
     display:block;
+
+    color:#00e5ff;
+
     font-size:9px;
     letter-spacing:2px;
-    color:#00e5ff;
+
     margin-top:2px;
 }
 
+
+/* NAVIGATION */
+
 nav{
     display:flex;
-    gap:25px;
+    align-items:center;
+    gap:24px;
 }
 
 nav a{
-    color:#ddd;
+    color:#d7d9df;
+
     font-size:14px;
     font-weight:bold;
+
     transition:.3s;
 }
 
@@ -101,203 +155,372 @@ nav a:hover{
 }
 
 
-/* HERO */
+/* MOBILE MENU BUTTON */
+
+.menu-btn{
+    display:none;
+
+    background:none;
+    border:1px solid #30343e;
+
+    color:white;
+
+    font-size:24px;
+
+    padding:6px 11px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:88vh;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
+
     padding:80px 20px;
 
     background:
-    radial-gradient(circle at 20% 20%,rgba(0,229,255,.13),transparent 30%),
-    radial-gradient(circle at 80% 30%,rgba(124,60,255,.15),transparent 30%),
+
+    radial-gradient(
+        circle at 15% 20%,
+        rgba(0,229,255,.14),
+        transparent 30%
+    ),
+
+    radial-gradient(
+        circle at 85% 25%,
+        rgba(124,60,255,.16),
+        transparent 30%
+    ),
+
     #08090d;
 }
 
 .hero-content{
-    max-width:900px;
+    max-width:950px;
 }
 
 .badge{
     display:inline-block;
+
     border:1px solid #30343e;
-    padding:8px 16px;
+
+    padding:9px 17px;
+
     border-radius:30px;
+
     color:#00e5ff;
+
     font-size:12px;
+
     font-weight:bold;
+
     letter-spacing:2px;
-    margin-bottom:25px;
+
+    margin-bottom:26px;
 }
 
 .hero h1{
-    font-size:clamp(42px,8vw,82px);
+    font-size:clamp(
+        42px,
+        8vw,
+        82px
+    );
+
     line-height:1;
+
     font-weight:950;
+
     letter-spacing:-3px;
 }
 
 .hero h1 span{
-    background:linear-gradient(90deg,#00e5ff,#7c3cff);
+
+    background:
+        linear-gradient(
+            90deg,
+            #00e5ff,
+            #7c3cff
+        );
+
     -webkit-background-clip:text;
+
+    background-clip:text;
+
     color:transparent;
 }
 
 .hero p{
-    max-width:680px;
-    margin:25px auto;
+    max-width:700px;
+
+    margin:27px auto;
+
     color:#b8bbc5;
+
     font-size:19px;
 }
 
 .buttons{
     display:flex;
+
     justify-content:center;
+
     gap:15px;
+
     flex-wrap:wrap;
+
     margin-top:30px;
 }
 
 .btn{
     display:inline-block;
-    padding:14px 24px;
-    border-radius:8px;
+
+    padding:14px 25px;
+
+    border-radius:9px;
+
     font-weight:bold;
+
     transition:.3s;
 }
 
 .btn-primary{
     background:#00e5ff;
+
     color:#08090d;
 }
 
 .btn-primary:hover{
     transform:translateY(-3px);
-    box-shadow:0 8px 25px rgba(0,229,255,.25);
+
+    box-shadow:
+        0 10px 28px
+        rgba(0,229,255,.25);
 }
 
 .btn-secondary{
     border:1px solid #383c47;
-    color:#ffffff;
+
+    color:white;
 }
 
 .btn-secondary:hover{
     border-color:#00e5ff;
+
     color:#00e5ff;
 }
 
 
-/* GENERAL SECTIONS */
+/* =========================
+   TRUST BAR
+========================= */
+
+.trust{
+    border-top:1px solid #20232c;
+
+    border-bottom:1px solid #20232c;
+
+    background:#0d0f14;
+}
+
+.trust-inner{
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:25px 20px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    text-align:center;
+
+    gap:20px;
+}
+
+.trust-item strong{
+    display:block;
+
+    color:#ffffff;
+
+    font-size:15px;
+}
+
+.trust-item span{
+    color:#858a96;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
 
 section{
     max-width:1200px;
+
     margin:auto;
+
     padding:90px 25px;
 }
 
 .section-title{
     text-align:center;
+
     margin-bottom:50px;
 }
 
 .section-title small{
     color:#00e5ff;
+
     letter-spacing:3px;
+
     font-weight:bold;
 }
 
 .section-title h2{
     font-size:40px;
+
     margin-top:8px;
 }
 
 .section-title p{
+    max-width:680px;
+
+    margin:13px auto;
+
     color:#999eaa;
-    max-width:650px;
-    margin:12px auto;
 }
 
 
-/* SERVICES */
+/* =========================
+   SERVICES
+========================= */
 
 .services{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:22px;
 }
 
 .card{
     background:#101218;
+
     border:1px solid #242832;
+
     border-radius:16px;
+
     padding:30px;
+
     transition:.3s;
 }
 
 .card:hover{
     transform:translateY(-7px);
+
     border-color:#00e5ff;
-    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.28);
 }
 
 .icon{
     width:55px;
     height:55px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
-    border-radius:12px;
+
+    border-radius:13px;
+
     background:#191c25;
+
     font-size:27px;
+
     margin-bottom:20px;
 }
 
 .card h3{
     font-size:20px;
+
     margin-bottom:10px;
 }
 
 .card p{
     color:#999eaa;
+
     font-size:14px;
 }
 
 
-/* PORTFOLIO */
+/* =========================
+   PORTFOLIO
+========================= */
 
 .portfolio{
     background:#0d0f14;
+
     max-width:none;
 }
 
 .portfolio-inner{
     max-width:1200px;
+
     margin:auto;
 }
 
 .gallery{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:22px;
 }
 
 .gallery-item{
     position:relative;
+
     height:300px;
+
     overflow:hidden;
+
     border-radius:16px;
+
     border:1px solid #292e39;
+
     background:#101218;
 }
 
 .gallery-item img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:block;
+
     transition:.5s;
 }
 
@@ -307,15 +530,18 @@ section{
 
 .gallery-overlay{
     position:absolute;
+
     left:0;
     right:0;
     bottom:0;
-    padding:45px 20px 20px;
 
-    background:linear-gradient(
-        transparent,
-        rgba(0,0,0,.9)
-    );
+    padding:60px 20px 20px;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,.95)
+        );
 }
 
 .gallery-overlay h3{
@@ -324,97 +550,213 @@ section{
 
 .gallery-overlay p{
     color:#c7c9d0;
+
     font-size:13px;
 }
 
 
-/* ABOUT */
+/* =========================
+   ABOUT
+========================= */
 
 .about{
     background:#08090d;
 }
 
 .about-inner{
-    max-width:1000px;
+    max-width:950px;
+
     margin:auto;
+
     text-align:center;
 }
 
 .about-inner p{
     color:#adb1bc;
+
     font-size:17px;
 }
 
+.about-highlight{
+    margin-top:30px;
 
-/* FEATURES */
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.about-box{
+    background:#101218;
+
+    border:1px solid #242832;
+
+    border-radius:14px;
+
+    padding:25px;
+}
+
+.about-box strong{
+    display:block;
+
+    color:#00e5ff;
+
+    font-size:25px;
+
+    margin-bottom:5px;
+}
+
+.about-box span{
+    color:#9da2ad;
+
+    font-size:13px;
+}
+
+
+/* =========================
+   WHY CHOOSE US
+========================= */
 
 .features{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
 .feature{
-    padding:25px;
+    padding:28px;
+
     background:#101218;
+
     border-radius:14px;
+
     border:1px solid #242832;
 }
 
 .feature h3{
-    margin-bottom:8px;
+    margin-bottom:9px;
 }
 
 .feature p{
     color:#999eaa;
+
     font-size:14px;
 }
 
 
-/* CTA */
+/* =========================
+   CTA
+========================= */
 
 .cta{
     margin:50px auto 90px;
+
     max-width:1100px;
+
     text-align:center;
-    padding:70px 25px;
+
+    padding:75px 25px;
+
     border-radius:20px;
 
     background:
-    radial-gradient(
-        circle at 50% 0%,
-        rgba(0,229,255,.16),
-        transparent 50%
-    ),
-    #101218;
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,229,255,.17),
+            transparent 50%
+        ),
+
+        #101218;
 
     border:1px solid #292e39;
 }
 
 .cta h2{
-    font-size:38px;
+    font-size:40px;
+
     margin-bottom:12px;
 }
 
 .cta p{
     color:#aeb2bd;
-    margin-bottom:25px;
+
+    margin-bottom:27px;
 }
 
 
-/* CONTACT */
+/* =========================
+   FAQ
+========================= */
+
+.faq-section{
+    background:#0d0f14;
+
+    max-width:none;
+}
+
+.faq-inner{
+    max-width:850px;
+
+    margin:auto;
+}
+
+details{
+    background:#101218;
+
+    border:1px solid #242832;
+
+    border-radius:12px;
+
+    margin-bottom:14px;
+
+    padding:20px;
+}
+
+summary{
+    cursor:pointer;
+
+    font-weight:bold;
+
+    font-size:16px;
+}
+
+details p{
+    color:#999eaa;
+
+    margin-top:13px;
+
+    font-size:14px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
 .contact-box{
     text-align:center;
+
     background:#101218;
+
     border:1px solid #242832;
+
     padding:30px;
+
     border-radius:14px;
 }
 
@@ -424,21 +766,71 @@ section{
 
 .contact-box p{
     color:#a8adb8;
+
+    font-size:14px;
 }
 
 
-/* FOOTER */
+/* =========================
+   FLOATING WHATSAPP
+========================= */
+
+.whatsapp-float{
+    position:fixed;
+
+    width:62px;
+    height:62px;
+
+    right:22px;
+    bottom:22px;
+
+    background:#25D366;
+
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:31px;
+
+    box-shadow:
+        0 6px 25px
+        rgba(0,0,0,.45);
+
+    z-index:9999;
+
+    transition:.3s;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.1);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     background:#050608;
+
     border-top:1px solid #22252e;
+
     text-align:center;
-    padding:35px 20px;
+
+    padding:40px 20px;
 }
 
 .footer-logo{
-    font-size:22px;
+    font-size:23px;
+
     font-weight:900;
+
     letter-spacing:1px;
 }
 
@@ -448,21 +840,52 @@ footer{
 
 footer p{
     color:#777c87;
+
     font-size:13px;
+
     margin-top:8px;
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
-@media(max-width:800px){
+@media(max-width:850px){
 
     .navbar{
         padding:12px 15px;
     }
 
+    .menu-btn{
+        display:block;
+    }
+
     nav{
         display:none;
+
+        position:absolute;
+
+        top:75px;
+
+        left:0;
+        right:0;
+
+        background:#0b0d12;
+
+        border-bottom:1px solid #252832;
+
+        padding:20px;
+
+        flex-direction:column;
+
+        gap:18px;
+
+        text-align:center;
+    }
+
+    nav.active{
+        display:flex;
     }
 
     .services,
@@ -472,12 +895,23 @@ footer p{
         grid-template-columns:1fr;
     }
 
+    .trust-inner{
+        grid-template-columns:1fr;
+
+        gap:14px;
+    }
+
+    .about-highlight{
+        grid-template-columns:1fr;
+    }
+
     section{
         padding:65px 18px;
     }
 
     .hero{
         min-height:82vh;
+
         padding:60px 18px;
     }
 
@@ -501,6 +935,40 @@ footer p{
         height:280px;
     }
 
+    .whatsapp-float{
+        width:56px;
+        height:56px;
+
+        right:15px;
+        bottom:15px;
+
+        font-size:28px;
+    }
+
+}
+
+
+/* SMALL PHONES */
+
+@media(max-width:420px){
+
+    .logo-text{
+        font-size:15px;
+    }
+
+    .logo-text span{
+        font-size:7px;
+    }
+
+    .logo-mark{
+        width:43px;
+        height:43px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
 }
 
 </style>
@@ -511,54 +979,70 @@ footer p{
 <body>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
 <div class="navbar">
 
-    <a href="#home" class="logo">
+<a href="#home" class="logo">
 
-        <div class="logo-mark">
-            B
-        </div>
+<div class="logo-mark">
+B
+</div>
 
-        <div class="logo-text">
+<div class="logo-text">
 
-            BOSSY PRINTS
+BOSSY PRINTS
 
-            <span>
-                PRINTING • BRANDING • DESIGN
-            </span>
+<span>
+PRINTING • BRANDING • DESIGN
+</span>
 
-        </div>
+</div>
 
-    </a>
+</a>
 
 
-    <nav>
+<button
+class="menu-btn"
+onclick="toggleMenu()"
+aria-label="Open menu">
 
-        <a href="#home">
-            Home
-        </a>
+☰
 
-        <a href="#services">
-            Services
-        </a>
+</button>
 
-        <a href="#portfolio">
-            Portfolio
-        </a>
 
-        <a href="#about">
-            About
-        </a>
+<nav id="mainNav">
 
-        <a href="#contact">
-            Contact
-        </a>
+<a href="#home" onclick="closeMenu()">
+Home
+</a>
 
-    </nav>
+<a href="#services" onclick="closeMenu()">
+Services
+</a>
+
+<a href="#portfolio" onclick="closeMenu()">
+Portfolio
+</a>
+
+<a href="#about" onclick="closeMenu()">
+About
+</a>
+
+<a href="#faq" onclick="closeMenu()">
+FAQ
+</a>
+
+<a href="#contact" onclick="closeMenu()">
+Contact
+</a>
+
+</nav>
 
 </div>
 
@@ -566,57 +1050,59 @@ footer p{
 
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="home">
 
 <div class="hero-content">
 
-    <div class="badge">
-        PRINTING • BRANDING • DESIGN
-    </div>
+<div class="badge">
+PRINTING • BRANDING • DESIGN
+</div>
 
 
-    <h1>
+<h1>
 
-        TURN YOUR<br>
+TURN YOUR<br>
 
-        <span>
-            IDEAS INTO REALITY.
-        </span>
+<span>
+IDEAS INTO REALITY.
+</span>
 
-    </h1>
-
-
-    <p>
-
-        Professional printing, branding and graphic design
-        solutions for individuals, businesses, teams and events.
-
-    </p>
+</h1>
 
 
-    <div class="buttons">
+<p>
 
-        <a
-        class="btn btn-primary"
-        href="https://wa.me/254724566417"
-        target="_blank">
+Professional printing, branding and graphic design
+solutions for individuals, businesses, teams and events.
 
-            WhatsApp Us
-
-        </a>
+</p>
 
 
-        <a
-        class="btn btn-secondary"
-        href="#services">
+<div class="buttons">
 
-            Explore Services
+<a
+class="btn btn-primary"
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20make%20an%20inquiry."
+target="_blank">
 
-        </a>
+💬 WhatsApp Us
 
-    </div>
+</a>
+
+
+<a
+class="btn btn-secondary"
+href="#services">
+
+Explore Services
+
+</a>
+
+</div>
 
 </div>
 
@@ -624,24 +1110,78 @@ footer p{
 
 
 
-<!-- SERVICES -->
+<!-- =========================
+     TRUST BAR
+========================= -->
+
+<div class="trust">
+
+<div class="trust-inner">
+
+<div class="trust-item">
+
+<strong>
+CUSTOM WORK
+</strong>
+
+<span>
+Made around your idea
+</span>
+
+</div>
+
+
+<div class="trust-item">
+
+<strong>
+PRINTING & DESIGN
+</strong>
+
+<span>
+One place for your project
+</span>
+
+</div>
+
+
+<div class="trust-item">
+
+<strong>
+EASY ORDERING
+</strong>
+
+<span>
+Contact us directly on WhatsApp
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+     SERVICES
+========================= -->
 
 <section id="services">
 
 <div class="section-title">
 
-    <small>
-        WHAT WE DO
-    </small>
+<small>
+WHAT WE DO
+</small>
 
-    <h2>
-        Our Services
-    </h2>
+<h2>
+Our Services
+</h2>
 
-    <p>
-        From an idea on paper to a finished branded product,
-        we help bring your vision to life.
-    </p>
+<p>
+From an idea to a finished product, we help bring
+your printing and branding projects to life.
+</p>
 
 </div>
 
@@ -649,117 +1189,118 @@ footer p{
 <div class="services">
 
 
-    <div class="card">
+<div class="card">
 
-        <div class="icon">
-            👕
-        </div>
+<div class="icon">
+👕
+</div>
 
-        <h3>
-            T-Shirt Printing
-        </h3>
+<h3>
+T-Shirt Printing
+</h3>
 
-        <p>
-            Custom T-shirts for businesses, teams,
-            events, organizations and personal occasions.
-        </p>
+<p>
+Custom T-shirts for businesses, teams, events,
+organizations, groups and personal occasions.
+</p>
 
-    </div>
-
-
-
-    <div class="card">
-
-        <div class="icon">
-            🎨
-        </div>
-
-        <h3>
-            Graphic Design
-        </h3>
-
-        <p>
-            Logos, posters, flyers, social media artwork
-            and other professional designs.
-        </p>
-
-    </div>
+</div>
 
 
 
-    <div class="card">
+<div class="card">
 
-        <div class="icon">
-            🏢
-        </div>
+<div class="icon">
+🎨
+</div>
 
-        <h3>
-            Business Branding
-        </h3>
+<h3>
+Graphic Design
+</h3>
 
-        <p>
-            Build a recognizable brand with professional
-            visual branding solutions.
-        </p>
+<p>
+Logos, flyers, posters, social media graphics,
+business artwork and custom designs.
+</p>
 
-    </div>
-
-
-
-    <div class="card">
-
-        <div class="icon">
-            📢
-        </div>
-
-        <h3>
-            Banners & Posters
-        </h3>
-
-        <p>
-            Promotional banners and posters for businesses,
-            events and advertising.
-        </p>
-
-    </div>
+</div>
 
 
 
-    <div class="card">
+<div class="card">
 
-        <div class="icon">
-            🏷️
-        </div>
+<div class="icon">
+🏢
+</div>
 
-        <h3>
-            Stickers & Labels
-        </h3>
+<h3>
+Business Branding
+</h3>
 
-        <p>
-            Custom stickers and product labels designed
-            to give your products a professional look.
-        </p>
+<p>
+Professional branding solutions designed to help
+your business look recognizable and consistent.
+</p>
 
-    </div>
+</div>
 
 
 
-    <div class="card">
+<div class="card">
 
-        <div class="icon">
-            🧢
-        </div>
+<div class="icon">
+📢
+</div>
 
-        <h3>
-            Caps & Merchandise
-        </h3>
+<h3>
+Banners & Posters
+</h3>
 
-        <p>
-            Custom caps and branded merchandise for
-            businesses, teams and special occasions.
-        </p>
+<p>
+Promotional banners and posters for businesses,
+events, advertising and special occasions.
+</p>
 
-    </div>
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">
+🏷️
+</div>
+
+<h3>
+Stickers & Labels
+</h3>
+
+<p>
+Custom stickers and product labels that give
+your products a professional appearance.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">
+🧢
+</div>
+
+<h3>
+Caps & Merchandise
+</h3>
+
+<p>
+Custom caps and branded merchandise for teams,
+businesses, events and organizations.
+</p>
+
+</div>
+
 
 </div>
 
@@ -767,7 +1308,9 @@ footer p{
 
 
 
-<!-- PORTFOLIO -->
+<!-- =========================
+     PORTFOLIO
+========================= -->
 
 <div class="portfolio" id="portfolio">
 
@@ -777,18 +1320,18 @@ footer p{
 
 <div class="section-title">
 
-    <small>
-        OUR WORK
-    </small>
+<small>
+OUR WORK
+</small>
 
-    <h2>
-        Printing & Design Portfolio
-    </h2>
+<h2>
+Printing & Design Portfolio
+</h2>
 
-    <p>
-        Explore examples of the type of printing,
-        branding and design work we can create.
-    </p>
+<p>
+These examples show the type of work Bossy Prints &
+Design can create. Your own projects can be added here.
+</p>
 
 </div>
 
@@ -796,147 +1339,136 @@ footer p{
 <div class="gallery">
 
 
-    <!-- T-SHIRTS -->
+<div class="gallery-item">
 
-    <div class="gallery-item">
+<img
+src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=85"
+alt="Custom T-shirt printing">
 
-        <img
-        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
-        alt="Custom T-shirt printing">
+<div class="gallery-overlay">
 
-        <div class="gallery-overlay">
+<h3>
+Custom T-Shirts
+</h3>
 
-            <h3>
-                Custom T-Shirts
-            </h3>
+<p>
+Branded clothing for teams, businesses and events.
+</p>
 
-            <p>
-                Branded clothing for teams, businesses and events.
-            </p>
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 
 
-    <!-- DESIGN -->
+<div class="gallery-item">
 
-    <div class="gallery-item">
+<img
+src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1000&q=85"
+alt="Graphic design">
 
-        <img
-        src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80"
-        alt="Graphic design workspace">
+<div class="gallery-overlay">
 
-        <div class="gallery-overlay">
+<h3>
+Graphic Design
+</h3>
 
-            <h3>
-                Graphic Design
-            </h3>
+<p>
+Creative designs built around your ideas.
+</p>
 
-            <p>
-                Creative designs made around your ideas.
-            </p>
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 
 
-    <!-- BRANDING -->
+<div class="gallery-item">
 
-    <div class="gallery-item">
+<img
+src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85"
+alt="Business branding">
 
-        <img
-        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80"
-        alt="Business branding">
+<div class="gallery-overlay">
 
-        <div class="gallery-overlay">
+<h3>
+Business Branding
+</h3>
 
-            <h3>
-                Business Branding
-            </h3>
+<p>
+Professional visual identity for your business.
+</p>
 
-            <p>
-                Professional visual identity for your business.
-            </p>
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 
 
-    <!-- BANNER -->
+<div class="gallery-item">
 
-    <div class="gallery-item">
+<img
+src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85"
+alt="Promotional business display">
 
-        <img
-        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
-        alt="Business promotional display">
+<div class="gallery-overlay">
 
-        <div class="gallery-overlay">
+<h3>
+Banners & Advertising
+</h3>
 
-            <h3>
-                Banners & Advertising
-            </h3>
+<p>
+Promotional materials designed to attract attention.
+</p>
 
-            <p>
-                Promotional materials designed to attract attention.
-            </p>
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 
 
-    <!-- STICKERS -->
+<div class="gallery-item">
 
-    <div class="gallery-item">
+<img
+src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=1000&q=85"
+alt="Printed labels">
 
-        <img
-        src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=80"
-        alt="Printed labels and materials">
+<div class="gallery-overlay">
 
-        <div class="gallery-overlay">
+<h3>
+Stickers & Labels
+</h3>
 
-            <h3>
-                Stickers & Labels
-            </h3>
+<p>
+Custom labels and stickers for products and brands.
+</p>
 
-            <p>
-                Custom labels and stickers for products and brands.
-            </p>
+</div>
 
-        </div>
-
-    </div>
+</div>
 
 
 
-    <!-- MERCHANDISE -->
+<div class="gallery-item">
 
-    <div class="gallery-item">
+<img
+src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=1000&q=85"
+alt="Custom merchandise">
 
-        <img
-        src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=900&q=80"
-        alt="Custom merchandise">
+<div class="gallery-overlay">
 
-        <div class="gallery-overlay">
+<h3>
+Branded Merchandise
+</h3>
 
-            <h3>
-                Branded Merchandise
-            </h3>
+<p>
+Merchandise created to represent your brand.
+</p>
 
-            <p>
-                Merchandise created to represent your brand.
-            </p>
+</div>
 
-        </div>
+</div>
 
-    </div>
 
 </div>
 
@@ -948,7 +1480,9 @@ footer p{
 
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about">
 
@@ -956,27 +1490,74 @@ footer p{
 
 <div class="section-title">
 
-    <small>
-        ABOUT US
-    </small>
+<small>
+ABOUT US
+</small>
 
-    <h2>
-        Bossy Prints & Design
-    </h2>
+<h2>
+Bossy Prints & Design
+</h2>
 
 </div>
 
 
 <p>
 
-    Bossy Prints & Design is a printing, branding and graphic
-    design business focused on creating quality custom products
-    and professional visual designs.
+Bossy Prints & Design is a printing, branding and graphic
+design business focused on helping individuals, businesses,
+teams and organizations turn ideas into professional
+printed and branded products.
 
-    Whether you need a single custom T-shirt or branding
-    for your business, we aim to turn your idea into something real.
+Whether you need a custom T-shirt, business branding,
+poster, banner, sticker or graphic design, our goal is
+to create something that represents your idea clearly.
 
 </p>
+
+
+<div class="about-highlight">
+
+
+<div class="about-box">
+
+<strong>
+01
+</strong>
+
+<span>
+Your Idea
+</span>
+
+</div>
+
+
+<div class="about-box">
+
+<strong>
+02
+</strong>
+
+<span>
+Creative Design
+</span>
+
+</div>
+
+
+<div class="about-box">
+
+<strong>
+03
+</strong>
+
+<span>
+Finished Product
+</span>
+
+</div>
+
+
+</div>
 
 </div>
 
@@ -984,19 +1565,26 @@ footer p{
 
 
 
-<!-- WHY CHOOSE US -->
+<!-- =========================
+     WHY CHOOSE US
+========================= -->
 
 <section>
 
 <div class="section-title">
 
-    <small>
-        WHY BOSSY
-    </small>
+<small>
+WHY BOSSY
+</small>
 
-    <h2>
-        Built Around Your Idea
-    </h2>
+<h2>
+Built Around Your Idea
+</h2>
+
+<p>
+We focus on making the process simple from
+your first idea to your finished project.
+</p>
 
 </div>
 
@@ -1004,48 +1592,48 @@ footer p{
 <div class="features">
 
 
-    <div class="feature">
+<div class="feature">
 
-        <h3>
-            ✨ Custom Designs
-        </h3>
+<h3>
+✨ Custom Designs
+</h3>
 
-        <p>
-            Your project is created around your own idea,
-            message and brand.
-        </p>
+<p>
+Your project can be designed around your own
+message, style, business or occasion.
+</p>
 
-    </div>
-
-
-
-    <div class="feature">
-
-        <h3>
-            🎯 Professional Look
-        </h3>
-
-        <p>
-            We focus on clean designs and quality presentation
-            for your printing and branding needs.
-        </p>
-
-    </div>
+</div>
 
 
 
-    <div class="feature">
+<div class="feature">
 
-        <h3>
-            💬 Easy Ordering
-        </h3>
+<h3>
+🎯 Professional Presentation
+</h3>
 
-        <p>
-            Contact us directly through WhatsApp to discuss
-            your project and request a quote.
-        </p>
+<p>
+We focus on clean designs and professional
+presentation for your printing needs.
+</p>
 
-    </div>
+</div>
+
+
+
+<div class="feature">
+
+<h3>
+💬 Easy Communication
+</h3>
+
+<p>
+Discuss your project directly through WhatsApp
+and request a quote before starting.
+</p>
+
+</div>
 
 
 </div>
@@ -1054,50 +1642,162 @@ footer p{
 
 
 
-<!-- CTA -->
+<!-- =========================
+     CTA
+========================= -->
 
 <div class="cta">
 
-    <h2>
-        Have an Idea?
-    </h2>
+<h2>
+Have an Idea?
+</h2>
 
-    <p>
-        Let's turn your idea into something people can see,
-        wear and remember.
-    </p>
+<p>
+Let's turn your idea into something people can see,
+wear and remember.
+</p>
 
 
-    <a
-    class="btn btn-primary"
-    href="https://wa.me/254724566417"
-    target="_blank">
+<a
+class="btn btn-primary"
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20a%20quote."
+target="_blank">
 
-        Get a Quote on WhatsApp
+Get a Quote on WhatsApp
 
-    </a>
+</a>
 
 </div>
 
 
 
-<!-- CONTACT -->
+<!-- =========================
+     FAQ
+========================= -->
+
+<div class="faq-section" id="faq">
+
+<section>
+
+<div class="section-title">
+
+<small>
+QUESTIONS
+</small>
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+</div>
+
+
+<div class="faq-inner">
+
+
+<details>
+
+<summary>
+What services does Bossy Prints & Design offer?
+</summary>
+
+<p>
+We offer T-shirt printing, graphic design, business
+branding, banners, posters, stickers, labels, caps
+and custom merchandise.
+</p>
+
+</details>
+
+
+
+<details>
+
+<summary>
+Can I order a custom T-shirt?
+</summary>
+
+<p>
+Yes. You can contact us on WhatsApp and discuss your
+design, quantity and requirements.
+</p>
+
+</details>
+
+
+
+<details>
+
+<summary>
+Can you design my artwork?
+</summary>
+
+<p>
+Yes. We can work with your idea and create graphic
+designs suitable for printing and branding.
+</p>
+
+</details>
+
+
+
+<details>
+
+<summary>
+How do I request a quotation?
+</summary>
+
+<p>
+Contact Bossy Prints & Design through WhatsApp and
+tell us what you need. We can then discuss your project
+and quotation.
+</p>
+
+</details>
+
+
+
+<details>
+
+<summary>
+Do you handle business branding?
+</summary>
+
+<p>
+Yes. Business branding can include graphics, printed
+materials and other visual branding requirements.
+</p>
+
+</details>
+
+
+</div>
+
+</section>
+
+</div>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section id="contact">
 
 <div class="section-title">
 
-    <small>
-        GET IN TOUCH
-    </small>
+<small>
+GET IN TOUCH
+</small>
 
-    <h2>
-        Contact Bossy
-    </h2>
+<h2>
+Contact Bossy
+</h2>
 
-    <p>
-        Ready to start your project? Contact us today.
-    </p>
+<p>
+Ready to start your project? Talk to us today.
+</p>
 
 </div>
 
@@ -1105,68 +1805,68 @@ footer p{
 <div class="contact-grid">
 
 
-    <div class="contact-box">
+<div class="contact-box">
 
-        <div class="icon">
-            💬
-        </div>
+<div class="icon">
+💬
+</div>
 
-        <h3>
-            WhatsApp
-        </h3>
+<h3>
+WhatsApp
+</h3>
 
-        <p>
-            0724 566 417
-        </p>
+<p>
+0724 566 417
+</p>
 
-        <br>
+<br>
 
-        <a
-        class="btn btn-primary"
-        href="https://wa.me/254724566417"
-        target="_blank">
+<a
+class="btn btn-primary"
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design."
+target="_blank">
 
-            Chat Now
+Chat Now
 
-        </a>
+</a>
 
-    </div>
-
-
-
-    <div class="contact-box">
-
-        <div class="icon">
-            🎨
-        </div>
-
-        <h3>
-            Printing
-        </h3>
-
-        <p>
-            T-Shirts • Banners • Posters • Stickers
-        </p>
-
-    </div>
+</div>
 
 
 
-    <div class="contact-box">
+<div class="contact-box">
 
-        <div class="icon">
-            💡
-        </div>
+<div class="icon">
+👕
+</div>
 
-        <h3>
-            Design
-        </h3>
+<h3>
+Printing
+</h3>
 
-        <p>
-            Logos • Graphics • Branding • Custom Designs
-        </p>
+<p>
+T-Shirts • Banners • Posters • Stickers • Caps
+</p>
 
-    </div>
+</div>
+
+
+
+<div class="contact-box">
+
+<div class="icon">
+🎨
+</div>
+
+<h3>
+Design & Branding
+</h3>
+
+<p>
+Logos • Graphics • Business Branding • Custom Designs
+</p>
+
+</div>
 
 
 </div>
@@ -1175,30 +1875,78 @@ footer p{
 
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
 <div class="footer-logo">
 
-    BOSSY
-    <span>
-        PRINTS & DESIGN
-    </span>
+BOSSY
+
+<span>
+PRINTS & DESIGN
+</span>
 
 </div>
 
 
 <p>
-    PRINTING • BRANDING • DESIGN
+PRINTING • BRANDING • DESIGN
 </p>
 
 
 <p>
-    © 2026 Bossy Prints & Design. All Rights Reserved.
+© 2026 Bossy Prints & Design. All Rights Reserved.
 </p>
 
 </footer>
+
+
+
+<!-- =========================
+     FLOATING WHATSAPP
+========================= -->
+
+<a
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20make%20an%20inquiry."
+target="_blank"
+class="whatsapp-float"
+aria-label="Chat with Bossy Prints & Design on WhatsApp">
+
+💬
+
+</a>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function toggleMenu(){
+
+    const nav =
+        document.getElementById("mainNav");
+
+    nav.classList.toggle("active");
+
+}
+
+
+function closeMenu(){
+
+    const nav =
+        document.getElementById("mainNav");
+
+    nav.classList.remove("active");
+
+}
+
+</script>
 
 
 </body>
