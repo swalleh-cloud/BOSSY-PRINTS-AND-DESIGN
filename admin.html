@@ -32,9 +32,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background:
-        radial-gradient(circle at top left, #333 0, transparent 35%),
-        #111;
+    background: #111;
 }
 
 .login-box {
@@ -532,7 +530,7 @@ body {
 }
 
 /* =========================
-   EMPTY
+   EMPTY / LOADING
 ========================= */
 
 .empty {
@@ -662,9 +660,7 @@ body {
 
 <body>
 
-<!-- =========================
-     LOGIN SCREEN
-========================= -->
+<!-- LOGIN -->
 
 <div class="login-screen" id="loginScreen">
 
@@ -678,6 +674,7 @@ body {
         <form id="loginForm">
 
             <label>Email</label>
+
             <input
                 type="email"
                 id="email"
@@ -686,6 +683,7 @@ body {
             >
 
             <label>Password</label>
+
             <input
                 type="password"
                 id="password"
@@ -693,11 +691,17 @@ body {
                 required
             >
 
-            <button class="login-btn" type="submit">
+            <button
+                class="login-btn"
+                type="submit"
+            >
                 Login to Dashboard
             </button>
 
-            <div class="message" id="loginMessage"></div>
+            <div
+                class="message"
+                id="loginMessage"
+            ></div>
 
         </form>
 
@@ -706,22 +710,33 @@ body {
 </div>
 
 
-<!-- =========================
-     ADMIN APP
-========================= -->
+<!-- ADMIN -->
 
 <div class="admin-app" id="adminApp">
 
-    <div class="overlay" id="overlay"></div>
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
 
     <!-- SIDEBAR -->
 
-    <aside class="sidebar" id="sidebar">
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
 
         <div class="brand">
+
             <h2>BOSSY PRINTS</h2>
-            <p>PRINTING • BRANDING • DESIGN</p>
+
+            <p>
+                PRINTING • BRANDING • DESIGN
+            </p>
+
         </div>
+
 
         <nav class="nav">
 
@@ -733,15 +748,22 @@ body {
                 Dashboard
             </button>
 
-            <button onclick="openAddProduct()">
+
+            <button
+                onclick="openAddProduct()"
+            >
                 <span class="nav-icon">＋</span>
                 Add Product
             </button>
 
-            <button onclick="showSection('products', this)">
+
+            <button
+                onclick="showSection('products', this)"
+            >
                 <span class="nav-icon">▦</span>
                 Products
             </button>
+
 
             <a href="index.html">
                 <span class="nav-icon">↗</span>
@@ -749,6 +771,7 @@ body {
             </a>
 
         </nav>
+
 
         <div class="sidebar-bottom">
 
@@ -769,8 +792,6 @@ body {
 
     <main class="main">
 
-        <!-- TOP BAR -->
-
         <header class="topbar">
 
             <div class="top-right">
@@ -785,6 +806,7 @@ body {
                 <h1>Admin Dashboard</h1>
 
             </div>
+
 
             <div class="top-right">
 
@@ -807,9 +829,7 @@ body {
         <div class="content">
 
 
-            <!-- =========================
-                 DASHBOARD
-            ========================= -->
+            <!-- DASHBOARD -->
 
             <section
                 class="page-section active"
@@ -817,37 +837,85 @@ body {
             >
 
                 <div class="welcome">
-                    <h2>Welcome to Bossy Prints & Design</h2>
+
+                    <h2>
+                        Welcome to Bossy Prints & Design
+                    </h2>
+
                     <p>
                         Manage your printing and branding products from one place.
                     </p>
+
                 </div>
 
 
                 <div class="stats">
 
                     <div class="stat-card">
-                        <small>Total Products</small>
-                        <strong id="totalProducts">0</strong>
-                        <span>Products in your catalogue</span>
+
+                        <small>
+                            Total Products
+                        </small>
+
+                        <strong id="totalProducts">
+                            0
+                        </strong>
+
+                        <span>
+                            Products in your catalogue
+                        </span>
+
                     </div>
 
-                    <div class="stat-card">
-                        <small>Categories</small>
-                        <strong id="totalCategories">0</strong>
-                        <span>Different product categories</span>
-                    </div>
 
                     <div class="stat-card">
-                        <small>With Images</small>
-                        <strong id="productsWithImages">0</strong>
-                        <span>Products with uploaded images</span>
+
+                        <small>
+                            Categories
+                        </small>
+
+                        <strong id="totalCategories">
+                            0
+                        </strong>
+
+                        <span>
+                            Different product categories
+                        </span>
+
                     </div>
 
+
                     <div class="stat-card">
-                        <small>Latest Product</small>
-                        <strong id="latestProduct">—</strong>
-                        <span>Most recently added</span>
+
+                        <small>
+                            With Images
+                        </small>
+
+                        <strong id="productsWithImages">
+                            0
+                        </strong>
+
+                        <span>
+                            Products with uploaded images
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <small>
+                            Latest Product
+                        </small>
+
+                        <strong id="latestProduct">
+                            —
+                        </strong>
+
+                        <span>
+                            Most recently added
+                        </span>
+
                     </div>
 
                 </div>
@@ -857,7 +925,9 @@ body {
 
                     <div class="panel-header">
 
-                        <h3>Recently Added</h3>
+                        <h3>
+                            Recently Added
+                        </h3>
 
                         <button
                             class="secondary-btn"
@@ -868,13 +938,16 @@ body {
 
                     </div>
 
+
                     <div
                         class="recent-list"
                         id="recentProducts"
                     >
+
                         <div class="loading">
                             Loading products...
                         </div>
+
                     </div>
 
                 </div>
@@ -882,9 +955,7 @@ body {
             </section>
 
 
-            <!-- =========================
-                 ADD / EDIT PRODUCT
-            ========================= -->
+            <!-- ADD / EDIT -->
 
             <section
                 class="page-section"
@@ -913,11 +984,15 @@ body {
                             id="productId"
                         >
 
+
                         <div class="form-grid">
+
 
                             <div class="form-group">
 
-                                <label>Product / Service Name</label>
+                                <label>
+                                    Product / Service Name
+                                </label>
 
                                 <input
                                     type="text"
@@ -931,7 +1006,9 @@ body {
 
                             <div class="form-group">
 
-                                <label>Price</label>
+                                <label>
+                                    Price
+                                </label>
 
                                 <input
                                     type="text"
@@ -944,9 +1021,14 @@ body {
 
                             <div class="form-group">
 
-                                <label>Category</label>
+                                <label>
+                                    Category
+                                </label>
 
-                                <select id="productCategory" required>
+                                <select
+                                    id="productCategory"
+                                    required
+                                >
 
                                     <option value="">
                                         Select Category
@@ -987,7 +1069,9 @@ body {
 
                             <div class="form-group">
 
-                                <label>Product Image</label>
+                                <label>
+                                    Product Image
+                                </label>
 
                                 <input
                                     type="file"
@@ -995,15 +1079,18 @@ body {
                                     accept="image/*"
                                 >
 
+
                                 <div
                                     class="image-preview"
                                     id="imagePreview"
                                 >
+
                                     <img
                                         id="previewImg"
                                         src=""
                                         alt="Preview"
                                     >
+
                                 </div>
 
                             </div>
@@ -1011,7 +1098,9 @@ body {
 
                             <div class="form-group full">
 
-                                <label>Description</label>
+                                <label>
+                                    Description
+                                </label>
 
                                 <textarea
                                     id="productDescription"
@@ -1033,16 +1122,17 @@ body {
                                 Add Product
                             </button>
 
+
                             <button
                                 type="button"
                                 class="secondary-btn"
-                                id="cancelBtn"
                                 onclick="resetForm()"
                             >
                                 Cancel
                             </button>
 
                         </div>
+
 
                         <div
                             class="message"
@@ -1056,9 +1146,7 @@ body {
             </section>
 
 
-            <!-- =========================
-                 PRODUCTS
-            ========================= -->
+            <!-- PRODUCTS -->
 
             <section
                 class="page-section"
@@ -1067,7 +1155,9 @@ body {
 
                 <div class="welcome">
 
-                    <h2>Your Products</h2>
+                    <h2>
+                        Your Products
+                    </h2>
 
                     <p>
                         Edit, update or remove products displayed on your website.
@@ -1085,6 +1175,7 @@ body {
                             id="searchProducts"
                             placeholder="Search products..."
                         >
+
 
                         <select id="filterCategory">
 
@@ -1129,9 +1220,11 @@ body {
                         class="product-grid"
                         id="productsContainer"
                     >
+
                         <div class="loading">
                             Loading products...
                         </div>
+
                     </div>
 
                 </div>
@@ -1194,46 +1287,72 @@ const productMessage =
    LOGIN
 ========================= */
 
-loginForm.addEventListener("submit", async function(e) {
+loginForm.addEventListener(
+    "submit",
+    async function(event) {
 
-    e.preventDefault();
-
-    const email =
-        document.getElementById("email").value.trim();
-
-    const password =
-        document.getElementById("password").value;
-
-    loginMessage.style.display = "block";
-    loginMessage.style.background = "#eee";
-    loginMessage.style.color = "#111";
-    loginMessage.textContent = "Logging in...";
+        event.preventDefault();
 
 
-    const { error } =
-        await supabaseClient.auth.signInWithPassword({
-            email,
-            password
-        });
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
 
 
-    if (error) {
+        const password =
+            document
+                .getElementById("password")
+                .value;
 
-        loginMessage.style.background = "#ffe5e5";
-        loginMessage.style.color = "#a00000";
+
+        loginMessage.style.display =
+            "block";
+
+        loginMessage.style.background =
+            "#eee";
+
+        loginMessage.style.color =
+            "#111";
 
         loginMessage.textContent =
-            error.message;
+            "Logging in...";
 
-        return;
+
+        const { error } =
+            await supabaseClient.auth.signInWithPassword({
+
+                email: email,
+                password: password
+
+            });
+
+
+        if (error) {
+
+            loginMessage.style.background =
+                "#ffe5e5";
+
+            loginMessage.style.color =
+                "#a00000";
+
+            loginMessage.textContent =
+                error.message;
+
+            return;
+
+        }
+
+
+        loginMessage.style.display =
+            "none";
+
+
+        showAdmin();
+
     }
-
-
-    loginMessage.style.display = "none";
-
-    showAdmin();
-
-});
+);
 
 
 /* =========================
@@ -1242,8 +1361,11 @@ loginForm.addEventListener("submit", async function(e) {
 
 function showAdmin() {
 
-    loginScreen.style.display = "none";
-    adminApp.style.display = "block";
+    loginScreen.style.display =
+        "none";
+
+    adminApp.style.display =
+        "block";
 
     loadProducts();
 
@@ -1259,18 +1381,23 @@ async function checkLogin() {
     const { data } =
         await supabaseClient.auth.getSession();
 
+
     if (data.session) {
 
         showAdmin();
 
     } else {
 
-        loginScreen.style.display = "flex";
-        adminApp.style.display = "none";
+        loginScreen.style.display =
+            "flex";
+
+        adminApp.style.display =
+            "none";
 
     }
 
 }
+
 
 checkLogin();
 
@@ -1280,22 +1407,31 @@ checkLogin();
 ========================= */
 
 document
-.getElementById("logoutBtn")
-.addEventListener("click", async function() {
+    .getElementById("logoutBtn")
+    .addEventListener(
+        "click",
+        async function() {
 
-    await supabaseClient.auth.signOut();
+            await supabaseClient.auth.signOut();
 
-    adminApp.style.display = "none";
-    loginScreen.style.display = "flex";
+            adminApp.style.display =
+                "none";
 
-});
+            loginScreen.style.display =
+                "flex";
+
+        }
+    );
 
 
 /* =========================
    NAVIGATION
 ========================= */
 
-function showSection(section, clickedButton) {
+function showSection(
+    section,
+    clickedButton
+) {
 
     document
         .querySelectorAll(".page-section")
@@ -1362,13 +1498,17 @@ function openAddProduct() {
 
     resetForm();
 
+
     document
         .getElementById("formTitle")
-        .textContent = "Add New Product";
+        .textContent =
+        "Add New Product";
+
 
     document
         .getElementById("saveBtn")
-        .textContent = "Add Product";
+        .textContent =
+        "Add Product";
 
 
     showSection("add");
@@ -1386,9 +1526,12 @@ async function loadProducts() {
         await supabaseClient
             .from("products")
             .select("*")
-            .order("created_at", {
-                ascending: false
-            });
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
 
 
     if (error) {
@@ -1405,11 +1548,15 @@ async function loadProducts() {
     }
 
 
-    allProducts = data || [];
+    allProducts =
+        data || [];
+
 
     updateDashboard();
 
-    renderProducts(allProducts);
+    renderProducts(
+        allProducts
+    );
 
     renderRecent();
 
@@ -1428,31 +1575,40 @@ function updateDashboard() {
 
     const categories =
         new Set(
+
             allProducts
-                .map(product => product.category)
+                .map(
+                    product =>
+                        product.category
+                )
                 .filter(Boolean)
+
         );
 
 
     const withImages =
         allProducts.filter(
-            product => product.image_url
+            product =>
+                product.image_url
         ).length;
 
 
     document
         .getElementById("totalProducts")
-        .textContent = total;
+        .textContent =
+        total;
 
 
     document
         .getElementById("totalCategories")
-        .textContent = categories.size;
+        .textContent =
+        categories.size;
 
 
     document
         .getElementById("productsWithImages")
-        .textContent = withImages;
+        .textContent =
+        withImages;
 
 
     const latest =
@@ -1464,7 +1620,7 @@ function updateDashboard() {
     document
         .getElementById("latestProduct")
         .textContent =
-        latest.length > 18
+        latest && latest.length > 18
             ? latest.substring(0, 18) + "..."
             : latest;
 
@@ -1478,7 +1634,8 @@ function updateDashboard() {
 function renderRecent() {
 
     const container =
-        document.getElementById("recentProducts");
+        document
+            .getElementById("recentProducts");
 
 
     if (!allProducts.length) {
@@ -1494,39 +1651,47 @@ function renderRecent() {
     container.innerHTML =
         allProducts
             .slice(0, 5)
-            .map(function(product) {
+            .map(
+                function(product) {
 
-                const image =
-                    product.image_url ||
-                    "https://via.placeholder.com/100x100?text=No+Image";
+                    const image =
+                        product.image_url ||
+                        "https://via.placeholder.com/100x100?text=No+Image";
 
 
-                return `
+                    return `
 
-                    <div class="recent-item">
+                        <div class="recent-item">
 
-                        <img
-                            src="${image}"
-                            alt="${escapeHtml(product.name || "")}"
-                        >
+                            <img
+                                src="${image}"
+                                alt="${escapeHtml(product.name || "")}"
+                            >
 
-                        <div>
+                            <div>
 
-                            <strong>
-                                ${escapeHtml(product.name || "Unnamed")}
-                            </strong>
+                                <strong>
+                                    ${escapeHtml(
+                                        product.name ||
+                                        "Unnamed"
+                                    )}
+                                </strong>
 
-                            <span>
-                                ${escapeHtml(product.category || "Other")}
-                            </span>
+                                <span>
+                                    ${escapeHtml(
+                                        product.category ||
+                                        "Other"
+                                    )}
+                                </span>
+
+                            </div>
 
                         </div>
 
-                    </div>
+                    `;
 
-                `;
-
-            })
+                }
+            )
             .join("");
 
 }
@@ -1539,7 +1704,8 @@ function renderRecent() {
 function renderProducts(products) {
 
     const container =
-        document.getElementById("productsContainer");
+        document
+            .getElementById("productsContainer");
 
 
     if (!products.length) {
@@ -1554,70 +1720,91 @@ function renderProducts(products) {
 
     container.innerHTML =
         products
-            .map(function(product) {
+            .map(
+                function(product) {
 
-                const image =
-                    product.image_url ||
-                    "https://via.placeholder.com/500x400?text=No+Image";
-
-
-                const price =
-                    product.price ||
-                    "Contact us";
+                    const image =
+                        product.image_url ||
+                        "https://via.placeholder.com/500x400?text=No+Image";
 
 
-                return `
+                    const price =
+                        product.price ||
+                        "Contact us";
 
-                    <div class="product-card">
 
-                        <img
-                            src="${image}"
-                            alt="${escapeHtml(product.name || "")}"
-                        >
+                    return `
 
-                        <div class="product-info">
+                        <div class="product-card">
 
-                            <span class="category">
-                                ${escapeHtml(product.category || "Other")}
-                            </span>
+                            <img
+                                src="${image}"
+                                alt="${escapeHtml(
+                                    product.name || ""
+                                )}"
+                            >
 
-                            <h3>
-                                ${escapeHtml(product.name || "Unnamed")}
-                            </h3>
 
-                            <div class="price">
-                                ${escapeHtml(String(price))}
-                            </div>
+                            <div class="product-info">
 
-                            <div class="description">
-                                ${escapeHtml(product.description || "No description added.")}
-                            </div>
+                                <span class="category">
+                                    ${escapeHtml(
+                                        product.category ||
+                                        "Other"
+                                    )}
+                                </span>
 
-                            <div class="product-actions">
 
-                                <button
-                                    class="secondary-btn"
-                                    onclick="editProduct('${product.id}')"
-                                >
-                                    Edit
-                                </button>
+                                <h3>
+                                    ${escapeHtml(
+                                        product.name ||
+                                        "Unnamed"
+                                    )}
+                                </h3>
 
-                                <button
-                                    class="danger-btn"
-                                    onclick="deleteProduct('${product.id}')"
-                                >
-                                    Delete
-                                </button>
+
+                                <div class="price">
+                                    ${escapeHtml(
+                                        String(price)
+                                    )}
+                                </div>
+
+
+                                <div class="description">
+                                    ${escapeHtml(
+                                        product.description ||
+                                        "No description added."
+                                    )}
+                                </div>
+
+
+                                <div class="product-actions">
+
+                                    <button
+                                        class="secondary-btn"
+                                        onclick="editProduct('${product.id}')"
+                                    >
+                                        Edit
+                                    </button>
+
+
+                                    <button
+                                        class="danger-btn"
+                                        onclick="deleteProduct('${product.id}')"
+                                    >
+                                        Delete
+                                    </button>
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                    </div>
+                    `;
 
-                `;
-
-            })
+                }
+            )
             .join("");
 
 }
@@ -1628,13 +1815,19 @@ function renderProducts(products) {
 ========================= */
 
 document
-.getElementById("searchProducts")
-.addEventListener("input", filterProducts);
+    .getElementById("searchProducts")
+    .addEventListener(
+        "input",
+        filterProducts
+    );
 
 
 document
-.getElementById("filterCategory")
-.addEventListener("change", filterProducts);
+    .getElementById("filterCategory")
+    .addEventListener(
+        "change",
+        filterProducts
+    );
 
 
 function filterProducts() {
@@ -1654,29 +1847,46 @@ function filterProducts() {
 
 
     const filtered =
-        allProducts.filter(function(product) {
+        allProducts.filter(
+            function(product) {
 
-            const matchesSearch =
-                !search ||
-                (product.name || "")
-                    .toLowerCase()
-                    .includes(search) ||
-                (product.description || "")
-                    .toLowerCase()
-                    .includes(search);
+                const name =
+                    (
+                        product.name ||
+                        ""
+                    ).toLowerCase();
 
 
-            const matchesCategory =
-                !category ||
-                product.category === category;
+                const description =
+                    (
+                        product.description ||
+                        ""
+                    ).toLowerCase();
 
 
-            return matchesSearch && matchesCategory;
+                const matchesSearch =
+                    !search ||
+                    name.includes(search) ||
+                    description.includes(search);
 
-        });
+
+                const matchesCategory =
+                    !category ||
+                    product.category === category;
 
 
-    renderProducts(filtered);
+                return (
+                    matchesSearch &&
+                    matchesCategory
+                );
+
+            }
+        );
+
+
+    renderProducts(
+        filtered
+    );
 
 }
 
@@ -1686,46 +1896,60 @@ function filterProducts() {
 ========================= */
 
 document
-.getElementById("productImage")
-.addEventListener("change", function(e) {
-
-    const file = e.target.files[0];
-
-    if (!file) return;
-
-
-    const reader =
-        new FileReader();
-
-
-    reader.onload =
+    .getElementById("productImage")
+    .addEventListener(
+        "change",
         function(event) {
 
-            document
-                .getElementById("previewImg")
-                .src = event.target.result;
-
-            document
-                .getElementById("imagePreview")
-                .style.display = "block";
-
-        };
+            const file =
+                event.target.files[0];
 
 
-    reader.readAsDataURL(file);
+            if (!file) {
 
-});
+                return;
+
+            }
+
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function(loadEvent) {
+
+                    document
+                        .getElementById("previewImg")
+                        .src =
+                        loadEvent.target.result;
+
+
+                    document
+                        .getElementById("imagePreview")
+                        .style.display =
+                        "block";
+
+                };
+
+
+            reader.readAsDataURL(
+                file
+            );
+
+        }
+    );
 
 
 /* =========================
-   ADD / UPDATE
+   ADD / UPDATE PRODUCT
 ========================= */
 
 productForm.addEventListener(
     "submit",
-    async function(e) {
+    async function(event) {
 
-        e.preventDefault();
+        event.preventDefault();
 
 
         const productId =
@@ -1772,31 +1996,45 @@ productForm.addEventListener(
                 .getElementById("saveBtn");
 
 
-        saveBtn.disabled = true;
-        saveBtn.textContent = "Saving...";
+        saveBtn.disabled =
+            true;
+
+        saveBtn.textContent =
+            "Saving...";
 
 
         try {
 
-            let imageUrl = null;
+            let imageUrl =
+                null;
 
 
-            /* IMAGE UPLOAD */
+            /* UPLOAD IMAGE */
 
             if (imageFile) {
+
+                const safeFileName =
+                    imageFile.name
+                        .replace(
+                            /[^a-zA-Z0-9._-]/g,
+                            "-"
+                        );
+
 
                 const fileName =
                     Date.now() +
                     "-" +
-                    imageFile.name
-                        .replace(/\s+/g, "-");
+                    safeFileName;
 
 
                 const filePath =
-                    "products/" + fileName;
+                    "products/" +
+                    fileName;
 
 
-                const { error: uploadError } =
+                const {
+                    error: uploadError
+                } =
                     await supabaseClient
                         .storage
                         .from("product-images")
@@ -1813,11 +2051,15 @@ productForm.addEventListener(
                 }
 
 
-                const { data: publicData } =
+                const {
+                    data: publicData
+                } =
                     supabaseClient
                         .storage
                         .from("product-images")
-                        .getPublicUrl(filePath);
+                        .getPublicUrl(
+                            filePath
+                        );
 
 
                 imageUrl =
@@ -1826,16 +2068,23 @@ productForm.addEventListener(
             }
 
 
-            /* UPDATE */
+            /* UPDATE EXISTING PRODUCT */
 
             if (productId) {
 
                 const updateData = {
 
-                    name,
-                    price,
-                    category,
-                    description
+                    name:
+                        name,
+
+                    price:
+                        price,
+
+                    category:
+                        category,
+
+                    description:
+                        description
 
                 };
 
@@ -1848,11 +2097,18 @@ productForm.addEventListener(
                 }
 
 
-                const { error } =
+                const {
+                    error
+                } =
                     await supabaseClient
                         .from("products")
-                        .update(updateData)
-                        .eq("id", productId);
+                        .update(
+                            updateData
+                        )
+                        .eq(
+                            "id",
+                            productId
+                        );
 
 
                 if (error) {
@@ -1870,16 +2126,23 @@ productForm.addEventListener(
             }
 
 
-            /* ADD */
+            /* ADD NEW PRODUCT */
 
             else {
 
                 const insertData = {
 
-                    name,
-                    price,
-                    category,
-                    description
+                    name:
+                        name,
+
+                    price:
+                        price,
+
+                    category:
+                        category,
+
+                    description:
+                        description
 
                 };
 
@@ -1892,10 +2155,14 @@ productForm.addEventListener(
                 }
 
 
-                const { error } =
+                const {
+                    error
+                } =
                     await supabaseClient
                         .from("products")
-                        .insert([insertData]);
+                        .insert([
+                            insertData
+                        ]);
 
 
                 if (error) {
@@ -1913,21 +2180,29 @@ productForm.addEventListener(
             }
 
 
-            resetForm();
-
             await loadProducts();
 
 
-            setTimeout(function() {
+            setTimeout(
+                function() {
 
-                showSection("products");
+                    resetForm();
 
-            }, 700);
+                    showSection(
+                        "products"
+                    );
+
+                },
+                700
+            );
 
 
         } catch (error) {
 
-            console.error(error);
+            console.error(
+                error
+            );
+
 
             showProductMessage(
                 error.message ||
@@ -1935,9 +2210,11 @@ productForm.addEventListener(
                 "error"
             );
 
+
         } finally {
 
-            saveBtn.disabled = false;
+            saveBtn.disabled =
+                false;
 
             saveBtn.textContent =
                 productId
@@ -1954,20 +2231,30 @@ productForm.addEventListener(
    EDIT PRODUCT
 ========================= */
 
-async function editProduct(id) {
+function editProduct(id) {
 
     const product =
         allProducts.find(
-            item => String(item.id) === String(id)
+            function(item) {
+
+                return String(item.id) ===
+                    String(id);
+
+            }
         );
 
 
-    if (!product) return;
+    if (!product) {
+
+        return;
+
+    }
 
 
     document
         .getElementById("productId")
-        .value = product.id;
+        .value =
+        product.id;
 
 
     document
@@ -1978,4 +2265,287 @@ async function editProduct(id) {
 
     document
         .getElementById("productPrice")
+        .value =
+        product.price || "";
+
+
+    document
+        .getElementById("productCategory")
+        .value =
+        product.category || "";
+
+
+    document
+        .getElementById("productDescription")
+        .value =
+        product.description || "";
+
+
+    document
+        .getElementById("productImage")
+        .value =
+        "";
+
+
+    document
+        .getElementById("formTitle")
+        .textContent =
+        "Edit Product";
+
+
+    document
+        .getElementById("saveBtn")
+        .textContent =
+        "Update Product";
+
+
+    if (product.image_url) {
+
+        document
+            .getElementById("previewImg")
+            .src =
+            product.image_url;
+
+
+        document
+            .getElementById("imagePreview")
+            .style.display =
+            "block";
+
+    } else {
+
+        document
+            .getElementById("imagePreview")
+            .style.display =
+            "none";
+
+    }
+
+
+    showSection(
+        "add"
+    );
+
+}
+
+
+/* =========================
+   DELETE PRODUCT
+========================= */
+
+async function deleteProduct(id) {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this product?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("products")
+            .delete()
+            .eq(
+                "id",
+                id
+            );
+
+
+    if (error) {
+
+        alert(
+            "Could not delete product: " +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    await loadProducts();
+
+
+    alert(
+        "Product deleted successfully."
+    );
+
+}
+
+
+/* =========================
+   RESET FORM
+========================= */
+
+function resetForm() {
+
+    productForm.reset();
+
+
+    document
+        .getElementById("productId")
+        .value =
+        "";
+
+
+    document
+        .getElementById("formTitle")
+        .textContent =
+        "Add New Product";
+
+
+    document
+        .getElementById("saveBtn")
+        .textContent =
+        "Add Product";
+
+
+    document
+        .getElementById("imagePreview")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("previewImg")
+        .src =
+        "";
+
+
+    productMessage.style.display =
+        "none";
+
+}
+
+
+/* =========================
+   PRODUCT MESSAGE
+========================= */
+
+function showProductMessage(
+    message,
+    type
+) {
+
+    productMessage.style.display =
+        "block";
+
+
+    productMessage.textContent =
+        message;
+
+
+    if (type === "success") {
+
+        productMessage.style.background =
+            "#e9f8ee";
+
+        productMessage.style.color =
+            "#16833d";
+
+    } else {
+
+        productMessage.style.background =
+            "#ffe5e5";
+
+        productMessage.style.color =
+            "#a00000";
+
+    }
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+document
+    .getElementById("mobileMenu")
+    .addEventListener(
+        "click",
+        function() {
+
+            document
+                .getElementById("sidebar")
+                .classList
+                .toggle("open");
+
+
+            document
+                .getElementById("overlay")
+                .classList
+                .toggle("open");
+
+        }
+    );
+
+
+document
+    .getElementById("overlay")
+    .addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+function closeMobileMenu() {
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .remove("open");
+
+
+    document
+        .getElementById("overlay")
+        .classList
+        .remove("open");
+
+}
+
+</script>
+
+</body>
+</html>
 ```
