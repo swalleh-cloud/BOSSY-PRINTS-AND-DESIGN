@@ -1,10 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="google-site-verification" content="nM3hV_9UfLzxaX_Sb6KeanAae1e948MXGBm-qP8jMfU" />
+<meta name="google-site-verification" content="nM3hV_9UfLzxaX_Sb6KeanAae1e948MXGBm-qP8jMfU">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,6 +30,11 @@
 <meta property="og:type" content="website">
 
 <meta property="og:url" content="https://swalleh-cloud.github.io/BOSSY-PRINTS-AND-DESIGN/">
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <style>
@@ -323,8 +329,105 @@ section{
     font-size:14px;
 }
 
-.portfolio{
+
+/* ============================= */
+/* LIVE PRODUCTS FROM SUPABASE */
+/* ============================= */
+
+.live-products{
     background:#0d0f14;
+    max-width:none;
+}
+
+.live-products-inner{
+    max-width:1200px;
+    margin:auto;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.product-card{
+    background:#101218;
+    border:1px solid #242832;
+    border-radius:16px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-7px);
+    border-color:#00e5ff;
+    box-shadow:0 15px 35px rgba(0,0,0,.28);
+}
+
+.product-image{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    display:block;
+    background:#191c25;
+}
+
+.product-content{
+    padding:24px;
+}
+
+.product-category{
+    color:#00e5ff;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.product-content h3{
+    font-size:21px;
+    margin:8px 0;
+}
+
+.product-description{
+    color:#999eaa;
+    font-size:14px;
+    margin-bottom:14px;
+}
+
+.product-price{
+    color:#ffffff;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.product-btn{
+    display:inline-block;
+    background:#00e5ff;
+    color:#08090d;
+    padding:11px 17px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.loading-products,
+.no-products,
+.product-error{
+    text-align:center;
+    color:#999eaa;
+    padding:30px;
+    grid-column:1/-1;
+}
+
+
+/* ============================= */
+/* PORTFOLIO */
+/* ============================= */
+
+.portfolio{
+    background:#08090d;
     max-width:none;
 }
 
@@ -563,6 +666,7 @@ footer p{
     margin-top:8px;
 }
 
+
 @media(max-width:850px){
 
     .navbar{
@@ -594,7 +698,8 @@ footer p{
     .services,
     .features,
     .contact-grid,
-    .gallery{
+    .gallery,
+    .product-grid{
         grid-template-columns:1fr;
     }
 
@@ -634,6 +739,10 @@ footer p{
 
     .gallery-item{
         height:280px;
+    }
+
+    .product-image{
+        height:250px;
     }
 
     .whatsapp-float{
@@ -708,6 +817,8 @@ aria-label="Open menu">
 <a href="#home" onclick="closeMenu()">Home</a>
 
 <a href="#services" onclick="closeMenu()">Services</a>
+
+<a href="#products" onclick="closeMenu()">Products</a>
 
 <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
 
@@ -950,6 +1061,49 @@ businesses, events and organizations.
 </div>
 
 </section>
+
+
+<!-- ============================= -->
+<!-- LIVE PRODUCTS -->
+<!-- ============================= -->
+
+<div class="live-products" id="products">
+
+<div class="live-products-inner">
+
+<section>
+
+<div class="section-title">
+
+<small>
+AVAILABLE NOW
+</small>
+
+<h2>
+Our Products & Services
+</h2>
+
+<p>
+Browse our latest products and services. These are
+updated directly from the Bossy Prints & Design admin.
+</p>
+
+</div>
+
+
+<div id="productsContainer" class="product-grid">
+
+<div class="loading-products">
+Loading products...
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
 
 
 <div class="portfolio" id="portfolio">
@@ -1500,6 +1654,10 @@ aria-label="Chat with Bossy Prints & Design on WhatsApp">
 
 <script>
 
+/* ========================================= */
+/* MOBILE MENU */
+/* ========================================= */
+
 function toggleMenu(){
 
     const nav =
@@ -1518,7 +1676,184 @@ function closeMenu(){
 
 }
 
+
+/* ========================================= */
+/* SUPABASE */
+/* ========================================= */
+
+const SUPABASE_URL =
+"https://jzvuvbzkumkomqdtjkrt.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_oHVAQtCkJImAQrD2sVjTGA_aWM_nYyl";
+
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+/* ========================================= */
+/* LOAD PRODUCTS */
+/* ========================================= */
+
+async function loadPublicProducts(){
+
+    const container =
+        document.getElementById("productsContainer");
+
+
+    const { data, error } =
+        await supabaseClient
+        .from("products")
+        .select("*")
+        .order(
+            "created_at",
+            { ascending:false }
+        );
+
+
+    if(error){
+
+        console.error(
+            "Supabase error:",
+            error
+        );
+
+        container.innerHTML = `
+            <div class="product-error">
+                Products are temporarily unavailable.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    if(!data || data.length === 0){
+
+        container.innerHTML = `
+            <div class="no-products">
+                <h3>No products available yet.</h3>
+                <p>
+                    Please contact Bossy Prints & Design
+                    for our current services.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(product => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "product-card";
+
+
+        const image =
+            product.image_url ||
+            "https://via.placeholder.com/800x600?text=Bossy+Prints";
+
+
+        const price =
+            product.price !== null &&
+            product.price !== ""
+            ? "KSh " + Number(product.price).toLocaleString()
+            : "Contact us for price";
+
+
+        const message =
+            encodeURIComponent(
+                "Hello Bossy Prints & Design. I am interested in: " +
+                product.name +
+                ". Please send me more information."
+            );
+
+
+        card.innerHTML = `
+
+            <img
+                class="product-image"
+                src="${escapeHtml(product.image_url || image)}"
+                alt="${escapeHtml(product.name)}"
+                onerror="this.src='https://via.placeholder.com/800x600?text=Bossy+Prints'"
+            >
+
+            <div class="product-content">
+
+                <div class="product-category">
+                    ${escapeHtml(product.category || "Printing")}
+                </div>
+
+                <h3>
+                    ${escapeHtml(product.name)}
+                </h3>
+
+                <p class="product-description">
+                    ${escapeHtml(product.description || "")}
+                </p>
+
+                <div class="product-price">
+                    ${price}
+                </div>
+
+                <a
+                    class="product-btn"
+                    href="https://wa.me/254724566417?text=${message}"
+                    target="_blank"
+                >
+                    💬 Enquire on WhatsApp
+                </a>
+
+            </div>
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* ========================================= */
+/* SECURITY: ESCAPE DATABASE TEXT */
+/* ========================================= */
+
+function escapeHtml(value){
+
+    return String(value)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ========================================= */
+/* START */
+/* ========================================= */
+
+loadPublicProducts();
+
 </script>
 
 </body>
 </html>
+```
