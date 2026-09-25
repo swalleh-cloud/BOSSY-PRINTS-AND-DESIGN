@@ -1,6 +1,7 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -23,9 +24,9 @@
 
 <link rel="canonical" href="https://swalleh-cloud.github.io/BOSSY-PRINTS-AND-DESIGN/">
 
-<meta property="og:title" content="Bossy Prints & Design | Printing & Branding">
+<meta property="og:title" content="Bossy Prints & Design | Printing, Branding & Graphic Design">
 
-<meta property="og:description" content="T-shirt printing, graphic design, branding, banners, posters, stickers, labels and custom printing solutions in Kenya.">
+<meta property="og:description" content="Turn your ideas into real products with Bossy Prints & Design. T-shirts, branding, banners, posters, stickers, caps and graphic design.">
 
 <meta property="og:type" content="website">
 
@@ -39,6 +40,10 @@
 
 <style>
 
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     margin:0;
     padding:0;
@@ -47,13 +52,19 @@
 
 html{
     scroll-behavior:smooth;
+    scroll-padding-top:80px;
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#08090d;
-    color:#ffffff;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#07080c;
+    color:#fff;
     line-height:1.6;
+    overflow-x:hidden;
+}
+
+body.menu-open{
+    overflow:hidden;
 }
 
 a{
@@ -61,72 +72,153 @@ a{
     color:inherit;
 }
 
+button,
+input,
+select{
+    font:inherit;
+}
+
 img{
     max-width:100%;
 }
 
+.container{
+    width:min(1180px,calc(100% - 40px));
+    margin:auto;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 header{
-    position:sticky;
+    position:fixed;
     top:0;
-    z-index:1000;
-    background:rgba(8,9,13,.96);
-    border-bottom:1px solid #252832;
-    backdrop-filter:blur(12px);
+    left:0;
+    right:0;
+    z-index:5000;
+
+    background:rgba(7,8,12,.72);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    transition:.3s;
+}
+
+header.scrolled{
+    background:rgba(7,8,12,.96);
+    box-shadow:0 10px 35px rgba(0,0,0,.25);
 }
 
 .navbar{
-    max-width:1200px;
-    margin:auto;
-    padding:14px 22px;
+    min-height:76px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
+    gap:30px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:11px;
+    flex-shrink:0;
 }
 
 .logo-mark{
-    width:48px;
-    height:48px;
+    width:45px;
+    height:45px;
+
     border-radius:13px;
-    background:linear-gradient(135deg,#00e5ff,#7c3cff);
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:26px;
+
+    font-size:25px;
     font-weight:900;
-    color:#08090d;
-    box-shadow:0 0 25px rgba(0,229,255,.25);
+
+    color:#050609;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #7c3cff
+        );
+
+    box-shadow:
+        0 0 25px rgba(0,229,255,.2);
 }
 
 .logo-text{
-    font-size:18px;
+    font-size:17px;
     font-weight:900;
     letter-spacing:1px;
 }
 
 .logo-text span{
     display:block;
+
     color:#00e5ff;
-    font-size:9px;
+
+    font-size:8px;
     letter-spacing:2px;
+
     margin-top:2px;
 }
 
 nav{
     display:flex;
     align-items:center;
-    gap:24px;
+    gap:25px;
 }
 
 nav a{
-    color:#d7d9df;
-    font-size:14px;
+    color:#c9cbd2;
+    font-size:13px;
     font-weight:bold;
+    position:relative;
+    transition:.3s;
+}
+
+nav a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:2px;
+
+    background:#00e5ff;
+
     transition:.3s;
 }
 
@@ -134,525 +226,1437 @@ nav a:hover{
     color:#00e5ff;
 }
 
-.menu-btn{
-    display:none;
-    background:none;
-    border:1px solid #30343e;
-    color:white;
-    font-size:24px;
-    padding:6px 11px;
-    border-radius:8px;
-    cursor:pointer;
+nav a:hover::after{
+    width:100%;
 }
 
+.nav-quote{
+    background:#00e5ff;
+    color:#050609 !important;
+
+    padding:10px 15px;
+    border-radius:8px;
+}
+
+.nav-quote::after{
+    display:none;
+}
+
+.menu-btn{
+    display:none;
+
+    border:1px solid #30343e;
+    background:#101218;
+
+    color:#fff;
+
+    width:44px;
+    height:42px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-size:22px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero{
-    min-height:88vh;
+    min-height:100vh;
+
+    position:relative;
+
     display:flex;
     align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:80px 20px;
+
+    overflow:hidden;
+
+    padding:130px 0 80px;
 
     background:
-    radial-gradient(circle at 15% 20%,rgba(0,229,255,.14),transparent 30%),
-    radial-gradient(circle at 85% 25%,rgba(124,60,255,.16),transparent 30%),
-    #08090d;
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(0,229,255,.14),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(124,60,255,.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(0,229,255,.06),
+            transparent 35%
+        ),
+        #07080c;
+}
+
+.hero-grid{
+    position:absolute;
+    inset:0;
+
+    opacity:.12;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.05) 1px,
+            transparent 1px
+        );
+
+    background-size:60px 60px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent
+        );
+}
+
+.hero-inner{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+
+    align-items:center;
+
+    gap:60px;
 }
 
 .hero-content{
-    max-width:950px;
+    max-width:700px;
 }
 
 .badge{
-    display:inline-block;
-    border:1px solid #30343e;
-    padding:9px 17px;
-    border-radius:30px;
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    border:1px solid rgba(0,229,255,.3);
+
+    background:rgba(0,229,255,.05);
+
     color:#00e5ff;
-    font-size:12px;
+
+    padding:9px 15px;
+
+    border-radius:50px;
+
+    font-size:11px;
     font-weight:bold;
+
     letter-spacing:2px;
-    margin-bottom:26px;
+
+    margin-bottom:24px;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#00e5ff;
+
+    box-shadow:
+        0 0 12px #00e5ff;
 }
 
 .hero h1{
-    font-size:clamp(42px,8vw,82px);
-    line-height:1;
+    font-size:clamp(48px,7vw,82px);
+
+    line-height:.98;
+
     font-weight:950;
-    letter-spacing:-3px;
+
+    letter-spacing:-4px;
+
+    max-width:800px;
 }
 
 .hero h1 span{
-    background:linear-gradient(90deg,#00e5ff,#7c3cff);
+    background:
+        linear-gradient(
+            90deg,
+            #00e5ff,
+            #7c3cff
+        );
+
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 }
 
-.hero p{
-    max-width:700px;
-    margin:27px auto;
-    color:#b8bbc5;
-    font-size:19px;
+.hero-description{
+    max-width:650px;
+
+    color:#aeb2bd;
+
+    font-size:18px;
+
+    margin:27px 0;
 }
 
-.buttons{
+.hero-buttons{
     display:flex;
-    justify-content:center;
-    gap:15px;
     flex-wrap:wrap;
-    margin-top:30px;
+    gap:13px;
+
+    margin-top:28px;
 }
 
 .btn{
-    display:inline-block;
-    padding:14px 25px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    padding:14px 21px;
+
     border-radius:9px;
+
     font-weight:bold;
-    transition:.3s;
+
+    transition:
+        transform .3s,
+        box-shadow .3s,
+        border-color .3s;
 }
 
 .btn-primary{
     background:#00e5ff;
-    color:#08090d;
+    color:#050609;
+
+    box-shadow:
+        0 8px 25px rgba(0,229,255,.12);
 }
 
 .btn-primary:hover{
     transform:translateY(-3px);
-    box-shadow:0 10px 28px rgba(0,229,255,.25);
+
+    box-shadow:
+        0 14px 35px rgba(0,229,255,.24);
 }
 
 .btn-secondary{
-    border:1px solid #383c47;
-    color:white;
+    border:1px solid #363a46;
+    color:#fff;
+    background:rgba(255,255,255,.02);
 }
 
 .btn-secondary:hover{
     border-color:#00e5ff;
     color:#00e5ff;
+    transform:translateY(-3px);
 }
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.hero-visual{
+    min-height:480px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-circle{
+    width:360px;
+    height:360px;
+
+    border-radius:50%;
+
+    position:absolute;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,229,255,.15),
+            transparent 65%
+        );
+
+    border:
+        1px solid rgba(0,229,255,.16);
+
+    box-shadow:
+        0 0 100px rgba(0,229,255,.08);
+}
+
+.print-card{
+    position:absolute;
+
+    width:245px;
+
+    padding:15px;
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.04)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.4);
+
+    animation:float 5s ease-in-out infinite;
+}
+
+.print-card img{
+    width:100%;
+    height:190px;
+
+    object-fit:cover;
+
+    border-radius:11px;
+}
+
+.print-card-info{
+    padding:12px 3px 2px;
+}
+
+.print-card-info small{
+    color:#00e5ff;
+    font-size:10px;
+    letter-spacing:2px;
+    font-weight:bold;
+}
+
+.print-card-info strong{
+    display:block;
+    margin-top:4px;
+}
+
+.print-card.one{
+    transform:rotate(-7deg);
+    left:0;
+    top:75px;
+}
+
+.print-card.two{
+    transform:rotate(8deg);
+    right:0;
+    bottom:55px;
+    animation-delay:1s;
+}
+
+.hero-orb{
+    position:absolute;
+
+    width:75px;
+    height:75px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #7c3cff
+        );
+
+    filter:blur(1px);
+
+    opacity:.8;
+
+    box-shadow:
+        0 0 45px rgba(0,229,255,.25);
+
+    animation:
+        orbMove 6s ease-in-out infinite;
+}
+
+.hero-orb.one{
+    top:40px;
+    right:80px;
+}
+
+.hero-orb.two{
+    bottom:30px;
+    left:75px;
+    width:35px;
+    height:35px;
+    animation-delay:1.5s;
+}
+
+@keyframes float{
+
+    0%,100%{
+        margin-top:0;
+    }
+
+    50%{
+        margin-top:-14px;
+    }
+
+}
+
+@keyframes orbMove{
+
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(12px,-18px);
+    }
+
+}
+
+
+/* =========================================================
+   TRUST BAR
+========================================================= */
 
 .trust{
     border-top:1px solid #20232c;
     border-bottom:1px solid #20232c;
-    background:#0d0f14;
+
+    background:#0c0e13;
 }
 
-.trust-inner{
-    max-width:1100px;
-    margin:auto;
-    padding:25px 20px;
+.trust-grid{
+    min-height:100px;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    text-align:center;
+
+    align-items:center;
+
     gap:20px;
+}
+
+.trust-item{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:12px;
+
+    text-align:left;
+}
+
+.trust-icon{
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#171a22;
+
+    font-size:18px;
 }
 
 .trust-item strong{
     display:block;
-    color:#ffffff;
-    font-size:15px;
+    font-size:13px;
 }
 
 .trust-item span{
-    color:#858a96;
-    font-size:12px;
+    display:block;
+    color:#777d89;
+    font-size:11px;
 }
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
 
 section{
-    max-width:1200px;
-    margin:auto;
-    padding:90px 25px;
+    padding:100px 0;
 }
 
-.section-title{
+.section-dark{
+    background:#07080c;
+}
+
+.section-alt{
+    background:#0c0e13;
+}
+
+.section-heading{
+    max-width:720px;
+
+    margin:0 auto 55px;
+
     text-align:center;
-    margin-bottom:50px;
 }
 
-.section-title small{
+.section-heading small{
     color:#00e5ff;
-    letter-spacing:3px;
+
+    font-size:11px;
     font-weight:bold;
+
+    letter-spacing:3px;
 }
 
-.section-title h2{
-    font-size:40px;
-    margin-top:8px;
+.section-heading h2{
+    font-size:clamp(32px,5vw,46px);
+
+    line-height:1.1;
+
+    margin:10px 0 14px;
+
+    letter-spacing:-1px;
 }
 
-.section-title p{
-    max-width:680px;
-    margin:13px auto;
-    color:#999eaa;
+.section-heading p{
+    color:#9197a3;
+    font-size:15px;
 }
 
-.services{
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
 }
 
-.card{
-    background:#101218;
-    border:1px solid #242832;
-    border-radius:16px;
+.service-card{
+    position:relative;
+
     padding:30px;
-    transition:.3s;
+
+    border:
+        1px solid #252934;
+
+    background:
+        linear-gradient(
+            145deg,
+            #11131a,
+            #0d0f14
+        );
+
+    border-radius:17px;
+
+    transition:.35s;
+
+    overflow:hidden;
 }
 
-.card:hover{
-    transform:translateY(-7px);
-    border-color:#00e5ff;
-    box-shadow:0 15px 35px rgba(0,0,0,.28);
+.service-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    top:-50px;
+    right:-50px;
+
+    border-radius:50%;
+
+    background:#00e5ff;
+
+    opacity:.04;
+
+    transition:.35s;
 }
 
-.icon{
-    width:55px;
-    height:55px;
+.service-card:hover{
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(0,229,255,.5);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.3);
+}
+
+.service-card:hover::before{
+    transform:scale(2);
+}
+
+.service-icon{
+    width:58px;
+    height:58px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:13px;
-    background:#191c25;
-    font-size:27px;
+
+    background:#181b24;
+
+    border:
+        1px solid #292d38;
+
+    border-radius:14px;
+
+    font-size:26px;
+
     margin-bottom:20px;
 }
 
-.card h3{
-    font-size:20px;
-    margin-bottom:10px;
+.service-card h3{
+    font-size:19px;
+    margin-bottom:9px;
 }
 
-.card p{
-    color:#999eaa;
-    font-size:14px;
+.service-card p{
+    color:#9298a4;
+    font-size:13px;
+}
+
+.service-link{
+    display:inline-block;
+
+    margin-top:18px;
+
+    color:#00e5ff;
+
+    font-size:12px;
+    font-weight:bold;
 }
 
 
-/* ============================= */
-/* LIVE PRODUCTS FROM SUPABASE */
-/* ============================= */
+/* =========================================================
+   PRODUCTS
+========================================================= */
 
-.live-products{
-    background:#0d0f14;
-    max-width:none;
+.products-section{
+    background:#0c0e13;
 }
 
-.live-products-inner{
-    max-width:1200px;
-    margin:auto;
+.products-top{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:end;
+
+    gap:20px;
+
+    margin-bottom:35px;
+}
+
+.products-top .section-heading{
+    margin:0;
+    text-align:left;
+}
+
+.product-filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.filter-btn{
+    border:1px solid #292d38;
+
+    background:#11131a;
+
+    color:#9ca1ad;
+
+    padding:9px 13px;
+
+    border-radius:7px;
+
+    cursor:pointer;
+
+    font-size:11px;
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:#00e5ff;
+    border-color:#00e5ff;
+    color:#050609;
 }
 
 .product-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:22px;
 }
 
 .product-card{
     background:#101218;
-    border:1px solid #242832;
-    border-radius:16px;
+
+    border:
+        1px solid #262a35;
+
+    border-radius:17px;
+
     overflow:hidden;
-    transition:.3s;
+
+    transition:.35s;
 }
 
 .product-card:hover{
-    transform:translateY(-7px);
-    border-color:#00e5ff;
-    box-shadow:0 15px 35px rgba(0,0,0,.28);
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(0,229,255,.55);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.3);
+}
+
+.product-image-wrap{
+    height:270px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#171a21;
 }
 
 .product-image{
     width:100%;
-    height:250px;
+    height:100%;
+
     object-fit:cover;
+
     display:block;
-    background:#191c25;
+
+    transition:.6s;
+}
+
+.product-card:hover .product-image{
+    transform:scale(1.06);
+}
+
+.product-badge{
+    position:absolute;
+
+    top:14px;
+    left:14px;
+
+    background:rgba(5,6,9,.85);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    color:#00e5ff;
+
+    padding:6px 9px;
+
+    border-radius:6px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
 }
 
 .product-content{
-    padding:24px;
+    padding:23px;
 }
 
 .product-category{
     color:#00e5ff;
-    font-size:11px;
+
+    font-size:9px;
+
     font-weight:bold;
+
     letter-spacing:2px;
+
     text-transform:uppercase;
 }
 
 .product-content h3{
-    font-size:21px;
-    margin:8px 0;
+    font-size:20px;
+
+    margin:7px 0;
 }
 
 .product-description{
-    color:#999eaa;
-    font-size:14px;
-    margin-bottom:14px;
+    color:#8f95a1;
+
+    font-size:13px;
+
+    min-height:42px;
+
+    margin-bottom:15px;
+}
+
+.product-bottom{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:10px;
 }
 
 .product-price{
-    color:#ffffff;
-    font-size:18px;
+    font-size:17px;
     font-weight:bold;
-    margin-bottom:18px;
 }
 
 .product-btn{
-    display:inline-block;
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
     background:#00e5ff;
-    color:#08090d;
-    padding:11px 17px;
-    border-radius:8px;
+
+    color:#050609;
+
+    padding:10px 13px;
+
+    border-radius:7px;
+
+    font-size:11px;
+
     font-weight:bold;
-    font-size:13px;
+
+    transition:.3s;
+}
+
+.product-btn:hover{
+    transform:translateY(-2px);
 }
 
 .loading-products,
 .no-products,
 .product-error{
-    text-align:center;
-    color:#999eaa;
-    padding:30px;
     grid-column:1/-1;
-}
 
-
-/* ============================= */
-/* PORTFOLIO */
-/* ============================= */
-
-.portfolio{
-    background:#08090d;
-    max-width:none;
-}
-
-.portfolio-inner{
-    max-width:1200px;
-    margin:auto;
-}
-
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:22px;
-}
-
-.gallery-item{
-    position:relative;
-    height:300px;
-    overflow:hidden;
-    border-radius:16px;
-    border:1px solid #292e39;
-    background:#101218;
-}
-
-.gallery-item img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:.5s;
-}
-
-.gallery-item:hover img{
-    transform:scale(1.08);
-}
-
-.gallery-overlay{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    padding:60px 20px 20px;
-    background:linear-gradient(transparent,rgba(0,0,0,.95));
-}
-
-.gallery-overlay h3{
-    font-size:20px;
-}
-
-.gallery-overlay p{
-    color:#c7c9d0;
-    font-size:13px;
-}
-
-.about{
-    background:#08090d;
-}
-
-.about-inner{
-    max-width:950px;
-    margin:auto;
     text-align:center;
+
+    padding:50px;
+
+    color:#858b97;
 }
 
-.about-inner p{
-    color:#adb1bc;
-    font-size:17px;
+.product-error{
+    border:
+        1px solid #422;
+
+    border-radius:12px;
 }
 
-.about-highlight{
-    margin-top:30px;
+
+/* =========================================================
+   PORTFOLIO
+========================================================= */
+
+.portfolio-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(12,1fr);
+
     gap:18px;
 }
 
-.about-box{
-    background:#101218;
-    border:1px solid #242832;
-    border-radius:14px;
-    padding:25px;
+.work-card{
+    position:relative;
+
+    height:300px;
+
+    overflow:hidden;
+
+    border-radius:17px;
+
+    border:
+        1px solid #272b36;
+
+    background:#11131a;
 }
 
-.about-box strong{
-    display:block;
+.work-card.large{
+    grid-column:span 6;
+}
+
+.work-card.small{
+    grid-column:span 3;
+}
+
+.work-card img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.work-card:hover img{
+    transform:scale(1.08);
+}
+
+.work-overlay{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:end;
+
+    padding:22px;
+
+    background:
+        linear-gradient(
+            transparent 25%,
+            rgba(0,0,0,.9)
+        );
+}
+
+.work-overlay small{
     color:#00e5ff;
-    font-size:25px;
-    margin-bottom:5px;
+
+    font-size:9px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
 }
 
-.about-box span{
-    color:#9da2ad;
+.work-overlay h3{
+    font-size:19px;
+
+    margin-top:4px;
+}
+
+.work-overlay p{
+    color:#c0c4cd;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   HOW IT WORKS
+========================================================= */
+
+.process-section{
+    background:#0c0e13;
+}
+
+.process-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.process-card{
+    text-align:center;
+
+    padding:28px 18px;
+
+    position:relative;
+}
+
+.process-number{
+    width:60px;
+    height:60px;
+
+    margin:0 auto 18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #7c3cff
+        );
+
+    color:#050609;
+
+    font-weight:900;
+
+    font-size:18px;
+}
+
+.process-card h3{
+    font-size:16px;
+    margin-bottom:7px;
+}
+
+.process-card p{
+    color:#858b97;
+    font-size:12px;
+}
+
+.process-line{
+    position:absolute;
+
+    top:58px;
+    right:-8px;
+
+    width:16px;
+    height:2px;
+
+    background:#343844;
+}
+
+
+/* =========================================================
+   WHY US
+========================================================= */
+
+.why-grid{
+    display:grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap:65px;
+
+    align-items:center;
+}
+
+.why-visual{
+    min-height:430px;
+
+    position:relative;
+
+    border-radius:22px;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(0,229,255,.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(124,60,255,.15),
+            transparent 30%
+        ),
+        #101218;
+
+    border:
+        1px solid #282c37;
+
+    overflow:hidden;
+}
+
+.why-visual::after{
+    content:"BOSSY";
+
+    position:absolute;
+
+    left:-20px;
+    bottom:-40px;
+
+    font-size:120px;
+
+    font-weight:950;
+
+    color:rgba(255,255,255,.025);
+}
+
+.why-center{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    text-align:center;
+}
+
+.why-center strong{
+    font-size:48px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00e5ff,
+            #7c3cff
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.why-center span{
+    color:#8e94a0;
+    font-size:12px;
+}
+
+.why-list{
+    display:flex;
+    flex-direction:column;
+    gap:23px;
+}
+
+.why-item{
+    display:flex;
+    gap:15px;
+}
+
+.why-check{
+    flex-shrink:0;
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#151821;
+
+    color:#00e5ff;
+}
+
+.why-item h3{
+    font-size:17px;
+    margin-bottom:4px;
+}
+
+.why-item p{
+    color:#858b97;
     font-size:13px;
 }
 
-.features{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-section{
+    background:#07080c;
 }
 
-.feature{
-    padding:28px;
-    background:#101218;
-    border-radius:14px;
-    border:1px solid #242832;
-}
+.about-content{
+    max-width:850px;
 
-.feature h3{
-    margin-bottom:9px;
-}
+    margin:auto;
 
-.feature p{
-    color:#999eaa;
-    font-size:14px;
-}
-
-.cta{
-    margin:50px auto 90px;
-    max-width:1100px;
     text-align:center;
-    padding:75px 25px;
-    border-radius:20px;
-
-    background:
-    radial-gradient(circle at 50% 0%,rgba(0,229,255,.17),transparent 50%),
-    #101218;
-
-    border:1px solid #292e39;
 }
 
-.cta h2{
-    font-size:40px;
-    margin-bottom:12px;
+.about-content p{
+    color:#a2a7b2;
+
+    font-size:16px;
+
+    line-height:1.9;
 }
 
-.cta p{
-    color:#aeb2bd;
-    margin-bottom:27px;
+.about-stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:35px;
 }
+
+.about-stat{
+    padding:22px;
+
+    border:
+        1px solid #252934;
+
+    border-radius:13px;
+
+    background:#101218;
+}
+
+.about-stat strong{
+    display:block;
+
+    font-size:24px;
+
+    color:#00e5ff;
+}
+
+.about-stat span{
+    color:#858b97;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
 
 .faq-section{
-    background:#0d0f14;
-    max-width:none;
+    background:#0c0e13;
 }
 
 .faq-inner{
     max-width:850px;
+
     margin:auto;
 }
 
 details{
     background:#101218;
-    border:1px solid #242832;
+
+    border:
+        1px solid #272b36;
+
     border-radius:12px;
-    margin-bottom:14px;
-    padding:20px;
+
+    margin-bottom:12px;
+
+    padding:20px 22px;
+
+    transition:.3s;
+}
+
+details[open]{
+    border-color:
+        rgba(0,229,255,.4);
 }
 
 summary{
     cursor:pointer;
+
     font-weight:bold;
-    font-size:16px;
+
+    font-size:14px;
+
+    list-style:none;
+}
+
+summary::-webkit-details-marker{
+    display:none;
+}
+
+summary::after{
+    content:"+";
+
+    float:right;
+
+    color:#00e5ff;
+
+    font-size:20px;
+
+    line-height:14px;
+}
+
+details[open] summary::after{
+    content:"−";
 }
 
 details p{
-    color:#999eaa;
+    color:#858b97;
+
+    font-size:13px;
+
     margin-top:13px;
-    font-size:14px;
+
+    max-width:720px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:90px 25px;
+
+    margin:0;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,229,255,.15),
+            transparent 45%
+        ),
+        #101218;
+
+    border-top:
+        1px solid #272b36;
+
+    border-bottom:
+        1px solid #272b36;
+
+    text-align:center;
+}
+
+.cta h2{
+    font-size:clamp(32px,5vw,50px);
+
+    line-height:1.1;
+
+    margin-bottom:12px;
+}
+
+.cta p{
+    color:#999eaa;
+
+    max-width:600px;
+
+    margin:0 auto 27px;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-section{
+    background:#07080c;
 }
 
 .contact-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
-.contact-box{
+.contact-card{
     text-align:center;
+
+    padding:30px 20px;
+
     background:#101218;
-    border:1px solid #242832;
-    padding:30px;
-    border-radius:14px;
-}
 
-.contact-box .icon{
-    margin:0 auto 15px;
-}
+    border:
+        1px solid #272b36;
 
-.contact-box p{
-    color:#a8adb8;
-    font-size:14px;
-}
+    border-radius:15px;
 
-.whatsapp-float{
-    position:fixed;
-    width:62px;
-    height:62px;
-    right:22px;
-    bottom:22px;
-    background:#25D366;
-    color:white;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:31px;
-    box-shadow:0 6px 25px rgba(0,0,0,.45);
-    z-index:9999;
     transition:.3s;
 }
 
-.whatsapp-float:hover{
-    transform:scale(1.1);
+.contact-card:hover{
+    transform:translateY(-5px);
+
+    border-color:#00e5ff;
 }
 
+.contact-icon{
+    width:55px;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:0 auto 15px;
+
+    border-radius:13px;
+
+    background:#191c25;
+
+    font-size:24px;
+}
+
+.contact-card h3{
+    margin-bottom:7px;
+}
+
+.contact-card p{
+    color:#858b97;
+
+    font-size:13px;
+
+    margin-bottom:15px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 footer{
-    background:#050608;
-    border-top:1px solid #22252e;
-    text-align:center;
-    padding:40px 20px;
+    background:#050609;
+
+    border-top:
+        1px solid #22252e;
+
+    padding:50px 0 25px;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.4fr 1fr 1fr;
+
+    gap:40px;
+
+    padding-bottom:40px;
+
+    border-bottom:
+        1px solid #20232b;
 }
 
 .footer-logo{
-    font-size:23px;
-    font-weight:900;
+    font-size:24px;
+
+    font-weight:950;
+
     letter-spacing:1px;
 }
 
@@ -660,117 +1664,451 @@ footer{
     color:#00e5ff;
 }
 
-footer p{
-    color:#777c87;
+.footer-column h3{
     font-size:13px;
-    margin-top:8px;
+
+    margin-bottom:15px;
+}
+
+.footer-column a{
+    display:block;
+
+    color:#777d88;
+
+    font-size:12px;
+
+    margin-bottom:9px;
+
+    transition:.3s;
+}
+
+.footer-column a:hover{
+    color:#00e5ff;
+}
+
+.footer-brand p{
+    color:#777d88;
+
+    font-size:12px;
+
+    max-width:350px;
+
+    margin-top:10px;
+}
+
+.footer-bottom{
+    padding-top:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    color:#626873;
+
+    font-size:11px;
 }
 
 
-@media(max-width:850px){
+/* =========================================================
+   FLOATING WHATSAPP
+========================================================= */
 
-    .navbar{
-        padding:12px 15px;
+.whatsapp-float{
+    position:fixed;
+
+    width:61px;
+    height:61px;
+
+    right:22px;
+    bottom:22px;
+
+    z-index:4500;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#25D366;
+
+    color:#fff;
+
+    border-radius:50%;
+
+    font-size:29px;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.45);
+
+    transition:.3s;
+
+    animation:
+        whatsappPulse 2.5s infinite;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.1);
+}
+
+@keyframes whatsappPulse{
+
+    0%,100%{
+        box-shadow:
+            0 10px 35px rgba(0,0,0,.45);
     }
+
+    50%{
+        box-shadow:
+            0 10px 35px rgba(37,211,102,.35);
+    }
+
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top{
+    position:fixed;
+
+    right:22px;
+    bottom:95px;
+
+    width:42px;
+    height:42px;
+
+    border:
+        1px solid #343844;
+
+    background:#101218;
+
+    color:#fff;
+
+    border-radius:9px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:4000;
+}
+
+.back-top.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.back-top:hover{
+    color:#00e5ff;
+    border-color:#00e5ff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
 
     .menu-btn{
         display:block;
     }
 
     nav{
-        display:none;
-        position:absolute;
-        top:75px;
+        position:fixed;
+
+        top:76px;
         left:0;
         right:0;
-        background:#0b0d12;
-        border-bottom:1px solid #252832;
-        padding:20px;
+
+        display:none;
+
         flex-direction:column;
-        gap:18px;
-        text-align:center;
+
+        align-items:stretch;
+
+        gap:5px;
+
+        padding:18px;
+
+        background:#090a0f;
+
+        border-bottom:
+            1px solid #252832;
+
+        box-shadow:
+            0 20px 35px rgba(0,0,0,.4);
     }
 
     nav.active{
         display:flex;
     }
 
-    .services,
-    .features,
-    .contact-grid,
-    .gallery,
+    nav a{
+        padding:13px;
+
+        border-radius:8px;
+
+        text-align:center;
+    }
+
+    nav a:hover{
+        background:#11131a;
+    }
+
+    .nav-quote{
+        margin-top:5px;
+    }
+
+    .hero-inner{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-content{
+        margin:auto;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        min-height:420px;
+        max-width:550px;
+        width:100%;
+        margin:auto;
+    }
+
+    .services-grid,
     .product-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .portfolio-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .work-card.large,
+    .work-card.small{
+        grid-column:span 1;
+    }
+
+    .process-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .process-line{
+        display:none;
+    }
+
+    .why-grid{
         grid-template-columns:1fr;
     }
 
-    .trust-inner{
-        grid-template-columns:1fr;
-        gap:14px;
+    .why-visual{
+        min-height:330px;
     }
 
-    .about-highlight{
-        grid-template-columns:1fr;
+    .contact-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .footer-brand{
+        grid-column:1/-1;
+    }
+
+    .products-top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .product-filters{
+        justify-content:flex-start;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .container{
+        width:min(
+            100% - 30px,
+            1180px
+        );
     }
 
     section{
-        padding:65px 18px;
+        padding:75px 0;
     }
 
     .hero{
-        min-height:82vh;
-        padding:60px 18px;
+        padding-top:115px;
+        padding-bottom:65px;
     }
 
     .hero h1{
-        letter-spacing:-2px;
+        font-size:48px;
+        letter-spacing:-3px;
     }
 
-    .hero p{
-        font-size:16px;
+    .hero-description{
+        font-size:15px;
     }
 
-    .section-title h2{
-        font-size:32px;
+    .hero-visual{
+        min-height:350px;
     }
 
-    .cta h2{
-        font-size:30px;
+    .hero-circle{
+        width:270px;
+        height:270px;
     }
 
-    .gallery-item{
+    .print-card{
+        width:190px;
+        padding:10px;
+    }
+
+    .print-card img{
+        height:145px;
+    }
+
+    .print-card.one{
+        left:0;
+        top:40px;
+    }
+
+    .print-card.two{
+        right:0;
+        bottom:35px;
+    }
+
+    .hero-orb{
+        display:none;
+    }
+
+    .trust-grid{
+        grid-template-columns:1fr;
+
+        padding:20px 0;
+    }
+
+    .trust-item{
+        justify-content:flex-start;
+    }
+
+    .services-grid,
+    .product-grid,
+    .process-grid,
+    .contact-grid,
+    .about-stats{
+        grid-template-columns:1fr;
+    }
+
+    .portfolio-grid{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .work-card.large,
+    .work-card.small{
+        grid-column:auto;
         height:280px;
     }
 
-    .product-image{
-        height:250px;
+    .why-visual{
+        min-height:280px;
+    }
+
+    .why-center strong{
+        font-size:40px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-brand{
+        grid-column:auto;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        text-align:center;
     }
 
     .whatsapp-float{
         width:56px;
         height:56px;
+
         right:15px;
         bottom:15px;
-        font-size:28px;
+
+        font-size:27px;
     }
+
+    .back-top{
+        right:15px;
+        bottom:82px;
+    }
+
 }
 
-@media(max-width:420px){
 
-    .logo-text{
-        font-size:15px;
-    }
-
-    .logo-text span{
-        font-size:7px;
-    }
-
-    .logo-mark{
-        width:43px;
-        height:43px;
-    }
+@media(max-width:380px){
 
     .hero h1{
         font-size:42px;
+    }
+
+    .print-card{
+        width:165px;
+    }
+
+    .print-card img{
+        height:125px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+        animation:none !important;
+        transition:none !important;
     }
 
 }
@@ -779,11 +2117,18 @@ footer p{
 
 </head>
 
+
 <body>
 
-<header>
 
-<div class="navbar">
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header id="siteHeader">
+
+<div class="container navbar">
+
 
 <a href="#home" class="logo">
 
@@ -803,30 +2148,42 @@ PRINTING • BRANDING • DESIGN
 
 </a>
 
+
 <button
 class="menu-btn"
-onclick="toggleMenu()"
-aria-label="Open menu">
+id="menuBtn"
+aria-label="Open navigation"
+aria-expanded="false">
 
 ☰
 
 </button>
 
+
 <nav id="mainNav">
 
-<a href="#home" onclick="closeMenu()">Home</a>
+<a href="#home">Home</a>
 
-<a href="#services" onclick="closeMenu()">Services</a>
+<a href="#services">Services</a>
 
-<a href="#products" onclick="closeMenu()">Products</a>
+<a href="#products">Products</a>
 
-<a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+<a href="#portfolio">Our Work</a>
 
-<a href="#about" onclick="closeMenu()">About</a>
+<a href="#about">About</a>
 
-<a href="#faq" onclick="closeMenu()">FAQ</a>
+<a href="#faq">FAQ</a>
 
-<a href="#contact" onclick="closeMenu()">Contact</a>
+<a href="#contact">Contact</a>
+
+<a
+class="nav-quote"
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20a%20quotation."
+target="_blank">
+
+Get a Quote
+
+</a>
 
 </nav>
 
@@ -835,17 +2192,33 @@ aria-label="Open menu">
 </header>
 
 
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
 <section class="hero" id="home">
 
-<div class="hero-content">
+<div class="hero-grid"></div>
+
+
+<div class="container hero-inner">
+
+
+<div class="hero-content reveal">
 
 <div class="badge">
+
+<span class="badge-dot"></span>
+
 PRINTING • BRANDING • DESIGN
+
 </div>
+
 
 <h1>
 
-TURN YOUR<br>
+TURN YOUR
 
 <span>
 IDEAS INTO REALITY.
@@ -853,29 +2226,93 @@ IDEAS INTO REALITY.
 
 </h1>
 
-<p>
-Professional printing, branding and graphic design
-solutions for individuals, businesses, teams and events.
+
+<p class="hero-description">
+
+From custom T-shirts and business branding to banners,
+stickers, posters and creative design — we turn your
+ideas into products people can see, wear and remember.
+
 </p>
 
-<div class="buttons">
+
+<div class="hero-buttons">
 
 <a
 class="btn btn-primary"
 href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20make%20an%20inquiry."
 target="_blank">
 
-💬 WhatsApp Us
+💬 Start Your Project
 
 </a>
+
 
 <a
 class="btn btn-secondary"
-href="#services">
+href="#products">
 
-Explore Services
+Explore Our Work ↓
 
 </a>
+
+</div>
+
+</div>
+
+
+
+<div class="hero-visual reveal">
+
+
+<div class="hero-circle"></div>
+
+
+<div class="hero-orb one"></div>
+
+<div class="hero-orb two"></div>
+
+
+<div class="print-card one">
+
+<img
+src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"
+alt="Custom T-shirt printing">
+
+<div class="print-card-info">
+
+<small>
+CUSTOM PRINTING
+</small>
+
+<strong>
+Make It Yours.
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="print-card two">
+
+<img
+src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=700&q=85"
+alt="Creative graphic design">
+
+<div class="print-card-info">
+
+<small>
+CREATIVE DESIGN
+</small>
+
+<strong>
+Built Around You.
+</strong>
+
+</div>
+
+</div>
 
 </div>
 
@@ -884,76 +2321,121 @@ Explore Services
 </section>
 
 
+
+<!-- =========================================================
+     TRUST BAR
+========================================================= -->
+
 <div class="trust">
 
-<div class="trust-inner">
+<div class="container trust-grid">
+
 
 <div class="trust-item">
+
+<div class="trust-icon">
+✦
+</div>
+
+<div>
 
 <strong>
 CUSTOM WORK
 </strong>
 
 <span>
-Made around your idea
+Built around your idea
 </span>
 
 </div>
 
+</div>
+
+
 <div class="trust-item">
 
+<div class="trust-icon">
+◈
+</div>
+
+<div>
+
 <strong>
-PRINTING & DESIGN
+PRINTING + DESIGN
 </strong>
 
 <span>
-One place for your project
+Your project in one place
 </span>
 
 </div>
 
+</div>
+
+
 <div class="trust-item">
+
+<div class="trust-icon">
+💬
+</div>
+
+<div>
 
 <strong>
 EASY ORDERING
 </strong>
 
 <span>
-Contact us directly on WhatsApp
+Talk to us directly
 </span>
 
 </div>
 
 </div>
 
+
+</div>
+
 </div>
 
 
-<section id="services">
 
-<div class="section-title">
+<!-- =========================================================
+     SERVICES
+========================================================= -->
+
+<section
+class="section-dark"
+id="services">
+
+<div class="container">
+
+
+<div class="section-heading reveal">
 
 <small>
 WHAT WE DO
 </small>
 
 <h2>
-Our Services
+Everything You Need To Make Your Brand Stand Out.
 </h2>
 
 <p>
-From an idea to a finished product, we help bring
-your printing and branding projects to life.
+Professional printing, branding and graphic design
+solutions for individuals, businesses, teams,
+organizations and events.
 </p>
 
 </div>
 
 
-<div class="services">
+<div class="services-grid">
 
-<div class="card">
 
-<div class="icon">
+<div class="service-card reveal">
+
+<div class="service-icon">
 👕
 </div>
 
@@ -966,12 +2448,20 @@ Custom T-shirts for businesses, teams, events,
 organizations, groups and personal occasions.
 </p>
 
+<a
+href="#products"
+class="service-link">
+
+Explore → 
+
+</a>
+
 </div>
 
 
-<div class="card">
+<div class="service-card reveal">
 
-<div class="icon">
+<div class="service-icon">
 🎨
 </div>
 
@@ -984,12 +2474,21 @@ Logos, flyers, posters, social media graphics,
 business artwork and custom designs.
 </p>
 
+<a
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20graphic%20design%20services."
+target="_blank"
+class="service-link">
+
+Discuss a project →
+
+</a>
+
 </div>
 
 
-<div class="card">
+<div class="service-card reveal">
 
-<div class="icon">
+<div class="service-icon">
 🏢
 </div>
 
@@ -1002,12 +2501,21 @@ Professional branding solutions designed to help
 your business look recognizable and consistent.
 </p>
 
+<a
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20business%20branding."
+target="_blank"
+class="service-link">
+
+Start branding →
+
+</a>
+
 </div>
 
 
-<div class="card">
+<div class="service-card reveal">
 
-<div class="icon">
+<div class="service-icon">
 📢
 </div>
 
@@ -1020,12 +2528,21 @@ Promotional banners and posters for businesses,
 events, advertising and special occasions.
 </p>
 
+<a
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20a%20banner%20or%20poster."
+target="_blank"
+class="service-link">
+
+Request a quote →
+
+</a>
+
 </div>
 
 
-<div class="card">
+<div class="service-card reveal">
 
-<div class="icon">
+<div class="service-icon">
 🏷️
 </div>
 
@@ -1038,12 +2555,21 @@ Custom stickers and product labels that give
 your products a professional appearance.
 </p>
 
+<a
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20stickers%20or%20labels."
+target="_blank"
+class="service-link">
+
+Ask about labels →
+
+</a>
+
 </div>
 
 
-<div class="card">
+<div class="service-card reveal">
 
-<div class="icon">
+<div class="service-icon">
 🧢
 </div>
 
@@ -1056,6 +2582,18 @@ Custom caps and branded merchandise for teams,
 businesses, events and organizations.
 </p>
 
+<a
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20branded%20caps%20or%20merchandise."
+target="_blank"
+class="service-link">
+
+Get started →
+
+</a>
+
+</div>
+
+
 </div>
 
 </div>
@@ -1063,89 +2601,124 @@ businesses, events and organizations.
 </section>
 
 
-<!-- ============================= -->
-<!-- LIVE PRODUCTS -->
-<!-- ============================= -->
 
-<div class="live-products" id="products">
+<!-- =========================================================
+     PRODUCTS
+========================================================= -->
 
-<div class="live-products-inner">
+<section
+class="products-section"
+id="products">
 
-<section>
+<div class="container">
 
-<div class="section-title">
+
+<div class="products-top">
+
+<div class="section-heading reveal">
 
 <small>
-AVAILABLE NOW
+OUR PRODUCTS
 </small>
 
 <h2>
-Our Products & Services
+See What We Can Create.
 </h2>
 
 <p>
-Browse our latest products and services. These are
-updated directly from the Bossy Prints & Design admin.
+Our latest products and services are updated directly
+from the Bossy Prints & Design admin system.
 </p>
 
 </div>
 
 
-<div id="productsContainer" class="product-grid">
+<div
+class="product-filters"
+id="productFilters">
+
+<button
+class="filter-btn active"
+data-filter="all">
+
+All
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+id="productsContainer"
+class="product-grid">
 
 <div class="loading-products">
-Loading products...
+
+Loading our latest work...
+
 </div>
+
+</div>
+
 
 </div>
 
 </section>
 
-</div>
-
-</div>
 
 
-<div class="portfolio" id="portfolio">
+<!-- =========================================================
+     PORTFOLIO
+========================================================= -->
 
-<div class="portfolio-inner">
+<section
+class="section-dark"
+id="portfolio">
 
-<section>
+<div class="container">
 
-<div class="section-title">
+
+<div class="section-heading reveal">
 
 <small>
 OUR WORK
 </small>
 
 <h2>
-Printing & Design Portfolio
+Ideas. Design. Print. Impact.
 </h2>
 
 <p>
-Examples of the type of printing, branding and
-design work Bossy Prints & Design can create.
+A glimpse of the kind of creative printing and
+branding projects Bossy Prints & Design can create.
 </p>
 
 </div>
 
 
-<div class="gallery">
+<div class="portfolio-grid">
 
-<div class="gallery-item">
+
+<div class="work-card large reveal">
 
 <img
-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=85"
+src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=85"
 alt="Custom T-shirt printing">
 
-<div class="gallery-overlay">
+<div class="work-overlay">
+
+<small>
+APPAREL
+</small>
 
 <h3>
 Custom T-Shirts
 </h3>
 
 <p>
-Branded clothing for teams, businesses and events.
+Branded clothing for businesses, teams and events.
 </p>
 
 </div>
@@ -1153,20 +2726,24 @@ Branded clothing for teams, businesses and events.
 </div>
 
 
-<div class="gallery-item">
+<div class="work-card small reveal">
 
 <img
-src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1000&q=85"
+src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=85"
 alt="Graphic design">
 
-<div class="gallery-overlay">
+<div class="work-overlay">
+
+<small>
+DESIGN
+</small>
 
 <h3>
 Graphic Design
 </h3>
 
 <p>
-Creative designs built around your ideas.
+Creative ideas made visual.
 </p>
 
 </div>
@@ -1174,20 +2751,24 @@ Creative designs built around your ideas.
 </div>
 
 
-<div class="gallery-item">
+<div class="work-card small reveal">
 
 <img
-src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85"
+src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=85"
 alt="Business branding">
 
-<div class="gallery-overlay">
+<div class="work-overlay">
+
+<small>
+BRANDING
+</small>
 
 <h3>
 Business Branding
 </h3>
 
 <p>
-Professional visual identity for your business.
+Make your business recognizable.
 </p>
 
 </div>
@@ -1195,20 +2776,24 @@ Professional visual identity for your business.
 </div>
 
 
-<div class="gallery-item">
+<div class="work-card small reveal">
 
 <img
-src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85"
-alt="Promotional display">
+src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=85"
+alt="Advertising display">
 
-<div class="gallery-overlay">
+<div class="work-overlay">
+
+<small>
+ADVERTISING
+</small>
 
 <h3>
-Banners & Advertising
+Banners & Posters
 </h3>
 
 <p>
-Promotional materials designed to attract attention.
+Make your message visible.
 </p>
 
 </div>
@@ -1216,44 +2801,30 @@ Promotional materials designed to attract attention.
 </div>
 
 
-<div class="gallery-item">
+<div class="work-card small reveal">
 
 <img
-src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=1000&q=85"
+src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=800&q=85"
 alt="Printed labels">
 
-<div class="gallery-overlay">
+<div class="work-overlay">
+
+<small>
+LABELS
+</small>
 
 <h3>
 Stickers & Labels
 </h3>
 
 <p>
-Custom labels and stickers for products and brands.
+Give products a finished look.
 </p>
 
 </div>
 
 </div>
 
-
-<div class="gallery-item">
-
-<img
-src="https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=1000&q=85"
-alt="Custom merchandise">
-
-<div class="gallery-overlay">
-
-<h3>
-Branded Merchandise
-</h3>
-
-<p>
-Merchandise created to represent your brand.
-</p>
-
-</div>
 
 </div>
 
@@ -1261,44 +2832,311 @@ Merchandise created to represent your brand.
 
 </section>
 
-</div>
-
-</div>
 
 
-<section id="about">
+<!-- =========================================================
+     PROCESS
+========================================================= -->
 
-<div class="about-inner">
+<section
+class="process-section">
 
-<div class="section-title">
+<div class="container">
+
+
+<div class="section-heading reveal">
 
 <small>
-ABOUT US
+HOW IT WORKS
 </small>
 
 <h2>
-Bossy Prints & Design
+From Idea To Finished Product.
+</h2>
+
+<p>
+We keep the process simple so you can concentrate
+on your idea while we help bring it to life.
+</p>
+
+</div>
+
+
+<div class="process-grid">
+
+
+<div class="process-card reveal">
+
+<div class="process-number">
+01
+</div>
+
+<h3>
+Tell Us Your Idea
+</h3>
+
+<p>
+Tell us what you want to print, design or brand.
+</p>
+
+<div class="process-line"></div>
+
+</div>
+
+
+<div class="process-card reveal">
+
+<div class="process-number">
+02
+</div>
+
+<h3>
+Design & Discuss
+</h3>
+
+<p>
+We discuss the details and prepare the design.
+</p>
+
+<div class="process-line"></div>
+
+</div>
+
+
+<div class="process-card reveal">
+
+<div class="process-number">
+03
+</div>
+
+<h3>
+Approve
+</h3>
+
+<p>
+Review the project and confirm the final details.
+</p>
+
+<div class="process-line"></div>
+
+</div>
+
+
+<div class="process-card reveal">
+
+<div class="process-number">
+04
+</div>
+
+<h3>
+Print & Deliver
+</h3>
+
+<p>
+Your finished project is prepared for you.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     WHY BOSSY
+========================================================= -->
+
+<section
+class="section-dark">
+
+<div class="container why-grid">
+
+
+<div class="why-visual reveal">
+
+<div class="why-center">
+
+<strong>
+BOSSY
+</strong>
+
+<span>
+PRINTING • BRANDING • DESIGN
+</span>
+
+</div>
+
+</div>
+
+
+<div class="why-list reveal">
+
+
+<div class="section-heading"
+style="text-align:left;margin:0 0 25px;">
+
+<small>
+WHY BOSSY
+</small>
+
+<h2>
+Built Around Your Idea.
+</h2>
+
+<p>
+We want your project to look like it belongs
+to you and your brand.
+</p>
+
+</div>
+
+
+<div class="why-item">
+
+<div class="why-check">
+✓
+</div>
+
+<div>
+
+<h3>
+Custom Approach
+</h3>
+
+<p>
+Your project starts with your idea, requirements
+and intended purpose.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="why-item">
+
+<div class="why-check">
+✓
+</div>
+
+<div>
+
+<h3>
+Professional Presentation
+</h3>
+
+<p>
+We focus on clean designs and professional
+presentation for your printing needs.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="why-item">
+
+<div class="why-check">
+✓
+</div>
+
+<div>
+
+<h3>
+Simple Communication
+</h3>
+
+<p>
+Discuss your project directly through WhatsApp
+and get answers without unnecessary complications.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="why-item">
+
+<div class="why-check">
+✓
+</div>
+
+<div>
+
+<h3>
+One Place For Your Project
+</h3>
+
+<p>
+Design, printing, branding and merchandise can
+all be discussed together.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<section
+class="about-section"
+id="about">
+
+<div class="container">
+
+
+<div class="about-content reveal">
+
+
+<div class="section-heading">
+
+<small>
+ABOUT BOSSY
+</small>
+
+<h2>
+We Turn Ideas Into Something Real.
 </h2>
 
 </div>
 
+
 <p>
 
-Bossy Prints & Design is a printing, branding and graphic
-design business focused on helping individuals, businesses,
-teams and organizations turn ideas into professional
-printed and branded products.
+Bossy Prints & Design is a printing, branding and
+graphic design business focused on helping individuals,
+businesses, teams and organizations turn ideas into
+professional printed and branded products.
 
 Whether you need a custom T-shirt, business branding,
-poster, banner, sticker, cap or graphic design, our goal is
-to create something that represents your idea clearly.
+poster, banner, sticker, cap or graphic design, our goal
+is to create something that represents your idea clearly.
 
 </p>
 
 
-<div class="about-highlight">
+<div class="about-stats">
 
-<div class="about-box">
+
+<div class="about-stat">
 
 <strong>
 01
@@ -1311,7 +3149,7 @@ Your Idea
 </div>
 
 
-<div class="about-box">
+<div class="about-stat">
 
 <strong>
 02
@@ -1324,7 +3162,7 @@ Creative Design
 </div>
 
 
-<div class="about-box">
+<div class="about-stat">
 
 <strong>
 03
@@ -1336,73 +3174,8 @@ Finished Product
 
 </div>
 
-</div>
 
 </div>
-
-</section>
-
-
-<section>
-
-<div class="section-title">
-
-<small>
-WHY BOSSY
-</small>
-
-<h2>
-Built Around Your Idea
-</h2>
-
-<p>
-We focus on making the process simple from
-your first idea to your finished project.
-</p>
-
-</div>
-
-
-<div class="features">
-
-<div class="feature">
-
-<h3>
-✨ Custom Designs
-</h3>
-
-<p>
-Your project can be designed around your own
-message, style, business or occasion.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<h3>
-🎯 Professional Presentation
-</h3>
-
-<p>
-We focus on clean designs and professional
-presentation for your printing needs.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<h3>
-💬 Easy Communication
-</h3>
-
-<p>
-Discuss your project directly through WhatsApp
-and request a quotation before starting.
-</p>
 
 </div>
 
@@ -1411,10 +3184,17 @@ and request a quotation before starting.
 </section>
 
 
-<div class="cta">
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta">
+
+<div class="container reveal">
 
 <h2>
-Have an Idea?
+Have An Idea?
 </h2>
 
 <p>
@@ -1422,38 +3202,54 @@ Let's turn your idea into something people can see,
 wear and remember.
 </p>
 
+
 <a
 class="btn btn-primary"
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20a%20quote."
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20have%20an%20idea%20and%20would%20like%20a%20quote."
 target="_blank">
 
-Get a Quote on WhatsApp
+💬 Get Your Quote
 
 </a>
 
 </div>
 
+</section>
 
-<div class="faq-section" id="faq">
 
-<section>
 
-<div class="section-title">
+<!-- =========================================================
+     FAQ
+========================================================= -->
+
+<section
+class="faq-section"
+id="faq">
+
+<div class="container">
+
+
+<div class="section-heading reveal">
 
 <small>
 QUESTIONS
 </small>
 
 <h2>
-Frequently Asked Questions
+Frequently Asked Questions.
 </h2>
+
+<p>
+A few answers before you start your project.
+</p>
 
 </div>
 
 
 <div class="faq-inner">
 
-<details>
+
+<details class="reveal">
 
 <summary>
 What services does Bossy Prints & Design offer?
@@ -1468,21 +3264,21 @@ and custom merchandise.
 </details>
 
 
-<details>
+<details class="reveal">
 
 <summary>
 Can I order a custom T-shirt?
 </summary>
 
 <p>
-Yes. Contact us on WhatsApp and discuss your
-design, quantity and requirements.
+Yes. Contact us on WhatsApp and discuss your design,
+quantity and requirements.
 </p>
 
 </details>
 
 
-<details>
+<details class="reveal">
 
 <summary>
 Can you design my artwork?
@@ -1496,7 +3292,7 @@ designs suitable for printing and branding.
 </details>
 
 
-<details>
+<details class="reveal">
 
 <summary>
 How do I request a quotation?
@@ -1511,7 +3307,7 @@ project and quotation.
 </details>
 
 
-<details>
+<details class="reveal">
 
 <summary>
 Do you handle business branding?
@@ -1524,27 +3320,39 @@ materials and other visual branding requirements.
 
 </details>
 
+
+</div>
+
 </div>
 
 </section>
 
-</div>
 
 
-<section id="contact">
+<!-- =========================================================
+     CONTACT
+========================================================= -->
 
-<div class="section-title">
+<section
+class="contact-section"
+id="contact">
+
+<div class="container">
+
+
+<div class="section-heading reveal">
 
 <small>
-GET IN TOUCH
+LET'S TALK
 </small>
 
 <h2>
-Contact Bossy
+Ready To Start?
 </h2>
 
 <p>
-Ready to start your project? Talk to us today.
+Tell us what you have in mind and let's discuss
+your next printing or branding project.
 </p>
 
 </div>
@@ -1552,9 +3360,10 @@ Ready to start your project? Talk to us today.
 
 <div class="contact-grid">
 
-<div class="contact-box">
 
-<div class="icon">
+<div class="contact-card reveal">
+
+<div class="contact-icon">
 💬
 </div>
 
@@ -1565,8 +3374,6 @@ WhatsApp
 <p>
 0724 566 417
 </p>
-
-<br>
 
 <a
 class="btn btn-primary"
@@ -1580,9 +3387,9 @@ Chat Now
 </div>
 
 
-<div class="contact-box">
+<div class="contact-card reveal">
 
-<div class="icon">
+<div class="contact-icon">
 👕
 </div>
 
@@ -1594,12 +3401,20 @@ Printing
 T-Shirts • Banners • Posters • Stickers • Caps
 </p>
 
+<a
+class="btn btn-secondary"
+href="#products">
+
+View Products
+
+</a>
+
 </div>
 
 
-<div class="contact-box">
+<div class="contact-card reveal">
 
-<div class="icon">
+<div class="contact-icon">
 🎨
 </div>
 
@@ -1611,6 +3426,18 @@ Design & Branding
 Logos • Graphics • Business Branding • Custom Designs
 </p>
 
+<a
+class="btn btn-secondary"
+href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20design%20or%20branding%20services."
+target="_blank">
+
+Discuss Your Project
+
+</a>
+
+</div>
+
+
 </div>
 
 </div>
@@ -1618,7 +3445,20 @@ Logos • Graphics • Business Branding • Custom Designs
 </section>
 
 
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer>
+
+<div class="container">
+
+
+<div class="footer-grid">
+
+
+<div class="footer-brand">
 
 <div class="footer-logo">
 
@@ -1631,15 +3471,118 @@ PRINTS & DESIGN
 </div>
 
 <p>
+
 PRINTING • BRANDING • DESIGN
+
 </p>
 
 <p>
-© 2026 Bossy Prints & Design. All Rights Reserved.
+
+Turning ideas into something real through
+creative design, printing and branding.
+
 </p>
+
+</div>
+
+
+<div class="footer-column">
+
+<h3>
+QUICK LINKS
+</h3>
+
+<a href="#home">
+Home
+</a>
+
+<a href="#services">
+Services
+</a>
+
+<a href="#products">
+Products
+</a>
+
+<a href="#portfolio">
+Our Work
+</a>
+
+<a href="#contact">
+Contact
+</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h3>
+SERVICES
+</h3>
+
+<a href="#services">
+T-Shirt Printing
+</a>
+
+<a href="#services">
+Graphic Design
+</a>
+
+<a href="#services">
+Business Branding
+</a>
+
+<a href="#services">
+Banners & Posters
+</a>
+
+<a href="#services">
+Stickers & Labels
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 Bossy Prints & Design. All Rights Reserved.
+</span>
+
+<span>
+PRINTING • BRANDING • DESIGN
+</span>
+
+</div>
+
+</div>
 
 </footer>
 
+
+
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
+
+<button
+class="back-top"
+id="backTop"
+aria-label="Back to top">
+
+↑
+
+</button>
+
+
+
+<!-- =========================================================
+     FLOATING WHATSAPP
+========================================================= -->
 
 <a
 href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20make%20an%20inquiry."
@@ -1652,66 +3595,235 @@ aria-label="Chat with Bossy Prints & Design on WhatsApp">
 </a>
 
 
+
 <script>
 
-/* ========================================= */
-/* MOBILE MENU */
-/* ========================================= */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-function toggleMenu(){
+const menuBtn =
+    document.getElementById(
+        "menuBtn"
+    );
 
-    const nav =
-        document.getElementById("mainNav");
-
-    nav.classList.toggle("active");
-
-}
-
-function closeMenu(){
-
-    const nav =
-        document.getElementById("mainNav");
-
-    nav.classList.remove("active");
-
-}
+const mainNav =
+    document.getElementById(
+        "mainNav"
+    );
 
 
-/* ========================================= */
-/* SUPABASE */
-/* ========================================= */
+menuBtn.addEventListener(
+    "click",
+    function(){
 
-const SUPABASE_URL =
-"https://jzvuvbzkumkomqdtjkrt.supabase.co";
+        const active =
+            mainNav.classList.toggle(
+                "active"
+            );
 
-const SUPABASE_KEY =
-"sb_publishable_oHVAQtCkJImAQrD2sVjTGA_aWM_nYyl";
+        menuBtn.setAttribute(
+            "aria-expanded",
+            active
+        );
 
-const supabaseClient =
-window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
+        document.body.classList.toggle(
+            "menu-open",
+            active
+        );
+
+    }
 );
 
 
-/* ========================================= */
-/* LOAD PRODUCTS */
-/* ========================================= */
+mainNav
+    .querySelectorAll("a")
+    .forEach(
+        function(link){
+
+            link.addEventListener(
+                "click",
+                function(){
+
+                    mainNav.classList.remove(
+                        "active"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    document.body.classList.remove(
+                        "menu-open"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
+
+const siteHeader =
+    document.getElementById(
+        "siteHeader"
+    );
+
+const backTop =
+    document.getElementById(
+        "backTop"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    function(){
+
+        if(window.scrollY > 30){
+
+            siteHeader.classList.add(
+                "scrolled"
+            );
+
+        }
+        else{
+
+            siteHeader.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+
+        if(window.scrollY > 600){
+
+            backTop.classList.add(
+                "show"
+            );
+
+        }
+        else{
+
+            backTop.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+backTop.addEventListener(
+    "click",
+    function(){
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        function(entries){
+
+            entries.forEach(
+                function(entry){
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        function(element){
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    "https://jzvuvbzkumkomqdtjkrt.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_oHVAQtCkJImAQrD2sVjTGA_aWM_nYyl";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+let allProducts = [];
+
+let activeFilter = "all";
+
+
+/* =========================================================
+   LOAD PRODUCTS
+========================================================= */
 
 async function loadPublicProducts(){
 
     const container =
-        document.getElementById("productsContainer");
+        document.getElementById(
+            "productsContainer"
+        );
 
 
     const { data, error } =
         await supabaseClient
-        .from("products")
-        .select("*")
-        .order(
-            "created_at",
-            { ascending:false }
-        );
+            .from("products")
+            .select("*")
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
 
 
     if(error){
@@ -1721,139 +3833,472 @@ async function loadPublicProducts(){
             error
         );
 
+
         container.innerHTML = `
+
             <div class="product-error">
+
                 Products are temporarily unavailable.
+
+                <br><br>
+
+                <a
+                    href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20see%20your%20available%20products."
+                    target="_blank"
+                    class="btn btn-primary"
+                >
+                    Ask Us on WhatsApp
+                </a>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
-    if(!data || data.length === 0){
+    allProducts =
+        data || [];
+
+
+    createProductFilters();
+
+
+    renderProducts();
+
+}
+
+
+/* =========================================================
+   CREATE PRODUCT FILTERS
+========================================================= */
+
+function createProductFilters(){
+
+    const filters =
+        document.getElementById(
+            "productFilters"
+        );
+
+
+    const categories =
+        [
+            ...new Set(
+                allProducts
+                    .map(
+                        product =>
+                            product.category
+                    )
+                    .filter(Boolean)
+            )
+        ];
+
+
+    filters.innerHTML = `
+
+        <button
+            class="filter-btn active"
+            data-filter="all"
+        >
+            All
+        </button>
+
+    `;
+
+
+    categories.forEach(
+        function(category){
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "filter-btn";
+
+
+            button.dataset.filter =
+                category;
+
+
+            button.textContent =
+                category;
+
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    activeFilter =
+                        category;
+
+
+                    document
+                        .querySelectorAll(
+                            ".filter-btn"
+                        )
+                        .forEach(
+                            function(btn){
+
+                                btn.classList
+                                    .remove(
+                                        "active"
+                                    );
+
+                            }
+                        );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    renderProducts();
+
+                }
+            );
+
+
+            filters.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    const allButton =
+        filters.querySelector(
+            '[data-filter="all"]'
+        );
+
+
+    allButton.addEventListener(
+        "click",
+        function(){
+
+            activeFilter =
+                "all";
+
+
+            document
+                .querySelectorAll(
+                    ".filter-btn"
+                )
+                .forEach(
+                    function(btn){
+
+                        btn.classList
+                            .remove(
+                                "active"
+                            );
+
+                    }
+                );
+
+
+            allButton.classList.add(
+                "active"
+            );
+
+
+            renderProducts();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts(){
+
+    const container =
+        document.getElementById(
+            "productsContainer"
+        );
+
+
+    let products =
+        allProducts;
+
+
+    if(activeFilter !== "all"){
+
+        products =
+            allProducts.filter(
+                function(product){
+
+                    return (
+                        product.category ===
+                        activeFilter
+                    );
+
+                }
+            );
+
+    }
+
+
+    if(
+        !products ||
+        products.length === 0
+    ){
 
         container.innerHTML = `
+
             <div class="no-products">
-                <h3>No products available yet.</h3>
+
+                <h3>
+                    No products available yet.
+                </h3>
+
                 <p>
-                    Please contact Bossy Prints & Design
+                    Contact Bossy Prints & Design
                     for our current services.
                 </p>
+
+                <br>
+
+                <a
+                    class="btn btn-primary"
+                    href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20know%20what%20is%20available."
+                    target="_blank"
+                >
+                    Ask Us on WhatsApp
+                </a>
+
             </div>
+
         `;
 
         return;
+
     }
 
 
     container.innerHTML = "";
 
 
-    data.forEach(product => {
+    products.forEach(
+        function(product){
 
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "product-card";
-
-
-        const image =
-            product.image_url ||
-            "https://via.placeholder.com/800x600?text=Bossy+Prints";
+            const card =
+                document.createElement(
+                    "article"
+                );
 
 
-        const price =
-            product.price !== null &&
-            product.price !== ""
-            ? "KSh " + Number(product.price).toLocaleString()
-            : "Contact us for price";
+            card.className =
+                "product-card";
 
 
-        const message =
-            encodeURIComponent(
-                "Hello Bossy Prints & Design. I am interested in: " +
-                product.name +
-                ". Please send me more information."
+            const image =
+                product.image_url ||
+                "https://via.placeholder.com/800x600?text=Bossy+Prints";
+
+
+            const price =
+                product.price !== null &&
+                product.price !== ""
+                    ? formatPrice(
+                        product.price
+                    )
+                    : "Contact us for price";
+
+
+            const message =
+                encodeURIComponent(
+                    "Hello Bossy Prints & Design. I am interested in: " +
+                    product.name +
+                    ". Please send me more information and a quotation."
+                );
+
+
+            card.innerHTML = `
+
+                <div class="product-image-wrap">
+
+                    <img
+                        class="product-image"
+                        src="${escapeHtml(image)}"
+                        alt="${escapeHtml(
+                            product.name ||
+                            "Bossy Prints product"
+                        )}"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/800x600?text=Bossy+Prints'"
+                    >
+
+                    <div class="product-badge">
+
+                        ${escapeHtml(
+                            product.category ||
+                            "PRINTING"
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-content">
+
+                    <div class="product-category">
+
+                        ${escapeHtml(
+                            product.category ||
+                            "Printing"
+                        )}
+
+                    </div>
+
+
+                    <h3>
+
+                        ${escapeHtml(
+                            product.name ||
+                            "Custom Product"
+                        )}
+
+                    </h3>
+
+
+                    <p class="product-description">
+
+                        ${escapeHtml(
+                            product.description ||
+                            "Custom printing and branding solution."
+                        )}
+
+                    </p>
+
+
+                    <div class="product-bottom">
+
+                        <div class="product-price">
+
+                            ${escapeHtml(price)}
+
+                        </div>
+
+
+                        <a
+                            class="product-btn"
+                            href="https://wa.me/254724566417?text=${message}"
+                            target="_blank"
+                        >
+
+                            💬 Enquire
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(
+                card
             );
 
-
-        card.innerHTML = `
-
-            <img
-                class="product-image"
-                src="${escapeHtml(product.image_url || image)}"
-                alt="${escapeHtml(product.name)}"
-                onerror="this.src='https://via.placeholder.com/800x600?text=Bossy+Prints'"
-            >
-
-            <div class="product-content">
-
-                <div class="product-category">
-                    ${escapeHtml(product.category || "Printing")}
-                </div>
-
-                <h3>
-                    ${escapeHtml(product.name)}
-                </h3>
-
-                <p class="product-description">
-                    ${escapeHtml(product.description || "")}
-                </p>
-
-                <div class="product-price">
-                    ${price}
-                </div>
-
-                <a
-                    class="product-btn"
-                    href="https://wa.me/254724566417?text=${message}"
-                    target="_blank"
-                >
-                    💬 Enquire on WhatsApp
-                </a>
-
-            </div>
-        `;
-
-
-        container.appendChild(card);
-
-    });
+        }
+    );
 
 }
 
 
-/* ========================================= */
-/* SECURITY: ESCAPE DATABASE TEXT */
-/* ========================================= */
+/* =========================================================
+   PRICE FORMAT
+========================================================= */
+
+function formatPrice(value){
+
+    const clean =
+        String(value)
+            .replace(/,/g,"")
+            .replace(/KSh/gi,"")
+            .trim();
+
+
+    const number =
+        Number(clean);
+
+
+    if(
+        !isNaN(number) &&
+        clean !== ""
+    ){
+
+        return (
+            "KSh " +
+            number.toLocaleString()
+        );
+
+    }
+
+
+    return String(value);
+
+}
+
+
+/* =========================================================
+   ESCAPE DATABASE TEXT
+========================================================= */
 
 function escapeHtml(value){
 
     return String(value)
 
-        .replace(/&/g,"&amp;")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
 
-        .replace(/</g,"&lt;")
+        .replace(
+            /</g,
+            "&lt;"
+        )
 
-        .replace(/>/g,"&gt;")
+        .replace(
+            />/g,
+            "&gt;"
+        )
 
-        .replace(/"/g,"&quot;")
+        .replace(
+            /"/g,
+            "&quot;"
+        )
 
-        .replace(/'/g,"&#039;");
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
-/* ========================================= */
-/* START */
-/* ========================================= */
+/* =========================================================
+   START
+========================================================= */
 
 loadPublicProducts();
 
 </script>
 
+
 </body>
+
 </html>
 ```
