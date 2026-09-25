@@ -28,11 +28,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 15px;
 }
 
 header h1 {
     margin: 0;
     font-size: 22px;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 button {
@@ -41,6 +48,21 @@ button {
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+}
+
+/* BACK TO WEBSITE */
+.website-btn {
+    display: inline-block;
+    background: white;
+    color: #111;
+    text-decoration: none;
+    padding: 11px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.website-btn:hover {
+    background: #ddd;
 }
 
 .logout {
@@ -154,6 +176,17 @@ textarea {
 }
 
 @media(max-width:650px) {
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-buttons {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
     .product {
         flex-direction: column;
         align-items: flex-start;
@@ -162,6 +195,11 @@ textarea {
     .product img {
         width: 100%;
         height: 180px;
+    }
+
+    .website-btn,
+    .logout {
+        padding: 10px 13px;
     }
 }
 </style>
@@ -182,10 +220,20 @@ textarea {
         <form id="loginForm">
 
             <label>Email</label>
-            <input type="email" id="loginEmail" required>
+
+            <input
+                type="email"
+                id="loginEmail"
+                required
+            >
 
             <label>Password</label>
-            <input type="password" id="loginPassword" required>
+
+            <input
+                type="password"
+                id="loginPassword"
+                required
+            >
 
             <button class="primary" type="submit">
                 Login
@@ -208,9 +256,25 @@ textarea {
 
     <h1>Bossy Prints & Design — Admin</h1>
 
-    <button class="logout" id="logoutBtn">
-        Logout
-    </button>
+    <div class="header-buttons">
+
+        <!-- BACK TO WEBSITE -->
+        <a
+            href="index.html"
+            class="website-btn"
+        >
+            ← Back to Website
+        </a>
+
+        <!-- LOGOUT -->
+        <button
+            class="logout"
+            id="logoutBtn"
+        >
+            Logout
+        </button>
+
+    </div>
 
 </header>
 
@@ -227,9 +291,15 @@ textarea {
 
     <form id="productForm">
 
-        <input type="hidden" id="productId">
+        <input
+            type="hidden"
+            id="productId"
+        >
 
-        <label>Product / Service Name</label>
+
+        <label>
+            Product / Service Name
+        </label>
 
         <input
             type="text"
@@ -239,7 +309,9 @@ textarea {
         >
 
 
-        <label>Price (KSh)</label>
+        <label>
+            Price (KSh)
+        </label>
 
         <input
             type="number"
@@ -248,7 +320,9 @@ textarea {
         >
 
 
-        <label>Category</label>
+        <label>
+            Category
+        </label>
 
         <select id="productCategory">
 
@@ -283,7 +357,9 @@ textarea {
         </select>
 
 
-        <label>Description</label>
+        <label>
+            Description
+        </label>
 
         <textarea
             id="productDescription"
@@ -291,13 +367,16 @@ textarea {
         ></textarea>
 
 
-        <label>Product Image</label>
+        <label>
+            Product Image
+        </label>
 
         <input
             type="file"
             id="productImageFile"
             accept="image/*"
         >
+
 
         <img
             id="imagePreview"
@@ -531,7 +610,8 @@ function() {
 
     if (!file) {
 
-        imagePreview.style.display = "none";
+        imagePreview.style.display =
+        "none";
 
         return;
 
@@ -578,7 +658,9 @@ async function uploadImage(file) {
     const fileName =
     Date.now() +
     "-" +
-    Math.random().toString(36).substring(2) +
+    Math.random()
+        .toString(36)
+        .substring(2) +
     "." +
     extension;
 
@@ -699,7 +781,9 @@ async function loadProducts() {
                 </p>
 
                 <p>
-                    ${escapeHtml(product.description || "")}
+                    ${escapeHtml(
+                        product.description || ""
+                    )}
                 </p>
 
                 <button
@@ -771,21 +855,31 @@ async function(e) {
         const product = {
 
             name:
-            document.getElementById("productName").value,
+            document.getElementById(
+                "productName"
+            ).value,
 
             price:
-            document.getElementById("productPrice").value || null,
+            document.getElementById(
+                "productPrice"
+            ).value || null,
 
             description:
-            document.getElementById("productDescription").value,
+            document.getElementById(
+                "productDescription"
+            ).value,
 
             category:
-            document.getElementById("productCategory").value
+            document.getElementById(
+                "productCategory"
+            ).value
 
         };
 
 
-        // Only replace image when a new one was uploaded
+        // Only replace image when
+        // a new one was uploaded
+
         if (imageUrl) {
 
             product.image_url =
@@ -825,12 +919,16 @@ async function(e) {
         productMessage.textContent =
         "Product saved successfully.";
 
+
         resetForm();
+
 
         loadProducts();
 
+    }
 
-    } catch (error) {
+
+    catch (error) {
 
         productMessage.textContent =
         "Error: " + error.message;
@@ -863,19 +961,33 @@ async function editProduct(id) {
     }
 
 
-    document.getElementById("productId").value =
+    document.getElementById(
+        "productId"
+    ).value =
     data.id;
 
-    document.getElementById("productName").value =
+
+    document.getElementById(
+        "productName"
+    ).value =
     data.name || "";
 
-    document.getElementById("productPrice").value =
+
+    document.getElementById(
+        "productPrice"
+    ).value =
     data.price || "";
 
-    document.getElementById("productDescription").value =
+
+    document.getElementById(
+        "productDescription"
+    ).value =
     data.description || "";
 
-    document.getElementById("productCategory").value =
+
+    document.getElementById(
+        "productCategory"
+    ).value =
     data.category || "Other";
 
 
@@ -890,19 +1002,29 @@ async function editProduct(id) {
     }
 
 
-    document.getElementById("formTitle").textContent =
+    document.getElementById(
+        "formTitle"
+    ).textContent =
     "Edit Product";
 
-    document.getElementById("saveBtn").textContent =
+
+    document.getElementById(
+        "saveBtn"
+    ).textContent =
     "Update Product";
 
-    document.getElementById("cancelBtn")
-        .classList.remove("hidden");
+
+    document.getElementById(
+        "cancelBtn"
+    ).classList.remove("hidden");
 
 
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
 }
@@ -951,10 +1073,12 @@ async function deleteProduct(id) {
 // RESET FORM
 // =====================================
 
-document.getElementById("cancelBtn")
+document.getElementById(
+    "cancelBtn"
+)
 .addEventListener(
-"click",
-resetForm
+    "click",
+    resetForm
 );
 
 
@@ -962,20 +1086,33 @@ function resetForm() {
 
     productForm.reset();
 
-    document.getElementById("productId").value =
+
+    document.getElementById(
+        "productId"
+    ).value =
     "";
 
-    document.getElementById("formTitle").textContent =
+
+    document.getElementById(
+        "formTitle"
+    ).textContent =
     "Add Product";
 
-    document.getElementById("saveBtn").textContent =
+
+    document.getElementById(
+        "saveBtn"
+    ).textContent =
     "Add Product";
 
-    document.getElementById("cancelBtn")
-        .classList.add("hidden");
+
+    document.getElementById(
+        "cancelBtn"
+    ).classList.add("hidden");
+
 
     imagePreview.style.display =
     "none";
+
 
     imagePreview.src =
     "";
@@ -990,11 +1127,31 @@ function resetForm() {
 function escapeHtml(value) {
 
     return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
