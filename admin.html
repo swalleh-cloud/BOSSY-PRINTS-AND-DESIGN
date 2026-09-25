@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bossy Prints & Design | Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -53,7 +54,6 @@ button {
     padding: 0 20px;
 }
 
-.login-box,
 .form-box,
 .products-box {
     background: white;
@@ -61,11 +61,6 @@ button {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,.08);
     margin-bottom: 25px;
-}
-
-.login-box {
-    max-width: 450px;
-    margin: 80px auto;
 }
 
 h2 {
@@ -101,6 +96,16 @@ textarea {
 .message {
     margin-top: 12px;
     font-weight: bold;
+}
+
+.image-preview {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 5px 0 15px;
+    display: none;
+    border: 1px solid #ddd;
 }
 
 .product {
@@ -164,96 +169,184 @@ textarea {
 
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
+
 <div id="loginSection" class="container">
-    <div class="login-box">
+
+    <div class="form-box" style="max-width:450px;margin:80px auto;">
+
         <h2>Bossy Prints & Design</h2>
+
         <p>Admin Login</p>
 
         <form id="loginForm">
+
             <label>Email</label>
             <input type="email" id="loginEmail" required>
 
             <label>Password</label>
             <input type="password" id="loginPassword" required>
 
-            <button class="primary" type="submit">Login</button>
+            <button class="primary" type="submit">
+                Login
+            </button>
 
             <div id="loginMessage" class="message"></div>
+
         </form>
+
     </div>
+
 </div>
 
 
-<!-- ADMIN DASHBOARD -->
+<!-- ================= DASHBOARD ================= -->
+
 <div id="dashboardSection" class="hidden">
 
 <header>
+
     <h1>Bossy Prints & Design — Admin</h1>
-    <button class="logout" id="logoutBtn">Logout</button>
+
+    <button class="logout" id="logoutBtn">
+        Logout
+    </button>
+
 </header>
+
 
 <div class="container">
 
-    <!-- PRODUCT FORM -->
-    <div class="form-box">
+<!-- ================= PRODUCT FORM ================= -->
 
-        <h2 id="formTitle">Add Product</h2>
+<div class="form-box">
 
-        <form id="productForm">
+    <h2 id="formTitle">
+        Add Product
+    </h2>
 
-            <input type="hidden" id="productId">
+    <form id="productForm">
 
-            <label>Product / Service Name</label>
-            <input type="text" id="productName" placeholder="Example: Custom T-Shirt" required>
+        <input type="hidden" id="productId">
 
-            <label>Price (KSh)</label>
-            <input type="number" id="productPrice" placeholder="Example: 800">
+        <label>Product / Service Name</label>
 
-            <label>Category</label>
-            <select id="productCategory">
-                <option value="T-Shirt Printing">T-Shirt Printing</option>
-                <option value="Graphic Design">Graphic Design</option>
-                <option value="Branding">Branding</option>
-                <option value="Banners & Posters">Banners & Posters</option>
-                <option value="Stickers & Labels">Stickers & Labels</option>
-                <option value="Caps & Merchandise">Caps & Merchandise</option>
-                <option value="Other">Other</option>
-            </select>
+        <input
+            type="text"
+            id="productName"
+            placeholder="Example: Custom T-Shirt"
+            required
+        >
 
-            <label>Description</label>
-            <textarea id="productDescription"
-                placeholder="Describe the product or service"></textarea>
 
-            <label>Image URL</label>
-            <input type="url" id="productImage"
-                placeholder="https://example.com/image.jpg">
+        <label>Price (KSh)</label>
 
-            <button class="primary" type="submit" id="saveBtn">
-                Add Product
-            </button>
+        <input
+            type="number"
+            id="productPrice"
+            placeholder="Example: 800"
+        >
 
-            <button type="button" class="cancel hidden" id="cancelBtn">
-                Cancel Edit
-            </button>
 
-            <div id="productMessage" class="message"></div>
+        <label>Category</label>
 
-        </form>
+        <select id="productCategory">
 
+            <option value="T-Shirt Printing">
+                T-Shirt Printing
+            </option>
+
+            <option value="Graphic Design">
+                Graphic Design
+            </option>
+
+            <option value="Branding">
+                Branding
+            </option>
+
+            <option value="Banners & Posters">
+                Banners & Posters
+            </option>
+
+            <option value="Stickers & Labels">
+                Stickers & Labels
+            </option>
+
+            <option value="Caps & Merchandise">
+                Caps & Merchandise
+            </option>
+
+            <option value="Other">
+                Other
+            </option>
+
+        </select>
+
+
+        <label>Description</label>
+
+        <textarea
+            id="productDescription"
+            placeholder="Describe the product or service"
+        ></textarea>
+
+
+        <label>Product Image</label>
+
+        <input
+            type="file"
+            id="productImageFile"
+            accept="image/*"
+        >
+
+        <img
+            id="imagePreview"
+            class="image-preview"
+            alt="Image preview"
+        >
+
+
+        <button
+            class="primary"
+            type="submit"
+            id="saveBtn"
+        >
+            Add Product
+        </button>
+
+
+        <button
+            type="button"
+            class="cancel hidden"
+            id="cancelBtn"
+        >
+            Cancel Edit
+        </button>
+
+
+        <div
+            id="productMessage"
+            class="message"
+        ></div>
+
+    </form>
+
+</div>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<div class="products-box">
+
+    <h2>
+        Products & Services
+    </h2>
+
+    <div id="productsList">
+        Loading products...
     </div>
 
-
-    <!-- PRODUCTS -->
-    <div class="products-box">
-
-        <h2>Products & Services</h2>
-
-        <div id="productsList">
-            Loading products...
-        </div>
-
-    </div>
+</div>
 
 </div>
 
@@ -262,115 +355,162 @@ textarea {
 
 <script>
 
-// ================================
+// =====================================
 // SUPABASE CONNECTION
-// ================================
+// =====================================
 
-const SUPABASE_URL = "https://jzvuvbzkumkomqdtjkrt.supabase.co";
+const SUPABASE_URL =
+"https://jzvuvbzkumkomqdtjkrt.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_oHVAQtCkJImAQrD2sVjTGA_aWM_nYyl";
+const SUPABASE_KEY =
+"sb_publishable_oHVAQtCkJImAQrD2sVjTGA_aWM_nYyl";
 
-const supabaseClient = window.supabase.createClient(
+const supabaseClient =
+window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
 
 
-// ================================
+// =====================================
 // ELEMENTS
-// ================================
+// =====================================
 
-const loginSection = document.getElementById("loginSection");
-const dashboardSection = document.getElementById("dashboardSection");
+const loginSection =
+document.getElementById("loginSection");
 
-const loginForm = document.getElementById("loginForm");
-const loginMessage = document.getElementById("loginMessage");
+const dashboardSection =
+document.getElementById("dashboardSection");
 
-const logoutBtn = document.getElementById("logoutBtn");
+const loginForm =
+document.getElementById("loginForm");
 
-const productForm = document.getElementById("productForm");
-const productsList = document.getElementById("productsList");
+const loginMessage =
+document.getElementById("loginMessage");
 
-const productMessage = document.getElementById("productMessage");
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+const productForm =
+document.getElementById("productForm");
+
+const productsList =
+document.getElementById("productsList");
+
+const productMessage =
+document.getElementById("productMessage");
+
+const imageFile =
+document.getElementById("productImageFile");
+
+const imagePreview =
+document.getElementById("imagePreview");
 
 
-// ================================
+// =====================================
 // CHECK LOGIN
-// ================================
+// =====================================
 
 async function checkLogin() {
 
-    const { data } = await supabaseClient.auth.getSession();
+    const { data } =
+    await supabaseClient.auth.getSession();
 
     if (data.session) {
+
         showDashboard();
+
     } else {
+
         showLogin();
+
     }
+
 }
 
 
-// ================================
+// =====================================
 // SHOW LOGIN
-// ================================
+// =====================================
 
 function showLogin() {
 
     loginSection.classList.remove("hidden");
+
     dashboardSection.classList.add("hidden");
+
 }
 
 
-// ================================
+// =====================================
 // SHOW DASHBOARD
-// ================================
+// =====================================
 
 function showDashboard() {
 
     loginSection.classList.add("hidden");
+
     dashboardSection.classList.remove("hidden");
 
     loadProducts();
+
 }
 
 
-// ================================
+// =====================================
 // LOGIN
-// ================================
+// =====================================
 
-loginForm.addEventListener("submit", async function(e) {
+loginForm.addEventListener(
+"submit",
+async function(e) {
 
     e.preventDefault();
 
-    loginMessage.textContent = "Logging in...";
+    loginMessage.textContent =
+    "Logging in...";
 
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
 
-    const { error } = await supabaseClient.auth.signInWithPassword({
+    const email =
+    document.getElementById("loginEmail").value;
+
+    const password =
+    document.getElementById("loginPassword").value;
+
+
+    const { error } =
+    await supabaseClient.auth.signInWithPassword({
+
         email: email,
+
         password: password
+
     });
+
 
     if (error) {
 
-        loginMessage.textContent = "Login failed: " + error.message;
+        loginMessage.textContent =
+        "Login failed: " + error.message;
 
     } else {
 
         loginMessage.textContent = "";
 
         showDashboard();
+
     }
 
 });
 
 
-// ================================
+// =====================================
 // LOGOUT
-// ================================
+// =====================================
 
-logoutBtn.addEventListener("click", async function() {
+logoutBtn.addEventListener(
+"click",
+async function() {
 
     await supabaseClient.auth.signOut();
 
@@ -379,60 +519,182 @@ logoutBtn.addEventListener("click", async function() {
 });
 
 
-// ================================
+// =====================================
+// IMAGE PREVIEW
+// =====================================
+
+imageFile.addEventListener(
+"change",
+function() {
+
+    const file = this.files[0];
+
+    if (!file) {
+
+        imagePreview.style.display = "none";
+
+        return;
+
+    }
+
+
+    const reader =
+    new FileReader();
+
+
+    reader.onload = function(e) {
+
+        imagePreview.src =
+        e.target.result;
+
+        imagePreview.style.display =
+        "block";
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+});
+
+
+// =====================================
+// UPLOAD IMAGE
+// =====================================
+
+async function uploadImage(file) {
+
+    if (!file) {
+
+        return null;
+
+    }
+
+
+    const extension =
+    file.name.split(".").pop();
+
+
+    const fileName =
+    Date.now() +
+    "-" +
+    Math.random().toString(36).substring(2) +
+    "." +
+    extension;
+
+
+    const filePath =
+    "products/" + fileName;
+
+
+    const { error } =
+    await supabaseClient.storage
+        .from("product-images")
+        .upload(
+            filePath,
+            file,
+            {
+                cacheControl: "3600",
+                upsert: false
+            }
+        );
+
+
+    if (error) {
+
+        throw error;
+
+    }
+
+
+    const { data } =
+    supabaseClient.storage
+        .from("product-images")
+        .getPublicUrl(filePath);
+
+
+    return data.publicUrl;
+
+}
+
+
+// =====================================
 // LOAD PRODUCTS
-// ================================
+// =====================================
 
 async function loadProducts() {
 
-    productsList.innerHTML = "Loading products...";
+    productsList.innerHTML =
+    "Loading products...";
 
-    const { data, error } = await supabaseClient
+
+    const { data, error } =
+    await supabaseClient
         .from("products")
         .select("*")
-        .order("created_at", { ascending: false });
+        .order(
+            "created_at",
+            { ascending: false }
+        );
+
 
     if (error) {
 
         productsList.innerHTML =
-            "Error loading products: " + error.message;
+        "Error: " + error.message;
 
         return;
+
     }
+
 
     if (!data || data.length === 0) {
 
         productsList.innerHTML =
-            "<p>No products have been added yet.</p>";
+        "<p>No products added yet.</p>";
 
         return;
+
     }
+
 
     productsList.innerHTML = "";
 
+
     data.forEach(product => {
 
-        const div = document.createElement("div");
+        const div =
+        document.createElement("div");
 
-        div.className = "product";
+        div.className =
+        "product";
+
+
+        const image =
+        product.image_url ||
+        "https://via.placeholder.com/200";
+
 
         div.innerHTML = `
 
             <img
-                src="${product.image_url || 'https://via.placeholder.com/200'}"
+                src="${image}"
                 alt="${escapeHtml(product.name)}"
-                onerror="this.src='https://via.placeholder.com/200'"
             >
 
             <div class="product-info">
 
-                <h3>${escapeHtml(product.name)}</h3>
+                <h3>
+                    ${escapeHtml(product.name)}
+                </h3>
 
-                <p><strong>Price:</strong>
+                <p>
+                    <strong>Price:</strong>
                     KSh ${product.price ?? "Contact us"}
                 </p>
 
-                <p><strong>Category:</strong>
+                <p>
+                    <strong>Category:</strong>
                     ${escapeHtml(product.category || "")}
                 </p>
 
@@ -442,18 +704,22 @@ async function loadProducts() {
 
                 <button
                     class="edit"
-                    onclick="editProduct('${product.id}')">
+                    onclick="editProduct('${product.id}')"
+                >
                     Edit
                 </button>
 
                 <button
                     class="delete"
-                    onclick="deleteProduct('${product.id}')">
+                    onclick="deleteProduct('${product.id}')"
+                >
                     Delete
                 </button>
 
             </div>
+
         `;
+
 
         productsList.appendChild(div);
 
@@ -462,117 +728,177 @@ async function loadProducts() {
 }
 
 
-// ================================
+// =====================================
 // ADD / UPDATE PRODUCT
-// ================================
+// =====================================
 
-productForm.addEventListener("submit", async function(e) {
+productForm.addEventListener(
+"submit",
+async function(e) {
 
     e.preventDefault();
 
-    productMessage.textContent = "Saving...";
 
-    const id = document.getElementById("productId").value;
+    productMessage.textContent =
+    "Saving product...";
 
-    const product = {
 
-        name: document.getElementById("productName").value,
+    const id =
+    document.getElementById("productId").value;
 
-        price: document.getElementById("productPrice").value || null,
 
-        description:
+    const file =
+    imageFile.files[0];
+
+
+    let imageUrl = null;
+
+
+    try {
+
+        // Upload new image if selected
+        if (file) {
+
+            productMessage.textContent =
+            "Uploading image...";
+
+            imageUrl =
+            await uploadImage(file);
+
+        }
+
+
+        const product = {
+
+            name:
+            document.getElementById("productName").value,
+
+            price:
+            document.getElementById("productPrice").value || null,
+
+            description:
             document.getElementById("productDescription").value,
 
-        image_url:
-            document.getElementById("productImage").value,
-
-        category:
+            category:
             document.getElementById("productCategory").value
-    };
+
+        };
 
 
-    let result;
+        // Only replace image when a new one was uploaded
+        if (imageUrl) {
+
+            product.image_url =
+            imageUrl;
+
+        }
 
 
-    if (id) {
-
-        result = await supabaseClient
-            .from("products")
-            .update(product)
-            .eq("id", id);
-
-    } else {
-
-        result = await supabaseClient
-            .from("products")
-            .insert([product]);
-
-    }
+        let result;
 
 
-    if (result.error) {
+        if (id) {
+
+            result =
+            await supabaseClient
+                .from("products")
+                .update(product)
+                .eq("id", id);
+
+        } else {
+
+            result =
+            await supabaseClient
+                .from("products")
+                .insert([product]);
+
+        }
+
+
+        if (result.error) {
+
+            throw result.error;
+
+        }
+
 
         productMessage.textContent =
-            "Error: " + result.error.message;
+        "Product saved successfully.";
 
-        return;
+        resetForm();
+
+        loadProducts();
+
+
+    } catch (error) {
+
+        productMessage.textContent =
+        "Error: " + error.message;
+
     }
-
-
-    productMessage.textContent = "Saved successfully.";
-
-    resetForm();
-
-    loadProducts();
 
 });
 
 
-// ================================
+// =====================================
 // EDIT PRODUCT
-// ================================
+// =====================================
 
 async function editProduct(id) {
 
-    const { data, error } = await supabaseClient
+    const { data, error } =
+    await supabaseClient
         .from("products")
         .select("*")
         .eq("id", id)
         .single();
 
+
     if (error) {
 
         alert(error.message);
+
         return;
+
     }
 
 
-    document.getElementById("productId").value = data.id;
+    document.getElementById("productId").value =
+    data.id;
 
     document.getElementById("productName").value =
-        data.name || "";
+    data.name || "";
 
     document.getElementById("productPrice").value =
-        data.price || "";
+    data.price || "";
 
     document.getElementById("productDescription").value =
-        data.description || "";
-
-    document.getElementById("productImage").value =
-        data.image_url || "";
+    data.description || "";
 
     document.getElementById("productCategory").value =
-        data.category || "Other";
+    data.category || "Other";
+
+
+    if (data.image_url) {
+
+        imagePreview.src =
+        data.image_url;
+
+        imagePreview.style.display =
+        "block";
+
+    }
 
 
     document.getElementById("formTitle").textContent =
-        "Edit Product";
+    "Edit Product";
 
     document.getElementById("saveBtn").textContent =
-        "Update Product";
+    "Update Product";
 
     document.getElementById("cancelBtn")
         .classList.remove("hidden");
+
 
     window.scrollTo({
         top: 0,
@@ -582,19 +908,23 @@ async function editProduct(id) {
 }
 
 
-// ================================
+// =====================================
 // DELETE PRODUCT
-// ================================
+// =====================================
 
 async function deleteProduct(id) {
 
-    const confirmed =
-        confirm("Are you sure you want to delete this product?");
+    if (!confirm(
+        "Are you sure you want to delete this product?"
+    )) {
 
-    if (!confirmed) return;
+        return;
+
+    }
 
 
-    const { error } = await supabaseClient
+    const { error } =
+    await supabaseClient
         .from("products")
         .delete()
         .eq("id", id);
@@ -602,9 +932,13 @@ async function deleteProduct(id) {
 
     if (error) {
 
-        alert("Delete failed: " + error.message);
+        alert(
+            "Delete failed: " +
+            error.message
+        );
 
         return;
+
     }
 
 
@@ -613,35 +947,45 @@ async function deleteProduct(id) {
 }
 
 
-// ================================
-// CANCEL EDIT
-// ================================
+// =====================================
+// RESET FORM
+// =====================================
 
 document.getElementById("cancelBtn")
-    .addEventListener("click", resetForm);
+.addEventListener(
+"click",
+resetForm
+);
 
 
 function resetForm() {
 
     productForm.reset();
 
-    document.getElementById("productId").value = "";
+    document.getElementById("productId").value =
+    "";
 
     document.getElementById("formTitle").textContent =
-        "Add Product";
+    "Add Product";
 
     document.getElementById("saveBtn").textContent =
-        "Add Product";
+    "Add Product";
 
     document.getElementById("cancelBtn")
         .classList.add("hidden");
 
+    imagePreview.style.display =
+    "none";
+
+    imagePreview.src =
+    "";
+
 }
 
 
-// ================================
-// BASIC HTML ESCAPE
-// ================================
+// =====================================
+// ESCAPE HTML
+// =====================================
 
 function escapeHtml(value) {
 
@@ -651,12 +995,13 @@ function escapeHtml(value) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
 
 
-// ================================
+// =====================================
 // START
-// ================================
+// =====================================
 
 checkLogin();
 
