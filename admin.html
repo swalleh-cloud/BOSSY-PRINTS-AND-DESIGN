@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bossy Prints & Design | Admin</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b0f;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    background: #111118;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #292934;
+}
+
+header h1 {
+    font-size: 26px;
+}
+
+header p {
+    color: #aaa;
+    margin-top: 6px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.card {
+    background: #15151d;
+    border: 1px solid #292934;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin: 15px 0 7px;
+    color: #ccc;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #0d0d12;
+    color: white;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+button {
+    margin-top: 20px;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.info {
+    background: #0d0d12;
+    padding: 15px;
+    border-radius: 8px;
+    line-height: 1.7;
+    color: #bbb;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.back:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>BOSSY PRINTS & DESIGN</h1>
+    <p>Admin Dashboard</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Business Information</h2>
+
+        <div class="info">
+            <strong>Business:</strong> Bossy Prints & Design<br>
+            <strong>Services:</strong> T-Shirt Printing, Graphic Design, Branding,
+            Banners, Posters, Stickers, Labels & Caps<br>
+            <strong>WhatsApp:</strong> 0724 566 417
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Add a Service or Product</h2>
+
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Example: Custom T-Shirt">
+
+        <label>Category</label>
+        <select id="category">
+            <option>T-Shirt Printing</option>
+            <option>Graphic Design</option>
+            <option>Branding</option>
+            <option>Banners & Posters</option>
+            <option>Stickers & Labels</option>
+            <option>Caps & Merchandise</option>
+        </select>
+
+        <label>Description</label>
+        <textarea id="description"
+        placeholder="Describe the service or product"></textarea>
+
+        <label>Price</label>
+        <input type="text" id="price" placeholder="Example: From KSh 500">
+
+        <button onclick="saveItem()">Save</button>
+    </div>
+
+    <div class="card">
+        <h2>Saved Items</h2>
+
+        <div id="items">
+            <p style="color:#777;">No items saved yet.</p>
+        </div>
+    </div>
+
+    <a class="back" href="index.html">← Back to Website</a>
+
+</div>
+
+<footer>
+    © 2026 Bossy Prints & Design
+</footer>
+
+<script>
+
+function saveItem() {
+
+    const name = document.getElementById("name").value;
+    const category = document.getElementById("category").value;
+    const description = document.getElementById("description").value;
+    const price = document.getElementById("price").value;
+
+    if (!name || !description) {
+        alert("Please enter the name and description.");
+        return;
+    }
+
+    const item = {
+        name: name,
+        category: category,
+        description: description,
+        price: price
+    };
+
+    let items = JSON.parse(localStorage.getItem("bossyItems")) || [];
+
+    items.push(item);
+
+    localStorage.setItem("bossyItems", JSON.stringify(items));
+
+    document.getElementById("name").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("price").value = "";
+
+    displayItems();
+
+    alert("Saved successfully!");
+}
+
+function displayItems() {
+
+    const container = document.getElementById("items");
+
+    let items = JSON.parse(localStorage.getItem("bossyItems")) || [];
+
+    if (items.length === 0) {
+        container.innerHTML = '<p style="color:#777;">No items saved yet.</p>';
+        return;
+    }
+
+    container.innerHTML = "";
+
+    items.forEach((item, index) => {
+
+        container.innerHTML += `
+            <div style="
+                background:#0d0d12;
+                padding:15px;
+                margin-bottom:10px;
+                border-radius:8px;
+                border:1px solid #292934;
+            ">
+                <strong>${item.name}</strong>
+                <p style="color:#aaa;margin-top:5px;">
+                    ${item.category}
+                </p>
+
+                <p style="margin-top:8px;">
+                    ${item.description}
+                </p>
+
+                <p style="margin-top:8px;color:#ccc;">
+                    ${item.price}
+                </p>
+
+                <button onclick="deleteItem(${index})"
+                style="background:#333;color:white;">
+                    Delete
+                </button>
+            </div>
+        `;
+    });
+}
+
+function deleteItem(index) {
+
+    let items = JSON.parse(localStorage.getItem("bossyItems")) || [];
+
+    items.splice(index, 1);
+
+    localStorage.setItem("bossyItems", JSON.stringify(items));
+
+    displayItems();
+}
+
+displayItems();
+
+</script>
+
+</body>
+</html>
