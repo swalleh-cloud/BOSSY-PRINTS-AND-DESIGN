@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="google-site-verification" content="nM3hV_9UfLzxaX_Sb6KeanAae1e948MXGBm-qP8jMfU">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -13,58 +9,62 @@
 
 <meta name="description" content="Bossy Prints & Design provides T-shirt printing, graphic design, business branding, banners, posters, stickers, labels, caps and custom printing solutions in Kenya.">
 
-<meta name="keywords" content="Bossy Prints and Design, T-shirt printing Kenya, printing Kenya, graphic design Kenya, branding Kenya, custom T-shirts, banners, posters, stickers, labels, caps">
+<meta name="keywords" content="T-shirt printing Kenya, printing services Kenya, graphic design Kenya, branding Kenya, banners Kenya, posters Kenya, stickers Kenya, caps printing Kenya, Bossy Prints">
 
 <meta name="author" content="Bossy Prints & Design">
 
 <meta name="robots" content="index, follow">
 
-<meta name="theme-color" content="#08090d">
+<meta name="theme-color" content="#07080c">
 
 <link rel="canonical" href="https://swalleh-cloud.github.io/BOSSY-PRINTS-AND-DESIGN/">
 
 <meta property="og:title" content="Bossy Prints & Design | Printing, Branding & Graphic Design">
-
-<meta property="og:description" content="Turn your ideas into real products with Bossy Prints & Design. T-shirts, branding, banners, posters, stickers, caps and graphic design.">
-
+<meta property="og:description" content="Professional printing, branding and graphic design services in Kenya.">
 <meta property="og:type" content="website">
-
 <meta property="og:url" content="https://swalleh-cloud.github.io/BOSSY-PRINTS-AND-DESIGN/">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
+:root{
+    --bg:#07080c;
+    --bg2:#0c0e14;
+    --card:#11141c;
+    --card2:#151923;
+    --text:#f5f7fb;
+    --muted:#9ba3b5;
+    --cyan:#00e5ff;
+    --purple:#7c3cff;
+    --border:rgba(255,255,255,.09);
+    --shadow:0 20px 60px rgba(0,0,0,.35);
+}
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+    scroll-behavior:smooth;
 }
 
 html{
-    scroll-behavior:smooth;
-    scroll-padding-top:80px;
+    scroll-padding-top:90px;
 }
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#07080c;
-    color:#fff;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(0,229,255,.08),transparent 25%),
+        radial-gradient(circle at 90% 20%,rgba(124,60,255,.08),transparent 25%),
+        var(--bg);
+    color:var(--text);
     line-height:1.6;
     overflow-x:hidden;
 }
 
-body.menu-open{
-    overflow:hidden;
-}
-
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
 button,
@@ -74,341 +74,177 @@ textarea{
     font:inherit;
 }
 
-img{
-    max-width:100%;
-}
-
 .container{
-    width:min(1180px,calc(100% - 40px));
+    width:min(1180px,92%);
     margin:auto;
 }
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(35px);
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
+section{
+    padding:100px 0;
 }
 
-.reveal.visible{
-    opacity:1;
-    transform:translateY(0);
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+.section-title span{
+    color:var(--cyan);
+    font-size:.85rem;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.section-title h2{
+    font-size:clamp(2rem,5vw,3.4rem);
+    margin:10px 0;
+}
+
+.section-title p{
+    max-width:700px;
+    margin:auto;
+    color:var(--muted);
+}
+
+/* HEADER */
 
 header{
     position:fixed;
     top:0;
     left:0;
-    right:0;
-    z-index:5000;
-
-    background:rgba(7,8,12,.72);
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-
+    width:100%;
+    z-index:1000;
+    background:rgba(7,8,12,.75);
     backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    transition:.3s;
-}
-
-header.scrolled{
-    background:rgba(7,8,12,.96);
-    box-shadow:0 10px 35px rgba(0,0,0,.25);
+    border-bottom:1px solid var(--border);
 }
 
 .navbar{
-    min-height:76px;
-
+    min-height:78px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    gap:30px;
+    gap:20px;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:11px;
-    flex-shrink:0;
+    gap:12px;
+    font-weight:900;
+    letter-spacing:.5px;
 }
 
 .logo-mark{
-    width:45px;
-    height:45px;
-
-    border-radius:13px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:25px;
-    font-weight:900;
-
-    color:#050609;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00e5ff,
-            #7c3cff
-        );
-
-    box-shadow:
-        0 0 25px rgba(0,229,255,.2);
+    width:43px;
+    height:43px;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--cyan),var(--purple));
+    color:#05060a;
+    font-weight:1000;
+    font-size:1.3rem;
+    box-shadow:0 0 30px rgba(0,229,255,.25);
 }
 
-.logo-text{
-    font-size:17px;
-    font-weight:900;
-    letter-spacing:1px;
-}
-
-.logo-text span{
+.logo-text small{
     display:block;
-
-    color:#00e5ff;
-
-    font-size:8px;
-    letter-spacing:2px;
-
-    margin-top:2px;
+    color:var(--muted);
+    font-size:.6rem;
+    letter-spacing:1.5px;
+    margin-top:-2px;
 }
 
-nav{
+.nav-links{
     display:flex;
     align-items:center;
-    gap:25px;
+    gap:24px;
 }
 
-nav a{
-    color:#c9cbd2;
-    font-size:13px;
-    font-weight:bold;
-    position:relative;
-    transition:.3s;
+.nav-links a{
+    color:#dce1eb;
+    font-size:.9rem;
+    transition:.25s;
 }
 
-nav a::after{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:-8px;
-
-    width:0;
-    height:2px;
-
-    background:#00e5ff;
-
-    transition:.3s;
+.nav-links a:hover{
+    color:var(--cyan);
 }
 
-nav a:hover{
-    color:#00e5ff;
-}
-
-nav a:hover::after{
-    width:100%;
-}
-
-.nav-quote{
-    background:#00e5ff;
-    color:#050609 !important;
-
-    padding:10px 15px;
-    border-radius:8px;
-}
-
-.nav-quote::after{
-    display:none;
+.nav-cta{
+    padding:11px 17px;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--cyan),var(--purple));
+    color:#05060a!important;
+    font-weight:900;
 }
 
 .menu-btn{
     display:none;
-
-    border:1px solid #30343e;
-    background:#101218;
-
-    color:#fff;
-
-    width:44px;
-    height:42px;
-
-    border-radius:9px;
-
+    border:0;
+    background:none;
+    color:white;
+    font-size:1.7rem;
     cursor:pointer;
-
-    font-size:22px;
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
     min-height:100vh;
-
-    position:relative;
-
     display:flex;
     align-items:center;
-
-    overflow:hidden;
-
-    padding:130px 0 80px;
-
-    background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(0,229,255,.14),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(124,60,255,.18),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(0,229,255,.06),
-            transparent 35%
-        ),
-        #07080c;
+    padding-top:120px;
+    position:relative;
 }
 
 .hero-grid{
-    position:absolute;
-    inset:0;
-
-    opacity:.12;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.05) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.05) 1px,
-            transparent 1px
-        );
-
-    background-size:60px 60px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent
-        );
-}
-
-.hero-inner{
-    position:relative;
-    z-index:2;
-
     display:grid;
     grid-template-columns:1.1fr .9fr;
-
     align-items:center;
-
     gap:60px;
 }
 
-.hero-content{
-    max-width:700px;
-}
-
-.badge{
+.hero-badge{
     display:inline-flex;
     align-items:center;
-    gap:9px;
-
-    border:1px solid rgba(0,229,255,.3);
-
+    gap:8px;
+    padding:9px 14px;
+    border:1px solid rgba(0,229,255,.2);
+    border-radius:999px;
+    color:#c7faff;
     background:rgba(0,229,255,.05);
-
-    color:#00e5ff;
-
-    padding:9px 15px;
-
-    border-radius:50px;
-
-    font-size:11px;
-    font-weight:bold;
-
-    letter-spacing:2px;
-
-    margin-bottom:24px;
-}
-
-.badge-dot{
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#00e5ff;
-
-    box-shadow:
-        0 0 12px #00e5ff;
+    font-size:.8rem;
+    margin-bottom:22px;
 }
 
 .hero h1{
-    font-size:clamp(48px,7vw,82px);
-
-    line-height:.98;
-
-    font-weight:950;
-
+    font-size:clamp(3rem,7vw,6.5rem);
+    line-height:.95;
     letter-spacing:-4px;
-
-    max-width:800px;
+    max-width:850px;
 }
 
-.hero h1 span{
-    background:
-        linear-gradient(
-            90deg,
-            #00e5ff,
-            #7c3cff
-        );
-
+.gradient-text{
+    background:linear-gradient(90deg,var(--cyan),#fff,var(--purple));
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
 }
 
-.hero-description{
+.hero p{
+    margin:28px 0;
+    color:var(--muted);
+    font-size:1.05rem;
     max-width:650px;
-
-    color:#aeb2bd;
-
-    font-size:18px;
-
-    margin:27px 0;
 }
 
 .hero-buttons{
     display:flex;
     flex-wrap:wrap;
-    gap:13px;
-
-    margin-top:28px;
+    gap:14px;
 }
 
 .btn{
@@ -416,748 +252,196 @@ nav a:hover::after{
     align-items:center;
     justify-content:center;
     gap:8px;
-
-    padding:14px 21px;
-
-    border-radius:9px;
-
-    font-weight:bold;
-
-    transition:
-        transform .3s,
-        box-shadow .3s,
-        border-color .3s;
+    border:0;
+    cursor:pointer;
+    padding:14px 22px;
+    border-radius:12px;
+    font-weight:900;
+    transition:.25s;
 }
 
 .btn-primary{
-    background:#00e5ff;
-    color:#050609;
-
-    box-shadow:
-        0 8px 25px rgba(0,229,255,.12);
+    background:linear-gradient(135deg,var(--cyan),var(--purple));
+    color:#05060a;
+    box-shadow:0 12px 35px rgba(0,229,255,.15);
 }
 
 .btn-primary:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 14px 35px rgba(0,229,255,.24);
-}
-
-.btn-secondary{
-    border:1px solid #363a46;
-    color:#fff;
-    background:rgba(255,255,255,.02);
-}
-
-.btn-secondary:hover{
-    border-color:#00e5ff;
-    color:#00e5ff;
-    transform:translateY(-3px);
-}
-
-/* =========================================================
-   HERO VISUAL
-========================================================= */
-
-.hero-visual{
-    min-height:480px;
-
-    position:relative;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.hero-circle{
-    width:360px;
-    height:360px;
-
-    border-radius:50%;
-
-    position:absolute;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,229,255,.15),
-            transparent 65%
-        );
-
-    border:
-        1px solid rgba(0,229,255,.16);
-
-    box-shadow:
-        0 0 100px rgba(0,229,255,.08);
-}
-
-.print-card{
-    position:absolute;
-
-    width:245px;
-
-    padding:15px;
-
-    border-radius:17px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.12),
-            rgba(255,255,255,.04)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    backdrop-filter:blur(15px);
-
-    box-shadow:
-        0 30px 60px rgba(0,0,0,.4);
-
-    animation:float 5s ease-in-out infinite;
-}
-
-.print-card img{
-    width:100%;
-    height:190px;
-
-    object-fit:cover;
-
-    border-radius:11px;
-}
-
-.print-card-info{
-    padding:12px 3px 2px;
-}
-
-.print-card-info small{
-    color:#00e5ff;
-    font-size:10px;
-    letter-spacing:2px;
-    font-weight:bold;
-}
-
-.print-card-info strong{
-    display:block;
-    margin-top:4px;
-}
-
-.print-card.one{
-    transform:rotate(-7deg);
-    left:0;
-    top:75px;
-}
-
-.print-card.two{
-    transform:rotate(8deg);
-    right:0;
-    bottom:55px;
-    animation-delay:1s;
-}
-
-.hero-orb{
-    position:absolute;
-
-    width:75px;
-    height:75px;
-
-    border-radius:50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00e5ff,
-            #7c3cff
-        );
-
-    filter:blur(1px);
-
-    opacity:.8;
-
-    box-shadow:
-        0 0 45px rgba(0,229,255,.25);
-
-    animation:
-        orbMove 6s ease-in-out infinite;
-}
-
-.hero-orb.one{
-    top:40px;
-    right:80px;
-}
-
-.hero-orb.two{
-    bottom:30px;
-    left:75px;
-    width:35px;
-    height:35px;
-    animation-delay:1.5s;
-}
-
-@keyframes float{
-
-    0%,100%{
-        margin-top:0;
-    }
-
-    50%{
-        margin-top:-14px;
-    }
-
-}
-
-@keyframes orbMove{
-
-    0%,100%{
-        transform:translate(0,0);
-    }
-
-    50%{
-        transform:translate(12px,-18px);
-    }
-
-}
-
-/* =========================================================
-   TRUST BAR
-========================================================= */
-
-.trust{
-    border-top:1px solid #20232c;
-    border-bottom:1px solid #20232c;
-
-    background:#0c0e13;
-}
-
-.trust-grid{
-    min-height:100px;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-
-    align-items:center;
-
-    gap:20px;
-}
-
-.trust-item{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:12px;
-
-    text-align:left;
-}
-
-.trust-icon{
-    width:40px;
-    height:40px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:10px;
-
-    background:#171a22;
-
-    font-size:18px;
-}
-
-.trust-item strong{
-    display:block;
-    font-size:13px;
-}
-
-.trust-item span{
-    display:block;
-    color:#777d89;
-    font-size:11px;
-}
-
-/* =========================================================
-   GENERAL SECTIONS
-========================================================= */
-
-section{
-    padding:100px 0;
-}
-
-.section-dark{
-    background:#07080c;
-}
-
-.section-alt{
-    background:#0c0e13;
-}
-
-.section-heading{
-    max-width:720px;
-
-    margin:0 auto 55px;
-
-    text-align:center;
-}
-
-.section-heading small{
-    color:#00e5ff;
-
-    font-size:11px;
-    font-weight:bold;
-
-    letter-spacing:3px;
-}
-
-.section-heading h2{
-    font-size:clamp(32px,5vw,46px);
-
-    line-height:1.1;
-
-    margin:10px 0 14px;
-
-    letter-spacing:-1px;
-}
-
-.section-heading p{
-    color:#9197a3;
-    font-size:15px;
-}
-
-/* =========================================================
-   SERVICES
-========================================================= */
-
-.services-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:20px;
-}
-
-.service-card{
-    position:relative;
-
-    padding:30px;
-
-    border:
-        1px solid #252934;
-
-    background:
-        linear-gradient(
-            145deg,
-            #11131a,
-            #0d0f14
-        );
-
-    border-radius:17px;
-
-    transition:.35s;
-
-    overflow:hidden;
-}
-
-.service-card::before{
-    content:"";
-
-    position:absolute;
-
-    width:100px;
-    height:100px;
-
-    top:-50px;
-    right:-50px;
-
-    border-radius:50%;
-
-    background:#00e5ff;
-
-    opacity:.04;
-
-    transition:.35s;
-}
-
-.service-card:hover{
-    transform:translateY(-8px);
-
-    border-color:
-        rgba(0,229,255,.5);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.3);
-}
-
-.service-card:hover::before{
-    transform:scale(2);
-}
-
-.service-icon{
-    width:58px;
-    height:58px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:#181b24;
-
-    border:
-        1px solid #292d38;
-
-    border-radius:14px;
-
-    font-size:26px;
-
-    margin-bottom:20px;
-}
-
-.service-card h3{
-    font-size:19px;
-    margin-bottom:9px;
-}
-
-.service-card p{
-    color:#9298a4;
-    font-size:13px;
-}
-
-.service-link{
-    display:inline-block;
-
-    margin-top:18px;
-
-    color:#00e5ff;
-
-    font-size:12px;
-    font-weight:bold;
-}
-
-/* =========================================================
-   PRODUCTS
-========================================================= */
-
-.products-section{
-    background:#0c0e13;
-}
-
-.products-top{
-    display:flex;
-
-    justify-content:space-between;
-    align-items:end;
-
-    gap:20px;
-
-    margin-bottom:35px;
-}
-
-.products-top .section-heading{
-    margin:0;
-    text-align:left;
-}
-
-.product-filters{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    justify-content:flex-end;
-}
-
-.filter-btn{
-    border:1px solid #292d38;
-
-    background:#11131a;
-
-    color:#9ca1ad;
-
-    padding:9px 13px;
-
-    border-radius:7px;
-
-    cursor:pointer;
-
-    font-size:11px;
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.filter-btn:hover,
-.filter-btn.active{
-    background:#00e5ff;
-    border-color:#00e5ff;
-    color:#050609;
-}
-
-.product-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:22px;
-}
-
-.product-card{
-    background:#101218;
-
-    border:
-        1px solid #262a35;
-
-    border-radius:17px;
-
-    overflow:hidden;
-
-    transition:.35s;
-}
-
-.product-card:hover{
-    transform:translateY(-8px);
-
-    border-color:
-        rgba(0,229,255,.55);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.3);
-}
-
-.product-image-wrap{
-    height:270px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:#171a21;
-}
-
-.product-image{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    display:block;
-
-    transition:.6s;
-}
-
-.product-card:hover .product-image{
-    transform:scale(1.06);
-}
-
-.product-badge{
-    position:absolute;
-
-    top:14px;
-    left:14px;
-
-    background:rgba(5,6,9,.85);
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    color:#00e5ff;
-
-    padding:6px 9px;
-
-    border-radius:6px;
-
-    font-size:9px;
-
-    font-weight:bold;
-
-    letter-spacing:1px;
-}
-
-.product-content{
-    padding:23px;
-}
-
-.product-category{
-    color:#00e5ff;
-
-    font-size:9px;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-}
-
-.product-content h3{
-    font-size:20px;
-
-    margin:7px 0;
-}
-
-.product-description{
-    color:#8f95a1;
-
-    font-size:13px;
-
-    min-height:42px;
-
-    margin-bottom:15px;
-}
-
-.product-bottom{
-    display:flex;
-
-    align-items:center;
-    justify-content:space-between;
-
-    gap:10px;
-}
-
-.product-price{
-    font-size:17px;
-    font-weight:bold;
-}
-
-.product-btn{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:#00e5ff;
-
-    color:#050609;
-
-    padding:10px 13px;
-
-    border-radius:7px;
-
-    font-size:11px;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.product-btn:hover{
     transform:translateY(-2px);
 }
 
-.loading-products,
-.no-products,
-.product-error{
-    grid-column:1/-1;
-
-    text-align:center;
-
-    padding:50px;
-
-    color:#858b97;
+.btn-secondary{
+    background:rgba(255,255,255,.05);
+    border:1px solid var(--border);
+    color:white;
 }
 
-.product-error{
-    border:
-        1px solid #422;
-
-    border-radius:12px;
+.btn-secondary:hover{
+    border-color:rgba(0,229,255,.4);
 }
 
-/* =========================================================
-   START A PROJECT
-========================================================= */
-
-.project-section{
+.hero-card{
+    position:relative;
+    min-height:500px;
+    border:1px solid var(--border);
+    border-radius:30px;
+    overflow:hidden;
     background:
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(0,229,255,.06),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(124,60,255,.08),
-            transparent 30%
-        ),
-        #090b10;
+        linear-gradient(145deg,rgba(0,229,255,.09),rgba(124,60,255,.09)),
+        var(--card);
+    box-shadow:var(--shadow);
 }
 
-.project-wrapper{
-    max-width:1000px;
-    margin:auto;
+.hero-card::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    background:var(--cyan);
+    filter:blur(100px);
+    opacity:.15;
+    top:-80px;
+    right:-50px;
 }
 
-.project-box{
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.07),
-            rgba(255,255,255,.025)
-        );
-
-    border:1px solid #292e3a;
-
-    border-radius:22px;
-
-    padding:35px;
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.28);
+.hero-card-content{
+    position:absolute;
+    inset:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
 }
 
-.project-progress{
+.hero-card-title{
+    font-size:2rem;
+    font-weight:900;
+}
+
+.hero-card-sub{
+    color:var(--muted);
+}
+
+/* CARDS */
+
+.grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-
-    gap:10px;
-
-    margin-bottom:30px;
+    gap:20px;
 }
 
-.project-progress-item{
-    padding:10px;
-
-    text-align:center;
-
-    border-radius:8px;
-
-    background:#11141b;
-
-    border:1px solid #252a35;
-
-    color:#737987;
-
-    font-size:10px;
-
-    font-weight:bold;
-
-    letter-spacing:1px;
-
+.card{
+    background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px;
     transition:.3s;
 }
 
-.project-progress-item.active{
-    background:rgba(0,229,255,.08);
-
-    border-color:#00e5ff;
-
-    color:#00e5ff;
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(0,229,255,.3);
 }
 
-.project-form{
+.icon{
+    width:52px;
+    height:52px;
+    border-radius:15px;
     display:grid;
+    place-items:center;
+    background:rgba(0,229,255,.08);
+    color:var(--cyan);
+    font-size:1.4rem;
+    margin-bottom:18px;
+}
 
-    grid-template-columns:
-        repeat(2,1fr);
+.card h3{
+    margin-bottom:10px;
+}
 
+.card p{
+    color:var(--muted);
+}
+
+/* START PROJECT */
+
+.project-section{
+    background:
+        linear-gradient(180deg,transparent,rgba(0,229,255,.025),transparent);
+}
+
+.project-wrapper{
+    display:grid;
+    grid-template-columns:.75fr 1.25fr;
+    gap:30px;
+    align-items:start;
+}
+
+.project-info{
+    position:sticky;
+    top:110px;
+}
+
+.project-info h3{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.project-info p{
+    color:var(--muted);
+}
+
+.project-points{
+    margin-top:25px;
+    display:grid;
+    gap:14px;
+}
+
+.project-point{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+}
+
+.project-point-icon{
+    min-width:34px;
+    height:34px;
+    display:grid;
+    place-items:center;
+    border-radius:10px;
+    background:rgba(0,229,255,.08);
+    color:var(--cyan);
+}
+
+.project-form-card{
+    background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:var(--shadow);
+}
+
+.form-title{
+    margin-bottom:25px;
+}
+
+.form-title h3{
+    font-size:1.7rem;
+}
+
+.form-title p{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
     gap:18px;
 }
 
 .form-group{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
+    margin-bottom:18px;
 }
 
 .form-group.full{
@@ -1165,3364 +449,1628 @@ section{
 }
 
 .form-group label{
-    color:#d9dce3;
-
-    font-size:12px;
-
-    font-weight:bold;
+    display:block;
+    margin-bottom:7px;
+    font-size:.86rem;
+    font-weight:700;
+    color:#dfe4ed;
 }
 
-.form-group label span{
-    color:#00e5ff;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea{
+.form-control{
     width:100%;
-
-    border:1px solid #303542;
-
-    background:#0d1016;
-
-    color:#fff;
-
-    border-radius:9px;
-
     padding:13px 14px;
-
+    border-radius:11px;
+    border:1px solid rgba(255,255,255,.1);
+    background:#090b10;
+    color:white;
     outline:none;
-
-    transition:.25s;
+    transition:.2s;
 }
 
-.form-group textarea{
-    min-height:125px;
+.form-control:focus{
+    border-color:var(--cyan);
+    box-shadow:0 0 0 3px rgba(0,229,255,.08);
+}
 
+textarea.form-control{
+    min-height:125px;
     resize:vertical;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-    border-color:#00e5ff;
-
-    box-shadow:
-        0 0 0 3px rgba(0,229,255,.07);
-}
-
-.form-group select option{
-    background:#0d1016;
-    color:#fff;
-}
-
-.form-help{
-    color:#727987;
-
-    font-size:10px;
+select.form-control{
+    cursor:pointer;
 }
 
 .dynamic-fields{
-    grid-column:1/-1;
-
     display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns:1fr 1fr;
     gap:18px;
-
     padding:20px;
-
-    border:1px solid #252a35;
-
-    background:#0c0f15;
-
-    border-radius:14px;
+    border-radius:15px;
+    background:rgba(0,0,0,.2);
+    border:1px solid var(--border);
+    margin-bottom:18px;
 }
 
-.dynamic-fields-title{
-    grid-column:1/-1;
-
-    color:#00e5ff;
-
-    font-size:11px;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
-}
-
-.project-file{
-    border:1px dashed #39404d !important;
-
-    padding:20px !important;
-
-    cursor:pointer;
-
-    background:#0b0e14 !important;
-}
-
-.project-file:hover{
-    border-color:#00e5ff !important;
-}
-
-.file-name{
-    color:#8d94a1;
-
-    font-size:11px;
-
-    margin-top:5px;
-}
-
-.delivery-address-wrap{
+.dynamic-fields:empty{
     display:none;
 }
 
-.delivery-address-wrap.show{
-    display:flex;
+.dynamic-fields .form-group{
+    margin-bottom:0;
 }
 
-.project-submit-area{
-    grid-column:1/-1;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:14px;
-
-    margin-top:8px;
-}
-
-.project-submit{
-    width:100%;
-
-    border:none;
-
-    cursor:pointer;
-
-    padding:16px;
-
-    border-radius:10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #00e5ff,
-            #7c3cff
-        );
-
-    color:#050609;
-
-    font-weight:900;
-
-    font-size:14px;
-
-    transition:.3s;
-}
-
-.project-submit:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 12px 35px rgba(0,229,255,.18);
-}
-
-.project-submit:disabled{
-    opacity:.55;
-
-    cursor:not-allowed;
-
-    transform:none;
-}
-
-.project-status{
+.delivery-address{
     display:none;
-
-    padding:13px 15px;
-
-    border-radius:9px;
-
-    font-size:12px;
-
-    text-align:center;
 }
 
-.project-status.show{
+.delivery-address.show{
     display:block;
 }
 
-.project-status.error{
-    background:rgba(255,70,70,.08);
-
-    border:1px solid rgba(255,70,70,.3);
-
-    color:#ff9292;
+.file-box{
+    border:1px dashed rgba(0,229,255,.35);
+    border-radius:15px;
+    padding:20px;
+    background:rgba(0,229,255,.025);
 }
 
-.project-status.success{
-    background:rgba(0,229,255,.07);
-
-    border:1px solid rgba(0,229,255,.3);
-
-    color:#00e5ff;
+.file-box input{
+    width:100%;
 }
 
-.project-success{
+.file-help{
+    color:var(--muted);
+    font-size:.78rem;
+    margin-top:8px;
+}
+
+.file-status{
+    margin-top:10px;
+    color:var(--cyan);
+    font-size:.85rem;
+}
+
+.form-bottom{
+    margin-top:22px;
+}
+
+.submit-btn{
+    width:100%;
+}
+
+.form-message{
     display:none;
-
-    text-align:center;
-
-    padding:25px 10px;
+    padding:15px;
+    border-radius:12px;
+    margin-top:15px;
+    font-size:.9rem;
 }
 
-.project-success.show{
+.form-message.error{
+    display:block;
+    background:rgba(255,70,70,.08);
+    border:1px solid rgba(255,70,70,.2);
+    color:#ffb5b5;
+}
+
+.form-message.success{
+    display:block;
+    background:rgba(0,229,255,.07);
+    border:1px solid rgba(0,229,255,.2);
+    color:#bdfaff;
+}
+
+.success-panel{
+    display:none;
+    text-align:center;
+    padding:35px 20px;
+}
+
+.success-panel.show{
     display:block;
 }
 
 .success-icon{
-    width:75px;
-    height:75px;
-
+    width:70px;
+    height:70px;
+    display:grid;
+    place-items:center;
     margin:0 auto 20px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
     border-radius:50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00e5ff,
-            #7c3cff
-        );
-
-    color:#050609;
-
-    font-size:34px;
-
-    font-weight:900;
+    background:rgba(0,229,255,.1);
+    color:var(--cyan);
+    font-size:2rem;
 }
 
-.project-success h3{
-    font-size:30px;
-
-    margin-bottom:8px;
-}
-
-.project-success p{
-    color:#9197a3;
-
-    font-size:14px;
-
-    max-width:600px;
-
-    margin:0 auto 18px;
-}
-
-.reference-box{
+.reference{
     display:inline-block;
-
-    padding:15px 25px;
-
-    margin:10px auto 25px;
-
-    border-radius:10px;
-
-    background:#11151d;
-
-    border:1px solid #00e5ff;
-
-    color:#00e5ff;
-
-    font-size:20px;
-
+    margin:18px 0;
+    padding:13px 20px;
+    border-radius:12px;
+    background:#080a0f;
+    border:1px solid rgba(0,229,255,.25);
+    color:var(--cyan);
     font-weight:900;
-
-    letter-spacing:2px;
+    letter-spacing:1px;
 }
 
-.success-actions{
+/* PRODUCTS */
+
+.product-toolbar{
     display:flex;
-
-    justify-content:center;
-
     flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:30px;
+}
 
+.filter-btn{
+    padding:9px 15px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.03);
+    color:#dfe4ed;
+    cursor:pointer;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:rgba(0,229,255,.1);
+    border-color:rgba(0,229,255,.3);
+    color:var(--cyan);
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.product-card{
+    overflow:hidden;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+}
+
+.product-image{
+    height:240px;
+    background:#0a0c11;
+    overflow:hidden;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.product-card:hover img{
+    transform:scale(1.05);
+}
+
+.product-body{
+    padding:20px;
+}
+
+.product-category{
+    color:var(--cyan);
+    font-size:.75rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.product-body h3{
+    margin:7px 0;
+}
+
+.product-body p{
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.product-price{
+    margin:12px 0;
+    font-size:1.15rem;
+    font-weight:900;
+}
+
+.product-actions{
+    display:flex;
     gap:10px;
 }
 
-/* =========================================================
-   PORTFOLIO
-========================================================= */
+.product-actions .btn{
+    flex:1;
+    padding:11px;
+    font-size:.85rem;
+}
+
+/* PORTFOLIO */
 
 .portfolio-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(12,1fr);
-
+    grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
-.work-card{
-    position:relative;
-
-    height:300px;
-
+.portfolio-item{
+    min-height:280px;
+    border-radius:20px;
     overflow:hidden;
-
-    border-radius:17px;
-
-    border:
-        1px solid #272b36;
-
-    background:#11131a;
+    position:relative;
+    border:1px solid var(--border);
+    background:#111;
 }
 
-.work-card.large{
-    grid-column:span 6;
-}
-
-.work-card.small{
-    grid-column:span 3;
-}
-
-.work-card img{
+.portfolio-item img{
     width:100%;
     height:100%;
-
     object-fit:cover;
-
-    transition:.6s;
+    transition:.4s;
 }
 
-.work-card:hover img{
-    transform:scale(1.08);
+.portfolio-item:hover img{
+    transform:scale(1.06);
 }
 
-.work-overlay{
+.portfolio-overlay{
     position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:end;
-
-    padding:22px;
-
-    background:
-        linear-gradient(
-            transparent 25%,
-            rgba(0,0,0,.9)
-        );
+    inset:auto 0 0;
+    padding:25px;
+    background:linear-gradient(transparent,rgba(0,0,0,.85));
 }
 
-.work-overlay small{
-    color:#00e5ff;
-
-    font-size:9px;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
-}
-
-.work-overlay h3{
-    font-size:19px;
-
-    margin-top:4px;
-}
-
-.work-overlay p{
-    color:#c0c4cd;
-
-    font-size:11px;
-}
-
-/* =========================================================
-   HOW IT WORKS
-========================================================= */
-
-.process-section{
-    background:#0c0e13;
-}
+/* PROCESS */
 
 .process-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:15px;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
 }
 
-.process-card{
+.step{
     text-align:center;
-
-    padding:28px 18px;
-
-    position:relative;
 }
 
-.process-number{
-    width:60px;
-    height:60px;
-
+.step-number{
+    width:58px;
+    height:58px;
     margin:0 auto 18px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
+    display:grid;
+    place-items:center;
     border-radius:50%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00e5ff,
-            #7c3cff
-        );
-
-    color:#050609;
-
-    font-weight:900;
-
-    font-size:18px;
+    background:linear-gradient(135deg,var(--cyan),var(--purple));
+    color:#05060a;
+    font-weight:1000;
+    font-size:1.2rem;
 }
 
-.process-card h3{
-    font-size:16px;
-    margin-bottom:7px;
+.step p{
+    color:var(--muted);
+    font-size:.9rem;
 }
 
-.process-card p{
-    color:#858b97;
-    font-size:12px;
-}
+/* ABOUT */
 
-.process-line{
-    position:absolute;
-
-    top:58px;
-    right:-8px;
-
-    width:16px;
-    height:2px;
-
-    background:#343844;
-}
-
-/* =========================================================
-   WHY US
-========================================================= */
-
-.why-grid{
+.about-grid{
     display:grid;
-
-    grid-template-columns:
-        .9fr 1.1fr;
-
-    gap:65px;
-
+    grid-template-columns:1fr 1fr;
+    gap:40px;
     align-items:center;
 }
 
-.why-visual{
-    min-height:430px;
-
-    position:relative;
-
-    border-radius:22px;
-
-    background:
-        radial-gradient(
-            circle at 30% 30%,
-            rgba(0,229,255,.15),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(124,60,255,.15),
-            transparent 30%
-        ),
-        #101218;
-
-    border:
-        1px solid #282c37;
-
-    overflow:hidden;
+.about-box{
+    padding:35px;
+    border-radius:25px;
+    background:linear-gradient(145deg,rgba(0,229,255,.06),rgba(124,60,255,.05));
+    border:1px solid var(--border);
 }
 
-.why-visual::after{
-    content:"BOSSY";
-
-    position:absolute;
-
-    left:-20px;
-    bottom:-40px;
-
-    font-size:120px;
-
-    font-weight:950;
-
-    color:rgba(255,255,255,.025);
+.about-box h3{
+    font-size:2rem;
+    margin-bottom:15px;
 }
 
-.why-center{
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    flex-direction:column;
-
-    text-align:center;
+.about-box p{
+    color:var(--muted);
+    margin-bottom:18px;
 }
 
-.why-center strong{
-    font-size:48px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #00e5ff,
-            #7c3cff
-        );
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-}
-
-.why-center span{
-    color:#8e94a0;
-    font-size:12px;
-}
-
-.why-list{
-    display:flex;
-    flex-direction:column;
-    gap:23px;
-}
-
-.why-item{
-    display:flex;
-    gap:15px;
-}
-
-.why-check{
-    flex-shrink:0;
-
-    width:40px;
-    height:40px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:10px;
-
-    background:#151821;
-
-    color:#00e5ff;
-}
-
-.why-item h3{
-    font-size:17px;
-    margin-bottom:4px;
-}
-
-.why-item p{
-    color:#858b97;
-    font-size:13px;
-}
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-section{
-    background:#07080c;
-}
-
-.about-content{
-    max-width:850px;
-
-    margin:auto;
-
-    text-align:center;
-}
-
-.about-content p{
-    color:#a2a7b2;
-
-    font-size:16px;
-
-    line-height:1.9;
-}
-
-.about-stats{
+.check-list{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:15px;
-
-    margin-top:35px;
+    gap:12px;
 }
 
-.about-stat{
-    padding:22px;
-
-    border:
-        1px solid #252934;
-
-    border-radius:13px;
-
-    background:#101218;
+.check{
+    display:flex;
+    gap:10px;
 }
 
-.about-stat strong{
-    display:block;
-
-    font-size:24px;
-
-    color:#00e5ff;
+.check b{
+    color:var(--cyan);
 }
 
-.about-stat span{
-    color:#858b97;
+/* FAQ */
 
-    font-size:11px;
-}
-
-/* =========================================================
-   FAQ
-========================================================= */
-
-.faq-section{
-    background:#0c0e13;
-}
-
-.faq-inner{
+.faq{
     max-width:850px;
-
     margin:auto;
 }
 
 details{
-    background:#101218;
-
-    border:
-        1px solid #272b36;
-
-    border-radius:12px;
-
+    background:rgba(255,255,255,.025);
+    border:1px solid var(--border);
+    border-radius:14px;
     margin-bottom:12px;
-
-    padding:20px 22px;
-
-    transition:.3s;
-}
-
-details[open]{
-    border-color:
-        rgba(0,229,255,.4);
+    padding:18px 20px;
 }
 
 summary{
     cursor:pointer;
-
-    font-weight:bold;
-
-    font-size:14px;
-
-    list-style:none;
-}
-
-summary::-webkit-details-marker{
-    display:none;
-}
-
-summary::after{
-    content:"+";
-
-    float:right;
-
-    color:#00e5ff;
-
-    font-size:20px;
-
-    line-height:14px;
-}
-
-details[open] summary::after{
-    content:"−";
+    font-weight:800;
 }
 
 details p{
-    color:#858b97;
-
-    font-size:13px;
-
-    margin-top:13px;
-
-    max-width:720px;
+    color:var(--muted);
+    padding-top:12px;
 }
 
-/* =========================================================
-   CTA
-========================================================= */
-
-.cta{
-    position:relative;
-
-    overflow:hidden;
-
-    padding:90px 25px;
-
-    margin:0;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(0,229,255,.15),
-            transparent 45%
-        ),
-        #101218;
-
-    border-top:
-        1px solid #272b36;
-
-    border-bottom:
-        1px solid #272b36;
-
-    text-align:center;
-}
-
-.cta h2{
-    font-size:clamp(32px,5vw,50px);
-
-    line-height:1.1;
-
-    margin-bottom:12px;
-}
-
-.cta p{
-    color:#999eaa;
-
-    max-width:600px;
-
-    margin:0 auto 27px;
-}
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact-section{
-    background:#07080c;
-}
+/* CONTACT */
 
 .contact-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns:1fr 1fr;
     gap:20px;
 }
 
 .contact-card{
-    text-align:center;
-
-    padding:30px 20px;
-
-    background:#101218;
-
-    border:
-        1px solid #272b36;
-
-    border-radius:15px;
-
-    transition:.3s;
-}
-
-.contact-card:hover{
-    transform:translateY(-5px);
-
-    border-color:#00e5ff;
-}
-
-.contact-icon{
-    width:55px;
-    height:55px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    margin:0 auto 15px;
-
-    border-radius:13px;
-
-    background:#191c25;
-
-    font-size:24px;
-}
-
-.contact-card h3{
-    margin-bottom:7px;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid var(--border);
+    background:var(--card);
 }
 
 .contact-card p{
-    color:#858b97;
+    color:var(--muted);
+    margin-top:8px;
+}
 
-    font-size:13px;
+.contact-link{
+    display:inline-block;
+    margin-top:18px;
+    color:var(--cyan);
+    font-weight:800;
+}
 
+/* CTA */
+
+.cta{
+    text-align:center;
+    padding:75px 25px;
+    border-radius:30px;
+    background:
+        radial-gradient(circle at 20% 30%,rgba(0,229,255,.14),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(124,60,255,.14),transparent 30%),
+        var(--card);
+    border:1px solid var(--border);
+}
+
+.cta h2{
+    font-size:clamp(2rem,5vw,3.5rem);
     margin-bottom:15px;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+.cta p{
+    color:var(--muted);
+    max-width:650px;
+    margin:0 auto 25px;
+}
+
+/* FOOTER */
 
 footer{
-    background:#050609;
-
-    border-top:
-        1px solid #22252e;
-
-    padding:50px 0 25px;
+    padding:60px 0 30px;
+    border-top:1px solid var(--border);
+    background:#05060a;
 }
 
 .footer-grid{
     display:grid;
-
-    grid-template-columns:
-        1.4fr 1fr 1fr;
-
+    grid-template-columns:1.4fr 1fr 1fr;
     gap:40px;
-
-    padding-bottom:40px;
-
-    border-bottom:
-        1px solid #20232b;
 }
 
-.footer-logo{
-    font-size:24px;
-
-    font-weight:950;
-
-    letter-spacing:1px;
+footer p{
+    color:var(--muted);
+    margin-top:12px;
 }
 
-.footer-logo span{
-    color:#00e5ff;
+footer h4{
+    margin-bottom:12px;
 }
 
-.footer-column h3{
-    font-size:13px;
-
-    margin-bottom:15px;
+.footer-links{
+    display:grid;
+    gap:8px;
 }
 
-.footer-column a{
-    display:block;
-
-    color:#777d88;
-
-    font-size:12px;
-
-    margin-bottom:9px;
-
-    transition:.3s;
+.footer-links a{
+    color:var(--muted);
 }
 
-.footer-column a:hover{
-    color:#00e5ff;
+.footer-links a:hover{
+    color:var(--cyan);
 }
 
-.footer-brand p{
-    color:#777d88;
-
-    font-size:12px;
-
-    max-width:350px;
-
-    margin-top:10px;
-}
-
-.footer-bottom{
+.copyright{
+    margin-top:40px;
     padding-top:20px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    color:#626873;
-
-    font-size:11px;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    font-size:.85rem;
+    text-align:center;
 }
 
-/* =========================================================
-   FLOATING WHATSAPP
-========================================================= */
+/* FLOATING */
 
-.whatsapp-float{
+.whatsapp{
     position:fixed;
-
-    width:61px;
-    height:61px;
-
-    right:22px;
-    bottom:22px;
-
-    z-index:4500;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:#25D366;
-
-    color:#fff;
-
+    right:20px;
+    bottom:20px;
+    width:58px;
+    height:58px;
+    display:grid;
+    place-items:center;
     border-radius:50%;
-
-    font-size:29px;
-
-    box-shadow:
-        0 10px 35px rgba(0,0,0,.45);
-
-    transition:.3s;
-
-    animation:
-        whatsappPulse 2.5s infinite;
+    background:#25d366;
+    color:white;
+    font-size:1.5rem;
+    z-index:900;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
-
-.whatsapp-float:hover{
-    transform:scale(1.1);
-}
-
-@keyframes whatsappPulse{
-
-    0%,100%{
-        box-shadow:
-            0 10px 35px rgba(0,0,0,.45);
-    }
-
-    50%{
-        box-shadow:
-            0 10px 35px rgba(37,211,102,.35);
-    }
-
-}
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
 
 .back-top{
     position:fixed;
-
-    right:22px;
-    bottom:95px;
-
-    width:42px;
-    height:42px;
-
-    border:
-        1px solid #343844;
-
-    background:#101218;
-
-    color:#fff;
-
-    border-radius:9px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
+    right:20px;
+    bottom:90px;
+    width:40px;
+    height:40px;
+    border:1px solid var(--border);
+    border-radius:50%;
+    background:#11141c;
+    color:white;
     cursor:pointer;
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.3s;
-
-    z-index:4000;
+    display:none;
+    z-index:900;
 }
 
 .back-top.show{
-    opacity:1;
-    visibility:visible;
+    display:grid;
+    place-items:center;
 }
 
-.back-top:hover{
-    color:#00e5ff;
-    border-color:#00e5ff;
-}
+/* RESPONSIVE */
 
-/* =========================================================
-   MOBILE
-========================================================= */
+@media(max-width:950px){
 
-@media(max-width:900px){
+    .nav-links{
+        position:absolute;
+        top:78px;
+        left:0;
+        width:100%;
+        padding:20px;
+        background:#080a0f;
+        border-bottom:1px solid var(--border);
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
 
     .menu-btn{
         display:block;
     }
 
-    nav{
-        position:fixed;
-
-        top:76px;
-        left:0;
-        right:0;
-
-        display:none;
-
-        flex-direction:column;
-
-        align-items:stretch;
-
-        gap:5px;
-
-        padding:18px;
-
-        background:#090a0f;
-
-        border-bottom:
-            1px solid #252832;
-
-        box-shadow:
-            0 20px 35px rgba(0,0,0,.4);
-    }
-
-    nav.active{
-        display:flex;
-    }
-
-    nav a{
-        padding:13px;
-
-        border-radius:8px;
-
-        text-align:center;
-    }
-
-    nav a:hover{
-        background:#11131a;
-    }
-
-    .nav-quote{
-        margin-top:5px;
-    }
-
-    .hero-inner{
+    .hero-grid,
+    .project-wrapper,
+    .about-grid{
         grid-template-columns:1fr;
-        text-align:center;
     }
 
-    .hero-content{
-        margin:auto;
+    .project-info{
+        position:static;
     }
 
-    .hero-description{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .hero-buttons{
-        justify-content:center;
-    }
-
-    .hero-visual{
-        min-height:420px;
-        max-width:550px;
-        width:100%;
-        margin:auto;
-    }
-
-    .services-grid,
-    .product-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
+    .grid,
+    .products-grid,
     .portfolio-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .work-card.large,
-    .work-card.small{
-        grid-column:span 1;
+        grid-template-columns:repeat(2,1fr);
     }
 
     .process-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .process-line{
-        display:none;
-    }
-
-    .why-grid{
-        grid-template-columns:1fr;
-    }
-
-    .why-visual{
-        min-height:330px;
-    }
-
-    .contact-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+    .hero-card{
+        min-height:380px;
     }
 
     .footer-grid{
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns:1fr 1fr;
     }
-
-    .footer-brand{
-        grid-column:1/-1;
-    }
-
-    .products-top{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .product-filters{
-        justify-content:flex-start;
-    }
-
 }
 
-@media(max-width:700px){
-
-    .project-box{
-        padding:20px;
-    }
-
-    .project-form,
-    .dynamic-fields{
-        grid-template-columns:1fr;
-    }
-
-    .dynamic-fields-title,
-    .form-group.full,
-    .project-submit-area{
-        grid-column:auto;
-    }
-
-    .project-progress-item{
-        font-size:8px;
-    }
-
-}
-
-@media(max-width:600px){
-
-    .container{
-        width:min(
-            100% - 30px,
-            1180px
-        );
-    }
+@media(max-width:650px){
 
     section{
         padding:75px 0;
     }
 
     .hero{
-        padding-top:115px;
-        padding-bottom:65px;
+        padding-top:110px;
     }
 
     .hero h1{
-        font-size:48px;
-        letter-spacing:-3px;
+        letter-spacing:-2px;
     }
 
-    .hero-description{
-        font-size:15px;
+    .hero-buttons{
+        flex-direction:column;
     }
 
-    .hero-visual{
-        min-height:350px;
+    .hero-buttons .btn{
+        width:100%;
     }
 
-    .hero-circle{
-        width:270px;
-        height:270px;
-    }
-
-    .print-card{
-        width:190px;
-        padding:10px;
-    }
-
-    .print-card img{
-        height:145px;
-    }
-
-    .print-card.one{
-        left:0;
-        top:40px;
-    }
-
-    .print-card.two{
-        right:0;
-        bottom:35px;
-    }
-
-    .hero-orb{
-        display:none;
-    }
-
-    .trust-grid{
-        grid-template-columns:1fr;
-
-        padding:20px 0;
-    }
-
-    .trust-item{
-        justify-content:flex-start;
-    }
-
-    .services-grid,
-    .product-grid,
+    .grid,
+    .products-grid,
+    .portfolio-grid,
     .process-grid,
     .contact-grid,
-    .about-stats{
+    .footer-grid,
+    .form-grid,
+    .dynamic-fields{
         grid-template-columns:1fr;
     }
 
-    .portfolio-grid{
-        display:grid;
-        grid-template-columns:1fr;
+    .project-form-card{
+        padding:20px;
     }
 
-    .work-card.large,
-    .work-card.small{
-        grid-column:auto;
-        height:280px;
+    .dynamic-fields{
+        padding:15px;
     }
 
-    .why-visual{
-        min-height:280px;
-    }
-
-    .why-center strong{
-        font-size:40px;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .footer-brand{
-        grid-column:auto;
-    }
-
-    .footer-bottom{
+    .product-actions{
         flex-direction:column;
-        text-align:center;
     }
 
-    .whatsapp-float{
-        width:56px;
-        height:56px;
-
-        right:15px;
-        bottom:15px;
-
-        font-size:27px;
+    .hero-card{
+        min-height:300px;
     }
 
-    .back-top{
-        right:15px;
-        bottom:82px;
+    .logo-text{
+        font-size:.9rem;
     }
-
-    .project-success h3{
-        font-size:25px;
-    }
-
-    .reference-box{
-        font-size:16px;
-        padding:13px 18px;
-    }
-
 }
-
-@media(max-width:380px){
-
-    .hero h1{
-        font-size:42px;
-    }
-
-    .print-card{
-        width:165px;
-    }
-
-    .print-card img{
-        height:125px;
-    }
-
-}
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-        scroll-behavior:auto !important;
-        animation:none !important;
-        transition:none !important;
-    }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<header>
+    <div class="container navbar">
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
+        <a href="#home" class="logo">
+            <div class="logo-mark">B</div>
+            <div class="logo-text">
+                BOSSY PRINTS
+                <small>PRINTING • BRANDING • DESIGN</small>
+            </div>
+        </a>
 
-<header id="siteHeader">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
 
-<div class="container navbar">
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#start-project">Start a Project</a>
+            <a href="#products">Products</a>
+            <a href="#work">Our Work</a>
+            <a href="#about">About</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="#start-project" class="nav-cta">Get a Quote</a>
+        </nav>
 
-<a href="#home" class="logo">
-
-<div class="logo-mark">
-B
-</div>
-
-<div class="logo-text">
-
-BOSSY PRINTS
-
-<span>
-PRINTING • BRANDING • DESIGN
-</span>
-
-</div>
-
-</a>
-
-
-<button
-class="menu-btn"
-id="menuBtn"
-aria-label="Open navigation"
-aria-expanded="false">
-
-☰
-
-</button>
-
-
-<nav id="mainNav">
-
-<a href="#home">
-Home
-</a>
-
-<a href="#services">
-Services
-</a>
-
-<a href="#products">
-Products
-</a>
-
-<a href="#portfolio">
-Our Work
-</a>
-
-<a href="#start-project">
-Start Project
-</a>
-
-<a href="#about">
-About
-</a>
-
-<a href="#faq">
-FAQ
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
-<a
-class="nav-quote"
-href="#start-project">
-
-Get a Quote
-
-</a>
-
-</nav>
-
-</div>
-
+    </div>
 </header>
 
+<main>
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+<!-- HERO -->
 
 <section class="hero" id="home">
 
-<div class="hero-grid"></div>
+    <div class="container hero-grid">
 
-<div class="container hero-inner">
+        <div>
 
-<div class="hero-content reveal">
+            <div class="hero-badge">
+                ✦ PRINTING • BRANDING • DESIGN
+            </div>
 
-<div class="badge">
+            <h1>
+                TURN YOUR
+                <span class="gradient-text">IDEAS</span>
+                INTO REALITY.
+            </h1>
 
-<span class="badge-dot"></span>
+            <p>
+                Professional T-shirt printing, graphic design, business branding,
+                banners, posters, stickers, labels, caps and custom printing
+                solutions in Kenya.
+            </p>
 
-PRINTING • BRANDING • DESIGN
+            <div class="hero-buttons">
 
-</div>
+                <a href="#start-project" class="btn btn-primary">
+                    🚀 Start Your Project
+                </a>
 
+                <a href="#products" class="btn btn-secondary">
+                    Explore Products
+                </a>
 
-<h1>
+            </div>
 
-TURN YOUR
+        </div>
 
-<span>
-IDEAS INTO REALITY.
-</span>
+        <div class="hero-card">
 
-</h1>
+            <div class="hero-card-content">
 
+                <div class="hero-card-title">
+                    Your Idea.<br>
+                    Our Creativity.
+                </div>
 
-<p class="hero-description">
+                <p class="hero-card-sub">
+                    From concept to finished product, Bossy Prints & Design
+                    helps bring your vision to life.
+                </p>
 
-From custom T-shirts and business branding to banners,
-stickers, posters and creative design — we turn your
-ideas into products people can see, wear and remember.
+            </div>
 
-</p>
+        </div>
 
-
-<div class="hero-buttons">
-
-<a
-class="btn btn-primary"
-href="#start-project">
-
-🚀 Start Your Project
-
-</a>
-
-
-<a
-class="btn btn-secondary"
-href="#products">
-
-Explore Our Work ↓
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="hero-visual reveal">
-
-<div class="hero-circle"></div>
-
-<div class="hero-orb one"></div>
-
-<div class="hero-orb two"></div>
-
-
-<div class="print-card one">
-
-<img
-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"
-alt="Custom T-shirt printing">
-
-<div class="print-card-info">
-
-<small>
-CUSTOM PRINTING
-</small>
-
-<strong>
-Make It Yours.
-</strong>
-
-</div>
-
-</div>
-
-
-<div class="print-card two">
-
-<img
-src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=700&q=85"
-alt="Creative graphic design">
-
-<div class="print-card-info">
-
-<small>
-CREATIVE DESIGN
-</small>
-
-<strong>
-Built Around You.
-</strong>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     TRUST BAR
-========================================================= -->
-
-<div class="trust">
-
-<div class="container trust-grid">
-
-<div class="trust-item">
-
-<div class="trust-icon">
-✦
-</div>
-
-<div>
-
-<strong>
-CUSTOM WORK
-</strong>
-
-<span>
-Built around your idea
-</span>
-
-</div>
-
-</div>
-
-
-<div class="trust-item">
-
-<div class="trust-icon">
-◈
-</div>
-
-<div>
-
-<strong>
-PRINTING + DESIGN
-</strong>
-
-<span>
-Your project in one place
-</span>
-
-</div>
-
-</div>
-
-
-<div class="trust-item">
-
-<div class="trust-icon">
-💬
-</div>
-
-<div>
-
-<strong>
-EASY ORDERING
-</strong>
-
-<span>
-Submit your project online
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =========================================================
-     SERVICES
-========================================================= -->
-
-<section
-class="section-dark"
-id="services">
-
-<div class="container">
-
-<div class="section-heading reveal">
-
-<small>
-WHAT WE DO
-</small>
-
-<h2>
-Everything You Need To Make Your Brand Stand Out.
-</h2>
-
-<p>
-Professional printing, branding and graphic design
-solutions for individuals, businesses, teams,
-organizations and events.
-</p>
-
-</div>
-
-
-<div class="services-grid">
-
-
-<div class="service-card reveal">
-
-<div class="service-icon">
-👕
-</div>
-
-<h3>
-T-Shirt Printing
-</h3>
-
-<p>
-Custom T-shirts for businesses, teams, events,
-organizations, groups and personal occasions.
-</p>
-
-<a
-href="#start-project"
-class="service-link">
-
-Start project →
-
-</a>
-
-</div>
-
-
-<div class="service-card reveal">
-
-<div class="service-icon">
-🎨
-</div>
-
-<h3>
-Graphic Design
-</h3>
-
-<p>
-Logos, flyers, posters, social media graphics,
-business artwork and custom designs.
-</p>
-
-<a
-href="#start-project"
-class="service-link">
-
-Start project →
-
-</a>
-
-</div>
-
-
-<div class="service-card reveal">
-
-<div class="service-icon">
-🏢
-</div>
-
-<h3>
-Business Branding
-</h3>
-
-<p>
-Professional branding solutions designed to help
-your business look recognizable and consistent.
-</p>
-
-<a
-href="#start-project"
-class="service-link">
-
-Start branding →
-
-</a>
-
-</div>
-
-
-<div class="service-card reveal">
-
-<div class="service-icon">
-📢
-</div>
-
-<h3>
-Banners & Posters
-</h3>
-
-<p>
-Promotional banners and posters for businesses,
-events, advertising and special occasions.
-</p>
-
-<a
-href="#start-project"
-class="service-link">
-
-Request a quote →
-
-</a>
-
-</div>
-
-
-<div class="service-card reveal">
-
-<div class="service-icon">
-🏷️
-</div>
-
-<h3>
-Stickers & Labels
-</h3>
-
-<p>
-Custom stickers and product labels that give
-your products a professional appearance.
-</p>
-
-<a
-href="#start-project"
-class="service-link">
-
-Ask about labels →
-
-</a>
-
-</div>
-
-
-<div class="service-card reveal">
-
-<div class="service-icon">
-🧢
-</div>
-
-<h3>
-Caps & Merchandise
-</h3>
-
-<p>
-Custom caps and branded merchandise for teams,
-businesses, events and organizations.
-</p>
-
-<a
-href="#start-project"
-class="service-link">
-
-Get started →
-
-</a>
-
-</div>
-
-</div>
-
-</div>
+<!-- SERVICES -->
+
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>What We Do</span>
+            <h2>Professional Services</h2>
+            <p>
+                Everything you need to make your brand, event or idea stand out.
+            </p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <div class="icon">👕</div>
+                <h3>T-Shirt Printing</h3>
+                <p>
+                    Custom T-shirts for businesses, teams, events,
+                    campaigns, gifts and personal projects.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>Graphic Design</h3>
+                <p>
+                    Logos, posters, social media artwork, flyers,
+                    promotional graphics and custom designs.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏢</div>
+                <h3>Business Branding</h3>
+                <p>
+                    Build a stronger brand with professional visual
+                    identity and branded materials.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🖼️</div>
+                <h3>Banners & Posters</h3>
+                <p>
+                    High-impact banners and posters for businesses,
+                    events, campaigns and promotions.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏷️</div>
+                <h3>Stickers & Labels</h3>
+                <p>
+                    Custom stickers and labels for products,
+                    packaging, businesses and personal use.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🧢</div>
+                <h3>Caps & Merchandise</h3>
+                <p>
+                    Custom caps and merchandise for teams,
+                    businesses, events and organizations.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     PRODUCTS
-========================================================= -->
+<!-- START A PROJECT -->
 
-<section
-class="products-section"
-id="products">
+<section id="start-project" class="project-section">
 
-<div class="container">
+    <div class="container">
 
-<div class="products-top">
+        <div class="section-title">
+            <span>Let's Work Together</span>
+            <h2>Start a Project</h2>
+            <p>
+                Tell us what you need. Submit your project details and
+                artwork, and we'll review it and get back to you.
+            </p>
+        </div>
 
-<div class="section-heading reveal">
+        <div class="project-wrapper">
 
-<small>
-OUR PRODUCTS
-</small>
+            <div class="project-info">
 
-<h2>
-See What We Can Create.
-</h2>
+                <h3>Bring Your Idea to Life.</h3>
 
-<p>
-Our latest products and services are updated directly
-from the Bossy Prints & Design admin system.
-</p>
+                <p>
+                    Whether you need one custom T-shirt or complete
+                    business branding, start your project here.
+                </p>
 
-</div>
+                <div class="project-points">
+
+                    <div class="project-point">
+                        <div class="project-point-icon">✓</div>
+                        <div>
+                            <strong>Tell us what you need</strong>
+                            <p>Choose your service and provide the details.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-point">
+                        <div class="project-point-icon">✓</div>
+                        <div>
+                            <strong>Upload your artwork</strong>
+                            <p>Send PNG, JPG, PDF or SVG files.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-point">
+                        <div class="project-point-icon">✓</div>
+                        <div>
+                            <strong>Receive your reference</strong>
+                            <p>Keep your project reference for communication.</p>
+                        </div>
+                    </div>
+
+                    <div class="project-point">
+                        <div class="project-point-icon">✓</div>
+                        <div>
+                            <strong>We review your project</strong>
+                            <p>We'll discuss the details and prepare your quote.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
 
 
-<div
-class="product-filters"
-id="productFilters">
+            <div class="project-form-card">
 
-<button
-class="filter-btn active"
-data-filter="all">
+                <div id="projectFormContainer">
 
-All
+                    <div class="form-title">
+                        <h3>Project Details</h3>
+                        <p>Fields marked with * are required.</p>
+                    </div>
 
-</button>
+                    <form id="projectForm">
 
-</div>
+                        <!-- Honeypot -->
+                        <input
+                            type="text"
+                            id="website"
+                            name="website"
+                            autocomplete="off"
+                            tabindex="-1"
+                            style="position:absolute;left:-9999px;opacity:0;"
+                        >
 
-</div>
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="service">Service *</label>
+
+                                <select
+                                    id="service"
+                                    class="form-control"
+                                    required
+                                >
+                                    <option value="">Select a service</option>
+                                    <option value="T-Shirt Printing">T-Shirt Printing</option>
+                                    <option value="Graphic Design">Graphic Design</option>
+                                    <option value="Business Branding">Business Branding</option>
+                                    <option value="Banners & Posters">Banners & Posters</option>
+                                    <option value="Stickers & Labels">Stickers & Labels</option>
+                                    <option value="Caps & Merchandise">Caps & Merchandise</option>
+                                    <option value="Other / Custom">Other / Custom</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quantity">Quantity *</label>
+
+                                <input
+                                    type="number"
+                                    id="quantity"
+                                    class="form-control"
+                                    min="1"
+                                    max="10000"
+                                    value="1"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerName">Full Name *</label>
+
+                                <input
+                                    type="text"
+                                    id="customerName"
+                                    class="form-control"
+                                    maxlength="100"
+                                    autocomplete="name"
+                                    placeholder="Your full name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerPhone">Phone Number *</label>
+
+                                <input
+                                    type="tel"
+                                    id="customerPhone"
+                                    class="form-control"
+                                    maxlength="30"
+                                    autocomplete="tel"
+                                    placeholder="07XXXXXXXX"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerEmail">Email Address</label>
+
+                                <input
+                                    type="email"
+                                    id="customerEmail"
+                                    class="form-control"
+                                    maxlength="150"
+                                    autocomplete="email"
+                                    placeholder="you@example.com"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="deliveryMethod">Delivery Method *</label>
+
+                                <select
+                                    id="deliveryMethod"
+                                    class="form-control"
+                                    required
+                                >
+                                    <option value="">Choose an option</option>
+                                    <option value="Pickup">Pickup</option>
+                                    <option value="Delivery">Delivery</option>
+                                </select>
+                            </div>
+
+                        </div>
 
 
-<div
-id="productsContainer"
-class="product-grid">
+                        <!-- Dynamic service fields -->
 
-<div class="loading-products">
+                        <div id="dynamicFields" class="dynamic-fields"></div>
 
-Loading our latest work...
 
-</div>
+                        <!-- Delivery address -->
 
-</div>
+                        <div
+                            class="form-group delivery-address"
+                            id="deliveryAddressGroup"
+                        >
 
-</div>
+                            <label for="deliveryAddress">
+                                Delivery Address *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="deliveryAddress"
+                                class="form-control"
+                                maxlength="250"
+                                placeholder="Town / area / delivery location"
+                            >
+
+                        </div>
+
+
+                        <!-- Artwork -->
+
+                        <div class="form-group">
+
+                            <label>Artwork / Design File</label>
+
+                            <div class="file-box">
+
+                                <input
+                                    type="file"
+                                    id="artwork"
+                                    accept=".png,.jpg,.jpeg,.pdf,.svg,image/png,image/jpeg,application/pdf,image/svg+xml"
+                                >
+
+                                <div class="file-help">
+                                    Accepted: PNG, JPG, JPEG, PDF or SVG.
+                                    Maximum size: 15MB.
+                                </div>
+
+                                <div
+                                    id="fileStatus"
+                                    class="file-status"
+                                    aria-live="polite"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Notes -->
+
+                        <div class="form-group">
+
+                            <label for="notes">
+                                Additional Notes / Instructions
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                class="form-control"
+                                maxlength="2000"
+                                placeholder="Tell us anything else we should know about your project..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="form-bottom">
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary submit-btn"
+                                id="submitProject"
+                            >
+                                🚀 Submit Project
+                            </button>
+
+                            <div
+                                id="formMessage"
+                                class="form-message"
+                                role="alert"
+                                aria-live="assertive"
+                            ></div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- SUCCESS -->
+
+                <div id="successPanel" class="success-panel">
+
+                    <div class="success-icon">✓</div>
+
+                    <h2>PROJECT RECEIVED</h2>
+
+                    <p>
+                        Your project has been submitted successfully.
+                    </p>
+
+                    <div
+                        id="referenceDisplay"
+                        class="reference"
+                    ></div>
+
+                    <p style="color:var(--muted);">
+                        Keep this reference number when contacting
+                        Bossy Prints & Design.
+                    </p>
+
+                    <div
+                        style="
+                            display:flex;
+                            justify-content:center;
+                            flex-wrap:wrap;
+                            gap:10px;
+                            margin-top:25px;
+                        "
+                    >
+
+                        <a
+                            href="#"
+                            id="successWhatsApp"
+                            class="btn btn-primary"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            💬 WhatsApp Bossy
+                        </a>
+
+                        <button
+                            type="button"
+                            id="newProjectBtn"
+                            class="btn btn-secondary"
+                        >
+                            Start Another Project
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     START A PROJECT
-========================================================= -->
-
-<section
-class="project-section"
-id="start-project">
-
-<div class="container project-wrapper">
-
-<div class="section-heading reveal">
-
-<small>
-START A PROJECT
-</small>
-
-<h2>
-Let's Build Your Project.
-</h2>
-
-<p>
-Tell us what you need, upload your artwork if you have it,
-and we'll review your project and get back to you with
-the next steps and quotation.
-</p>
-
-</div>
-
-
-<div class="project-box reveal">
-
-
-<div class="project-progress">
-
-<div class="project-progress-item active">
-01 • PROJECT
-</div>
-
-<div class="project-progress-item">
-02 • ARTWORK
-</div>
-
-<div class="project-progress-item">
-03 • SUBMIT
-</div>
-
-</div>
-
-
-<form
-id="projectForm"
-class="project-form">
-
-
-<div class="form-group">
-
-<label>
-Service <span>*</span>
-</label>
-
-<select
-id="projectService"
-required>
-
-<option value="">
-Choose a service
-</option>
-
-<option value="T-Shirt Printing">
-T-Shirt Printing
-</option>
-
-<option value="Graphic Design">
-Graphic Design
-</option>
-
-<option value="Business Branding">
-Business Branding
-</option>
-
-<option value="Banners & Posters">
-Banners & Posters
-</option>
-
-<option value="Stickers & Labels">
-Stickers & Labels
-</option>
-
-<option value="Caps & Merchandise">
-Caps & Merchandise
-</option>
-
-<option value="Other / Custom">
-Other / Custom
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Quantity <span>*</span>
-</label>
-
-<input
-type="number"
-id="projectQuantity"
-min="1"
-value="1"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Full Name <span>*</span>
-</label>
-
-<input
-type="text"
-id="customerName"
-placeholder="Your full name"
-autocomplete="name"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Phone / WhatsApp <span>*</span>
-</label>
-
-<input
-type="tel"
-id="customerPhone"
-placeholder="e.g. 0724 566 417"
-autocomplete="tel"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Email
-</label>
-
-<input
-type="email"
-id="customerEmail"
-placeholder="Optional"
-autocomplete="email">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-Delivery Method <span>*</span>
-</label>
-
-<select
-id="deliveryMethod"
-required>
-
-<option value="">
-Choose an option
-</option>
-
-<option value="Pickup">
-Pickup
-</option>
-
-<option value="Delivery">
-Delivery
-</option>
-
-</select>
-
-</div>
-
-
-<div
-class="form-group delivery-address-wrap"
-id="deliveryAddressWrap">
-
-<label>
-Delivery Address <span>*</span>
-</label>
-
-<input
-type="text"
-id="deliveryAddress"
-placeholder="Where should we deliver?">
-
-</div>
-
-
-<div
-class="dynamic-fields"
-id="dynamicFields">
-
-<div class="dynamic-fields-title">
-PROJECT DETAILS
-</div>
-
-<div class="form-group full">
-
-<label>
-Tell us about your project
-</label>
-
-<input
-type="text"
-id="detailCustom"
-placeholder="Choose a service above to see more options">
-
-</div>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Project Requirements / Notes
-</label>
-
-<textarea
-id="projectNotes"
-placeholder="Tell us exactly what you need, preferred colours, sizes, quantities, deadline, or any other important details..."></textarea>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Upload Artwork
-</label>
-
-<input
-class="project-file"
-type="file"
-id="artworkFile"
-accept=".png,.jpg,.jpeg,.pdf,.svg">
-
-<div class="form-help">
-Accepted: PNG, JPG, JPEG, PDF or SVG. Maximum size: 15MB.
-</div>
-
-<div
-class="file-name"
-id="fileName">
-No artwork selected.
-</div>
-
-</div>
-
-
-<div class="project-submit-area">
-
-<div
-class="project-status"
-id="projectStatus">
-</div>
-
-<button
-type="submit"
-class="project-submit"
-id="projectSubmit">
-
-🚀 Submit My Project
-
-</button>
-
-</div>
-
-</form>
-
-
-<div
-class="project-success"
-id="projectSuccess">
-
-<div class="success-icon">
-✓
-</div>
-
-<h3>
-PROJECT RECEIVED
-</h3>
-
-<p>
-Your project has been submitted successfully.
-Keep your reference number safe when contacting
-Bossy Prints & Design.
-</p>
-
-
-<div
-class="reference-box"
-id="referenceNumber">
-BPD-000000-0000
-</div>
-
-
-<p>
-We will review your project details and contact you
-with the next steps and quotation.
-</p>
-
-
-<div class="success-actions">
-
-<a
-id="successWhatsApp"
-class="btn btn-primary"
-href="#"
-target="_blank">
-
-💬 Continue on WhatsApp
-
-</a>
-
-
-<button
-type="button"
-class="btn btn-secondary"
-id="newProjectBtn">
-
-Start Another Project
-
-</button>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+<!-- PRODUCTS -->
+
+<section id="products">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>Shop & Explore</span>
+            <h2>Featured Products</h2>
+            <p>
+                Browse products available from Bossy Prints & Design.
+            </p>
+        </div>
+
+        <div class="product-toolbar" id="productFilters">
+            <button class="filter-btn active" data-category="all">
+                All
+            </button>
+        </div>
+
+        <div
+            class="products-grid"
+            id="productsGrid"
+        >
+
+            <div class="card">
+                <h3>Loading products...</h3>
+                <p>Please wait.</p>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     PORTFOLIO
-========================================================= -->
+<!-- OUR WORK -->
 
-<section
-class="section-dark"
-id="portfolio">
+<section id="work">
 
-<div class="container">
+    <div class="container">
 
-<div class="section-heading reveal">
+        <div class="section-title">
+            <span>Our Work</span>
+            <h2>Ideas Made Real</h2>
+            <p>
+                A glimpse of the type of creative work Bossy Prints & Design
+                can help you produce.
+            </p>
+        </div>
 
-<small>
-OUR WORK
-</small>
+        <div class="portfolio-grid">
 
-<h2>
-Ideas. Design. Print. Impact.
-</h2>
+            <div class="portfolio-item">
+                <img
+                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+                    alt="Custom T-shirt printing"
+                    loading="lazy"
+                >
+                <div class="portfolio-overlay">
+                    <h3>Custom T-Shirts</h3>
+                </div>
+            </div>
 
-<p>
-A glimpse of the kind of creative printing and
-branding projects Bossy Prints & Design can create.
-</p>
+            <div class="portfolio-item">
+                <img
+                    src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=900&q=80"
+                    alt="Business branding"
+                    loading="lazy"
+                >
+                <div class="portfolio-overlay">
+                    <h3>Business Branding</h3>
+                </div>
+            </div>
 
-</div>
+            <div class="portfolio-item">
+                <img
+                    src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80"
+                    alt="Creative design work"
+                    loading="lazy"
+                >
+                <div class="portfolio-overlay">
+                    <h3>Creative Design</h3>
+                </div>
+            </div>
 
+            <div class="portfolio-item">
+                <img
+                    src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=80"
+                    alt="Printed promotional material"
+                    loading="lazy"
+                >
+                <div class="portfolio-overlay">
+                    <h3>Promotional Printing</h3>
+                </div>
+            </div>
 
-<div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img
+                    src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80"
+                    alt="Fashion printing"
+                    loading="lazy"
+                >
+                <div class="portfolio-overlay">
+                    <h3>Merchandise</h3>
+                </div>
+            </div>
 
+            <div class="portfolio-item">
+                <img
+                    src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80"
+                    alt="Custom products"
+                    loading="lazy"
+                >
+                <div class="portfolio-overlay">
+                    <h3>Custom Products</h3>
+                </div>
+            </div>
 
-<div class="work-card large reveal">
+        </div>
 
-<img
-src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1200&q=85"
-alt="Custom T-shirt printing">
-
-<div class="work-overlay">
-
-<small>
-APPAREL
-</small>
-
-<h3>
-Custom T-Shirts
-</h3>
-
-<p>
-Branded clothing for businesses, teams and events.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="work-card small reveal">
-
-<img
-src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=800&q=85"
-alt="Graphic design">
-
-<div class="work-overlay">
-
-<small>
-DESIGN
-</small>
-
-<h3>
-Graphic Design
-</h3>
-
-<p>
-Creative ideas made visual.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="work-card small reveal">
-
-<img
-src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=85"
-alt="Business branding">
-
-<div class="work-overlay">
-
-<small>
-BRANDING
-</small>
-
-<h3>
-Business Branding
-</h3>
-
-<p>
-Make your business recognizable.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="work-card small reveal">
-
-<img
-src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=800&q=85"
-alt="Advertising display">
-
-<div class="work-overlay">
-
-<small>
-ADVERTISING
-</small>
-
-<h3>
-Banners & Posters
-</h3>
-
-<p>
-Make your message visible.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="work-card small reveal">
-
-<img
-src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=800&q=85"
-alt="Printed labels">
-
-<div class="work-overlay">
-
-<small>
-LABELS
-</small>
-
-<h3>
-Stickers & Labels
-</h3>
-
-<p>
-Give products a finished look.
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     PROCESS
-========================================================= -->
+<!-- PROCESS -->
 
-<section
-class="process-section">
+<section>
 
-<div class="container">
+    <div class="container">
 
-<div class="section-heading reveal">
+        <div class="section-title">
+            <span>Simple Process</span>
+            <h2>How It Works</h2>
+            <p>
+                We keep the process simple from your first idea to the final product.
+            </p>
+        </div>
 
-<small>
-HOW IT WORKS
-</small>
+        <div class="process-grid">
 
-<h2>
-From Idea To Finished Product.
-</h2>
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Start a Project</h3>
+                <p>
+                    Tell us what you want through our project form.
+                </p>
+            </div>
 
-<p>
-We keep the process simple so you can concentrate
-on your idea while we help bring it to life.
-</p>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Review & Discuss</h3>
+                <p>
+                    We review your requirements and discuss the details.
+                </p>
+            </div>
 
-</div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Approve</h3>
+                <p>
+                    We agree on the design, quantity and quotation.
+                </p>
+            </div>
 
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Print & Deliver</h3>
+                <p>
+                    Your project moves into production and delivery.
+                </p>
+            </div>
 
-<div class="process-grid">
+        </div>
 
-
-<div class="process-card reveal">
-
-<div class="process-number">
-01
-</div>
-
-<h3>
-Tell Us Your Idea
-</h3>
-
-<p>
-Tell us what you want to print, design or brand.
-</p>
-
-<div class="process-line"></div>
-
-</div>
-
-
-<div class="process-card reveal">
-
-<div class="process-number">
-02
-</div>
-
-<h3>
-Design & Discuss
-</h3>
-
-<p>
-We discuss the details and prepare the design.
-</p>
-
-<div class="process-line"></div>
-
-</div>
-
-
-<div class="process-card reveal">
-
-<div class="process-number">
-03
-</div>
-
-<h3>
-Approve
-</h3>
-
-<p>
-Review the project and confirm the final details.
-</p>
-
-<div class="process-line"></div>
-
-</div>
-
-
-<div class="process-card reveal">
-
-<div class="process-number">
-04
-</div>
-
-<h3>
-Print & Deliver
-</h3>
-
-<p>
-Your finished project is prepared for you.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     WHY BOSSY
-========================================================= -->
+<!-- ABOUT -->
 
-<section
-class="section-dark">
+<section id="about">
 
-<div class="container why-grid">
+    <div class="container about-grid">
 
+        <div>
 
-<div class="why-visual reveal">
+            <div class="section-title" style="text-align:left;margin-bottom:25px;">
+                <span>About Bossy</span>
+                <h2>Built Around Your Ideas</h2>
+            </div>
 
-<div class="why-center">
+            <p style="color:var(--muted);">
+                Bossy Prints & Design is focused on helping individuals,
+                businesses, teams, organizations and events turn ideas
+                into professional printed and branded products.
+            </p>
 
-<strong>
-BOSSY
-</strong>
+            <p style="color:var(--muted);margin-top:15px;">
+                From a single custom T-shirt to complete branding,
+                our goal is simple: quality work, clear communication
+                and professional results.
+            </p>
 
-<span>
-PRINTING • BRANDING • DESIGN
-</span>
+        </div>
 
-</div>
+        <div class="about-box">
 
-</div>
+            <h3>Why Choose Bossy?</h3>
 
+            <div class="check-list">
 
-<div class="why-list reveal">
+                <div class="check">
+                    <b>✓</b>
+                    <span>Professional design and presentation</span>
+                </div>
 
+                <div class="check">
+                    <b>✓</b>
+                    <span>Custom solutions for different needs</span>
+                </div>
 
-<div class="section-heading"
-style="text-align:left;margin:0 0 25px;">
+                <div class="check">
+                    <b>✓</b>
+                    <span>Simple project submission process</span>
+                </div>
 
-<small>
-WHY BOSSY
-</small>
+                <div class="check">
+                    <b>✓</b>
+                    <span>Direct communication through WhatsApp</span>
+                </div>
 
-<h2>
-Built Around Your Idea.
-</h2>
+                <div class="check">
+                    <b>✓</b>
+                    <span>Growing range of printing and branding services</span>
+                </div>
 
-<p>
-We want your project to look like it belongs
-to you and your brand.
-</p>
+            </div>
 
-</div>
+        </div>
 
-
-<div class="why-item">
-
-<div class="why-check">
-✓
-</div>
-
-<div>
-
-<h3>
-Custom Approach
-</h3>
-
-<p>
-Your project starts with your idea, requirements
-and intended purpose.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="why-item">
-
-<div class="why-check">
-✓
-</div>
-
-<div>
-
-<h3>
-Professional Presentation
-</h3>
-
-<p>
-We focus on clean designs and professional
-presentation for your printing needs.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="why-item">
-
-<div class="why-check">
-✓
-</div>
-
-<div>
-
-<h3>
-Simple Communication
-</h3>
-
-<p>
-Discuss your project directly through WhatsApp
-and get answers without unnecessary complications.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="why-item">
-
-<div class="why-check">
-✓
-</div>
-
-<div>
-
-<h3>
-One Place For Your Project
-</h3>
-
-<p>
-Design, printing, branding and merchandise can
-all be discussed together.
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     ABOUT
-========================================================= -->
+<!-- FAQ -->
 
-<section
-class="about-section"
-id="about">
+<section id="faq">
 
-<div class="container">
+    <div class="container">
 
-<div class="about-content reveal">
+        <div class="section-title">
+            <span>Questions</span>
+            <h2>Frequently Asked Questions</h2>
+        </div>
 
+        <div class="faq">
 
-<div class="section-heading">
+            <details>
+                <summary>Can I submit my own artwork?</summary>
+                <p>
+                    Yes. You can upload your artwork when starting a project.
+                    We currently accept PNG, JPG, PDF and SVG files.
+                </p>
+            </details>
 
-<small>
-ABOUT BOSSY
-</small>
+            <details>
+                <summary>Can you design something for me?</summary>
+                <p>
+                    Yes. Select Graphic Design or the relevant service
+                    and explain what you need in the project form.
+                </p>
+            </details>
 
-<h2>
-We Turn Ideas Into Something Real.
-</h2>
+            <details>
+                <summary>Can I order only one item?</summary>
+                <p>
+                    Yes, depending on the product and service. Tell us
+                    your quantity when submitting your project.
+                </p>
+            </details>
 
-</div>
+            <details>
+                <summary>How do I get a quotation?</summary>
+                <p>
+                    Submit your project details. We review the requirements
+                    and communicate the quotation with you.
+                </p>
+            </details>
 
+            <details>
+                <summary>Can I pick up my order?</summary>
+                <p>
+                    Yes. Select Pickup when submitting your project.
+                    Delivery can also be requested where available.
+                </p>
+            </details>
 
-<p>
+        </div>
 
-Bossy Prints & Design is a printing, branding and
-graphic design business focused on helping individuals,
-businesses, teams and organizations turn ideas into
-professional printed and branded products.
-
-Whether you need a custom T-shirt, business branding,
-poster, banner, sticker, cap or graphic design, our goal
-is to create something that represents your idea clearly.
-
-</p>
-
-
-<div class="about-stats">
-
-
-<div class="about-stat">
-
-<strong>
-01
-</strong>
-
-<span>
-Your Idea
-</span>
-
-</div>
-
-
-<div class="about-stat">
-
-<strong>
-02
-</strong>
-
-<span>
-Creative Design
-</span>
-
-</div>
-
-
-<div class="about-stat">
-
-<strong>
-03
-</strong>
-
-<span>
-Finished Product
-</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     CTA
-========================================================= -->
+<!-- CTA -->
 
-<section class="cta">
+<section>
 
-<div class="container reveal">
+    <div class="container">
 
-<h2>
-Have An Idea?
-</h2>
+        <div class="cta">
 
-<p>
-Let's turn your idea into something people can see,
-wear and remember.
-</p>
+            <h2>Ready to Start?</h2>
 
+            <p>
+                Don't just imagine it. Let's turn your idea into something
+                real, professional and memorable.
+            </p>
 
-<a
-class="btn btn-primary"
-href="#start-project">
+            <a
+                href="#start-project"
+                class="btn btn-primary"
+            >
+                🚀 Start Your Project
+            </a>
 
-🚀 Start Your Project
+        </div>
 
-</a>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- =========================================================
-     FAQ
-========================================================= -->
+<!-- CONTACT -->
 
-<section
-class="faq-section"
-id="faq">
+<section id="contact">
 
-<div class="container">
+    <div class="container">
 
+        <div class="section-title">
+            <span>Get In Touch</span>
+            <h2>Let's Talk</h2>
+            <p>
+                Have a question or want to discuss something before starting?
+                Contact Bossy directly.
+            </p>
+        </div>
 
-<div class="section-heading reveal">
+        <div class="contact-grid">
 
-<small>
-QUESTIONS
-</small>
+            <div class="contact-card">
+                <h3>WhatsApp</h3>
+                <p>
+                    The fastest way to discuss your project.
+                </p>
 
-<h2>
-Frequently Asked Questions.
-</h2>
+                <a
+                    href="https://wa.me/254724566417"
+                    target="_blank"
+                    rel="noopener"
+                    class="contact-link"
+                >
+                    Chat on WhatsApp →
+                </a>
+            </div>
 
-<p>
-A few answers before you start your project.
-</p>
+            <div class="contact-card">
+                <h3>Start Online</h3>
+                <p>
+                    Submit your project details and receive a project reference.
+                </p>
 
-</div>
+                <a
+                    href="#start-project"
+                    class="contact-link"
+                >
+                    Start a Project →
+                </a>
+            </div>
 
+        </div>
 
-<div class="faq-inner">
-
-
-<details class="reveal">
-
-<summary>
-What services does Bossy Prints & Design offer?
-</summary>
-
-<p>
-We offer T-shirt printing, graphic design, business
-branding, banners, posters, stickers, labels, caps
-and custom merchandise.
-</p>
-
-</details>
-
-
-<details class="reveal">
-
-<summary>
-Can I order a custom T-shirt?
-</summary>
-
-<p>
-Yes. Use our Start a Project form to tell us your
-quantity, sizes, colours, print position and other
-requirements.
-</p>
-
-</details>
-
-
-<details class="reveal">
-
-<summary>
-Can you design my artwork?
-</summary>
-
-<p>
-Yes. We can work with your idea and create graphic
-designs suitable for printing and branding.
-</p>
-
-</details>
-
-
-<details class="reveal">
-
-<summary>
-How do I request a quotation?
-</summary>
-
-<p>
-Use the Start a Project form on this website. Submit
-your requirements and we will review the project and
-contact you with the next steps and quotation.
-</p>
-
-</details>
-
-
-<details class="reveal">
-
-<summary>
-Can I upload my own artwork?
-</summary>
-
-<p>
-Yes. You can upload PNG, JPG, JPEG, PDF or SVG artwork
-with your project submission.
-</p>
-
-</details>
-
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
-
-<!-- =========================================================
-     CONTACT
-========================================================= -->
-
-<section
-class="contact-section"
-id="contact">
-
-<div class="container">
+</main>
 
 
-<div class="section-heading reveal">
-
-<small>
-LET'S TALK
-</small>
-
-<h2>
-Ready To Start?
-</h2>
-
-<p>
-Tell us what you have in mind and let's discuss
-your next printing or branding project.
-</p>
-
-</div>
-
-
-<div class="contact-grid">
-
-
-<div class="contact-card reveal">
-
-<div class="contact-icon">
-💬
-</div>
-
-<h3>
-WhatsApp
-</h3>
-
-<p>
-0724 566 417
-</p>
-
-<a
-class="btn btn-primary"
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design."
-target="_blank">
-
-Chat Now
-
-</a>
-
-</div>
-
-
-<div class="contact-card reveal">
-
-<div class="contact-icon">
-👕
-</div>
-
-<h3>
-Printing
-</h3>
-
-<p>
-T-Shirts • Banners • Posters • Stickers • Caps
-</p>
-
-<a
-class="btn btn-secondary"
-href="#products">
-
-View Products
-
-</a>
-
-</div>
-
-
-<div class="contact-card reveal">
-
-<div class="contact-icon">
-🎨
-</div>
-
-<h3>
-Design & Branding
-</h3>
-
-<p>
-Logos • Graphics • Business Branding • Custom Designs
-</p>
-
-<a
-class="btn btn-secondary"
-href="#start-project">
-
-Discuss Your Project
-
-</a>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+<!-- FOOTER -->
 
 <footer>
 
-<div class="container">
+    <div class="container">
 
+        <div class="footer-grid">
 
-<div class="footer-grid">
+            <div>
 
+                <a href="#home" class="logo">
 
-<div class="footer-brand">
+                    <div class="logo-mark">B</div>
 
-<div class="footer-logo">
+                    <div class="logo-text">
+                        BOSSY PRINTS
+                        <small>PRINTING • BRANDING • DESIGN</small>
+                    </div>
 
-BOSSY
+                </a>
 
-<span>
-PRINTS & DESIGN
-</span>
+                <p>
+                    Turning ideas into professional printed,
+                    branded and designed products.
+                </p>
 
-</div>
+            </div>
 
-<p>
-PRINTING • BRANDING • DESIGN
-</p>
+            <div>
 
-<p>
-Turning ideas into something real through
-creative design, printing and branding.
-</p>
+                <h4>Quick Links</h4>
 
-</div>
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#start-project">Start a Project</a>
+                    <a href="#products">Products</a>
+                    <a href="#work">Our Work</a>
+                    <a href="#about">About</a>
+                </div>
 
+            </div>
 
-<div class="footer-column">
+            <div>
 
-<h3>
-QUICK LINKS
-</h3>
+                <h4>Contact</h4>
 
-<a href="#home">
-Home
-</a>
+                <div class="footer-links">
+                    <a href="#start-project">Start a Project</a>
+                    <a
+                        href="https://wa.me/254724566417"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        WhatsApp
+                    </a>
+                    <a href="#faq">FAQ</a>
+                </div>
 
-<a href="#services">
-Services
-</a>
+            </div>
 
-<a href="#products">
-Products
-</a>
+        </div>
 
-<a href="#start-project">
-Start A Project
-</a>
+        <div class="copyright">
+            © <span id="year"></span> Bossy Prints & Design. All rights reserved.
+        </div>
 
-<a href="#portfolio">
-Our Work
-</a>
-
-<a href="#contact">
-Contact
-</a>
-
-</div>
-
-
-<div class="footer-column">
-
-<h3>
-SERVICES
-</h3>
-
-<a href="#services">
-T-Shirt Printing
-</a>
-
-<a href="#services">
-Graphic Design
-</a>
-
-<a href="#services">
-Business Branding
-</a>
-
-<a href="#services">
-Banners & Posters
-</a>
-
-<a href="#services">
-Stickers & Labels
-</a>
-
-</div>
-
-
-</div>
-
-
-<div class="footer-bottom">
-
-<span>
-© 2026 Bossy Prints & Design. All Rights Reserved.
-</span>
-
-<span>
-PRINTING • BRANDING • DESIGN
-</span>
-
-</div>
-
-</div>
+    </div>
 
 </footer>
 
 
-<!-- =========================================================
-     BACK TO TOP
-========================================================= -->
-
-<button
-class="back-top"
-id="backTop"
-aria-label="Back to top">
-
-↑
-
-</button>
-
-
-<!-- =========================================================
-     FLOATING WHATSAPP
-========================================================= -->
+<!-- FLOATING WHATSAPP -->
 
 <a
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20make%20an%20inquiry."
-target="_blank"
-class="whatsapp-float"
-aria-label="Chat with Bossy Prints & Design on WhatsApp">
-
-💬
-
+    href="https://wa.me/254724566417"
+    target="_blank"
+    rel="noopener"
+    class="whatsapp"
+    aria-label="Chat on WhatsApp"
+>
+    💬
 </a>
+
+<button
+    id="backTop"
+    class="back-top"
+    aria-label="Back to top"
+>
+    ↑
+</button>
 
 
 <script>
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuBtn =
-    document.getElementById(
-        "menuBtn"
-    );
-
-const mainNav =
-    document.getElementById(
-        "mainNav"
-    );
-
-
-menuBtn.addEventListener(
-    "click",
-    function(){
-
-        const active =
-            mainNav.classList.toggle(
-                "active"
-            );
-
-        menuBtn.setAttribute(
-            "aria-expanded",
-            active
-        );
-
-        document.body.classList.toggle(
-            "menu-open",
-            active
-        );
-
-    }
-);
-
-
-mainNav
-    .querySelectorAll("a")
-    .forEach(
-        function(link){
-
-            link.addEventListener(
-                "click",
-                function(){
-
-                    mainNav.classList.remove(
-                        "active"
-                    );
-
-                    menuBtn.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    document.body.classList.remove(
-                        "menu-open"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   HEADER SCROLL
-========================================================= */
-
-const siteHeader =
-    document.getElementById(
-        "siteHeader"
-    );
-
-const backTop =
-    document.getElementById(
-        "backTop"
-    );
-
-
-window.addEventListener(
-    "scroll",
-    function(){
-
-        if(window.scrollY > 30){
-
-            siteHeader.classList.add(
-                "scrolled"
-            );
-
-        }
-        else{
-
-            siteHeader.classList.remove(
-                "scrolled"
-            );
-
-        }
-
-
-        if(window.scrollY > 600){
-
-            backTop.classList.add(
-                "show"
-            );
-
-        }
-        else{
-
-            backTop.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-);
-
-
-backTop.addEventListener(
-    "click",
-    function(){
-
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-    }
-);
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const observer =
-    new IntersectionObserver(
-        function(entries){
-
-            entries.forEach(
-                function(entry){
-
-                    if(entry.isIntersecting){
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.12
-        }
-    );
-
-
-document
-    .querySelectorAll(".reveal")
-    .forEach(
-        function(element){
-
-            observer.observe(
-                element
-            );
-
-        }
-    );
-
-
-/* =========================================================
+/* =========================================
    SUPABASE
-========================================================= */
+========================================= */
 
 const SUPABASE_URL =
     "https://jzvuvbzkumkomqdtjkrt.supabase.co";
 
-
 const SUPABASE_KEY =
     "sb_publishable_oHVAQtCkJImAQrD2sVjTGA_aWM_nYyl";
-
 
 const supabaseClient =
     window.supabase.createClient(
@@ -4531,408 +2079,429 @@ const supabaseClient =
     );
 
 
-let allProducts = [];
+/* =========================================
+   GENERAL
+========================================= */
 
-let activeFilter = "all";
-
-
-/* =========================================================
-   LOAD PRODUCTS
-========================================================= */
-
-async function loadPublicProducts(){
-
-    const container =
-        document.getElementById(
-            "productsContainer"
-        );
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
 
-    const { data, error } =
-        await supabaseClient
-            .from("products")
-            .select("*")
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+const menuBtn =
+    document.getElementById("menuBtn");
+
+const navLinks =
+    document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("open");
+
+});
+
+document.querySelectorAll("#navLinks a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+    });
+
+});
 
 
-    if(error){
+/* =========================================
+   BACK TO TOP
+========================================= */
 
-        console.error(
-            "Supabase error:",
-            error
-        );
+const backTop =
+    document.getElementById("backTop");
 
+window.addEventListener("scroll", () => {
 
-        container.innerHTML = `
+    if(window.scrollY > 500){
 
-            <div class="product-error">
+        backTop.classList.add("show");
 
-                Products are temporarily unavailable.
+    }else{
 
-                <br><br>
-
-                <a
-                    href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20see%20your%20available%20products."
-                    target="_blank"
-                    class="btn btn-primary"
-                >
-                    Ask Us on WhatsApp
-                </a>
-
-            </div>
-
-        `;
-
-        return;
+        backTop.classList.remove("show");
 
     }
 
+});
 
-    allProducts =
-        data || [];
+backTop.addEventListener("click", () => {
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+});
 
 
-    createProductFilters();
+/* =========================================
+   HELPERS
+========================================= */
 
+function escapeHtml(value){
 
-    renderProducts();
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-/* =========================================================
-   CREATE PRODUCT FILTERS
-========================================================= */
+function formatPrice(value){
 
-function createProductFilters(){
+    const number =
+        Number(value);
+
+    if(!Number.isFinite(number)){
+        return "Price on request";
+    }
+
+    return "KSh " +
+        number.toLocaleString("en-KE");
+
+}
+
+
+function generateReference(){
+
+    const now =
+        new Date();
+
+    const year =
+        now.getFullYear();
+
+    const month =
+        String(now.getMonth()+1)
+        .padStart(2,"0");
+
+    const day =
+        String(now.getDate())
+        .padStart(2,"0");
+
+    const chars =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    let random = "";
+
+    for(let i=0;i<4;i++){
+
+        random +=
+            chars[
+                Math.floor(
+                    Math.random()*chars.length
+                )
+            ];
+
+    }
+
+    return `BPD-${year}${month}${day}-${random}`;
+
+}
+
+
+function safeFileName(name){
+
+    return name
+        .replace(/[^a-zA-Z0-9._-]/g,"_")
+        .slice(0,120);
+
+}
+
+
+function getRandomId(){
+
+    if(
+        window.crypto &&
+        typeof window.crypto.randomUUID === "function"
+    ){
+
+        return window.crypto.randomUUID();
+
+    }
+
+    return Date.now() + "-" +
+        Math.random()
+        .toString(36)
+        .substring(2);
+
+}
+
+
+/* =========================================
+   PRODUCT SYSTEM
+========================================= */
+
+let allProducts = [];
+
+
+async function loadPublicProducts(){
+
+    const grid =
+        document.getElementById("productsGrid");
+
+    try{
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient
+            .from("products")
+            .select("*")
+            .order("created_at",{
+                ascending:false
+            });
+
+        if(error){
+
+            console.error(
+                "Products error:",
+                error
+            );
+
+            grid.innerHTML = `
+                <div class="card">
+                    <h3>Products unavailable</h3>
+                    <p>
+                        Please contact Bossy Prints & Design
+                        directly for available products.
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+        allProducts =
+            data || [];
+
+        buildProductFilters();
+
+        renderProducts("all");
+
+    }catch(error){
+
+        console.error(error);
+
+        grid.innerHTML = `
+            <div class="card">
+                <h3>Products unavailable</h3>
+                <p>
+                    Please contact us for available products.
+                </p>
+            </div>
+        `;
+
+    }
+
+}
+
+
+function buildProductFilters(){
 
     const filters =
-        document.getElementById(
-            "productFilters"
-        );
-
+        document.getElementById("productFilters");
 
     const categories =
         [
             ...new Set(
                 allProducts
-                    .map(
-                        product =>
-                            product.category
-                    )
+                    .map(product => product.category)
                     .filter(Boolean)
             )
         ];
 
-
     filters.innerHTML = `
-
         <button
             class="filter-btn active"
-            data-filter="all"
+            data-category="all"
         >
             All
         </button>
-
     `;
 
+    categories.forEach(category => {
 
-    categories.forEach(
-        function(category){
+        const button =
+            document.createElement("button");
 
-            const button =
-                document.createElement(
-                    "button"
-                );
+        button.className =
+            "filter-btn";
 
+        button.dataset.category =
+            category;
 
-            button.className =
-                "filter-btn";
+        button.textContent =
+            category;
 
+        filters.appendChild(button);
 
-            button.dataset.filter =
-                category;
+    });
 
-
-            button.textContent =
-                category;
-
+    filters
+        .querySelectorAll(".filter-btn")
+        .forEach(button => {
 
             button.addEventListener(
                 "click",
-                function(){
+                () => {
 
-                    activeFilter =
-                        category;
-
-
-                    document
-                        .querySelectorAll(
-                            ".filter-btn"
-                        )
-                        .forEach(
-                            function(btn){
-
-                                btn.classList
-                                    .remove(
-                                        "active"
-                                    );
-
-                            }
+                    filters
+                        .querySelectorAll(".filter-btn")
+                        .forEach(btn =>
+                            btn.classList.remove("active")
                         );
 
+                    button.classList.add("active");
 
-                    button.classList.add(
-                        "active"
+                    renderProducts(
+                        button.dataset.category
                     );
-
-
-                    renderProducts();
 
                 }
             );
 
-
-            filters.appendChild(
-                button
-            );
-
-        }
-    );
-
-
-    const allButton =
-        filters.querySelector(
-            '[data-filter="all"]'
-        );
-
-
-    allButton.addEventListener(
-        "click",
-        function(){
-
-            activeFilter =
-                "all";
-
-
-            document
-                .querySelectorAll(
-                    ".filter-btn"
-                )
-                .forEach(
-                    function(btn){
-
-                        btn.classList
-                            .remove(
-                                "active"
-                            );
-
-                    }
-                );
-
-
-            allButton.classList.add(
-                "active"
-            );
-
-
-            renderProducts();
-
-        }
-    );
+        });
 
 }
 
 
-/* =========================================================
-   RENDER PRODUCTS
-========================================================= */
+function renderProducts(category){
 
-function renderProducts(){
+    const grid =
+        document.getElementById("productsGrid");
 
-    const container =
-        document.getElementById(
-            "productsContainer"
-        );
-
-
-    let products =
-        allProducts;
-
-
-    if(activeFilter !== "all"){
-
-        products =
-            allProducts.filter(
-                function(product){
-
-                    return (
-                        product.category ===
-                        activeFilter
-                    );
-
-                }
+    const products =
+        category === "all"
+            ? allProducts
+            : allProducts.filter(
+                product =>
+                    product.category === category
             );
 
-    }
+    if(!products.length){
 
-
-    if(
-        !products ||
-        products.length === 0
-    ){
-
-        container.innerHTML = `
-
-            <div class="no-products">
-
-                <h3>
-                    No products available yet.
-                </h3>
-
+        grid.innerHTML = `
+            <div class="card">
+                <h3>No products yet</h3>
                 <p>
                     Contact Bossy Prints & Design
-                    for our current services.
+                    for available products.
                 </p>
-
-                <br>
-
-                <a
-                    class="btn btn-primary"
-                    href="#start-project"
-                >
-                    Start A Project
-                </a>
-
             </div>
-
         `;
 
         return;
-
     }
 
-
-    container.innerHTML = "";
-
-
-    products.forEach(
-        function(product){
-
-            const card =
-                document.createElement(
-                    "article"
-                );
-
-
-            card.className =
-                "product-card";
-
+    grid.innerHTML =
+        products.map(product => {
 
             const image =
                 product.image_url ||
-                "https://via.placeholder.com/800x600?text=Bossy+Prints";
+                product.image ||
+                "";
 
+            const name =
+                product.name ||
+                "Custom Product";
+
+            const categoryText =
+                product.category ||
+                "Custom";
+
+            const description =
+                product.description ||
+                "Custom printing product.";
 
             const price =
-                product.price !== null &&
-                product.price !== ""
-                    ? formatPrice(
-                        product.price
-                    )
-                    : "Contact us for price";
-
+                formatPrice(product.price);
 
             const message =
                 encodeURIComponent(
-                    "Hello Bossy Prints & Design. I am interested in: " +
-                    product.name +
-                    ". Please send me more information and a quotation."
+                    `Hello Bossy Prints & Design. I am interested in ${name}.`
                 );
 
+            return `
 
-            card.innerHTML = `
+                <div class="product-card">
 
-                <div class="product-image-wrap">
+                    <div class="product-image">
 
-                    <img
-                        class="product-image"
-                        src="${escapeHtml(image)}"
-                        alt="${escapeHtml(
-                            product.name ||
-                            "Bossy Prints product"
-                        )}"
-                        loading="lazy"
-                        onerror="this.src='https://via.placeholder.com/800x600?text=Bossy+Prints'"
-                    >
-
-                    <div class="product-badge">
-
-                        ${escapeHtml(
-                            product.category ||
-                            "PRINTING"
-                        )}
-
-                    </div>
-
-                </div>
-
-
-                <div class="product-content">
-
-                    <div class="product-category">
-
-                        ${escapeHtml(
-                            product.category ||
-                            "Printing"
-                        )}
+                        ${
+                            image
+                            ?
+                            `<img
+                                src="${escapeHtml(image)}"
+                                alt="${escapeHtml(name)}"
+                                loading="lazy"
+                            >`
+                            :
+                            `<div
+                                style="
+                                    height:100%;
+                                    display:grid;
+                                    place-items:center;
+                                    color:var(--muted);
+                                "
+                            >
+                                BOSSY PRINTS
+                            </div>`
+                        }
 
                     </div>
 
+                    <div class="product-body">
 
-                    <h3>
-
-                        ${escapeHtml(
-                            product.name ||
-                            "Custom Product"
-                        )}
-
-                    </h3>
-
-
-                    <p class="product-description">
-
-                        ${escapeHtml(
-                            product.description ||
-                            "Custom printing and branding solution."
-                        )}
-
-                    </p>
-
-
-                    <div class="product-bottom">
-
-                        <div class="product-price">
-
-                            ${escapeHtml(price)}
-
+                        <div class="product-category">
+                            ${escapeHtml(categoryText)}
                         </div>
 
+                        <h3>
+                            ${escapeHtml(name)}
+                        </h3>
 
-                        <a
-                            class="product-btn"
-                            href="https://wa.me/254724566417?text=${message}"
-                            target="_blank"
-                        >
+                        <p>
+                            ${escapeHtml(description)}
+                        </p>
 
-                            💬 Enquire
+                        <div class="product-price">
+                            ${price}
+                        </div>
 
-                        </a>
+                        <div class="product-actions">
+
+                            <a
+                                href="#start-project"
+                                class="btn btn-primary"
+                            >
+                                Start Project
+                            </a>
+
+                            <a
+                                href="https://wa.me/254724566417?text=${message}"
+                                target="_blank"
+                                rel="noopener"
+                                class="btn btn-secondary"
+                            >
+                                Enquire
+                            </a>
+
+                        </div>
 
                     </div>
 
@@ -4940,563 +2509,411 @@ function renderProducts(){
 
             `;
 
-
-            container.appendChild(
-                card
-            );
-
-        }
-    );
+        }).join("");
 
 }
 
 
-/* =========================================================
-   PRICE FORMAT
-========================================================= */
-
-function formatPrice(value){
-
-    const clean =
-        String(value)
-            .replace(/,/g,"")
-            .replace(/KSh/gi,"")
-            .trim();
+loadPublicProducts();
 
 
-    const number =
-        Number(clean);
+/* =========================================
+   PROJECT FORM
+========================================= */
+
+const projectForm =
+    document.getElementById("projectForm");
+
+const serviceInput =
+    document.getElementById("service");
+
+const quantityInput =
+    document.getElementById("quantity");
+
+const dynamicFields =
+    document.getElementById("dynamicFields");
+
+const deliveryMethod =
+    document.getElementById("deliveryMethod");
+
+const deliveryAddressGroup =
+    document.getElementById("deliveryAddressGroup");
+
+const deliveryAddress =
+    document.getElementById("deliveryAddress");
+
+const artworkInput =
+    document.getElementById("artwork");
+
+const fileStatus =
+    document.getElementById("fileStatus");
+
+const submitProject =
+    document.getElementById("submitProject");
+
+const formMessage =
+    document.getElementById("formMessage");
+
+const projectFormContainer =
+    document.getElementById("projectFormContainer");
+
+const successPanel =
+    document.getElementById("successPanel");
+
+const referenceDisplay =
+    document.getElementById("referenceDisplay");
+
+const successWhatsApp =
+    document.getElementById("successWhatsApp");
+
+const newProjectBtn =
+    document.getElementById("newProjectBtn");
 
 
-    if(
-        !isNaN(number) &&
-        clean !== ""
-    ){
+/* =========================================
+   DYNAMIC SERVICE FIELDS
+========================================= */
 
-        return (
-            "KSh " +
-            number.toLocaleString()
-        );
+function field(
+    id,
+    label,
+    type = "text",
+    placeholder = "",
+    options = []
+){
+
+    if(type === "select"){
+
+        return `
+
+            <div class="form-group">
+
+                <label for="${id}">
+                    ${label}
+                </label>
+
+                <select
+                    id="${id}"
+                    class="form-control"
+                >
+
+                    <option value="">
+                        Select
+                    </option>
+
+                    ${
+                        options.map(option =>
+                            `<option value="${escapeHtml(option)}">
+                                ${escapeHtml(option)}
+                            </option>`
+                        ).join("")
+                    }
+
+                </select>
+
+            </div>
+
+        `;
 
     }
 
+    return `
 
-    return String(value);
+        <div class="form-group">
 
-}
+            <label for="${id}">
+                ${label}
+            </label>
 
+            <input
+                type="${type}"
+                id="${id}"
+                class="form-control"
+                maxlength="250"
+                placeholder="${escapeHtml(placeholder)}"
+            >
 
-/* =========================================================
-   ESCAPE DATABASE TEXT
-========================================================= */
-
-function escapeHtml(value){
-
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =========================================================
-   PROJECT SYSTEM
-========================================================= */
-
-const projectForm =
-    document.getElementById(
-        "projectForm"
-    );
-
-const projectService =
-    document.getElementById(
-        "projectService"
-    );
-
-const projectQuantity =
-    document.getElementById(
-        "projectQuantity"
-    );
-
-const customerName =
-    document.getElementById(
-        "customerName"
-    );
-
-const customerPhone =
-    document.getElementById(
-        "customerPhone"
-    );
-
-const customerEmail =
-    document.getElementById(
-        "customerEmail"
-    );
-
-const deliveryMethod =
-    document.getElementById(
-        "deliveryMethod"
-    );
-
-const deliveryAddress =
-    document.getElementById(
-        "deliveryAddress"
-    );
-
-const deliveryAddressWrap =
-    document.getElementById(
-        "deliveryAddressWrap"
-    );
-
-const artworkFile =
-    document.getElementById(
-        "artworkFile"
-    );
-
-const fileName =
-    document.getElementById(
-        "fileName"
-    );
-
-const projectNotes =
-    document.getElementById(
-        "projectNotes"
-    );
-
-const projectStatus =
-    document.getElementById(
-        "projectStatus"
-    );
-
-const projectSubmit =
-    document.getElementById(
-        "projectSubmit"
-    );
-
-const projectSuccess =
-    document.getElementById(
-        "projectSuccess"
-    );
-
-const referenceNumber =
-    document.getElementById(
-        "referenceNumber"
-    );
-
-const successWhatsApp =
-    document.getElementById(
-        "successWhatsApp"
-    );
-
-const newProjectBtn =
-    document.getElementById(
-        "newProjectBtn"
-    );
-
-const dynamicFields =
-    document.getElementById(
-        "dynamicFields"
-    );
-
-
-/* =========================================================
-   DYNAMIC SERVICE FIELDS
-========================================================= */
-
-function updateProjectFields(){
-
-    const service =
-        projectService.value;
-
-
-    let html = `
-
-        <div class="dynamic-fields-title">
-            PROJECT DETAILS
         </div>
 
     `;
 
+}
+
+
+function updateDynamicFields(){
+
+    const service =
+        serviceInput.value;
+
+    let html = "";
 
     if(service === "T-Shirt Printing"){
 
-        html += `
+        html += field(
+            "shirtType",
+            "Shirt Type",
+            "select",
+            "",
+            [
+                "Round Neck",
+                "Polo",
+                "Hoodie",
+                "Sweatshirt",
+                "Other"
+            ]
+        );
 
-            <div class="form-group">
+        html += field(
+            "sizes",
+            "Sizes / Size Breakdown",
+            "text",
+            "e.g. M x2, L x3, XL x1"
+        );
 
-                <label>
-                    Shirt Type
-                </label>
+        html += field(
+            "printPosition",
+            "Print Position",
+            "select",
+            "",
+            [
+                "Front",
+                "Back",
+                "Front & Back",
+                "Sleeve",
+                "Other"
+            ]
+        );
 
-                <input
-                    type="text"
-                    id="detailShirtType"
-                    placeholder="e.g. Round neck, polo, hoodie">
+        html += field(
+            "shirtColour",
+            "Shirt Colour",
+            "text",
+            "e.g. Black"
+        );
 
-            </div>
+        html += field(
+            "artworkStatus",
+            "Artwork Status",
+            "select",
+            "",
+            [
+                "I have artwork",
+                "I need a design",
+                "Not sure"
+            ]
+        );
 
+    }else if(service === "Graphic Design"){
 
-            <div class="form-group">
+        html += field(
+            "designType",
+            "Design Type",
+            "select",
+            "",
+            [
+                "Logo",
+                "Poster",
+                "Flyer",
+                "Social Media Design",
+                "Business Card",
+                "Other"
+            ]
+        );
 
-                <label>
-                    Shirt Colour
-                </label>
+        html += field(
+            "designPurpose",
+            "Purpose",
+            "text",
+            "What will the design be used for?"
+        );
 
-                <input
-                    type="text"
-                    id="detailShirtColour"
-                    placeholder="e.g. Black, white, red">
+        html += field(
+            "artworkStatus",
+            "Existing Artwork",
+            "select",
+            "",
+            [
+                "I have existing artwork",
+                "Starting from scratch",
+                "Not sure"
+            ]
+        );
 
-            </div>
+    }else if(service === "Business Branding"){
 
+        html += field(
+            "businessType",
+            "Business Type",
+            "text",
+            "e.g. Shop, restaurant, company"
+        );
 
-            <div class="form-group">
+        html += field(
+            "brandingItems",
+            "What Needs Branding?",
+            "text",
+            "e.g. T-shirts, signage, stickers"
+        );
 
-                <label>
-                    Sizes
-                </label>
+        html += field(
+            "artworkStatus",
+            "Artwork / Logo",
+            "select",
+            "",
+            [
+                "I have a logo",
+                "I need a logo",
+                "I have artwork",
+                "Not sure"
+            ]
+        );
 
-                <input
-                    type="text"
-                    id="detailSizes"
-                    placeholder="e.g. S 2, M 4, L 5, XL 2">
+    }else if(service === "Banners & Posters"){
 
-            </div>
+        html += field(
+            "width",
+            "Width",
+            "text",
+            "e.g. 2 metres"
+        );
 
+        html += field(
+            "height",
+            "Height",
+            "text",
+            "e.g. 1 metre"
+        );
 
-            <div class="form-group">
+        html += field(
+            "bannerType",
+            "Use",
+            "select",
+            "",
+            [
+                "Indoor",
+                "Outdoor",
+                "Both",
+                "Not sure"
+            ]
+        );
 
-                <label>
-                    Print Position
-                </label>
+        html += field(
+            "artworkStatus",
+            "Artwork Status",
+            "select",
+            "",
+            [
+                "I have artwork",
+                "I need a design",
+                "Not sure"
+            ]
+        );
 
-                <select id="detailPrintPosition">
+    }else if(service === "Stickers & Labels"){
 
-                    <option value="">
-                        Choose
-                    </option>
+        html += field(
+            "stickerType",
+            "Sticker / Label Type",
+            "select",
+            "",
+            [
+                "Product Labels",
+                "Logo Stickers",
+                "Packaging Stickers",
+                "Promotional Stickers",
+                "Other"
+            ]
+        );
 
-                    <option value="Front">
-                        Front
-                    </option>
+        html += field(
+            "stickerSize",
+            "Approximate Size",
+            "text",
+            "e.g. 5cm x 5cm"
+        );
 
-                    <option value="Back">
-                        Back
-                    </option>
+        html += field(
+            "stickerFinish",
+            "Material / Finish",
+            "select",
+            "",
+            [
+                "Matte",
+                "Gloss",
+                "Not sure"
+            ]
+        );
 
-                    <option value="Front & Back">
-                        Front & Back
-                    </option>
+        html += field(
+            "artworkStatus",
+            "Artwork Status",
+            "select",
+            "",
+            [
+                "I have artwork",
+                "I need a design",
+                "Not sure"
+            ]
+        );
 
-                    <option value="Sleeve">
-                        Sleeve
-                    </option>
+    }else if(service === "Caps & Merchandise"){
 
-                    <option value="Other">
-                        Other
-                    </option>
+        html += field(
+            "capType",
+            "Cap Type",
+            "select",
+            "",
+            [
+                "Baseball Cap",
+                "Trucker Cap",
+                "Bucket Hat",
+                "Other",
+                "Not sure"
+            ]
+        );
 
-                </select>
+        html += field(
+            "capColour",
+            "Colour",
+            "text",
+            "e.g. Black"
+        );
 
-            </div>
+        html += field(
+            "brandingPosition",
+            "Branding Position",
+            "select",
+            "",
+            [
+                "Front",
+                "Side",
+                "Front & Side",
+                "Not sure"
+            ]
+        );
 
-        `;
+        html += field(
+            "artworkStatus",
+            "Artwork Status",
+            "select",
+            "",
+            [
+                "I have artwork",
+                "I need a design",
+                "Not sure"
+            ]
+        );
+
+    }else if(service === "Other / Custom"){
+
+        html += field(
+            "customDetails",
+            "What Do You Need?",
+            "text",
+            "Describe the custom service"
+        );
 
     }
-
-
-    else if(
-        service === "Banners & Posters"
-    ){
-
-        html += `
-
-            <div class="form-group">
-
-                <label>
-                    Width
-                </label>
-
-                <input
-                    type="text"
-                    id="detailWidth"
-                    placeholder="e.g. 3 metres">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Height
-                </label>
-
-                <input
-                    type="text"
-                    id="detailHeight"
-                    placeholder="e.g. 1 metre">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Print Type
-                </label>
-
-                <select id="detailPrintType">
-
-                    <option value="">
-                        Choose
-                    </option>
-
-                    <option value="Banner">
-                        Banner
-                    </option>
-
-                    <option value="Poster">
-                        Poster
-                    </option>
-
-                    <option value="Other">
-                        Other
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Intended Use
-                </label>
-
-                <select id="detailUse">
-
-                    <option value="">
-                        Choose
-                    </option>
-
-                    <option value="Indoor">
-                        Indoor
-                    </option>
-
-                    <option value="Outdoor">
-                        Outdoor
-                    </option>
-
-                    <option value="Both">
-                        Indoor & Outdoor
-                    </option>
-
-                </select>
-
-            </div>
-
-        `;
-
-    }
-
-
-    else if(
-        service === "Graphic Design"
-    ){
-
-        html += `
-
-            <div class="form-group">
-
-                <label>
-                    Design Type
-                </label>
-
-                <input
-                    type="text"
-                    id="detailDesignType"
-                    placeholder="e.g. Logo, flyer, poster">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Preferred Style
-                </label>
-
-                <input
-                    type="text"
-                    id="detailStyle"
-                    placeholder="e.g. Modern, simple, bold">
-
-            </div>
-
-        `;
-
-    }
-
-
-    else if(
-        service === "Business Branding"
-    ){
-
-        html += `
-
-            <div class="form-group">
-
-                <label>
-                    Business Name
-                </label>
-
-                <input
-                    type="text"
-                    id="detailBusinessName"
-                    placeholder="Your business name">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Branding Needed
-                </label>
-
-                <input
-                    type="text"
-                    id="detailBrandingNeeded"
-                    placeholder="e.g. Logo, signage, T-shirts">
-
-            </div>
-
-        `;
-
-    }
-
-
-    else if(
-        service === "Stickers & Labels"
-    ){
-
-        html += `
-
-            <div class="form-group">
-
-                <label>
-                    Sticker / Label Type
-                </label>
-
-                <input
-                    type="text"
-                    id="detailStickerType"
-                    placeholder="e.g. Product labels">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Size
-                </label>
-
-                <input
-                    type="text"
-                    id="detailStickerSize"
-                    placeholder="e.g. 5cm × 5cm">
-
-            </div>
-
-        `;
-
-    }
-
-
-    else if(
-        service === "Caps & Merchandise"
-    ){
-
-        html += `
-
-            <div class="form-group">
-
-                <label>
-                    Merchandise Type
-                </label>
-
-                <input
-                    type="text"
-                    id="detailMerchandiseType"
-                    placeholder="e.g. Caps, bags">
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Colour / Style
-                </label>
-
-                <input
-                    type="text"
-                    id="detailMerchandiseStyle"
-                    placeholder="Preferred colour or style">
-
-            </div>
-
-        `;
-
-    }
-
-
-    else{
-
-        html += `
-
-            <div class="form-group full">
-
-                <label>
-                    Tell us about your project
-                </label>
-
-                <input
-                    type="text"
-                    id="detailCustom"
-                    placeholder="What would you like Bossy Prints & Design to create?">
-
-            </div>
-
-        `;
-
-    }
-
 
     dynamicFields.innerHTML =
         html;
@@ -5504,38 +2921,30 @@ function updateProjectFields(){
 }
 
 
-projectService.addEventListener(
+serviceInput.addEventListener(
     "change",
-    updateProjectFields
+    updateDynamicFields
 );
 
 
-/* =========================================================
+/* =========================================
    DELIVERY
-========================================================= */
+========================================= */
 
 deliveryMethod.addEventListener(
     "change",
-    function(){
+    () => {
 
-        if(
-            deliveryMethod.value ===
-            "Delivery"
-        ){
+        if(deliveryMethod.value === "Delivery"){
 
-            deliveryAddressWrap
-                .classList
-                .add("show");
+            deliveryAddressGroup.classList.add("show");
 
             deliveryAddress.required =
                 true;
 
-        }
-        else{
+        }else{
 
-            deliveryAddressWrap
-                .classList
-                .remove("show");
+            deliveryAddressGroup.classList.remove("show");
 
             deliveryAddress.required =
                 false;
@@ -5549,500 +2958,389 @@ deliveryMethod.addEventListener(
 );
 
 
-/* =========================================================
-   FILE DISPLAY
-========================================================= */
+/* =========================================
+   FILE VALIDATION
+========================================= */
 
-artworkFile.addEventListener(
+artworkInput.addEventListener(
     "change",
-    function(){
+    () => {
+
+        fileStatus.textContent =
+            "";
 
         const file =
-            artworkFile.files[0];
-
+            artworkInput.files[0];
 
         if(!file){
-
-            fileName.textContent =
-                "No artwork selected.";
-
             return;
-
         }
 
+        const maxSize =
+            15 * 1024 * 1024;
 
-        fileName.textContent =
-            "Selected: " +
-            file.name +
-            " (" +
-            formatFileSize(file.size) +
-            ")";
+        const allowedTypes = [
+            "image/png",
+            "image/jpeg",
+            "application/pdf",
+            "image/svg+xml"
+        ];
+
+        const extension =
+            file.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+        const allowedExtensions = [
+            "png",
+            "jpg",
+            "jpeg",
+            "pdf",
+            "svg"
+        ];
+
+        if(
+            !allowedTypes.includes(file.type) &&
+            !allowedExtensions.includes(extension)
+        ){
+
+            artworkInput.value =
+                "";
+
+            fileStatus.textContent =
+                "❌ File type not supported.";
+
+            return;
+        }
+
+        if(file.size > maxSize){
+
+            artworkInput.value =
+                "";
+
+            fileStatus.textContent =
+                "❌ File is larger than 15MB.";
+
+            return;
+        }
+
+        fileStatus.textContent =
+            `✓ ${file.name} selected`;
 
     }
 );
 
 
-/* =========================================================
-   FILE SIZE
-========================================================= */
+/* =========================================
+   FORM MESSAGE
+========================================= */
 
-function formatFileSize(bytes){
+function showFormError(message){
 
-    if(bytes < 1024){
+    formMessage.className =
+        "form-message error";
 
-        return bytes + " B";
-
-    }
-
-    if(bytes < 1024 * 1024){
-
-        return (
-            (bytes / 1024).toFixed(1) +
-            " KB"
-        );
-
-    }
-
-    return (
-        (bytes / (1024 * 1024)).toFixed(1) +
-        " MB"
-    );
-
-}
-
-
-/* =========================================================
-   REFERENCE NUMBER
-========================================================= */
-
-function generateReference(){
-
-    const date =
-        new Date();
-
-    const year =
-        date.getFullYear();
-
-    const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(2,"0");
-
-    const day =
-        String(
-            date.getDate()
-        ).padStart(2,"0");
-
-
-    const chars =
-        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
-
-    let random = "";
-
-
-    for(
-        let i = 0;
-        i < 4;
-        i++
-    ){
-
-        random +=
-            chars[
-                Math.floor(
-                    Math.random() *
-                    chars.length
-                )
-            ];
-
-    }
-
-
-    return (
-        "BPD-" +
-        year +
-        month +
-        day +
-        "-" +
-        random
-    );
-
-}
-
-
-/* =========================================================
-   SAFE FILE NAME
-========================================================= */
-
-function safeFileName(name){
-
-    return name
-        .replace(
-            /[^a-zA-Z0-9._-]/g,
-            "_"
-        )
-        .substring(0,120);
-
-}
-
-
-/* =========================================================
-   STATUS MESSAGE
-========================================================= */
-
-function showProjectStatus(
-    message,
-    type
-){
-
-    projectStatus.textContent =
+    formMessage.textContent =
         message;
 
-    projectStatus.className =
-        "project-status show " +
-        type;
+}
+
+function clearFormMessage(){
+
+    formMessage.className =
+        "form-message";
+
+    formMessage.textContent =
+        "";
 
 }
 
 
-/* =========================================================
-   PROJECT DETAILS
-========================================================= */
+/* =========================================
+   COLLECT SERVICE DETAILS
+========================================= */
 
-function collectProjectDetails(){
+function collectDynamicDetails(){
 
     const service =
-        projectService.value;
+        serviceInput.value;
 
+    const ids = [
+        "shirtType",
+        "sizes",
+        "printPosition",
+        "shirtColour",
+        "artworkStatus",
+        "designType",
+        "designPurpose",
+        "businessType",
+        "brandingItems",
+        "width",
+        "height",
+        "bannerType",
+        "stickerType",
+        "stickerSize",
+        "stickerFinish",
+        "capType",
+        "capColour",
+        "brandingPosition",
+        "customDetails"
+    ];
 
-    const details = {
-        service:service
-    };
+    const details = {};
 
+    details.service =
+        service;
 
-    if(
-        service ===
-        "T-Shirt Printing"
-    ){
+    ids.forEach(id => {
 
-        details.shirt_type =
-            document.getElementById(
-                "detailShirtType"
-            )?.value || "";
+        const element =
+            document.getElementById(id);
 
-        details.shirt_colour =
-            document.getElementById(
-                "detailShirtColour"
-            )?.value || "";
+        if(element && element.value){
 
-        details.sizes =
-            document.getElementById(
-                "detailSizes"
-            )?.value || "";
+            details[id] =
+                element.value;
 
-        details.print_position =
-            document.getElementById(
-                "detailPrintPosition"
-            )?.value || "";
+        }
 
-    }
-
-
-    else if(
-        service ===
-        "Banners & Posters"
-    ){
-
-        details.width =
-            document.getElementById(
-                "detailWidth"
-            )?.value || "";
-
-        details.height =
-            document.getElementById(
-                "detailHeight"
-            )?.value || "";
-
-        details.print_type =
-            document.getElementById(
-                "detailPrintType"
-            )?.value || "";
-
-        details.intended_use =
-            document.getElementById(
-                "detailUse"
-            )?.value || "";
-
-    }
-
-
-    else if(
-        service ===
-        "Graphic Design"
-    ){
-
-        details.design_type =
-            document.getElementById(
-                "detailDesignType"
-            )?.value || "";
-
-        details.preferred_style =
-            document.getElementById(
-                "detailStyle"
-            )?.value || "";
-
-    }
-
-
-    else if(
-        service ===
-        "Business Branding"
-    ){
-
-        details.business_name =
-            document.getElementById(
-                "detailBusinessName"
-            )?.value || "";
-
-        details.branding_needed =
-            document.getElementById(
-                "detailBrandingNeeded"
-            )?.value || "";
-
-    }
-
-
-    else if(
-        service ===
-        "Stickers & Labels"
-    ){
-
-        details.sticker_type =
-            document.getElementById(
-                "detailStickerType"
-            )?.value || "";
-
-        details.size =
-            document.getElementById(
-                "detailStickerSize"
-            )?.value || "";
-
-    }
-
-
-    else if(
-        service ===
-        "Caps & Merchandise"
-    ){
-
-        details.merchandise_type =
-            document.getElementById(
-                "detailMerchandiseType"
-            )?.value || "";
-
-        details.style =
-            document.getElementById(
-                "detailMerchandiseStyle"
-            )?.value || "";
-
-    }
-
-
-    else{
-
-        details.custom =
-            document.getElementById(
-                "detailCustom"
-            )?.value || "";
-
-    }
-
+    });
 
     return details;
 
 }
 
 
-/* =========================================================
+/* =========================================
+   RESET FORM
+========================================= */
+
+function resetProjectForm(){
+
+    projectForm.reset();
+
+    quantityInput.value =
+        "1";
+
+    dynamicFields.innerHTML =
+        "";
+
+    deliveryAddressGroup
+        .classList
+        .remove("show");
+
+    deliveryAddress.required =
+        false;
+
+    fileStatus.textContent =
+        "";
+
+    clearFormMessage();
+
+    projectFormContainer.style.display =
+        "block";
+
+    successPanel.classList.remove(
+        "show"
+    );
+
+    submitProject.disabled =
+        false;
+
+    submitProject.innerHTML =
+        "🚀 Submit Project";
+
+    window.location.hash =
+        "start-project";
+
+}
+
+
+/* =========================================
+   START ANOTHER PROJECT
+========================================= */
+
+newProjectBtn.addEventListener(
+    "click",
+    resetProjectForm
+);
+
+
+/* =========================================
    SUBMIT PROJECT
-========================================================= */
+========================================= */
 
 projectForm.addEventListener(
     "submit",
-    async function(event){
+    async (event) => {
 
         event.preventDefault();
 
+        clearFormMessage();
 
-        projectStatus.className =
-            "project-status";
+        /* Spam honeypot */
+
+        const honeypot =
+            document.getElementById("website");
+
+        if(honeypot.value){
+
+            return;
+
+        }
 
 
         const service =
-            projectService.value.trim();
+            serviceInput.value.trim();
 
+        const customerName =
+            document
+                .getElementById("customerName")
+                .value
+                .trim();
 
-        const name =
-            customerName.value.trim();
+        const customerPhone =
+            document
+                .getElementById("customerPhone")
+                .value
+                .trim();
 
-
-        const phone =
-            customerPhone.value.trim();
-
-
-        const email =
-            customerEmail.value.trim();
-
+        const customerEmail =
+            document
+                .getElementById("customerEmail")
+                .value
+                .trim();
 
         const quantity =
             Number(
-                projectQuantity.value
+                quantityInput.value
             );
 
+        const notes =
+            document
+                .getElementById("notes")
+                .value
+                .trim();
 
         const delivery =
             deliveryMethod.value;
 
-
         const address =
             deliveryAddress.value.trim();
 
+        const file =
+            artworkInput.files[0];
+
+
+        /* Validation */
 
         if(!service){
 
-            showProjectStatus(
-                "Please choose a service.",
-                "error"
-            );
-
-            projectService.focus();
-
-            return;
-
-        }
-
-
-        if(
-            !name ||
-            !phone
-        ){
-
-            showProjectStatus(
-                "Please enter your full name and phone number.",
-                "error"
+            showFormError(
+                "Please choose a service."
             );
 
             return;
 
         }
 
+        if(!customerName){
+
+            showFormError(
+                "Please enter your full name."
+            );
+
+            return;
+
+        }
+
+        if(!customerPhone){
+
+            showFormError(
+                "Please enter your phone number."
+            );
+
+            return;
+
+        }
 
         if(
             !Number.isInteger(quantity) ||
             quantity < 1
         ){
 
-            showProjectStatus(
-                "Please enter a valid quantity.",
-                "error"
+            showFormError(
+                "Please enter a valid quantity."
             );
-
-            projectQuantity.focus();
 
             return;
 
         }
-
 
         if(!delivery){
 
-            showProjectStatus(
-                "Please choose Pickup or Delivery.",
-                "error"
+            showFormError(
+                "Please choose Pickup or Delivery."
             );
-
-            deliveryMethod.focus();
 
             return;
 
         }
-
 
         if(
             delivery === "Delivery" &&
             !address
         ){
 
-            showProjectStatus(
-                "Please enter your delivery address.",
-                "error"
+            showFormError(
+                "Please enter your delivery address."
             );
-
-            deliveryAddress.focus();
 
             return;
 
         }
 
 
-        const file =
-            artworkFile.files[0];
-
+        /* File validation again */
 
         if(file){
 
-            const allowedTypes = [
-                "image/png",
-                "image/jpeg",
-                "application/pdf",
-                "image/svg+xml"
-            ];
-
-
-            const allowedExtensions = [
-                ".png",
-                ".jpg",
-                ".jpeg",
-                ".pdf",
-                ".svg"
-            ];
-
+            const maxSize =
+                15 * 1024 * 1024;
 
             const extension =
-                "." +
                 file.name
                     .split(".")
                     .pop()
                     .toLowerCase();
 
+            const allowedExtensions = [
+                "png",
+                "jpg",
+                "jpeg",
+                "pdf",
+                "svg"
+            ];
 
             if(
-                !allowedTypes.includes(
-                    file.type
-                ) &&
                 !allowedExtensions.includes(
                     extension
                 )
             ){
 
-                showProjectStatus(
-                    "Please upload PNG, JPG, JPEG, PDF or SVG artwork.",
-                    "error"
+                showFormError(
+                    "Please upload PNG, JPG, PDF or SVG."
                 );
 
                 return;
 
             }
 
+            if(file.size > maxSize){
 
-            if(
-                file.size >
-                15 * 1024 * 1024
-            ){
-
-                showProjectStatus(
-                    "Your artwork is too large. Maximum size is 15MB.",
-                    "error"
+                showFormError(
+                    "Your artwork must be 15MB or smaller."
                 );
 
                 return;
@@ -6052,64 +3350,69 @@ projectForm.addEventListener(
         }
 
 
-        projectSubmit.disabled =
+        /* Disable button */
+
+        submitProject.disabled =
             true;
 
-        projectSubmit.textContent =
-            "Submitting Project...";
+        submitProject.innerHTML =
+            "⏳ Submitting Project...";
 
 
         try{
 
-            let reference =
+            /*
+             IMPORTANT:
+
+             We DO NOT query the orders table here.
+
+             Customers are intentionally not allowed
+             to read orders.
+
+             The database already has a UNIQUE constraint
+             on reference_number.
+            */
+
+            let referenceNumber =
                 generateReference();
 
-
-            let artworkPath =
+            let uploadedArtworkPath =
                 null;
 
 
-            /* =========================================
-               ARTWORK UPLOAD
-            ========================================= */
+            /* =====================================
+               UPLOAD ARTWORK
+            ===================================== */
 
             if(file){
 
-                showProjectStatus(
-                    "Uploading your artwork...",
-                    "success"
-                );
+                fileStatus.textContent =
+                    "⏳ Uploading artwork...";
 
-
-                const filePath =
-                    reference +
-                    "/" +
-                    crypto.randomUUID() +
-                    "-" +
+                const safeName =
                     safeFileName(
                         file.name
                     );
 
+                const filePath =
+                    `${referenceNumber}/${getRandomId()}-${safeName}`;
 
                 const {
-                    error:uploadError
+                    error:
+                    uploadError
                 } =
-                    await supabaseClient
-                        .storage
-                        .from(
-                            "customer-artwork"
-                        )
-                        .upload(
-                            filePath,
-                            file,
-                            {
-                                upsert:false,
-                                contentType:
-                                    file.type ||
-                                    "application/octet-stream"
-                            }
-                        );
-
+                await supabaseClient
+                    .storage
+                    .from("customer-artwork")
+                    .upload(
+                        filePath,
+                        file,
+                        {
+                            upsert:false,
+                            contentType:
+                                file.type || undefined
+                        }
+                    );
 
                 if(uploadError){
 
@@ -6119,39 +3422,56 @@ projectForm.addEventListener(
                     );
 
                     throw new Error(
-                        "Artwork upload failed. Please try again."
+                        "Your artwork could not be uploaded. Please try again."
                     );
 
                 }
 
-
-                artworkPath =
+                uploadedArtworkPath =
                     filePath;
+
+                fileStatus.textContent =
+                    "✓ Artwork uploaded";
 
             }
 
 
-            showProjectStatus(
-                "Saving your project...",
-                "success"
-            );
-
+            /* =====================================
+               PROJECT DETAILS
+            ===================================== */
 
             const projectDetails =
-                collectProjectDetails();
+                collectDynamicDetails();
 
+
+            projectDetails.quantity =
+                quantity;
+
+            projectDetails.delivery_method =
+                delivery;
+
+            if(address){
+
+                projectDetails.delivery_address =
+                    address;
+
+            }
+
+
+            /* =====================================
+               ORDER DATA
+            ===================================== */
 
             const orderData = {
 
                 customer_name:
-                    name,
+                    customerName,
 
                 customer_phone:
-                    phone,
+                    customerPhone,
 
                 customer_email:
-                    email ||
-                    null,
+                    customerEmail || null,
 
                 product_name:
                     null,
@@ -6162,18 +3482,11 @@ projectForm.addEventListener(
                 quantity:
                     quantity,
 
-                amount:
-                    0,
-
                 notes:
-                    projectNotes.value.trim() ||
-                    null,
-
-                status:
-                    "New",
+                    notes || null,
 
                 reference_number:
-                    reference,
+                    referenceNumber,
 
                 project_details:
                     JSON.stringify(
@@ -6181,24 +3494,26 @@ projectForm.addEventListener(
                     ),
 
                 artwork_url:
-                    artworkPath,
+                    uploadedArtworkPath,
 
                 delivery_method:
                     delivery,
 
                 delivery_address:
-                    delivery === "Delivery"
-                        ? address
-                        : null,
-
-                quote_amount:
-                    null,
-
-                admin_notes:
-                    null
+                    address || null
 
             };
 
+
+            console.log(
+                "Submitting order:",
+                orderData
+            );
+
+
+            /* =====================================
+               INSERT ORDER
+            ===================================== */
 
             let insertResult =
                 await supabaseClient
@@ -6206,26 +3521,41 @@ projectForm.addEventListener(
                     .insert(
                         orderData
                     )
-                    .select(
-                        "reference_number"
-                    )
+                    .select()
                     .single();
 
 
             /*
-             * If the random reference happens to collide,
-             * generate a new one and retry.
-             */
+             If the extremely unlikely event occurs that
+             the generated reference already exists,
+             generate another reference and retry.
+
+             We don't perform a public SELECT.
+            */
 
             if(
                 insertResult.error &&
-                insertResult.error.code ===
-                "23505"
+                insertResult.error.code === "23505"
             ){
 
-                orderData.reference_number =
+                referenceNumber =
                     generateReference();
 
+                if(uploadedArtworkPath){
+
+                    fileStatus.textContent =
+                        "⏳ Preparing new project reference...";
+
+                    /*
+                     A collision is extremely unlikely.
+                     Because the first insert did not happen,
+                     the uploaded file remains harmlessly stored.
+                    */
+
+                }
+
+                orderData.reference_number =
+                    referenceNumber;
 
                 insertResult =
                     await supabaseClient
@@ -6233,9 +3563,7 @@ projectForm.addEventListener(
                         .insert(
                             orderData
                         )
-                        .select(
-                            "reference_number"
-                        )
+                        .select()
                         .single();
 
             }
@@ -6249,174 +3577,73 @@ projectForm.addEventListener(
                 );
 
                 throw new Error(
-                    "We could not save your project. Please try again."
+                    insertResult.error.message ||
+                    "We could not save your project."
                 );
 
             }
 
 
-            reference =
-                insertResult
-                    .data
-                    .reference_number;
-
-
-            /* =========================================
+            /* =====================================
                SUCCESS
-            ========================================= */
+            ===================================== */
 
-            referenceNumber.textContent =
-                reference;
+            console.log(
+                "Project saved successfully:",
+                insertResult.data
+            );
+
+
+            referenceDisplay.textContent =
+                referenceNumber;
 
 
             const whatsappMessage =
                 encodeURIComponent(
-                    "Hello Bossy Prints & Design. " +
-                    "I have just submitted a project through your website. " +
-                    "My reference number is " +
-                    reference +
-                    "."
+                    `Hello Bossy Prints & Design. I have submitted a project.\n\nReference: ${referenceNumber}\nName: ${customerName}\nService: ${service}`
                 );
 
 
             successWhatsApp.href =
-                "https://wa.me/254724566417?text=" +
-                whatsappMessage;
+                `https://wa.me/254724566417?text=${whatsappMessage}`;
 
 
-            projectForm.style.display =
+            projectFormContainer.style.display =
                 "none";
 
-
-            projectSuccess.classList.add(
+            successPanel.classList.add(
                 "show"
             );
 
 
-            projectStatus.className =
-                "project-status";
+            window.location.hash =
+                "start-project";
 
 
-            document
-                .getElementById(
-                    "start-project"
-                )
-                .scrollIntoView({
-                    behavior:"smooth",
-                    block:"start"
-                });
-
-
-        }
-        catch(error){
+        }catch(error){
 
             console.error(
                 "Project submission error:",
                 error
             );
 
-
-            showProjectStatus(
+            showFormError(
                 error.message ||
-                "Something went wrong. Please try again.",
-                "error"
+                "We could not save your project. Please try again."
             );
 
-        }
-        finally{
-
-            projectSubmit.disabled =
+            submitProject.disabled =
                 false;
 
-            projectSubmit.textContent =
-                "🚀 Submit My Project";
+            submitProject.innerHTML =
+                "🚀 Submit Project";
 
         }
 
     }
 );
-
-
-/* =========================================================
-   NEW PROJECT
-========================================================= */
-
-newProjectBtn.addEventListener(
-    "click",
-    function(){
-
-        projectForm.reset();
-
-
-        dynamicFields.innerHTML = `
-
-            <div class="dynamic-fields-title">
-                PROJECT DETAILS
-            </div>
-
-            <div class="form-group full">
-
-                <label>
-                    Tell us about your project
-                </label>
-
-                <input
-                    type="text"
-                    id="detailCustom"
-                    placeholder="Choose a service above to see more options">
-
-            </div>
-
-        `;
-
-
-        deliveryAddressWrap
-            .classList
-            .remove("show");
-
-
-        deliveryAddress.required =
-            false;
-
-
-        fileName.textContent =
-            "No artwork selected.";
-
-
-        projectStatus.className =
-            "project-status";
-
-
-        projectSuccess.classList.remove(
-            "show"
-        );
-
-
-        projectForm.style.display =
-            "grid";
-
-
-        document
-            .getElementById(
-                "start-project"
-            )
-            .scrollIntoView({
-                behavior:"smooth",
-                block:"start"
-            });
-
-    }
-);
-
-
-/* =========================================================
-   START
-========================================================= */
-
-loadPublicProducts();
 
 </script>
 
 </body>
-
 </html>
