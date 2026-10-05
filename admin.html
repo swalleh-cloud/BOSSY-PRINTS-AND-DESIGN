@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bossy Prints & Design | Admin Dashboard</title>
+<title>Bossy Prints & Design | Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -17,36 +17,71 @@
     box-sizing:border-box;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f4f6f8;
-    color:#222;
+:root{
+    --dark:#0d0f12;
+    --dark2:#171a1f;
+    --dark3:#242830;
+    --bg:#f4f6f8;
+    --card:#ffffff;
+    --text:#1c2025;
+    --muted:#737b86;
+    --border:#e4e7eb;
+    --green:#16833d;
+    --red:#c62828;
+    --blue:#1769aa;
+    --purple:#6842c2;
+    --orange:#b56a00;
+    --cyan:#087f8c;
+    --shadow:0 5px 20px rgba(0,0,0,.055);
 }
 
-button,input,select,textarea{
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+button,
+input,
+select,
+textarea{
     font-family:inherit;
 }
 
-/* =========================
+button{
+    -webkit-tap-highlight-color:transparent;
+}
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =====================================================
    LOGIN
-========================= */
+===================================================== */
 
 #loginScreen{
     min-height:100vh;
     display:flex;
-    justify-content:center;
     align-items:center;
-    background:#111;
+    justify-content:center;
     padding:20px;
+    background:
+        radial-gradient(circle at top right,#28313d 0,#111 38%,#080909 100%);
 }
 
 .loginBox{
     width:100%;
-    max-width:420px;
-    background:white;
-    padding:40px;
-    border-radius:18px;
-    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    max-width:430px;
+    background:#fff;
+    padding:42px;
+    border-radius:22px;
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
 }
 
 .loginLogo{
@@ -54,60 +89,81 @@ button,input,select,textarea{
     margin-bottom:30px;
 }
 
-.loginLogo h1{
+.loginMark{
+    width:62px;
+    height:62px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    background:#111;
+    color:#fff;
+    border-radius:16px;
     font-size:28px;
     font-weight:900;
-    letter-spacing:1px;
+}
+
+.loginLogo h1{
+    font-size:27px;
+    font-weight:900;
 }
 
 .loginLogo p{
     color:#777;
+    font-size:12px;
     margin-top:7px;
-    font-size:13px;
+    letter-spacing:1px;
 }
 
 .loginBox label{
     display:block;
-    margin:15px 0 7px;
+    margin:16px 0 7px;
     font-weight:bold;
+    font-size:13px;
 }
 
 .loginBox input{
     width:100%;
-    padding:13px;
+    padding:14px;
     border:1px solid #ddd;
-    border-radius:9px;
-    font-size:15px;
+    border-radius:10px;
+    outline:none;
+}
+
+.loginBox input:focus{
+    border-color:#111;
+    box-shadow:0 0 0 3px rgba(0,0,0,.06);
 }
 
 .loginBtn{
     width:100%;
-    margin-top:20px;
+    margin-top:22px;
     padding:14px;
-    border:none;
-    border-radius:9px;
+    border:0;
+    border-radius:10px;
     background:#111;
-    color:white;
-    font-size:16px;
+    color:#fff;
+    font-size:15px;
     font-weight:bold;
     cursor:pointer;
 }
 
 .loginBtn:hover{
-    background:#333;
+    background:#292929;
 }
 
 .loginMessage{
-    margin-top:15px;
-    padding:10px;
-    border-radius:8px;
     display:none;
-    font-size:14px;
+    margin-top:15px;
+    padding:11px;
+    border-radius:9px;
+    font-size:13px;
 }
 
-/* =========================
-   DASHBOARD
-========================= */
+
+/* =====================================================
+   APP
+===================================================== */
 
 #dashboard{
     display:none;
@@ -119,77 +175,92 @@ button,input,select,textarea{
     left:0;
     top:0;
     bottom:0;
-    width:250px;
-    background:#111;
-    color:white;
-    padding:25px 15px;
+    width:255px;
+    background:var(--dark);
+    color:#fff;
+    padding:22px 14px;
     z-index:1000;
     overflow-y:auto;
 }
 
 .logo{
     text-align:center;
-    padding:10px;
-    margin-bottom:30px;
+    padding:10px 5px 24px;
+}
+
+.logoMark{
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+    color:#111;
+    border-radius:12px;
+    margin:0 auto 10px;
+    font-size:20px;
+    font-weight:900;
 }
 
 .logo h2{
-    font-size:23px;
+    font-size:21px;
     font-weight:900;
 }
 
 .logo p{
-    font-size:10px;
-    color:#aaa;
-    margin-top:5px;
+    color:#9299a3;
+    font-size:9px;
     letter-spacing:1px;
+    margin-top:5px;
 }
 
 .menu{
     display:flex;
     flex-direction:column;
-    gap:7px;
+    gap:5px;
 }
 
 .menu button{
     width:100%;
-    border:none;
+    padding:12px 14px;
+    border:0;
     background:transparent;
-    color:#ddd;
-    padding:13px 15px;
+    color:#cdd1d6;
+    border-radius:9px;
     text-align:left;
-    border-radius:8px;
     cursor:pointer;
-    font-size:14px;
+    font-size:13px;
+    transition:.18s;
 }
 
 .menu button:hover,
 .menu button.active{
-    background:#292929;
-    color:white;
+    background:var(--dark3);
+    color:#fff;
 }
 
 .menuDivider{
     height:1px;
-    background:#292929;
-    margin:12px 5px;
+    background:#292d33;
+    margin:10px 5px;
 }
 
 .logoutBtn{
-    margin-top:25px !important;
-    color:#ffb3b3 !important;
+    margin-top:18px !important;
+    color:#ffb4b4 !important;
 }
 
 .main{
-    margin-left:250px;
+    margin-left:255px;
     min-height:100vh;
     padding:25px;
 }
 
 .topbar{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+    gap:15px;
     margin-bottom:25px;
 }
 
@@ -198,17 +269,24 @@ button,input,select,textarea{
 }
 
 .topbar p{
-    color:#777;
+    color:var(--muted);
     margin-top:5px;
+    font-size:13px;
+}
+
+.topbarActions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
 .mobileMenu{
     display:none;
-    border:none;
+    border:0;
     background:#111;
-    color:white;
+    color:#fff;
     padding:10px 14px;
-    border-radius:7px;
+    border-radius:8px;
     cursor:pointer;
 }
 
@@ -216,9 +294,10 @@ button,input,select,textarea{
     display:none;
 }
 
-/* =========================
+
+/* =====================================================
    SECTIONS
-========================= */
+===================================================== */
 
 .section{
     display:none;
@@ -228,45 +307,69 @@ button,input,select,textarea{
     display:block;
 }
 
-/* =========================
-   STATS
-========================= */
+
+/* =====================================================
+   DASHBOARD STATS
+===================================================== */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(5,1fr);
     gap:15px;
-    margin-bottom:25px;
+    margin-bottom:20px;
 }
 
 .statCard{
-    background:white;
-    border-radius:14px;
+    background:#fff;
+    border-radius:15px;
     padding:20px;
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+}
+
+.statCard:after{
+    content:"";
+    position:absolute;
+    right:-25px;
+    top:-25px;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#f2f3f5;
 }
 
 .statCard span{
     display:block;
-    color:#777;
-    font-size:12px;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:.4px;
     margin-bottom:10px;
 }
 
 .statCard strong{
-    font-size:28px;
+    font-size:27px;
 }
 
-/* =========================
+.statCard small{
+    display:block;
+    color:var(--muted);
+    font-size:11px;
+    margin-top:7px;
+}
+
+
+/* =====================================================
    CARDS
-========================= */
+===================================================== */
 
 .card{
-    background:white;
-    border-radius:14px;
-    padding:25px;
-    box-shadow:0 4px 15px rgba(0,0,0,.05);
-    margin-bottom:25px;
+    background:#fff;
+    border-radius:15px;
+    padding:24px;
+    box-shadow:var(--shadow);
+    margin-bottom:20px;
 }
 
 .cardHeader{
@@ -274,29 +377,42 @@ button,input,select,textarea{
     justify-content:space-between;
     align-items:center;
     gap:15px;
-    margin-bottom:20px;
+    margin-bottom:19px;
 }
 
 .cardHeader h2{
-    font-size:20px;
+    font-size:19px;
 }
 
-/* =========================
+.cardHeader p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
+}
+
+
+/* =====================================================
    BUTTONS
-========================= */
+===================================================== */
 
 .btn{
-    border:none;
-    padding:10px 15px;
+    border:0;
+    padding:10px 14px;
     border-radius:8px;
     cursor:pointer;
     font-weight:bold;
-    font-size:13px;
+    font-size:12px;
+    transition:.15s;
+}
+
+.btn:hover{
+    opacity:.88;
+    transform:translateY(-1px);
 }
 
 .btnPrimary{
     background:#111;
-    color:white;
+    color:#fff;
 }
 
 .btnSecondary{
@@ -304,131 +420,100 @@ button,input,select,textarea{
     color:#222;
 }
 
-.btnDanger{
-    background:#c62828;
-    color:white;
-}
-
-.btnSuccess{
-    background:#16833d;
-    color:white;
-}
-
+.btnSuccess,
 .btnWhatsApp{
     background:#16833d;
-    color:white;
+    color:#fff;
 }
 
-.btn:hover{
-    opacity:.88;
+.btnDanger{
+    background:#c62828;
+    color:#fff;
+}
+
+.btnBlue{
+    background:#1769aa;
+    color:#fff;
+}
+
+.btnPurple{
+    background:#6842c2;
+    color:#fff;
+}
+
+.btnOrange{
+    background:#b56a00;
+    color:#fff;
 }
 
 .smallBtn{
     padding:7px 10px;
-    font-size:12px;
+    font-size:11px;
 }
 
-/* =========================
-   FORMS
-========================= */
-
-.formGrid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-}
-
-.formGroup{
-    display:flex;
-    flex-direction:column;
-}
-
-.formGroup.full{
-    grid-column:1/-1;
-}
-
-.formGroup label{
-    font-weight:bold;
-    margin-bottom:7px;
-    font-size:14px;
-}
-
-.formGroup input,
-.formGroup select,
-.formGroup textarea{
+.fullBtn{
     width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    font-size:14px;
 }
 
-.formGroup textarea{
-    min-height:120px;
-    resize:vertical;
-}
 
-.formActions{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
-}
-
-.message{
-    margin-top:15px;
-    padding:12px;
-    border-radius:8px;
-    display:none;
-}
-
-/* =========================
+/* =====================================================
    TOOLBAR
-========================= */
+===================================================== */
 
 .toolbar{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
+    display:grid;
+    grid-template-columns:minmax(200px,1fr) 180px 180px 180px;
+    gap:9px;
+    margin-bottom:18px;
 }
 
 .toolbar input,
 .toolbar select{
-    padding:11px;
-    border:1px solid #ddd;
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--border);
     border-radius:8px;
+    background:#fff;
+    outline:none;
+    font-size:12px;
 }
 
-.toolbar input{
-    flex:1;
+.toolbar input:focus,
+.toolbar select:focus{
+    border-color:#999;
 }
 
-/* =========================
-   ORDER TABLE
-========================= */
+
+/* =====================================================
+   TABLE
+===================================================== */
 
 .tableWrap{
+    width:100%;
     overflow-x:auto;
 }
 
 .dataTable{
     width:100%;
+    min-width:1000px;
     border-collapse:collapse;
-    min-width:950px;
 }
 
 .dataTable th{
+    background:#f7f8f9;
+    color:#606771;
     text-align:left;
-    background:#f7f7f7;
-    padding:13px;
-    font-size:12px;
-    color:#555;
+    padding:12px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:.3px;
     white-space:nowrap;
 }
 
 .dataTable td{
-    padding:13px;
+    padding:13px 12px;
     border-top:1px solid #eee;
-    font-size:13px;
+    font-size:12px;
     vertical-align:middle;
 }
 
@@ -437,8 +522,8 @@ button,input,select,textarea{
 }
 
 .ref{
-    font-weight:bold;
-    font-size:12px;
+    font-weight:900;
+    font-size:11px;
 }
 
 .customerName{
@@ -447,21 +532,46 @@ button,input,select,textarea{
 
 .customerPhone{
     color:#777;
-    font-size:12px;
-    margin-top:4px;
+    font-size:11px;
+    margin-top:3px;
 }
 
 .dateText{
     color:#777;
-    font-size:12px;
+    font-size:11px;
 }
+
+.amount{
+    font-weight:bold;
+}
+
+.actionStack{
+    display:flex;
+    flex-wrap:wrap;
+    gap:5px;
+}
+
+.statusSelect{
+    padding:7px 8px;
+    border:1px solid #ddd;
+    border-radius:7px;
+    background:#fff;
+    font-size:11px;
+    outline:none;
+}
+
+
+/* =====================================================
+   STATUS BADGES
+===================================================== */
 
 .statusBadge{
     display:inline-block;
-    padding:6px 9px;
+    padding:5px 9px;
     border-radius:20px;
-    font-size:11px;
+    font-size:10px;
     font-weight:bold;
+    white-space:nowrap;
 }
 
 .statusNew{
@@ -509,31 +619,87 @@ button,input,select,textarea{
     color:#126b31;
 }
 
-.statusSelect{
-    padding:7px;
-    border:1px solid #ddd;
-    border-radius:7px;
+.statusClosed{
+    background:#e8e8e8;
+    color:#555;
+}
+
+
+/* =====================================================
+   FORMS
+===================================================== */
+
+.formGrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+}
+
+.formGroup{
+    display:flex;
+    flex-direction:column;
+}
+
+.formGroup.full{
+    grid-column:1/-1;
+}
+
+.formGroup label{
+    margin-bottom:7px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    outline:none;
+    font-size:13px;
+    background:#fff;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus{
+    border-color:#999;
+}
+
+.formGroup textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.formActions{
+    display:flex;
+    gap:9px;
+    margin-top:18px;
+}
+
+.message{
+    display:none;
+    margin-top:15px;
+    padding:11px;
+    border-radius:8px;
     font-size:12px;
 }
 
-.actionStack{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-}
 
-/* =========================
-   ORDER DETAIL
-========================= */
+/* =====================================================
+   DETAIL GRID
+===================================================== */
 
 .detailGrid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:15px;
+    gap:13px;
 }
 
 .detailBox{
-    background:#f7f7f7;
+    background:#f7f8f9;
     padding:15px;
     border-radius:10px;
 }
@@ -544,172 +710,239 @@ button,input,select,textarea{
 
 .detailBox label{
     display:block;
-    font-size:11px;
-    color:#777;
+    color:#7a818a;
+    font-size:9px;
     text-transform:uppercase;
-    margin-bottom:6px;
+    letter-spacing:.4px;
     font-weight:bold;
+    margin-bottom:6px;
 }
 
 .detailBox strong{
-    font-size:14px;
+    font-size:13px;
 }
 
 .detailText{
     white-space:pre-wrap;
     line-height:1.6;
-    font-size:14px;
+    font-size:13px;
 }
 
 .projectJson{
     background:#111;
-    color:#eee;
+    color:#e8e8e8;
     padding:15px;
-    border-radius:10px;
-    font-size:12px;
+    border-radius:8px;
+    font-size:11px;
+    max-height:270px;
     overflow:auto;
-    max-height:250px;
+    white-space:pre-wrap;
+    word-break:break-word;
 }
 
 .artworkBox{
-    text-align:center;
-    padding:20px;
-    background:#f7f7f7;
+    background:#fff;
+    border:1px dashed #ccc;
     border-radius:10px;
+    padding:18px;
+    text-align:center;
 }
 
 .artworkBox p{
     color:#777;
-    font-size:13px;
+    font-size:12px;
     margin-bottom:12px;
 }
 
-/* =========================
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+
+.quickGrid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.quickAction{
+    border:1px solid var(--border);
+    background:#fff;
+    border-radius:11px;
+    padding:15px;
+    cursor:pointer;
+    text-align:left;
+}
+
+.quickAction:hover{
+    background:#f8f9fa;
+}
+
+.quickAction strong{
+    display:block;
+    margin-bottom:5px;
+    font-size:13px;
+}
+
+.quickAction span{
+    color:#777;
+    font-size:11px;
+}
+
+
+/* =====================================================
+   ACTIVITY
+===================================================== */
+
+.activityList{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.activityItem{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px;
+    background:#f7f8f9;
+    border-radius:9px;
+}
+
+.activityDot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#111;
+    flex-shrink:0;
+}
+
+.activityItem strong{
+    display:block;
+    font-size:12px;
+}
+
+.activityItem span{
+    color:#777;
+    font-size:10px;
+}
+
+
+/* =====================================================
    PRODUCTS
-========================= */
+===================================================== */
 
 .productsGrid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:18px;
 }
 
 .productCard{
-    background:white;
-    border-radius:14px;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:13px;
     overflow:hidden;
-    box-shadow:0 4px 15px rgba(0,0,0,.07);
 }
 
 .productImage{
     width:100%;
-    height:200px;
+    height:190px;
     object-fit:cover;
     background:#eee;
 }
 
 .productInfo{
-    padding:18px;
+    padding:16px;
 }
 
 .productInfo h3{
-    font-size:18px;
-    margin-bottom:8px;
+    font-size:16px;
+    margin-bottom:7px;
 }
 
 .productPrice{
     font-weight:bold;
-    margin-bottom:7px;
+    margin-bottom:6px;
 }
 
 .productCategory{
     display:inline-block;
     background:#eee;
-    padding:5px 8px;
+    padding:4px 7px;
     border-radius:5px;
-    font-size:11px;
+    font-size:10px;
     margin-bottom:10px;
 }
 
 .productDescription{
     color:#666;
-    font-size:13px;
+    font-size:11px;
     line-height:1.5;
-    margin-bottom:15px;
+    min-height:34px;
+    margin-bottom:13px;
 }
 
 .productActions{
     display:flex;
-    gap:8px;
+    gap:7px;
 }
 
 .productActions button{
     flex:1;
 }
 
-/* =========================
+
+/* =====================================================
    RECENT
-========================= */
+===================================================== */
 
 .recentList{
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:8px;
 }
 
 .recentItem{
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:12px;
-    background:#f7f7f7;
+    gap:11px;
+    padding:10px;
+    background:#f7f8f9;
     border-radius:8px;
 }
 
 .recentItem img{
-    width:55px;
-    height:55px;
+    width:50px;
+    height:50px;
     object-fit:cover;
     border-radius:7px;
+    background:#ddd;
 }
 
 .recentItem strong{
     display:block;
-    margin-bottom:4px;
+    margin-bottom:3px;
+    font-size:12px;
 }
 
 .recentItem span{
     color:#777;
-    font-size:12px;
+    font-size:10px;
 }
 
-/* =========================
-   EMPTY / LOADING
-========================= */
 
-.empty{
-    text-align:center;
-    padding:40px;
-    color:#777;
-}
-
-.loading{
-    text-align:center;
-    padding:30px;
-    color:#777;
-}
-
-/* =========================
+/* =====================================================
    MODAL
-========================= */
+===================================================== */
 
 .modal{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.65);
+    background:rgba(0,0,0,.68);
     z-index:3000;
-    padding:25px;
+    padding:20px;
     overflow-y:auto;
 }
 
@@ -721,86 +954,124 @@ button,input,select,textarea{
 
 .modalBox{
     width:100%;
-    max-width:950px;
-    background:white;
-    border-radius:16px;
+    max-width:1000px;
     margin:20px auto;
+    background:#fff;
+    border-radius:16px;
     overflow:hidden;
-    box-shadow:0 30px 80px rgba(0,0,0,.35);
+    box-shadow:0 30px 90px rgba(0,0,0,.4);
 }
 
 .modalHeader{
-    padding:20px 25px;
-    border-bottom:1px solid #eee;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:15px;
+    padding:19px 23px;
+    border-bottom:1px solid #eee;
 }
 
 .modalHeader h2{
-    font-size:20px;
+    font-size:19px;
 }
 
 .closeModal{
-    border:none;
+    width:34px;
+    height:34px;
+    border:0;
     background:#eee;
-    width:35px;
-    height:35px;
     border-radius:50%;
     cursor:pointer;
     font-size:18px;
 }
 
 .modalBody{
-    padding:25px;
+    padding:23px;
 }
 
 .modalFooter{
-    padding:20px 25px;
-    border-top:1px solid #eee;
     display:flex;
-    gap:10px;
     justify-content:flex-end;
+    gap:8px;
+    padding:17px 23px;
+    border-top:1px solid #eee;
 }
 
-/* =========================
+
+/* =====================================================
    IMAGE PREVIEW
-========================= */
+===================================================== */
 
 #imagePreview{
     display:none;
-    margin-top:10px;
+    margin-top:5px;
 }
 
 #previewImg{
     width:150px;
     height:150px;
     object-fit:cover;
-    border-radius:10px;
+    border-radius:9px;
     border:1px solid #ddd;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 
-@media(max-width:1200px){
+/* =====================================================
+   EMPTY / LOADING
+===================================================== */
+
+.empty{
+    text-align:center;
+    padding:38px 20px;
+    color:#777;
+    font-size:12px;
+}
+
+.loading{
+    text-align:center;
+    padding:30px;
+    color:#777;
+    font-size:12px;
+}
+
+.errorBox{
+    padding:15px;
+    border-radius:9px;
+    background:#ffe8e8;
+    color:#a00000;
+    font-size:12px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1250px){
 
     .stats{
         grid-template-columns:repeat(3,1fr);
+    }
+
+    .toolbar{
+        grid-template-columns:1fr 1fr;
     }
 
     .productsGrid{
         grid-template-columns:repeat(2,1fr);
     }
 
+    .quickGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
-@media(max-width:800px){
+@media(max-width:850px){
 
     .sidebar{
         transform:translateX(-100%);
-        transition:.3s;
+        transition:.25s;
     }
 
     .sidebar.open{
@@ -809,7 +1080,7 @@ button,input,select,textarea{
 
     .main{
         margin-left:0;
-        padding:18px;
+        padding:17px;
     }
 
     .mobileMenu{
@@ -836,11 +1107,15 @@ button,input,select,textarea{
 @media(max-width:650px){
 
     .topbar{
-        gap:15px;
+        align-items:flex-start;
     }
 
     .topbar h1{
         font-size:22px;
+    }
+
+    .topbarActions{
+        display:none;
     }
 
     .stats{
@@ -860,7 +1135,7 @@ button,input,select,textarea{
     }
 
     .toolbar{
-        flex-direction:column;
+        grid-template-columns:1fr;
     }
 
     .detailGrid{
@@ -871,18 +1146,37 @@ button,input,select,textarea{
         grid-column:auto;
     }
 
+    .quickGrid{
+        grid-template-columns:1fr;
+    }
+
     .modal{
-        padding:10px;
+        padding:8px;
+    }
+
+    .modalBox{
+        margin:8px auto;
     }
 
     .modalBody{
-        padding:18px;
+        padding:16px;
+    }
+
+    .modalHeader{
+        padding:15px;
+    }
+
+    .modalFooter{
+        padding:14px;
+    }
+
+    .loginBox{
+        padding:28px 22px;
     }
 
 }
 
 </style>
-
 </head>
 
 <body>
@@ -898,6 +1192,8 @@ button,input,select,textarea{
 
         <div class="loginLogo">
 
+            <div class="loginMark">B</div>
+
             <h1>BOSSY PRINTS</h1>
 
             <p>
@@ -908,31 +1204,30 @@ button,input,select,textarea{
 
         <form id="loginForm">
 
-            <label for="loginEmail">
-                Email
-            </label>
+            <label for="loginEmail">Email</label>
 
             <input
                 type="email"
                 id="loginEmail"
                 placeholder="Admin email"
+                autocomplete="username"
                 required
             >
 
-            <label for="loginPassword">
-                Password
-            </label>
+            <label for="loginPassword">Password</label>
 
             <input
                 type="password"
                 id="loginPassword"
                 placeholder="Password"
+                autocomplete="current-password"
                 required
             >
 
             <button
                 type="submit"
                 class="loginBtn"
+                id="loginBtn"
             >
                 Login
             </button>
@@ -962,9 +1257,9 @@ button,input,select,textarea{
 
         <div class="logo">
 
-            <h2>
-                BOSSY PRINTS
-            </h2>
+            <div class="logoMark">B</div>
+
+            <h2>BOSSY PRINTS</h2>
 
             <p>
                 PRINTING • BRANDING • DESIGN
@@ -1007,8 +1302,18 @@ button,input,select,textarea{
                 📦 Products
             </button>
 
-            <button id="viewWebsite">
+            <div class="menuDivider"></div>
+
+            <button
+                id="viewWebsite"
+            >
                 🌐 View Website
+            </button>
+
+            <button
+                id="refreshAll"
+            >
+                ↻ Refresh Everything
             </button>
 
             <button
@@ -1040,8 +1345,26 @@ button,input,select,textarea{
                 </h1>
 
                 <p>
-                    Manage your Bossy Prints & Design business.
+                    Bossy Prints & Design business control center.
                 </p>
+
+            </div>
+
+            <div class="topbarActions">
+
+                <button
+                    class="btn btnSecondary"
+                    onclick="openOrders()"
+                >
+                    View Orders
+                </button>
+
+                <button
+                    class="btn btnPrimary"
+                    onclick="openAddProduct()"
+                >
+                    + Product
+                </button>
 
             </div>
 
@@ -1067,62 +1390,117 @@ button,input,select,textarea{
             <div class="stats">
 
                 <div class="statCard">
-
-                    <span>
-                        TOTAL PRODUCTS
-                    </span>
-
-                    <strong id="totalProducts">
-                        0
-                    </strong>
-
+                    <span>TOTAL PRODUCTS</span>
+                    <strong id="totalProducts">0</strong>
+                    <small>Products listed</small>
                 </div>
 
                 <div class="statCard">
-
-                    <span>
-                        NEW ORDERS
-                    </span>
-
-                    <strong id="newOrders">
-                        0
-                    </strong>
-
+                    <span>NEW ORDERS</span>
+                    <strong id="newOrders">0</strong>
+                    <small>Need attention</small>
                 </div>
 
                 <div class="statCard">
-
-                    <span>
-                        ACTIVE ORDERS
-                    </span>
-
-                    <strong id="activeOrders">
-                        0
-                    </strong>
-
+                    <span>ACTIVE ORDERS</span>
+                    <strong id="activeOrders">0</strong>
+                    <small>Currently processing</small>
                 </div>
 
                 <div class="statCard">
-
-                    <span>
-                        COMPLETED
-                    </span>
-
-                    <strong id="completedOrders">
-                        0
-                    </strong>
-
+                    <span>COMPLETED</span>
+                    <strong id="completedOrders">0</strong>
+                    <small>Completed projects</small>
                 </div>
 
                 <div class="statCard">
+                    <span>OPEN ENQUIRIES</span>
+                    <strong id="totalEnquiries">0</strong>
+                    <small>Need response</small>
+                </div>
 
-                    <span>
-                        ENQUIRIES
-                    </span>
+            </div>
 
-                    <strong id="totalEnquiries">
-                        0
-                    </strong>
+
+            <div class="stats">
+
+                <div class="statCard">
+                    <span>TOTAL ORDERS</span>
+                    <strong id="totalOrders">0</strong>
+                    <small>All projects received</small>
+                </div>
+
+                <div class="statCard">
+                    <span>QUOTED VALUE</span>
+                    <strong id="quotedValue">KSh 0</strong>
+                    <small>Current quotations</small>
+                </div>
+
+                <div class="statCard">
+                    <span>QUOTED ORDERS</span>
+                    <strong id="quotedOrders">0</strong>
+                    <small>Orders with quotations</small>
+                </div>
+
+                <div class="statCard">
+                    <span>ARTWORK FILES</span>
+                    <strong id="artworkOrders">0</strong>
+                    <small>Orders with artwork</small>
+                </div>
+
+                <div class="statCard">
+                    <span>THIS MONTH</span>
+                    <strong id="monthlyOrders">0</strong>
+                    <small>Orders received</small>
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="cardHeader">
+
+                    <div>
+                        <h2>Quick Actions</h2>
+                        <p>Jump directly to the most important tasks.</p>
+                    </div>
+
+                </div>
+
+                <div class="quickGrid">
+
+                    <button
+                        class="quickAction"
+                        onclick="openOrders()"
+                    >
+                        <strong>🛒 Manage Orders</strong>
+                        <span>Review projects, quotes and statuses.</span>
+                    </button>
+
+                    <button
+                        class="quickAction"
+                        onclick="openNewOrders()"
+                    >
+                        <strong>🆕 New Orders</strong>
+                        <span>Open customer requests waiting for action.</span>
+                    </button>
+
+                    <button
+                        class="quickAction"
+                        onclick="openEnquiries()"
+                    >
+                        <strong>💬 Customer Enquiries</strong>
+                        <span>Respond to customer questions.</span>
+                    </button>
+
+                    <button
+                        class="quickAction"
+                        onclick="openAddProduct()"
+                    >
+                        <strong>➕ Add Product</strong>
+                        <span>Add a new product or service.</span>
+                    </button>
 
                 </div>
 
@@ -1133,15 +1511,16 @@ button,input,select,textarea{
 
                 <div class="cardHeader">
 
-                    <h2>
-                        Recent Orders
-                    </h2>
+                    <div>
+                        <h2>Recent Orders</h2>
+                        <p>Your latest customer projects.</p>
+                    </div>
 
                     <button
                         class="btn btnPrimary"
                         onclick="openOrders()"
                     >
-                        View Orders
+                        View All
                     </button>
 
                 </div>
@@ -1158,9 +1537,9 @@ button,input,select,textarea{
 
                 <div class="cardHeader">
 
-                    <h2>
-                        Recently Added Products
-                    </h2>
+                    <div>
+                        <h2>Recently Added Products</h2>
+                    </div>
 
                     <button
                         class="btn btnPrimary"
@@ -1174,6 +1553,25 @@ button,input,select,textarea{
                 <div
                     class="recentList"
                     id="recentProducts"
+                ></div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="cardHeader">
+
+                    <div>
+                        <h2>Recent Activity</h2>
+                        <p>Latest activity across your business data.</p>
+                    </div>
+
+                </div>
+
+                <div
+                    class="activityList"
+                    id="activityList"
                 ></div>
 
             </div>
@@ -1195,25 +1593,29 @@ button,input,select,textarea{
                 <div class="cardHeader">
 
                     <div>
-
-                        <h2>
-                            Customer Orders
-                        </h2>
-
-                        <p
-                            style="color:#777;font-size:13px;margin-top:5px;"
-                        >
-                            Manage customer projects and quotation requests.
+                        <h2>Customer Orders</h2>
+                        <p>
+                            Manage projects, quotations, artwork and customer communication.
                         </p>
-
                     </div>
 
-                    <button
-                        class="btn btnSecondary"
-                        onclick="loadOrders()"
-                    >
-                        ↻ Refresh
-                    </button>
+                    <div class="topbarActions">
+
+                        <button
+                            class="btn btnSecondary"
+                            onclick="exportOrdersCSV()"
+                        >
+                            ↓ Export CSV
+                        </button>
+
+                        <button
+                            class="btn btnSecondary"
+                            onclick="loadOrders()"
+                        >
+                            ↻ Refresh
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -1223,46 +1625,35 @@ button,input,select,textarea{
                     <input
                         type="text"
                         id="orderSearch"
-                        placeholder="Search name, phone, reference..."
+                        placeholder="Search reference, customer, phone, email..."
                     >
 
                     <select id="orderStatusFilter">
 
-                        <option value="">
-                            All Statuses
-                        </option>
+                        <option value="">All Statuses</option>
 
-                        <option value="New">
-                            New
-                        </option>
+                        <option value="New">New</option>
+                        <option value="Contacted">Contacted</option>
+                        <option value="Quoted">Quoted</option>
+                        <option value="Approved">Approved</option>
+                        <option value="In Production">In Production</option>
+                        <option value="Ready">Ready</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Cancelled">Cancelled</option>
 
-                        <option value="Contacted">
-                            Contacted
-                        </option>
+                    </select>
 
-                        <option value="Quoted">
-                            Quoted
-                        </option>
+                    <select id="orderServiceFilter">
+                        <option value="">All Services</option>
+                    </select>
 
-                        <option value="Approved">
-                            Approved
-                        </option>
+                    <select id="orderDateFilter">
 
-                        <option value="In Production">
-                            In Production
-                        </option>
-
-                        <option value="Ready">
-                            Ready
-                        </option>
-
-                        <option value="Completed">
-                            Completed
-                        </option>
-
-                        <option value="Cancelled">
-                            Cancelled
-                        </option>
+                        <option value="">All Dates</option>
+                        <option value="today">Today</option>
+                        <option value="7">Last 7 Days</option>
+                        <option value="30">Last 30 Days</option>
+                        <option value="90">Last 90 Days</option>
 
                     </select>
 
@@ -1270,14 +1661,18 @@ button,input,select,textarea{
 
 
                 <div
+                    id="ordersResultInfo"
+                    style="font-size:11px;color:#777;margin-bottom:12px;"
+                ></div>
+
+
+                <div
                     class="tableWrap"
                     id="ordersContainer"
                 >
-
                     <div class="loading">
                         Loading orders...
                     </div>
-
                 </div>
 
             </div>
@@ -1299,25 +1694,29 @@ button,input,select,textarea{
                 <div class="cardHeader">
 
                     <div>
-
-                        <h2>
-                            Customer Enquiries
-                        </h2>
-
-                        <p
-                            style="color:#777;font-size:13px;margin-top:5px;"
-                        >
+                        <h2>Customer Enquiries</h2>
+                        <p>
                             Questions and service enquiries from customers.
                         </p>
-
                     </div>
 
-                    <button
-                        class="btn btnSecondary"
-                        onclick="loadEnquiries()"
-                    >
-                        ↻ Refresh
-                    </button>
+                    <div class="topbarActions">
+
+                        <button
+                            class="btn btnSecondary"
+                            onclick="exportEnquiriesCSV()"
+                        >
+                            ↓ Export CSV
+                        </button>
+
+                        <button
+                            class="btn btnSecondary"
+                            onclick="loadEnquiries()"
+                        >
+                            ↻ Refresh
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -1327,41 +1726,38 @@ button,input,select,textarea{
                     <input
                         type="text"
                         id="enquirySearch"
-                        placeholder="Search customer, phone, message..."
+                        placeholder="Search customer, phone, email, message..."
                     >
 
                     <select id="enquiryStatusFilter">
 
-                        <option value="">
-                            All Statuses
-                        </option>
+                        <option value="">All Statuses</option>
+                        <option value="New">New</option>
+                        <option value="Contacted">Contacted</option>
+                        <option value="Resolved">Resolved</option>
 
-                        <option value="New">
-                            New
-                        </option>
+                    </select>
 
-                        <option value="Contacted">
-                            Contacted
-                        </option>
-
-                        <option value="Resolved">
-                            Resolved
-                        </option>
-
+                    <select id="enquiryServiceFilter">
+                        <option value="">All Services</option>
                     </select>
 
                 </div>
 
 
                 <div
+                    id="enquiriesResultInfo"
+                    style="font-size:11px;color:#777;margin-bottom:12px;"
+                ></div>
+
+
+                <div
                     class="tableWrap"
                     id="enquiriesContainer"
                 >
-
                     <div class="loading">
                         Loading enquiries...
                     </div>
-
                 </div>
 
             </div>
@@ -1382,9 +1778,12 @@ button,input,select,textarea{
 
                 <div class="cardHeader">
 
-                    <h2 id="formTitle">
-                        Add New Product
-                    </h2>
+                    <div>
+                        <h2 id="formTitle">Add New Product</h2>
+                        <p>
+                            Add products or services that appear on the website.
+                        </p>
+                    </div>
 
                 </div>
 
@@ -1400,9 +1799,7 @@ button,input,select,textarea{
 
                         <div class="formGroup">
 
-                            <label>
-                                Product / Service Name
-                            </label>
+                            <label>Product / Service Name</label>
 
                             <input
                                 type="text"
@@ -1416,9 +1813,7 @@ button,input,select,textarea{
 
                         <div class="formGroup">
 
-                            <label>
-                                Price
-                            </label>
+                            <label>Price</label>
 
                             <input
                                 type="text"
@@ -1431,9 +1826,7 @@ button,input,select,textarea{
 
                         <div class="formGroup">
 
-                            <label>
-                                Category
-                            </label>
+                            <label>Category</label>
 
                             <select
                                 id="productCategory"
@@ -1444,33 +1837,13 @@ button,input,select,textarea{
                                     Select Category
                                 </option>
 
-                                <option>
-                                    T-Shirt Printing
-                                </option>
-
-                                <option>
-                                    Graphic Design
-                                </option>
-
-                                <option>
-                                    Business Branding
-                                </option>
-
-                                <option>
-                                    Banners & Posters
-                                </option>
-
-                                <option>
-                                    Stickers & Labels
-                                </option>
-
-                                <option>
-                                    Caps & Merchandise
-                                </option>
-
-                                <option>
-                                    Other
-                                </option>
+                                <option>T-Shirt Printing</option>
+                                <option>Graphic Design</option>
+                                <option>Business Branding</option>
+                                <option>Banners & Posters</option>
+                                <option>Stickers & Labels</option>
+                                <option>Caps & Merchandise</option>
+                                <option>Other</option>
 
                             </select>
 
@@ -1479,9 +1852,7 @@ button,input,select,textarea{
 
                         <div class="formGroup">
 
-                            <label>
-                                Product Image
-                            </label>
+                            <label>Product Image</label>
 
                             <input
                                 type="file"
@@ -1497,9 +1868,7 @@ button,input,select,textarea{
                             id="imagePreview"
                         >
 
-                            <label>
-                                Image Preview
-                            </label>
+                            <label>Image Preview</label>
 
                             <img
                                 id="previewImg"
@@ -1512,9 +1881,7 @@ button,input,select,textarea{
 
                         <div class="formGroup full">
 
-                            <label>
-                                Description
-                            </label>
+                            <label>Description</label>
 
                             <textarea
                                 id="productDescription"
@@ -1572,9 +1939,12 @@ button,input,select,textarea{
 
                 <div class="cardHeader">
 
-                    <h2>
-                        Products
-                    </h2>
+                    <div>
+                        <h2>Products</h2>
+                        <p>
+                            Manage your website products and services.
+                        </p>
+                    </div>
 
                     <button
                         class="btn btnSecondary"
@@ -1594,40 +1964,17 @@ button,input,select,textarea{
                         placeholder="Search products..."
                     >
 
-
                     <select id="filterCategory">
 
-                        <option value="">
-                            All Categories
-                        </option>
+                        <option value="">All Categories</option>
 
-                        <option>
-                            T-Shirt Printing
-                        </option>
-
-                        <option>
-                            Graphic Design
-                        </option>
-
-                        <option>
-                            Business Branding
-                        </option>
-
-                        <option>
-                            Banners & Posters
-                        </option>
-
-                        <option>
-                            Stickers & Labels
-                        </option>
-
-                        <option>
-                            Caps & Merchandise
-                        </option>
-
-                        <option>
-                            Other
-                        </option>
+                        <option>T-Shirt Printing</option>
+                        <option>Graphic Design</option>
+                        <option>Business Branding</option>
+                        <option>Banners & Posters</option>
+                        <option>Stickers & Labels</option>
+                        <option>Caps & Merchandise</option>
+                        <option>Other</option>
 
                     </select>
 
@@ -1649,7 +1996,7 @@ button,input,select,textarea{
 
 
 <!-- =====================================================
-     ORDER DETAIL MODAL
+     ORDER MODAL
 ===================================================== -->
 
 <div
@@ -1661,9 +2008,7 @@ button,input,select,textarea{
 
         <div class="modalHeader">
 
-            <h2>
-                Order Details
-            </h2>
+            <h2>Order Details</h2>
 
             <button
                 class="closeModal"
@@ -1674,12 +2019,10 @@ button,input,select,textarea{
 
         </div>
 
-
         <div
             class="modalBody"
             id="orderModalBody"
         ></div>
-
 
         <div class="modalFooter">
 
@@ -1698,7 +2041,7 @@ button,input,select,textarea{
 
 
 <!-- =====================================================
-     ENQUIRY DETAIL MODAL
+     ENQUIRY MODAL
 ===================================================== -->
 
 <div
@@ -1710,9 +2053,7 @@ button,input,select,textarea{
 
         <div class="modalHeader">
 
-            <h2>
-                Customer Enquiry
-            </h2>
+            <h2>Customer Enquiry</h2>
 
             <button
                 class="closeModal"
@@ -1723,12 +2064,10 @@ button,input,select,textarea{
 
         </div>
 
-
         <div
             class="modalBody"
             id="enquiryModalBody"
         ></div>
-
 
         <div class="modalFooter">
 
@@ -1766,7 +2105,7 @@ const supabaseClient =
 
 
 /* =====================================================
-   GLOBAL VARIABLES
+   GLOBAL STATE
 ===================================================== */
 
 let allProducts = [];
@@ -1774,6 +2113,23 @@ let allOrders = [];
 let allEnquiries = [];
 
 const WHATSAPP_NUMBER = "254724566417";
+
+const ORDER_STATUSES = [
+    "New",
+    "Contacted",
+    "Quoted",
+    "Approved",
+    "In Production",
+    "Ready",
+    "Completed",
+    "Cancelled"
+];
+
+const ENQUIRY_STATUSES = [
+    "New",
+    "Contacted",
+    "Resolved"
+];
 
 
 /* =====================================================
@@ -1791,6 +2147,9 @@ const loginForm =
 
 const loginMessage =
     document.getElementById("loginMessage");
+
+const loginBtn =
+    document.getElementById("loginBtn");
 
 const productForm =
     document.getElementById("productForm");
@@ -1820,28 +2179,37 @@ loginForm.addEventListener(
                 .getElementById("loginPassword")
                 .value;
 
+        loginBtn.disabled = true;
+        loginBtn.textContent = "Logging in...";
+
         loginMessage.style.display = "block";
         loginMessage.style.background = "#f0f0f0";
         loginMessage.style.color = "#222";
-        loginMessage.textContent = "Logging in...";
+        loginMessage.textContent = "Checking account...";
 
         const { data, error } =
             await supabaseClient.auth
                 .signInWithPassword({
-                    email:email,
-                    password:password
+                    email,
+                    password
                 });
 
         if(error){
 
+            loginBtn.disabled = false;
+            loginBtn.textContent = "Login";
+
             loginMessage.style.background = "#ffe5e5";
             loginMessage.style.color = "#a00000";
-            loginMessage.textContent = error.message;
+            loginMessage.textContent =
+                error.message;
 
             return;
         }
 
         if(data.session){
+
+            loginMessage.style.display = "none";
 
             await showDashboard();
 
@@ -1849,6 +2217,34 @@ loginForm.addEventListener(
 
     }
 );
+
+
+/* =====================================================
+   SESSION
+===================================================== */
+
+async function checkSession(){
+
+    const { data, error } =
+        await supabaseClient.auth.getSession();
+
+    if(error){
+
+        console.error(error);
+
+        return;
+
+    }
+
+    if(data.session){
+
+        await showDashboard();
+
+    }
+
+}
+
+checkSession();
 
 
 /* =====================================================
@@ -1860,34 +2256,26 @@ async function showDashboard(){
     loginScreen.style.display = "none";
     dashboard.style.display = "block";
 
+    await loadAllData();
+
+}
+
+
+/* =====================================================
+   LOAD EVERYTHING
+===================================================== */
+
+async function loadAllData(){
+
     await Promise.all([
         loadProducts(),
         loadOrders(),
         loadEnquiries()
     ]);
 
-}
-
-
-/* =====================================================
-   CHECK SESSION
-===================================================== */
-
-async function checkSession(){
-
-    const { data } =
-        await supabaseClient.auth
-            .getSession();
-
-    if(data.session){
-
-        await showDashboard();
-
-    }
+    updateDashboard();
 
 }
-
-checkSession();
 
 
 /* =====================================================
@@ -1904,6 +2292,8 @@ document
 
             dashboard.style.display = "none";
             loginScreen.style.display = "flex";
+
+            loginForm.reset();
 
         }
     );
@@ -1927,15 +2317,7 @@ document
                     const section =
                         button.dataset.section;
 
-                    document
-                        .querySelectorAll(".menu button")
-                        .forEach(
-                            function(item){
-                                item.classList.remove("active");
-                            }
-                        );
-
-                    button.classList.add("active");
+                    activateMenu(section);
 
                     showSection(
                         section.replace(
@@ -1953,13 +2335,49 @@ document
     );
 
 
+function activateMenu(sectionId){
+
+    document
+        .querySelectorAll(
+            ".menu button[data-section]"
+        )
+        .forEach(
+            function(item){
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+    const button =
+        document.querySelector(
+            '.menu button[data-section="' +
+            sectionId +
+            '"]'
+        );
+
+    if(button){
+
+        button.classList.add("active");
+
+    }
+
+}
+
+
 function showSection(section){
 
     document
         .querySelectorAll(".section")
         .forEach(
             function(item){
-                item.classList.remove("active");
+
+                item.classList.remove(
+                    "active"
+                );
+
             }
         );
 
@@ -1977,13 +2395,9 @@ function showSection(section){
     const titles = {
 
         dashboard:"Dashboard",
-
         orders:"Orders",
-
         enquiries:"Customer Enquiries",
-
         add:"Add Product",
-
         products:"Products"
 
     };
@@ -1992,7 +2406,6 @@ function showSection(section){
         "pageTitle"
     ).textContent =
         titles[section] || "Dashboard";
-
 
     if(section === "orders"){
 
@@ -2016,13 +2429,35 @@ function showSection(section){
 
 
 /* =====================================================
-   SHORT NAVIGATION
+   SHORTCUTS
 ===================================================== */
 
 function openOrders(){
 
     activateMenu("ordersSection");
     showSection("orders");
+
+}
+
+
+function openNewOrders(){
+
+    activateMenu("ordersSection");
+    showSection("orders");
+
+    document.getElementById(
+        "orderStatusFilter"
+    ).value = "New";
+
+    renderOrders();
+
+}
+
+
+function openEnquiries(){
+
+    activateMenu("enquiriesSection");
+    showSection("enquiries");
 
 }
 
@@ -2035,30 +2470,10 @@ function openProducts(){
 }
 
 
-function activateMenu(sectionId){
+function openAddProduct(){
 
-    document
-        .querySelectorAll(
-            ".menu button"
-        )
-        .forEach(
-            function(item){
-                item.classList.remove("active");
-            }
-        );
-
-    const button =
-        document.querySelector(
-            '.menu button[data-section="' +
-            sectionId +
-            '"]'
-        );
-
-    if(button){
-
-        button.classList.add("active");
-
-    }
+    activateMenu("addSection");
+    showSection("add");
 
 }
 
@@ -2083,7 +2498,31 @@ document
 
 
 /* =====================================================
-   LOAD PRODUCTS
+   REFRESH ALL
+===================================================== */
+
+document
+    .getElementById("refreshAll")
+    .addEventListener(
+        "click",
+        async function(){
+
+            const button = this;
+
+            button.disabled = true;
+            button.textContent = "↻ Refreshing...";
+
+            await loadAllData();
+
+            button.disabled = false;
+            button.textContent = "↻ Refresh Everything";
+
+        }
+    );
+
+
+/* =====================================================
+   PRODUCTS
 ===================================================== */
 
 async function loadProducts(){
@@ -2101,18 +2540,17 @@ async function loadProducts(){
 
     if(error){
 
-        console.error(error);
-
-        alert(
-            "Could not load products: " +
-            error.message
+        console.error(
+            "Products error:",
+            error
         );
 
         return;
 
     }
 
-    allProducts = data || [];
+    allProducts =
+        data || [];
 
     updateDashboard();
     renderProducts();
@@ -2121,189 +2559,6 @@ async function loadProducts(){
 }
 
 
-/* =====================================================
-   LOAD ORDERS
-===================================================== */
-
-async function loadOrders(){
-
-    const container =
-        document.getElementById(
-            "ordersContainer"
-        );
-
-    container.innerHTML =
-        `<div class="loading">Loading orders...</div>`;
-
-    const { data, error } =
-        await supabaseClient
-            .from("orders")
-            .select("*")
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
-
-    if(error){
-
-        console.error("Orders error:",error);
-
-        container.innerHTML =
-            `
-            <div class="empty">
-                Could not load orders.<br><br>
-                ${escapeHtml(error.message)}
-            </div>
-            `;
-
-        return;
-
-    }
-
-    allOrders = data || [];
-
-    updateDashboard();
-    renderOrders();
-    renderRecentOrders();
-
-}
-
-
-/* =====================================================
-   LOAD ENQUIRIES
-===================================================== */
-
-async function loadEnquiries(){
-
-    const container =
-        document.getElementById(
-            "enquiriesContainer"
-        );
-
-    container.innerHTML =
-        `<div class="loading">Loading enquiries...</div>`;
-
-    const { data, error } =
-        await supabaseClient
-            .from("customer_enquiries")
-            .select("*")
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
-
-    if(error){
-
-        console.error(
-            "Enquiries error:",
-            error
-        );
-
-        container.innerHTML =
-            `
-            <div class="empty">
-                Could not load enquiries.<br><br>
-                ${escapeHtml(error.message)}
-            </div>
-            `;
-
-        return;
-
-    }
-
-    allEnquiries = data || [];
-
-    updateDashboard();
-    renderEnquiries();
-
-}
-
-
-/* =====================================================
-   DASHBOARD STATS
-===================================================== */
-
-function updateDashboard(){
-
-    document.getElementById(
-        "totalProducts"
-    ).textContent =
-        allProducts.length;
-
-
-    const newCount =
-        allOrders.filter(
-            order =>
-                String(order.status || "New")
-                    .toLowerCase() === "new"
-        ).length;
-
-
-    const completedCount =
-        allOrders.filter(
-            order =>
-                String(order.status || "")
-                    .toLowerCase() === "completed"
-        ).length;
-
-
-    const activeCount =
-        allOrders.filter(
-            order => {
-
-                const status =
-                    String(
-                        order.status || "New"
-                    ).toLowerCase();
-
-                return (
-                    status !== "completed" &&
-                    status !== "cancelled"
-                );
-
-            }
-        ).length;
-
-
-    document.getElementById(
-        "newOrders"
-    ).textContent =
-        newCount;
-
-
-    document.getElementById(
-        "activeOrders"
-    ).textContent =
-        activeCount;
-
-
-    document.getElementById(
-        "completedOrders"
-    ).textContent =
-        completedCount;
-
-
-    document.getElementById(
-        "totalEnquiries"
-    ).textContent =
-        allEnquiries.filter(
-            item =>
-                String(item.status || "New")
-                    .toLowerCase() !==
-                "resolved"
-        ).length;
-
-}
-
-
-/* =====================================================
-   RECENT PRODUCTS
-===================================================== */
-
 function renderRecentProducts(){
 
     const container =
@@ -2311,24 +2566,20 @@ function renderRecentProducts(){
             "recentProducts"
         );
 
-    if(allProducts.length === 0){
+    if(!allProducts.length){
 
         container.innerHTML =
-            `
-            <div class="empty">
+            `<div class="empty">
                 No products have been added yet.
-            </div>
-            `;
+            </div>`;
 
         return;
 
     }
 
-    const recent =
-        allProducts.slice(0,5);
-
     container.innerHTML =
-        recent
+        allProducts
+            .slice(0,5)
             .map(
                 function(product){
 
@@ -2349,13 +2600,13 @@ function renderRecentProducts(){
 
                             <strong>
                                 ${escapeHtml(
-                                    product.name || ""
+                                    product.name || "-"
                                 )}
                             </strong>
 
                             <span>
                                 ${escapeHtml(
-                                    product.category || ""
+                                    product.category || "-"
                                 )}
                             </span>
 
@@ -2372,1866 +2623,6 @@ function renderRecentProducts(){
 }
 
 
-/* =====================================================
-   RECENT ORDERS
-===================================================== */
-
-function renderRecentOrders(){
-
-    const container =
-        document.getElementById(
-            "recentOrdersContainer"
-        );
-
-    if(allOrders.length === 0){
-
-        container.innerHTML =
-            `
-            <div class="empty">
-                No customer orders yet.
-            </div>
-            `;
-
-        return;
-
-    }
-
-    const recent =
-        allOrders.slice(0,5);
-
-    container.innerHTML =
-        buildOrdersTable(
-            recent,
-            true
-        );
-
-}
-
-
-/* =====================================================
-   ORDER TABLE
-===================================================== */
-
-function renderOrders(){
-
-    const container =
-        document.getElementById(
-            "ordersContainer"
-        );
-
-    const search =
-        document.getElementById(
-            "orderSearch"
-        )
-        .value
-        .toLowerCase()
-        .trim();
-
-    const status =
-        document.getElementById(
-            "orderStatusFilter"
-        )
-        .value;
-
-
-    const filtered =
-        allOrders.filter(
-            function(order){
-
-                const searchable =
-                    [
-                        order.reference_number,
-                        order.customer_name,
-                        order.customer_phone,
-                        order.customer_email,
-                        order.service,
-                        order.product_name
-                    ]
-                    .join(" ")
-                    .toLowerCase();
-
-
-                const matchesSearch =
-                    !search ||
-                    searchable.includes(search);
-
-
-                const matchesStatus =
-                    !status ||
-                    order.status === status;
-
-
-                return (
-                    matchesSearch &&
-                    matchesStatus
-                );
-
-            }
-        );
-
-
-    if(filtered.length === 0){
-
-        container.innerHTML =
-            `
-            <div class="empty">
-                No orders found.
-            </div>
-            `;
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-        buildOrdersTable(
-            filtered,
-            false
-        );
-
-}
-
-
-function buildOrdersTable(
-    orders,
-    compact
-){
-
-    return `
-
-    <table class="dataTable">
-
-        <thead>
-
-            <tr>
-
-                <th>
-                    Reference
-                </th>
-
-                <th>
-                    Customer
-                </th>
-
-                <th>
-                    Service
-                </th>
-
-                <th>
-                    Qty
-                </th>
-
-                <th>
-                    Status
-                </th>
-
-                <th>
-                    Date
-                </th>
-
-                <th>
-                    Action
-                </th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-            ${orders.map(
-                function(order){
-
-                    const status =
-                        order.status || "New";
-
-                    return `
-
-                    <tr>
-
-                        <td>
-
-                            <div class="ref">
-                                ${escapeHtml(
-                                    order.reference_number ||
-                                    "No reference"
-                                )}
-                            </div>
-
-                        </td>
-
-
-                        <td>
-
-                            <div class="customerName">
-                                ${escapeHtml(
-                                    order.customer_name || ""
-                                )}
-                            </div>
-
-                            <div class="customerPhone">
-                                ${escapeHtml(
-                                    order.customer_phone || ""
-                                )}
-                            </div>
-
-                        </td>
-
-
-                        <td>
-                            ${escapeHtml(
-                                order.service ||
-                                order.product_name ||
-                                "-"
-                            )}
-                        </td>
-
-
-                        <td>
-                            ${escapeHtml(
-                                order.quantity || 1
-                            )}
-                        </td>
-
-
-                        <td>
-
-                            <select
-                                class="statusSelect"
-                                onchange="updateOrderStatus('${order.id}',this.value)"
-                            >
-
-                                ${orderStatusOptions(status)}
-
-                            </select>
-
-                        </td>
-
-
-                        <td>
-
-                            <div class="dateText">
-                                ${formatDate(
-                                    order.created_at
-                                )}
-                            </div>
-
-                        </td>
-
-
-                        <td>
-
-                            <div class="actionStack">
-
-                                <button
-                                    class="btn btnSecondary smallBtn"
-                                    onclick="viewOrder('${order.id}')"
-                                >
-                                    View
-                                </button>
-
-                                <button
-                                    class="btn btnWhatsApp smallBtn"
-                                    onclick="contactOrder('${order.id}')"
-                                >
-                                    WhatsApp
-                                </button>
-
-                            </div>
-
-                        </td>
-
-                    </tr>
-
-                    `;
-
-                }
-            ).join("")}
-
-        </tbody>
-
-    </table>
-
-    `;
-
-}
-
-
-function orderStatusOptions(current){
-
-    const statuses = [
-        "New",
-        "Contacted",
-        "Quoted",
-        "Approved",
-        "In Production",
-        "Ready",
-        "Completed",
-        "Cancelled"
-    ];
-
-    return statuses
-        .map(
-            function(status){
-
-                return `
-                    <option
-                        value="${escapeHtml(status)}"
-                        ${status === current ? "selected" : ""}
-                    >
-                        ${escapeHtml(status)}
-                    </option>
-                `;
-
-            }
-        )
-        .join("");
-
-}
-
-
-/* =====================================================
-   UPDATE ORDER STATUS
-===================================================== */
-
-async function updateOrderStatus(
-    id,
-    status
-){
-
-    const { error } =
-        await supabaseClient
-            .from("orders")
-            .update({
-                status:status,
-                updated_at:new Date().toISOString()
-            })
-            .eq("id",id);
-
-    if(error){
-
-        alert(
-            "Could not update order: " +
-            error.message
-        );
-
-        await loadOrders();
-
-        return;
-
-    }
-
-    const order =
-        allOrders.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
-
-    if(order){
-
-        order.status = status;
-
-    }
-
-    updateDashboard();
-    renderOrders();
-    renderRecentOrders();
-
-}
-
-
-/* =====================================================
-   VIEW ORDER
-===================================================== */
-
-async function viewOrder(id){
-
-    const order =
-        allOrders.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
-
-    if(!order){
-
-        alert("Order not found.");
-
-        return;
-
-    }
-
-
-    let projectDetails = "";
-
-    try{
-
-        if(order.project_details){
-
-            const parsed =
-                JSON.parse(
-                    order.project_details
-                );
-
-            projectDetails =
-                JSON.stringify(
-                    parsed,
-                    null,
-                    2
-                );
-
-        }
-
-    }
-    catch(error){
-
-        projectDetails =
-            order.project_details || "";
-
-    }
-
-
-    const artworkButton =
-        order.artwork_url
-            ?
-            `
-            <button
-                class="btn btnPrimary"
-                onclick="viewArtwork('${order.id}')"
-            >
-                🖼️ View Customer Artwork
-            </button>
-            `
-            :
-            `
-            <p>
-                No artwork was uploaded.
-            </p>
-            `;
-
-
-    document.getElementById(
-        "orderModalBody"
-    ).innerHTML = `
-
-        <div class="detailGrid">
-
-            <div class="detailBox">
-
-                <label>
-                    Reference Number
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        order.reference_number || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Status
-                </label>
-
-                <select
-                    class="statusSelect"
-                    onchange="updateOrderStatusFromModal('${order.id}',this.value)"
-                >
-
-                    ${orderStatusOptions(
-                        order.status || "New"
-                    )}
-
-                </select>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Customer Name
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        order.customer_name || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Phone
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        order.customer_phone || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Email
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        order.customer_email || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Service
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        order.service || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Quantity
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        order.quantity || 1
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Delivery
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        order.delivery_method || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox full">
-
-                <label>
-                    Delivery Address
-                </label>
-
-                <div class="detailText">
-                    ${escapeHtml(
-                        order.delivery_address || "Not provided"
-                    )}
-                </div>
-
-            </div>
-
-
-            <div class="detailBox full">
-
-                <label>
-                    Customer Notes
-                </label>
-
-                <div class="detailText">
-                    ${escapeHtml(
-                        order.notes || "No notes"
-                    )}
-                </div>
-
-            </div>
-
-
-            <div class="detailBox full">
-
-                <label>
-                    Project Details
-                </label>
-
-                <pre class="projectJson">${escapeHtml(
-                    projectDetails || "No project details"
-                )}</pre>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Current Amount
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        order.amount ?? "0"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Quote Amount
-                </label>
-
-                <input
-                    type="number"
-                    id="quoteAmount_${order.id}"
-                    value="${escapeHtml(
-                        order.quote_amount ?? ""
-                    )}"
-                    placeholder="Enter quote"
-                    style="width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;"
-                >
-
-            </div>
-
-
-            <div class="detailBox full">
-
-                <label>
-                    Admin Notes
-                </label>
-
-                <textarea
-                    id="adminNotes_${order.id}"
-                    style="width:100%;min-height:110px;padding:10px;border:1px solid #ddd;border-radius:8px;"
-                    placeholder="Internal notes about this project..."
-                >${escapeHtml(
-                    order.admin_notes || ""
-                )}</textarea>
-
-            </div>
-
-
-            <div class="detailBox full">
-
-                <label>
-                    Customer Artwork
-                </label>
-
-                <div class="artworkBox">
-
-                    <p>
-                        Customer artwork is stored privately.
-                    </p>
-
-                    ${artworkButton}
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;"
-        >
-
-            <button
-                class="btn btnPrimary"
-                onclick="saveOrderAdminDetails('${order.id}')"
-            >
-                💾 Save Order Details
-            </button>
-
-            <button
-                class="btn btnWhatsApp"
-                onclick="contactOrder('${order.id}')"
-            >
-                💬 Contact Customer
-            </button>
-
-        </div>
-
-    `;
-
-
-    document
-        .getElementById("orderModal")
-        .classList.add("open");
-
-}
-
-
-/* =====================================================
-   UPDATE ORDER FROM MODAL
-===================================================== */
-
-async function updateOrderStatusFromModal(
-    id,
-    status
-){
-
-    await updateOrderStatus(
-        id,
-        status
-    );
-
-}
-
-
-/* =====================================================
-   SAVE QUOTE + ADMIN NOTES
-===================================================== */
-
-async function saveOrderAdminDetails(id){
-
-    const quoteInput =
-        document.getElementById(
-            "quoteAmount_" + id
-        );
-
-    const notesInput =
-        document.getElementById(
-            "adminNotes_" + id
-        );
-
-    const quoteValue =
-        quoteInput.value.trim();
-
-    const adminNotes =
-        notesInput.value.trim();
-
-
-    const updateData = {
-
-        admin_notes:
-            adminNotes || null,
-
-        updated_at:
-            new Date().toISOString()
-
-    };
-
-
-    if(quoteValue !== ""){
-
-        updateData.quote_amount =
-            Number(quoteValue);
-
-    }
-    else{
-
-        updateData.quote_amount =
-            null;
-
-    }
-
-
-    const { error } =
-        await supabaseClient
-            .from("orders")
-            .update(updateData)
-            .eq("id",id);
-
-
-    if(error){
-
-        alert(
-            "Could not save order details: " +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    const order =
-        allOrders.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
-
-
-    if(order){
-
-        order.quote_amount =
-            updateData.quote_amount;
-
-        order.admin_notes =
-            updateData.admin_notes;
-
-    }
-
-
-    alert(
-        "Order details saved successfully."
-    );
-
-}
-
-
-/* =====================================================
-   VIEW CUSTOMER ARTWORK
-===================================================== */
-
-async function viewArtwork(id){
-
-    const order =
-        allOrders.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
-
-    if(
-        !order ||
-        !order.artwork_url
-    ){
-
-        alert(
-            "No artwork is attached to this order."
-        );
-
-        return;
-
-    }
-
-
-    const { data, error } =
-        await supabaseClient
-            .storage
-            .from("customer-artwork")
-            .createSignedUrl(
-                order.artwork_url,
-                3600
-            );
-
-
-    if(error){
-
-        alert(
-            "Could not open artwork: " +
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    window.open(
-        data.signedUrl,
-        "_blank"
-    );
-
-}
-
-
-/* =====================================================
-   WHATSAPP ORDER
-===================================================== */
-
-function contactOrder(id){
-
-    const order =
-        allOrders.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
-
-    if(!order){
-
-        return;
-
-    }
-
-
-    let phone =
-        String(
-            order.customer_phone || ""
-        )
-        .replace(
-            /\D/g,
-            ""
-        );
-
-
-    if(phone.startsWith("0")){
-
-        phone =
-            "254" +
-            phone.substring(1);
-
-    }
-
-
-    if(!phone){
-
-        alert(
-            "This customer has no phone number."
-        );
-
-        return;
-
-    }
-
-
-    const message =
-        `Hello ${order.customer_name || ""}, this is Bossy Prints & Design regarding your project ${order.reference_number || ""}.`;
-
-
-    window.open(
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        encodeURIComponent(message),
-        "_blank"
-    );
-
-}
-
-
-/* =====================================================
-   ENQUIRIES
-===================================================== */
-
-function renderEnquiries(){
-
-    const container =
-        document.getElementById(
-            "enquiriesContainer"
-        );
-
-    const search =
-        document.getElementById(
-            "enquirySearch"
-        )
-        .value
-        .toLowerCase()
-        .trim();
-
-    const status =
-        document.getElementById(
-            "enquiryStatusFilter"
-        )
-        .value;
-
-
-    const filtered =
-        allEnquiries.filter(
-            function(item){
-
-                const searchable =
-                    [
-                        item.customer_name,
-                        item.customer_phone,
-                        item.customer_email,
-                        item.service,
-                        item.message
-                    ]
-                    .join(" ")
-                    .toLowerCase();
-
-
-                const matchesSearch =
-                    !search ||
-                    searchable.includes(search);
-
-
-                const matchesStatus =
-                    !status ||
-                    item.status === status;
-
-
-                return (
-                    matchesSearch &&
-                    matchesStatus
-                );
-
-            }
-        );
-
-
-    if(filtered.length === 0){
-
-        container.innerHTML =
-            `
-            <div class="empty">
-                No customer enquiries found.
-            </div>
-            `;
-
-        return;
-
-    }
-
-
-    container.innerHTML = `
-
-        <table class="dataTable">
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        Customer
-                    </th>
-
-                    <th>
-                        Service
-                    </th>
-
-                    <th>
-                        Message
-                    </th>
-
-                    <th>
-                        Status
-                    </th>
-
-                    <th>
-                        Date
-                    </th>
-
-                    <th>
-                        Action
-                    </th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                ${filtered.map(
-                    function(item){
-
-                        return `
-
-                        <tr>
-
-                            <td>
-
-                                <div class="customerName">
-                                    ${escapeHtml(
-                                        item.customer_name || "-"
-                                    )}
-                                </div>
-
-                                <div class="customerPhone">
-                                    ${escapeHtml(
-                                        item.customer_phone || ""
-                                    )}
-                                </div>
-
-                            </td>
-
-
-                            <td>
-                                ${escapeHtml(
-                                    item.service || "-"
-                                )}
-                            </td>
-
-
-                            <td>
-
-                                <div style="max-width:280px;line-height:1.4;">
-                                    ${escapeHtml(
-                                        truncate(
-                                            item.message || "",
-                                            100
-                                        )
-                                    )}
-                                </div>
-
-                            </td>
-
-
-                            <td>
-
-                                <select
-                                    class="statusSelect"
-                                    onchange="updateEnquiryStatus('${item.id}',this.value)"
-                                >
-
-                                    ${enquiryStatusOptions(
-                                        item.status || "New"
-                                    )}
-
-                                </select>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="dateText">
-                                    ${formatDate(
-                                        item.created_at
-                                    )}
-                                </div>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="actionStack">
-
-                                    <button
-                                        class="btn btnSecondary smallBtn"
-                                        onclick="viewEnquiry('${item.id}')"
-                                    >
-                                        View
-                                    </button>
-
-                                    <button
-                                        class="btn btnWhatsApp smallBtn"
-                                        onclick="contactEnquiry('${item.id}')"
-                                    >
-                                        WhatsApp
-                                    </button>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-                        `;
-
-                    }
-                ).join("")}
-
-            </tbody>
-
-        </table>
-
-    `;
-
-}
-
-
-function enquiryStatusOptions(current){
-
-    const statuses = [
-        "New",
-        "Contacted",
-        "Resolved"
-    ];
-
-    return statuses
-        .map(
-            function(status){
-
-                return `
-                    <option
-                        value="${escapeHtml(status)}"
-                        ${status === current ? "selected" : ""}
-                    >
-                        ${escapeHtml(status)}
-                    </option>
-                `;
-
-            }
-        )
-        .join("");
-
-}
-
-
-/* =====================================================
-   UPDATE ENQUIRY
-===================================================== */
-
-async function updateEnquiryStatus(
-    id,
-    status
-){
-
-    const { error } =
-        await supabaseClient
-            .from("customer_enquiries")
-            .update({
-                status:status,
-                updated_at:new Date().toISOString()
-            })
-            .eq("id",id);
-
-
-    if(error){
-
-        alert(
-            "Could not update enquiry: " +
-            error.message
-        );
-
-        await loadEnquiries();
-
-        return;
-
-    }
-
-
-    const item =
-        allEnquiries.find(
-            enquiry =>
-                String(enquiry.id) ===
-                String(id)
-        );
-
-
-    if(item){
-
-        item.status = status;
-
-    }
-
-
-    updateDashboard();
-    renderEnquiries();
-
-}
-
-
-/* =====================================================
-   VIEW ENQUIRY
-===================================================== */
-
-function viewEnquiry(id){
-
-    const item =
-        allEnquiries.find(
-            enquiry =>
-                String(enquiry.id) ===
-                String(id)
-        );
-
-    if(!item){
-
-        alert(
-            "Enquiry not found."
-        );
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "enquiryModalBody"
-    ).innerHTML = `
-
-        <div class="detailGrid">
-
-            <div class="detailBox">
-
-                <label>
-                    Customer
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        item.customer_name || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Service
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        item.service || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Phone
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        item.customer_phone || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Email
-                </label>
-
-                <strong>
-                    ${escapeHtml(
-                        item.customer_email || "-"
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Status
-                </label>
-
-                <select
-                    class="statusSelect"
-                    onchange="updateEnquiryStatus('${item.id}',this.value)"
-                >
-
-                    ${enquiryStatusOptions(
-                        item.status || "New"
-                    )}
-
-                </select>
-
-            </div>
-
-
-            <div class="detailBox">
-
-                <label>
-                    Date
-                </label>
-
-                <strong>
-                    ${formatDate(
-                        item.created_at
-                    )}
-                </strong>
-
-            </div>
-
-
-            <div class="detailBox full">
-
-                <label>
-                    Customer Message
-                </label>
-
-                <div class="detailText">
-                    ${escapeHtml(
-                        item.message || ""
-                    )}
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            style="margin-top:20px;"
-        >
-
-            <button
-                class="btn btnWhatsApp"
-                onclick="contactEnquiry('${item.id}')"
-            >
-                💬 Contact Customer on WhatsApp
-            </button>
-
-        </div>
-
-    `;
-
-
-    document
-        .getElementById("enquiryModal")
-        .classList.add("open");
-
-}
-
-
-/* =====================================================
-   WHATSAPP ENQUIRY
-===================================================== */
-
-function contactEnquiry(id){
-
-    const item =
-        allEnquiries.find(
-            enquiry =>
-                String(enquiry.id) ===
-                String(id)
-        );
-
-    if(!item){
-
-        return;
-
-    }
-
-
-    let phone =
-        String(
-            item.customer_phone || ""
-        )
-        .replace(
-            /\D/g,
-            ""
-        );
-
-
-    if(phone.startsWith("0")){
-
-        phone =
-            "254" +
-            phone.substring(1);
-
-    }
-
-
-    if(!phone){
-
-        alert(
-            "This customer has no phone number."
-        );
-
-        return;
-
-    }
-
-
-    const message =
-        `Hello ${item.customer_name || ""}, this is Bossy Prints & Design. We received your enquiry about ${item.service || "our services"}.`;
-
-
-    window.open(
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        encodeURIComponent(message),
-        "_blank"
-    );
-
-}
-
-
-/* =====================================================
-   MODALS
-===================================================== */
-
-function closeModal(id){
-
-    document
-        .getElementById(id)
-        .classList
-        .remove("open");
-
-}
-
-
-document
-    .querySelectorAll(".modal")
-    .forEach(
-        function(modal){
-
-            modal.addEventListener(
-                "click",
-                function(event){
-
-                    if(
-                        event.target === modal
-                    ){
-
-                        modal.classList.remove(
-                            "open"
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-/* =====================================================
-   ORDER SEARCH
-===================================================== */
-
-document
-    .getElementById("orderSearch")
-    .addEventListener(
-        "input",
-        renderOrders
-    );
-
-
-document
-    .getElementById("orderStatusFilter")
-    .addEventListener(
-        "change",
-        renderOrders
-    );
-
-
-/* =====================================================
-   ENQUIRY SEARCH
-===================================================== */
-
-document
-    .getElementById("enquirySearch")
-    .addEventListener(
-        "input",
-        renderEnquiries
-    );
-
-
-document
-    .getElementById("enquiryStatusFilter")
-    .addEventListener(
-        "change",
-        renderEnquiries
-    );
-
-
-/* =====================================================
-   PRODUCT SEARCH
-===================================================== */
-
-document
-    .getElementById("searchInput")
-    .addEventListener(
-        "input",
-        renderProducts
-    );
-
-
-document
-    .getElementById("filterCategory")
-    .addEventListener(
-        "change",
-        renderProducts
-    );
-
-
-/* =====================================================
-   IMAGE PREVIEW
-===================================================== */
-
-document
-    .getElementById("productImage")
-    .addEventListener(
-        "change",
-        function(){
-
-            const file =
-                this.files[0];
-
-            if(!file){
-
-                document
-                    .getElementById("imagePreview")
-                    .style.display =
-                    "none";
-
-                return;
-
-            }
-
-
-            const url =
-                URL.createObjectURL(file);
-
-
-            document
-                .getElementById("previewImg")
-                .src =
-                url;
-
-
-            document
-                .getElementById("imagePreview")
-                .style.display =
-                "block";
-
-        }
-    );
-
-
-/* =====================================================
-   ADD / UPDATE PRODUCT
-===================================================== */
-
-productForm.addEventListener(
-    "submit",
-    async function(event){
-
-        event.preventDefault();
-
-        const id =
-            document
-                .getElementById("productId")
-                .value;
-
-        const name =
-            document
-                .getElementById("productName")
-                .value
-                .trim();
-
-        const price =
-            document
-                .getElementById("productPrice")
-                .value
-                .trim();
-
-        const category =
-            document
-                .getElementById("productCategory")
-                .value
-                .trim();
-
-        const description =
-            document
-                .getElementById("productDescription")
-                .value
-                .trim();
-
-        const imageFile =
-            document
-                .getElementById("productImage")
-                .files[0];
-
-        showProductMessage(
-            "Saving product...",
-            "success"
-        );
-
-        let imageUrl = null;
-
-
-        if(id){
-
-            const oldProduct =
-                allProducts.find(
-                    item =>
-                        String(item.id) ===
-                        String(id)
-                );
-
-            if(oldProduct){
-
-                imageUrl =
-                    oldProduct.image_url ||
-                    null;
-
-            }
-
-        }
-
-
-        if(imageFile){
-
-            const extension =
-                imageFile.name
-                    .split(".")
-                    .pop()
-                    .toLowerCase();
-
-            const fileName =
-                Date.now() +
-                "-" +
-                Math.random()
-                    .toString(36)
-                    .substring(2,8) +
-                "." +
-                extension;
-
-
-            const { error:uploadError } =
-                await supabaseClient
-                    .storage
-                    .from("product-images")
-                    .upload(
-                        fileName,
-                        imageFile,
-                        {
-                            upsert:false
-                        }
-                    );
-
-
-            if(uploadError){
-
-                showProductMessage(
-                    "Image upload failed: " +
-                    uploadError.message,
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            const { data:urlData } =
-                supabaseClient
-                    .storage
-                    .from("product-images")
-                    .getPublicUrl(
-                        fileName
-                    );
-
-
-            imageUrl =
-                urlData.publicUrl;
-
-        }
-
-
-        const productData = {
-
-            name:name,
-
-            price:price,
-
-            category:category,
-
-            description:description,
-
-            image_url:imageUrl
-
-        };
-
-
-        if(id){
-
-            const { error } =
-                await supabaseClient
-                    .from("products")
-                    .update(productData)
-                    .eq("id",id);
-
-
-            if(error){
-
-                showProductMessage(
-                    "Update failed: " +
-                    error.message,
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            showProductMessage(
-                "Product updated successfully.",
-                "success"
-            );
-
-        }
-        else{
-
-            const { error } =
-                await supabaseClient
-                    .from("products")
-                    .insert([
-                        productData
-                    ]);
-
-
-            if(error){
-
-                showProductMessage(
-                    "Product could not be added: " +
-                    error.message,
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            showProductMessage(
-                "Product added successfully.",
-                "success"
-            );
-
-        }
-
-
-        await loadProducts();
-
-
-        setTimeout(
-            function(){
-
-                resetForm();
-
-                activateMenu(
-                    "productsSection"
-                );
-
-                showSection(
-                    "products"
-                );
-
-            },
-            800
-        );
-
-    }
-);
-
-
-/* =====================================================
-   RENDER PRODUCTS
-===================================================== */
-
 function renderProducts(){
 
     const grid =
@@ -4239,68 +2630,58 @@ function renderProducts(){
             "productsGrid"
         );
 
-    const search =
-        document.getElementById(
-            "searchInput"
-        )
-        .value
-        .toLowerCase()
-        .trim();
-
-    const category =
-        document.getElementById(
-            "filterCategory"
-        )
-        .value;
-
-
-    const filtered =
-        allProducts.filter(
-            function(product){
-
-                const name =
-                    String(
-                        product.name || ""
-                    )
-                    .toLowerCase();
-
-                const description =
-                    String(
-                        product.description || ""
-                    )
-                    .toLowerCase();
-
-                const matchesSearch =
-                    !search ||
-                    name.includes(search) ||
-                    description.includes(search);
-
-                const matchesCategory =
-                    !category ||
-                    product.category === category;
-
-                return (
-                    matchesSearch &&
-                    matchesCategory
-                );
-
-            }
-        );
-
-
-    if(filtered.length === 0){
-
-        grid.innerHTML =
-            `
-            <div class="empty">
-                No products found.
-            </div>
-            `;
+    if(!grid){
 
         return;
 
     }
 
+    const search =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
+
+    const category =
+        document
+            .getElementById("filterCategory")
+            .value;
+
+    const filtered =
+        allProducts.filter(
+            function(product){
+
+                const searchable =
+                    [
+                        product.name,
+                        product.description,
+                        product.category,
+                        product.price
+                    ]
+                    .join(" ")
+                    .toLowerCase();
+
+                return (
+                    (!search ||
+                    searchable.includes(search)) &&
+                    (!category ||
+                    product.category === category)
+                );
+
+            }
+        );
+
+    if(!filtered.length){
+
+        grid.innerHTML =
+            `<div class="empty">
+                No products found.
+            </div>`;
+
+        return;
+
+    }
 
     grid.innerHTML =
         filtered
@@ -4327,7 +2708,7 @@ function renderProducts(){
 
                             <h3>
                                 ${escapeHtml(
-                                    product.name || ""
+                                    product.name || "-"
                                 )}
                             </h3>
 
@@ -4339,7 +2720,7 @@ function renderProducts(){
 
                             <div class="productCategory">
                                 ${escapeHtml(
-                                    product.category || ""
+                                    product.category || "-"
                                 )}
                             </div>
 
@@ -4381,7 +2762,2260 @@ function renderProducts(){
 
 
 /* =====================================================
-   EDIT PRODUCT
+   ORDERS
+===================================================== */
+
+async function loadOrders(){
+
+    const container =
+        document.getElementById(
+            "ordersContainer"
+        );
+
+    container.innerHTML =
+        `<div class="loading">
+            Loading orders...
+        </div>`;
+
+    const { data, error } =
+        await supabaseClient
+            .from("orders")
+            .select("*")
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+    if(error){
+
+        console.error(
+            "Orders error:",
+            error
+        );
+
+        container.innerHTML =
+            `<div class="errorBox">
+                Could not load orders.<br><br>
+                ${escapeHtml(error.message)}
+            </div>`;
+
+        return;
+
+    }
+
+    allOrders =
+        data || [];
+
+    populateOrderServices();
+
+    updateDashboard();
+    renderOrders();
+    renderRecentOrders();
+    renderActivity();
+
+}
+
+
+function populateOrderServices(){
+
+    const select =
+        document.getElementById(
+            "orderServiceFilter"
+        );
+
+    const current =
+        select.value;
+
+    const services =
+        [...new Set(
+            allOrders
+                .map(
+                    order =>
+                        order.service ||
+                        order.product_name
+                )
+                .filter(Boolean)
+        )]
+        .sort();
+
+    select.innerHTML =
+        `<option value="">
+            All Services
+        </option>` +
+        services
+            .map(
+                service =>
+                    `<option value="${escapeHtml(service)}">
+                        ${escapeHtml(service)}
+                    </option>`
+            )
+            .join("");
+
+    if(
+        services.includes(current)
+    ){
+
+        select.value = current;
+
+    }
+
+}
+
+
+function renderOrders(){
+
+    const container =
+        document.getElementById(
+            "ordersContainer"
+        );
+
+    if(!container){
+
+        return;
+
+    }
+
+    const search =
+        document
+            .getElementById("orderSearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+    const status =
+        document
+            .getElementById("orderStatusFilter")
+            .value;
+
+    const service =
+        document
+            .getElementById("orderServiceFilter")
+            .value;
+
+    const dateFilter =
+        document
+            .getElementById("orderDateFilter")
+            .value;
+
+    const now =
+        new Date();
+
+    const filtered =
+        allOrders.filter(
+            function(order){
+
+                const searchable =
+                    [
+                        order.reference_number,
+                        order.customer_name,
+                        order.customer_phone,
+                        order.customer_email,
+                        order.service,
+                        order.product_name,
+                        order.delivery_address,
+                        order.notes
+                    ]
+                    .join(" ")
+                    .toLowerCase();
+
+                const matchesSearch =
+                    !search ||
+                    searchable.includes(search);
+
+                const matchesStatus =
+                    !status ||
+                    (order.status || "New") === status;
+
+                const orderService =
+                    order.service ||
+                    order.product_name ||
+                    "";
+
+                const matchesService =
+                    !service ||
+                    orderService === service;
+
+                let matchesDate = true;
+
+                if(dateFilter){
+
+                    const created =
+                        new Date(
+                            order.created_at
+                        );
+
+                    if(dateFilter === "today"){
+
+                        matchesDate =
+                            created.toDateString() ===
+                            now.toDateString();
+
+                    }
+                    else{
+
+                        const days =
+                            Number(dateFilter);
+
+                        const cutoff =
+                            new Date(
+                                now.getTime() -
+                                days *
+                                24 *
+                                60 *
+                                60 *
+                                1000
+                            );
+
+                        matchesDate =
+                            created >= cutoff;
+
+                    }
+
+                }
+
+                return (
+                    matchesSearch &&
+                    matchesStatus &&
+                    matchesService &&
+                    matchesDate
+                );
+
+            }
+        );
+
+    document.getElementById(
+        "ordersResultInfo"
+    ).textContent =
+        `${filtered.length} order${
+            filtered.length === 1 ? "" : "s"
+        } shown`;
+
+    if(!filtered.length){
+
+        container.innerHTML =
+            `<div class="empty">
+                No orders match your filters.
+            </div>`;
+
+        return;
+
+    }
+
+    container.innerHTML =
+        buildOrdersTable(
+            filtered
+        );
+
+}
+
+
+function buildOrdersTable(
+    orders
+){
+
+    return `
+
+    <table class="dataTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Reference</th>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Qty</th>
+                <th>Quote</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            ${orders
+                .map(
+                    function(order){
+
+                        const status =
+                            order.status ||
+                            "New";
+
+                        const quote =
+                            order.quote_amount;
+
+                        return `
+
+                        <tr>
+
+                            <td>
+
+                                <div class="ref">
+                                    ${escapeHtml(
+                                        order.reference_number ||
+                                        "No reference"
+                                    )}
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="customerName">
+                                    ${escapeHtml(
+                                        order.customer_name ||
+                                        "-"
+                                    )}
+                                </div>
+
+                                <div class="customerPhone">
+                                    ${escapeHtml(
+                                        order.customer_phone ||
+                                        ""
+                                    )}
+                                </div>
+
+                            </td>
+
+
+                            <td>
+                                ${escapeHtml(
+                                    order.service ||
+                                    order.product_name ||
+                                    "-"
+                                )}
+                            </td>
+
+
+                            <td>
+                                ${escapeHtml(
+                                    order.quantity ||
+                                    1
+                                )}
+                            </td>
+
+
+                            <td>
+
+                                <div class="amount">
+                                    ${
+                                        quote !== null &&
+                                        quote !== undefined &&
+                                        quote !== ""
+                                        ?
+                                        formatCurrency(
+                                            quote
+                                        )
+                                        :
+                                        "—"
+                                    }
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <select
+                                    class="statusSelect"
+                                    onchange="updateOrderStatus('${order.id}',this.value)"
+                                >
+
+                                    ${orderStatusOptions(
+                                        status
+                                    )}
+
+                                </select>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="dateText">
+                                    ${formatDate(
+                                        order.created_at
+                                    )}
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="actionStack">
+
+                                    <button
+                                        class="btn btnSecondary smallBtn"
+                                        onclick="viewOrder('${order.id}')"
+                                    >
+                                        View
+                                    </button>
+
+                                    <button
+                                        class="btn btnWhatsApp smallBtn"
+                                        onclick="contactOrder('${order.id}')"
+                                    >
+                                        WhatsApp
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        `;
+
+                    }
+                )
+                .join("")}
+
+        </tbody>
+
+    </table>
+
+    `;
+
+}
+
+
+function renderRecentOrders(){
+
+    const container =
+        document.getElementById(
+            "recentOrdersContainer"
+        );
+
+    if(!allOrders.length){
+
+        container.innerHTML =
+            `<div class="empty">
+                No customer orders yet.
+            </div>`;
+
+        return;
+
+    }
+
+    container.innerHTML =
+        buildOrdersTable(
+            allOrders.slice(0,5)
+        );
+
+}
+
+
+/* =====================================================
+   ORDER STATUS
+===================================================== */
+
+function orderStatusOptions(
+    current
+){
+
+    return ORDER_STATUSES
+        .map(
+            function(status){
+
+                return `
+                    <option
+                        value="${escapeHtml(status)}"
+                        ${
+                            status === current
+                            ?
+                            "selected"
+                            :
+                            ""
+                        }
+                    >
+                        ${escapeHtml(status)}
+                    </option>
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+async function updateOrderStatus(
+    id,
+    status
+){
+
+    const { error } =
+        await supabaseClient
+            .from("orders")
+            .update({
+                status,
+                updated_at:
+                    new Date().toISOString()
+            })
+            .eq("id",id);
+
+    if(error){
+
+        alert(
+            "Could not update order: " +
+            error.message
+        );
+
+        await loadOrders();
+
+        return;
+
+    }
+
+    const order =
+        allOrders.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+    if(order){
+
+        order.status = status;
+
+        order.updated_at =
+            new Date().toISOString();
+
+    }
+
+    updateDashboard();
+    renderOrders();
+    renderRecentOrders();
+    renderActivity();
+
+}
+
+
+/* =====================================================
+   VIEW ORDER
+===================================================== */
+
+async function viewOrder(id){
+
+    const order =
+        allOrders.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+    if(!order){
+
+        alert(
+            "Order not found."
+        );
+
+        return;
+
+    }
+
+    const projectDetails =
+        formatProjectDetails(
+            order.project_details
+        );
+
+    const artworkButton =
+        order.artwork_url
+        ?
+        `
+        <button
+            class="btn btnPrimary"
+            onclick="viewArtwork('${order.id}')"
+        >
+            🖼️ View Customer Artwork
+        </button>
+        `
+        :
+        `
+        <p>
+            No artwork was uploaded with this order.
+        </p>
+        `;
+
+
+    document.getElementById(
+        "orderModalBody"
+    ).innerHTML = `
+
+        <div class="detailGrid">
+
+            <div class="detailBox">
+
+                <label>Reference Number</label>
+
+                <strong>
+                    ${escapeHtml(
+                        order.reference_number ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Status</label>
+
+                <select
+                    class="statusSelect"
+                    onchange="updateOrderStatusFromModal(
+                        '${order.id}',
+                        this.value
+                    )"
+                >
+
+                    ${orderStatusOptions(
+                        order.status ||
+                        "New"
+                    )}
+
+                </select>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Customer Name</label>
+
+                <strong>
+                    ${escapeHtml(
+                        order.customer_name ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Phone</label>
+
+                <strong>
+                    ${escapeHtml(
+                        order.customer_phone ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Email</label>
+
+                <strong>
+                    ${escapeHtml(
+                        order.customer_email ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Service</label>
+
+                <strong>
+                    ${escapeHtml(
+                        order.service ||
+                        order.product_name ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Quantity</label>
+
+                <strong>
+                    ${escapeHtml(
+                        order.quantity ||
+                        1
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Date Submitted</label>
+
+                <strong>
+                    ${formatDate(
+                        order.created_at
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Delivery Method</label>
+
+                <strong>
+                    ${escapeHtml(
+                        order.delivery_method ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Delivery Address</label>
+
+                <strong>
+                    ${escapeHtml(
+                        order.delivery_address ||
+                        "Not provided"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Current Amount</label>
+
+                <strong>
+                    ${
+                        order.amount !== null &&
+                        order.amount !== undefined
+                        ?
+                        formatCurrency(
+                            order.amount
+                        )
+                        :
+                        "KSh 0"
+                    }
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Quote Amount</label>
+
+                <input
+                    type="number"
+                    min="0"
+                    step="1"
+                    id="quoteAmount_${order.id}"
+                    value="${escapeHtml(
+                        order.quote_amount ??
+                        ""
+                    )}"
+                    placeholder="Enter quotation"
+                    style="
+                        width:100%;
+                        padding:10px;
+                        border:1px solid #ddd;
+                        border-radius:8px;
+                    "
+                >
+
+            </div>
+
+
+            <div class="detailBox full">
+
+                <label>Customer Notes</label>
+
+                <div class="detailText">
+                    ${escapeHtml(
+                        order.notes ||
+                        "No customer notes."
+                    )}
+                </div>
+
+            </div>
+
+
+            <div class="detailBox full">
+
+                <label>Project Details</label>
+
+                <pre class="projectJson">${escapeHtml(
+                    projectDetails ||
+                    "No project details."
+                )}</pre>
+
+            </div>
+
+
+            <div class="detailBox full">
+
+                <label>Admin Notes</label>
+
+                <textarea
+                    id="adminNotes_${order.id}"
+                    style="
+                        width:100%;
+                        min-height:110px;
+                        padding:10px;
+                        border:1px solid #ddd;
+                        border-radius:8px;
+                        resize:vertical;
+                    "
+                    placeholder="Internal notes about this project..."
+                >${escapeHtml(
+                    order.admin_notes ||
+                    ""
+                )}</textarea>
+
+            </div>
+
+
+            <div class="detailBox full">
+
+                <label>Customer Artwork</label>
+
+                <div class="artworkBox">
+
+                    <p>
+                        Customer artwork is stored privately.
+                    </p>
+
+                    ${artworkButton}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            style="
+                display:flex;
+                flex-wrap:wrap;
+                gap:8px;
+                margin-top:18px;
+            "
+        >
+
+            <button
+                class="btn btnPrimary"
+                onclick="saveOrderAdminDetails('${order.id}')"
+            >
+                💾 Save Order
+            </button>
+
+            <button
+                class="btn btnWhatsApp"
+                onclick="contactOrder('${order.id}')"
+            >
+                💬 WhatsApp
+            </button>
+
+            <button
+                class="btn btnBlue"
+                onclick="callOrder('${order.id}')"
+            >
+                📞 Call
+            </button>
+
+            ${
+                order.customer_email
+                ?
+                `
+                <button
+                    class="btn btnPurple"
+                    onclick="emailOrder('${order.id}')"
+                >
+                    ✉ Email
+                </button>
+                `
+                :
+                ""
+            }
+
+        </div>
+
+    `;
+
+
+    document
+        .getElementById("orderModal")
+        .classList.add("open");
+
+}
+
+
+async function updateOrderStatusFromModal(
+    id,
+    status
+){
+
+    await updateOrderStatus(
+        id,
+        status
+    );
+
+}
+
+
+/* =====================================================
+   SAVE ORDER DETAILS
+===================================================== */
+
+async function saveOrderAdminDetails(
+    id
+){
+
+    const quoteInput =
+        document.getElementById(
+            "quoteAmount_" + id
+        );
+
+    const notesInput =
+        document.getElementById(
+            "adminNotes_" + id
+        );
+
+    const quoteValue =
+        quoteInput
+        ?
+        quoteInput.value.trim()
+        :
+        "";
+
+    const adminNotes =
+        notesInput
+        ?
+        notesInput.value.trim()
+        :
+        "";
+
+    const updateData = {
+
+        admin_notes:
+            adminNotes ||
+            null,
+
+        quote_amount:
+            quoteValue === ""
+            ?
+            null
+            :
+            Number(quoteValue),
+
+        updated_at:
+            new Date().toISOString()
+
+    };
+
+    const { error } =
+        await supabaseClient
+            .from("orders")
+            .update(updateData)
+            .eq("id",id);
+
+    if(error){
+
+        alert(
+            "Could not save order details: " +
+            error.message
+        );
+
+        return;
+
+    }
+
+    const order =
+        allOrders.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+    if(order){
+
+        order.quote_amount =
+            updateData.quote_amount;
+
+        order.admin_notes =
+            updateData.admin_notes;
+
+        order.updated_at =
+            updateData.updated_at;
+
+    }
+
+    updateDashboard();
+    renderOrders();
+    renderRecentOrders();
+    renderActivity();
+
+    alert(
+        "Order details saved successfully."
+    );
+
+}
+
+
+/* =====================================================
+   ARTWORK
+===================================================== */
+
+async function viewArtwork(
+    id
+){
+
+    const order =
+        allOrders.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+    if(
+        !order ||
+        !order.artwork_url
+    ){
+
+        alert(
+            "No artwork is attached to this order."
+        );
+
+        return;
+
+    }
+
+    const { data, error } =
+        await supabaseClient
+            .storage
+            .from("customer-artwork")
+            .createSignedUrl(
+                order.artwork_url,
+                3600
+            );
+
+    if(error){
+
+        alert(
+            "Could not open artwork: " +
+            error.message
+        );
+
+        return;
+
+    }
+
+    if(!data || !data.signedUrl){
+
+        alert(
+            "Artwork link could not be created."
+        );
+
+        return;
+
+    }
+
+    window.open(
+        data.signedUrl,
+        "_blank"
+    );
+
+}
+
+
+/* =====================================================
+   CUSTOMER COMMUNICATION
+===================================================== */
+
+function normalizeKenyaPhone(
+    value
+){
+
+    let phone =
+        String(value || "")
+            .trim()
+            .replace(
+                /\D/g,
+                ""
+            );
+
+    if(phone.startsWith("0")){
+
+        phone =
+            "254" +
+            phone.substring(1);
+
+    }
+
+    return phone;
+
+}
+
+
+function contactOrder(id){
+
+    const order =
+        allOrders.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+    if(!order){
+
+        return;
+
+    }
+
+    const phone =
+        normalizeKenyaPhone(
+            order.customer_phone
+        );
+
+    if(!phone){
+
+        alert(
+            "This customer has no phone number."
+        );
+
+        return;
+
+    }
+
+    const message =
+        `Hello ${
+            order.customer_name || ""
+        }, this is Bossy Prints & Design regarding your project ${
+            order.reference_number || ""
+        }.`;
+
+    window.open(
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+}
+
+
+function callOrder(id){
+
+    const order =
+        allOrders.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+    if(!order){
+
+        return;
+
+    }
+
+    const phone =
+        normalizeKenyaPhone(
+            order.customer_phone
+        );
+
+    if(!phone){
+
+        alert(
+            "This customer has no phone number."
+        );
+
+        return;
+
+    }
+
+    window.location.href =
+        "tel:+" + phone;
+
+}
+
+
+function emailOrder(id){
+
+    const order =
+        allOrders.find(
+            item =>
+                String(item.id) ===
+                String(id)
+        );
+
+    if(
+        !order ||
+        !order.customer_email
+    ){
+
+        alert(
+            "This customer has no email address."
+        );
+
+        return;
+
+    }
+
+    const subject =
+        "Bossy Prints & Design - " +
+        (
+            order.reference_number ||
+            "Project"
+        );
+
+    const body =
+        `Hello ${
+            order.customer_name || ""
+        },\n\nThis is Bossy Prints & Design regarding your project ${
+            order.reference_number || ""
+        }.\n\nThank you.`;
+
+    window.location.href =
+        "mailto:" +
+        order.customer_email +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
+
+}
+
+
+/* =====================================================
+   ENQUIRIES
+===================================================== */
+
+async function loadEnquiries(){
+
+    const container =
+        document.getElementById(
+            "enquiriesContainer"
+        );
+
+    container.innerHTML =
+        `<div class="loading">
+            Loading enquiries...
+        </div>`;
+
+    const { data, error } =
+        await supabaseClient
+            .from("customer_enquiries")
+            .select("*")
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
+    if(error){
+
+        console.error(
+            "Enquiries error:",
+            error
+        );
+
+        container.innerHTML =
+            `<div class="errorBox">
+                Could not load enquiries.<br><br>
+                ${escapeHtml(error.message)}
+            </div>`;
+
+        return;
+
+    }
+
+    allEnquiries =
+        data || [];
+
+    populateEnquiryServices();
+
+    updateDashboard();
+    renderEnquiries();
+    renderActivity();
+
+}
+
+
+function populateEnquiryServices(){
+
+    const select =
+        document.getElementById(
+            "enquiryServiceFilter"
+        );
+
+    const current =
+        select.value;
+
+    const services =
+        [...new Set(
+            allEnquiries
+                .map(
+                    item =>
+                        item.service
+                )
+                .filter(Boolean)
+        )]
+        .sort();
+
+    select.innerHTML =
+        `<option value="">
+            All Services
+        </option>` +
+        services
+            .map(
+                service =>
+                    `<option value="${escapeHtml(service)}">
+                        ${escapeHtml(service)}
+                    </option>`
+            )
+            .join("");
+
+    if(
+        services.includes(current)
+    ){
+
+        select.value =
+            current;
+
+    }
+
+}
+
+
+function renderEnquiries(){
+
+    const container =
+        document.getElementById(
+            "enquiriesContainer"
+        );
+
+    const search =
+        document
+            .getElementById("enquirySearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+    const status =
+        document
+            .getElementById("enquiryStatusFilter")
+            .value;
+
+    const service =
+        document
+            .getElementById("enquiryServiceFilter")
+            .value;
+
+    const filtered =
+        allEnquiries.filter(
+            function(item){
+
+                const searchable =
+                    [
+                        item.customer_name,
+                        item.customer_phone,
+                        item.customer_email,
+                        item.service,
+                        item.message
+                    ]
+                    .join(" ")
+                    .toLowerCase();
+
+                return (
+                    (!search ||
+                    searchable.includes(search)) &&
+                    (!status ||
+                    item.status === status) &&
+                    (!service ||
+                    item.service === service)
+                );
+
+            }
+        );
+
+    document.getElementById(
+        "enquiriesResultInfo"
+    ).textContent =
+        `${filtered.length} entr${
+            filtered.length === 1
+            ? "y"
+            : "ies"
+        } shown`;
+
+    if(!filtered.length){
+
+        container.innerHTML =
+            `<div class="empty">
+                No customer enquiries found.
+            </div>`;
+
+        return;
+
+    }
+
+    container.innerHTML = `
+
+        <table class="dataTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Customer</th>
+                    <th>Service</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                ${filtered
+                    .map(
+                        function(item){
+
+                            return `
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="customerName">
+                                        ${escapeHtml(
+                                            item.customer_name ||
+                                            "-"
+                                        )}
+                                    </div>
+
+                                    <div class="customerPhone">
+                                        ${escapeHtml(
+                                            item.customer_phone ||
+                                            ""
+                                        )}
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    ${escapeHtml(
+                                        item.service ||
+                                        "-"
+                                    )}
+                                </td>
+
+
+                                <td>
+
+                                    <div
+                                        style="
+                                            max-width:280px;
+                                            line-height:1.4;
+                                        "
+                                    >
+                                        ${escapeHtml(
+                                            truncate(
+                                                item.message ||
+                                                "",
+                                                100
+                                            )
+                                        )}
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <select
+                                        class="statusSelect"
+                                        onchange="updateEnquiryStatus(
+                                            '${item.id}',
+                                            this.value
+                                        )"
+                                    >
+
+                                        ${enquiryStatusOptions(
+                                            item.status ||
+                                            "New"
+                                        )}
+
+                                    </select>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="dateText">
+                                        ${formatDate(
+                                            item.created_at
+                                        )}
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="actionStack">
+
+                                        <button
+                                            class="btn btnSecondary smallBtn"
+                                            onclick="viewEnquiry('${item.id}')"
+                                        >
+                                            View
+                                        </button>
+
+                                        <button
+                                            class="btn btnWhatsApp smallBtn"
+                                            onclick="contactEnquiry('${item.id}')"
+                                        >
+                                            WhatsApp
+                                        </button>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            `;
+
+                        }
+                    )
+                    .join("")}
+
+            </tbody>
+
+        </table>
+
+    `;
+
+}
+
+
+function enquiryStatusOptions(
+    current
+){
+
+    return ENQUIRY_STATUSES
+        .map(
+            function(status){
+
+                return `
+                    <option
+                        value="${escapeHtml(status)}"
+                        ${
+                            status === current
+                            ?
+                            "selected"
+                            :
+                            ""
+                        }
+                    >
+                        ${escapeHtml(status)}
+                    </option>
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+async function updateEnquiryStatus(
+    id,
+    status
+){
+
+    const { error } =
+        await supabaseClient
+            .from("customer_enquiries")
+            .update({
+                status,
+                updated_at:
+                    new Date().toISOString()
+            })
+            .eq("id",id);
+
+    if(error){
+
+        alert(
+            "Could not update enquiry: " +
+            error.message
+        );
+
+        await loadEnquiries();
+
+        return;
+
+    }
+
+    const item =
+        allEnquiries.find(
+            enquiry =>
+                String(enquiry.id) ===
+                String(id)
+        );
+
+    if(item){
+
+        item.status =
+            status;
+
+        item.updated_at =
+            new Date().toISOString();
+
+    }
+
+    updateDashboard();
+    renderEnquiries();
+    renderActivity();
+
+}
+
+
+function viewEnquiry(id){
+
+    const item =
+        allEnquiries.find(
+            enquiry =>
+                String(enquiry.id) ===
+                String(id)
+        );
+
+    if(!item){
+
+        alert(
+            "Enquiry not found."
+        );
+
+        return;
+
+    }
+
+    document.getElementById(
+        "enquiryModalBody"
+    ).innerHTML = `
+
+        <div class="detailGrid">
+
+            <div class="detailBox">
+
+                <label>Customer</label>
+
+                <strong>
+                    ${escapeHtml(
+                        item.customer_name ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Service</label>
+
+                <strong>
+                    ${escapeHtml(
+                        item.service ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Phone</label>
+
+                <strong>
+                    ${escapeHtml(
+                        item.customer_phone ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Email</label>
+
+                <strong>
+                    ${escapeHtml(
+                        item.customer_email ||
+                        "-"
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Status</label>
+
+                <select
+                    class="statusSelect"
+                    onchange="updateEnquiryStatus(
+                        '${item.id}',
+                        this.value
+                    )"
+                >
+
+                    ${enquiryStatusOptions(
+                        item.status ||
+                        "New"
+                    )}
+
+                </select>
+
+            </div>
+
+
+            <div class="detailBox">
+
+                <label>Date</label>
+
+                <strong>
+                    ${formatDate(
+                        item.created_at
+                    )}
+                </strong>
+
+            </div>
+
+
+            <div class="detailBox full">
+
+                <label>Customer Message</label>
+
+                <div class="detailText">
+                    ${escapeHtml(
+                        item.message ||
+                        ""
+                    )}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            style="
+                display:flex;
+                flex-wrap:wrap;
+                gap:8px;
+                margin-top:18px;
+            "
+        >
+
+            <button
+                class="btn btnWhatsApp"
+                onclick="contactEnquiry('${item.id}')"
+            >
+                💬 WhatsApp
+            </button>
+
+            ${
+                item.customer_phone
+                ?
+                `
+                <button
+                    class="btn btnBlue"
+                    onclick="callEnquiry('${item.id}')"
+                >
+                    📞 Call
+                </button>
+                `
+                :
+                ""
+            }
+
+            ${
+                item.customer_email
+                ?
+                `
+                <button
+                    class="btn btnPurple"
+                    onclick="emailEnquiry('${item.id}')"
+                >
+                    ✉ Email
+                </button>
+                `
+                :
+                ""
+            }
+
+        </div>
+
+    `;
+
+    document
+        .getElementById("enquiryModal")
+        .classList.add("open");
+
+}
+
+
+function contactEnquiry(id){
+
+    const item =
+        allEnquiries.find(
+            enquiry =>
+                String(enquiry.id) ===
+                String(id)
+        );
+
+    if(!item){
+
+        return;
+
+    }
+
+    const phone =
+        normalizeKenyaPhone(
+            item.customer_phone
+        );
+
+    if(!phone){
+
+        alert(
+            "This customer has no phone number."
+        );
+
+        return;
+
+    }
+
+    const message =
+        `Hello ${
+            item.customer_name || ""
+        }, this is Bossy Prints & Design. We received your enquiry about ${
+            item.service ||
+            "our services"
+        }.`;
+
+    window.open(
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message),
+        "_blank"
+    );
+
+}
+
+
+function callEnquiry(id){
+
+    const item =
+        allEnquiries.find(
+            enquiry =>
+                String(enquiry.id) ===
+                String(id)
+        );
+
+    if(!item){
+
+        return;
+
+    }
+
+    const phone =
+        normalizeKenyaPhone(
+            item.customer_phone
+        );
+
+    if(!phone){
+
+        alert(
+            "No phone number available."
+        );
+
+        return;
+
+    }
+
+    window.location.href =
+        "tel:+" + phone;
+
+}
+
+
+function emailEnquiry(id){
+
+    const item =
+        allEnquiries.find(
+            enquiry =>
+                String(enquiry.id) ===
+                String(id)
+        );
+
+    if(
+        !item ||
+        !item.customer_email
+    ){
+
+        alert(
+            "No email address available."
+        );
+
+        return;
+
+    }
+
+    const subject =
+        "Bossy Prints & Design Enquiry";
+
+    const body =
+        `Hello ${
+            item.customer_name || ""
+        },\n\nThis is Bossy Prints & Design regarding your enquiry about ${
+            item.service ||
+            "our services"
+        }.\n\nThank you.`;
+
+    window.location.href =
+        "mailto:" +
+        item.customer_email +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function updateDashboard(){
+
+    const totalProducts =
+        allProducts.length;
+
+    const totalOrders =
+        allOrders.length;
+
+    const newOrders =
+        allOrders.filter(
+            order =>
+                (
+                    order.status ||
+                    "New"
+                ).toLowerCase() ===
+                "new"
+        ).length;
+
+    const completedOrders =
+        allOrders.filter(
+            order =>
+                (
+                    order.status ||
+                    ""
+                ).toLowerCase() ===
+                "completed"
+        ).length;
+
+    const activeOrders =
+        allOrders.filter(
+            order => {
+
+                const status =
+                    (
+                        order.status ||
+                        "New"
+                    ).toLowerCase();
+
+                return (
+                    status !== "completed" &&
+                    status !== "cancelled"
+                );
+
+            }
+        ).length;
+
+    const openEnquiries =
+        allEnquiries.filter(
+            item =>
+                (
+                    item.status ||
+                    "New"
+                ).toLowerCase() !==
+                "resolved"
+        ).length;
+
+    const quotedOrders =
+        allOrders.filter(
+            order =>
+                order.quote_amount !== null &&
+                order.quote_amount !== undefined &&
+                order.quote_amount !== ""
+        );
+
+    const quotedValue =
+        quotedOrders.reduce(
+            function(total,order){
+
+                const value =
+                    Number(
+                        order.quote_amount
+                    );
+
+                return total +
+                    (
+                        Number.isFinite(value)
+                        ?
+                        value
+                        :
+                        0
+                    );
+
+            },
+            0
+        );
+
+    const artworkOrders =
+        allOrders.filter(
+            order =>
+                Boolean(
+                    order.artwork_url
+                )
+        ).length;
+
+    const now =
+        new Date();
+
+    const monthlyOrders =
+        allOrders.filter(
+            order => {
+
+                const date =
+                    new Date(
+                        order.created_at
+                    );
+
+                return (
+                    date.getMonth() ===
+                    now.getMonth() &&
+                    date.getFullYear() ===
+                    now.getFullYear()
+                );
+
+            }
+        ).length;
+
+
+    document.getElementById(
+        "totalProducts"
+    ).textContent =
+        totalProducts;
+
+    document.getElementById(
+        "totalOrders"
+    ).textContent =
+        totalOrders;
+
+    document.getElementById(
+        "newOrders"
+    ).textContent =
+        newOrders;
+
+    document.getElementById(
+        "activeOrders"
+    ).textContent =
+        activeOrders;
+
+    document.getElementById(
+        "completedOrders"
+    ).textContent =
+        completedOrders;
+
+    document.getElementById(
+        "totalEnquiries"
+    ).textContent =
+        openEnquiries;
+
+    document.getElementById(
+        "quotedOrders"
+    ).textContent =
+        quotedOrders.length;
+
+    document.getElementById(
+        "quotedValue"
+    ).textContent =
+        formatCurrency(
+            quotedValue
+        );
+
+    document.getElementById(
+        "artworkOrders"
+    ).textContent =
+        artworkOrders;
+
+    document.getElementById(
+        "monthlyOrders"
+    ).textContent =
+        monthlyOrders;
+
+}
+
+
+/* =====================================================
+   ACTIVITY
+===================================================== */
+
+function renderActivity(){
+
+    const container =
+        document.getElementById(
+            "activityList"
+        );
+
+    const events = [];
+
+    allOrders
+        .slice(0,8)
+        .forEach(
+            function(order){
+
+                events.push({
+                    type:"Order",
+                    title:
+                        `${order.reference_number || "Order"} — ${
+                            order.customer_name || "Customer"
+                        }`,
+                    date:
+                        order.created_at
+                });
+
+            }
+        );
+
+    allEnquiries
+        .slice(0,8)
+        .forEach(
+            function(item){
+
+                events.push({
+                    type:"Enquiry",
+                    title:
+                        `Enquiry — ${
+                            item.customer_name || "Customer"
+                        }`,
+                    date:
+                        item.created_at
+                });
+
+            }
+        );
+
+    events.sort(
+        function(a,b){
+
+            return new Date(b.date) -
+                new Date(a.date);
+
+        }
+    );
+
+    if(!events.length){
+
+        container.innerHTML =
+            `<div class="empty">
+                No recent activity.
+            </div>`;
+
+        return;
+
+    }
+
+    container.innerHTML =
+        events
+            .slice(0,8)
+            .map(
+                function(event){
+
+                    return `
+
+                    <div class="activityItem">
+
+                        <div class="activityDot"></div>
+
+                        <div>
+
+                            <strong>
+                                ${escapeHtml(
+                                    event.title
+                                )}
+                            </strong>
+
+                            <span>
+                                ${escapeHtml(
+                                    event.type
+                                )}
+                                •
+                                ${formatDate(
+                                    event.date
+                                )}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    `;
+
+                }
+            )
+            .join("");
+
+}
+
+
+/* =====================================================
+   PRODUCT EDIT
 ===================================================== */
 
 async function editProduct(id){
@@ -4403,54 +5037,44 @@ async function editProduct(id){
 
     }
 
-
     document.getElementById(
         "productId"
     ).value =
         product.id;
-
 
     document.getElementById(
         "productName"
     ).value =
         product.name || "";
 
-
     document.getElementById(
         "productPrice"
     ).value =
         product.price || "";
-
 
     document.getElementById(
         "productCategory"
     ).value =
         product.category || "";
 
-
     document.getElementById(
         "productDescription"
     ).value =
         product.description || "";
 
-
     document.getElementById(
         "productImage"
-    ).value =
-        "";
-
+    ).value = "";
 
     document.getElementById(
         "formTitle"
     ).textContent =
         "Edit Product";
 
-
     document.getElementById(
         "saveBtn"
     ).textContent =
         "Update Product";
-
 
     if(product.image_url){
 
@@ -4474,16 +5098,220 @@ async function editProduct(id){
 
     }
 
-
-    activateMenu(
-        "addSection"
-    );
-
-    showSection(
-        "add"
-    );
+    openAddProduct();
 
 }
+
+
+/* =====================================================
+   PRODUCT FORM
+===================================================== */
+
+productForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+        const id =
+            document.getElementById(
+                "productId"
+            ).value;
+
+        const name =
+            document.getElementById(
+                "productName"
+            ).value
+            .trim();
+
+        const price =
+            document.getElementById(
+                "productPrice"
+            ).value
+            .trim();
+
+        const category =
+            document.getElementById(
+                "productCategory"
+            ).value
+            .trim();
+
+        const description =
+            document.getElementById(
+                "productDescription"
+            ).value
+            .trim();
+
+        const imageFile =
+            document.getElementById(
+                "productImage"
+            ).files[0];
+
+        showProductMessage(
+            "Saving product...",
+            "success"
+        );
+
+        let imageUrl = null;
+
+        if(id){
+
+            const oldProduct =
+                allProducts.find(
+                    item =>
+                        String(item.id) ===
+                        String(id)
+                );
+
+            if(oldProduct){
+
+                imageUrl =
+                    oldProduct.image_url ||
+                    null;
+
+            }
+
+        }
+
+        if(imageFile){
+
+            const extension =
+                imageFile.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
+
+            const fileName =
+                Date.now() +
+                "-" +
+                Math.random()
+                    .toString(36)
+                    .substring(2,8) +
+                "." +
+                extension;
+
+            const {
+                error:uploadError
+            } =
+                await supabaseClient
+                    .storage
+                    .from("product-images")
+                    .upload(
+                        fileName,
+                        imageFile,
+                        {
+                            upsert:false
+                        }
+                    );
+
+            if(uploadError){
+
+                showProductMessage(
+                    "Image upload failed: " +
+                    uploadError.message,
+                    "error"
+                );
+
+                return;
+
+            }
+
+            const {
+                data:urlData
+            } =
+                supabaseClient
+                    .storage
+                    .from("product-images")
+                    .getPublicUrl(
+                        fileName
+                    );
+
+            imageUrl =
+                urlData.publicUrl;
+
+        }
+
+        const productData = {
+
+            name,
+            price,
+            category,
+            description,
+            image_url:imageUrl
+
+        };
+
+        if(id){
+
+            const { error } =
+                await supabaseClient
+                    .from("products")
+                    .update(
+                        productData
+                    )
+                    .eq("id",id);
+
+            if(error){
+
+                showProductMessage(
+                    "Update failed: " +
+                    error.message,
+                    "error"
+                );
+
+                return;
+
+            }
+
+            showProductMessage(
+                "Product updated successfully.",
+                "success"
+            );
+
+        }
+        else{
+
+            const { error } =
+                await supabaseClient
+                    .from("products")
+                    .insert([
+                        productData
+                    ]);
+
+            if(error){
+
+                showProductMessage(
+                    "Product could not be added: " +
+                    error.message,
+                    "error"
+                );
+
+                return;
+
+            }
+
+            showProductMessage(
+                "Product added successfully.",
+                "success"
+            );
+
+        }
+
+        await loadProducts();
+
+        setTimeout(
+            function(){
+
+                resetForm();
+
+                openProducts();
+
+            },
+            700
+        );
+
+    }
+);
 
 
 /* =====================================================
@@ -4503,7 +5331,6 @@ async function deleteProduct(id){
 
     }
 
-
     const product =
         allProducts.find(
             item =>
@@ -4511,13 +5338,11 @@ async function deleteProduct(id){
                 String(id)
         );
 
-
     const { error } =
         await supabaseClient
             .from("products")
             .delete()
             .eq("id",id);
-
 
     if(error){
 
@@ -4529,7 +5354,6 @@ async function deleteProduct(id){
         return;
 
     }
-
 
     if(
         product &&
@@ -4577,7 +5401,6 @@ async function deleteProduct(id){
 
     }
 
-
     await loadProducts();
 
     alert(
@@ -4588,7 +5411,7 @@ async function deleteProduct(id){
 
 
 /* =====================================================
-   RESET PRODUCT FORM
+   RESET PRODUCT
 ===================================================== */
 
 function resetForm(){
@@ -4639,7 +5462,6 @@ function showProductMessage(
     productMessage.textContent =
         message;
 
-
     if(type === "success"){
 
         productMessage.style.background =
@@ -4663,10 +5485,367 @@ function showProductMessage(
 
 
 /* =====================================================
+   IMAGE PREVIEW
+===================================================== */
+
+document
+    .getElementById("productImage")
+    .addEventListener(
+        "change",
+        function(){
+
+            const file =
+                this.files[0];
+
+            if(!file){
+
+                document.getElementById(
+                    "imagePreview"
+                ).style.display =
+                    "none";
+
+                return;
+
+            }
+
+            const url =
+                URL.createObjectURL(
+                    file
+                );
+
+            document.getElementById(
+                "previewImg"
+            ).src =
+                url;
+
+            document.getElementById(
+                "imagePreview"
+            ).style.display =
+                "block";
+
+        }
+    );
+
+
+/* =====================================================
+   SEARCH EVENTS
+===================================================== */
+
+document
+    .getElementById("orderSearch")
+    .addEventListener(
+        "input",
+        renderOrders
+    );
+
+document
+    .getElementById("orderStatusFilter")
+    .addEventListener(
+        "change",
+        renderOrders
+    );
+
+document
+    .getElementById("orderServiceFilter")
+    .addEventListener(
+        "change",
+        renderOrders
+    );
+
+document
+    .getElementById("orderDateFilter")
+    .addEventListener(
+        "change",
+        renderOrders
+    );
+
+document
+    .getElementById("enquirySearch")
+    .addEventListener(
+        "input",
+        renderEnquiries
+    );
+
+document
+    .getElementById("enquiryStatusFilter")
+    .addEventListener(
+        "change",
+        renderEnquiries
+    );
+
+document
+    .getElementById("enquiryServiceFilter")
+    .addEventListener(
+        "change",
+        renderEnquiries
+    );
+
+document
+    .getElementById("searchInput")
+    .addEventListener(
+        "input",
+        renderProducts
+    );
+
+document
+    .getElementById("filterCategory")
+    .addEventListener(
+        "change",
+        renderProducts
+    );
+
+
+/* =====================================================
+   CSV EXPORT
+===================================================== */
+
+function downloadCSV(
+    filename,
+    rows
+){
+
+    if(!rows.length){
+
+        alert(
+            "There is no data to export."
+        );
+
+        return;
+
+    }
+
+    const csv =
+        rows
+            .map(
+                row =>
+                    row
+                        .map(
+                            value =>
+                                '"' +
+                                String(
+                                    value ?? ""
+                                )
+                                .replace(
+                                    /"/g,
+                                    '""'
+                                ) +
+                                '"'
+                        )
+                        .join(",")
+            )
+            .join("\n");
+
+    const blob =
+        new Blob(
+            [csv],
+            {
+                type:
+                    "text/csv;charset=utf-8;"
+            }
+        );
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+    link.href = url;
+    link.download = filename;
+
+    document
+        .body
+        .appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(
+        url
+    );
+
+}
+
+
+function exportOrdersCSV(){
+
+    const rows = [
+
+        [
+            "Reference",
+            "Customer",
+            "Phone",
+            "Email",
+            "Service",
+            "Quantity",
+            "Status",
+            "Quote Amount",
+            "Delivery Method",
+            "Delivery Address",
+            "Created At"
+        ]
+
+    ];
+
+    allOrders.forEach(
+        function(order){
+
+            rows.push([
+
+                order.reference_number || "",
+                order.customer_name || "",
+                order.customer_phone || "",
+                order.customer_email || "",
+                order.service ||
+                    order.product_name ||
+                    "",
+                order.quantity || 1,
+                order.status || "New",
+                order.quote_amount ?? "",
+                order.delivery_method || "",
+                order.delivery_address || "",
+                order.created_at || ""
+
+            ]);
+
+        }
+    );
+
+    downloadCSV(
+        "bossy-orders.csv",
+        rows
+    );
+
+}
+
+
+function exportEnquiriesCSV(){
+
+    const rows = [
+
+        [
+            "Customer",
+            "Phone",
+            "Email",
+            "Service",
+            "Message",
+            "Status",
+            "Created At"
+        ]
+
+    ];
+
+    allEnquiries.forEach(
+        function(item){
+
+            rows.push([
+
+                item.customer_name || "",
+                item.customer_phone || "",
+                item.customer_email || "",
+                item.service || "",
+                item.message || "",
+                item.status || "New",
+                item.created_at || ""
+
+            ]);
+
+        }
+    );
+
+    downloadCSV(
+        "bossy-customer-enquiries.csv",
+        rows
+    );
+
+}
+
+
+/* =====================================================
+   MODALS
+===================================================== */
+
+function closeModal(id){
+
+    const modal =
+        document.getElementById(id);
+
+    if(modal){
+
+        modal.classList.remove(
+            "open"
+        );
+
+    }
+
+}
+
+
+document
+    .querySelectorAll(".modal")
+    .forEach(
+        function(modal){
+
+            modal.addEventListener(
+                "click",
+                function(event){
+
+                    if(
+                        event.target ===
+                        modal
+                    ){
+
+                        modal.classList.remove(
+                            "open"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            document
+                .querySelectorAll(
+                    ".modal.open"
+                )
+                .forEach(
+                    function(modal){
+
+                        modal.classList.remove(
+                            "open"
+                        );
+
+                    }
+                );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
    HELPERS
 ===================================================== */
 
-function formatDate(value){
+function formatDate(
+    value
+){
 
     if(!value){
 
@@ -4676,6 +5855,16 @@ function formatDate(value){
 
     const date =
         new Date(value);
+
+    if(
+        Number.isNaN(
+            date.getTime()
+        )
+    ){
+
+        return "-";
+
+    }
 
     return date.toLocaleString(
         "en-KE",
@@ -4688,15 +5877,49 @@ function formatDate(value){
 }
 
 
+function formatCurrency(
+    value
+){
+
+    const number =
+        Number(value);
+
+    if(
+        !Number.isFinite(
+            number
+        )
+    ){
+
+        return "KSh 0";
+
+    }
+
+    return (
+        "KSh " +
+        number.toLocaleString(
+            "en-KE",
+            {
+                maximumFractionDigits:2
+            }
+        )
+    );
+
+}
+
+
 function truncate(
     text,
     length
 ){
 
     const value =
-        String(text || "");
+        String(
+            text || ""
+        );
 
-    if(value.length <= length){
+    if(
+        value.length <= length
+    ){
 
         return value;
 
@@ -4713,35 +5936,82 @@ function truncate(
 }
 
 
-function escapeHtml(value){
+function formatProjectDetails(
+    value
+){
 
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
+    if(!value){
+
+        return "";
+
+    }
+
+    if(
+        typeof value ===
+        "object"
+    ){
+
+        return JSON.stringify(
+            value,
+            null,
+            2
         );
+
+    }
+
+    try{
+
+        return JSON.stringify(
+            JSON.parse(value),
+            null,
+            2
+        );
+
+    }
+    catch(error){
+
+        return String(
+            value
+        );
+
+    }
+
+}
+
+
+function escapeHtml(
+    value
+){
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
 
 }
 
 
 /* =====================================================
-   MOBILE MENU
+   MOBILE
 ===================================================== */
 
 document
