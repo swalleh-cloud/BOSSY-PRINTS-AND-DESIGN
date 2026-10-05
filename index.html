@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,11 +31,7 @@
 
 <meta property="og:url" content="https://swalleh-cloud.github.io/BOSSY-PRINTS-AND-DESIGN/">
 
-
-<!-- SUPABASE -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
 <style>
 
@@ -74,7 +69,8 @@ a{
 
 button,
 input,
-select{
+select,
+textarea{
     font:inherit;
 }
 
@@ -86,7 +82,6 @@ img{
     width:min(1180px,calc(100% - 40px));
     margin:auto;
 }
-
 
 /* =========================================================
    SCROLL REVEAL
@@ -104,7 +99,6 @@ img{
     opacity:1;
     transform:translateY(0);
 }
-
 
 /* =========================================================
    HEADER
@@ -259,7 +253,6 @@ nav a:hover::after{
 
     font-size:22px;
 }
-
 
 /* =========================================================
    HERO
@@ -463,7 +456,6 @@ nav a:hover::after{
     transform:translateY(-3px);
 }
 
-
 /* =========================================================
    HERO VISUAL
 ========================================================= */
@@ -628,7 +620,6 @@ nav a:hover::after{
 
 }
 
-
 /* =========================================================
    TRUST BAR
 ========================================================= */
@@ -687,7 +678,6 @@ nav a:hover::after{
     font-size:11px;
 }
 
-
 /* =========================================================
    GENERAL SECTIONS
 ========================================================= */
@@ -735,7 +725,6 @@ section{
     color:#9197a3;
     font-size:15px;
 }
-
 
 /* =========================================================
    SERVICES
@@ -846,7 +835,6 @@ section{
     font-size:12px;
     font-weight:bold;
 }
-
 
 /* =========================================================
    PRODUCTS
@@ -1076,6 +1064,397 @@ section{
     border-radius:12px;
 }
 
+/* =========================================================
+   START A PROJECT
+========================================================= */
+
+.project-section{
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(0,229,255,.06),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(124,60,255,.08),
+            transparent 30%
+        ),
+        #090b10;
+}
+
+.project-wrapper{
+    max-width:1000px;
+    margin:auto;
+}
+
+.project-box{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.07),
+            rgba(255,255,255,.025)
+        );
+
+    border:1px solid #292e3a;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.28);
+}
+
+.project-progress{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    margin-bottom:30px;
+}
+
+.project-progress-item{
+    padding:10px;
+
+    text-align:center;
+
+    border-radius:8px;
+
+    background:#11141b;
+
+    border:1px solid #252a35;
+
+    color:#737987;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.project-progress-item.active{
+    background:rgba(0,229,255,.08);
+
+    border-color:#00e5ff;
+
+    color:#00e5ff;
+}
+
+.project-form{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    color:#d9dce3;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+.form-group label span{
+    color:#00e5ff;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+
+    border:1px solid #303542;
+
+    background:#0d1016;
+
+    color:#fff;
+
+    border-radius:9px;
+
+    padding:13px 14px;
+
+    outline:none;
+
+    transition:.25s;
+}
+
+.form-group textarea{
+    min-height:125px;
+
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#00e5ff;
+
+    box-shadow:
+        0 0 0 3px rgba(0,229,255,.07);
+}
+
+.form-group select option{
+    background:#0d1016;
+    color:#fff;
+}
+
+.form-help{
+    color:#727987;
+
+    font-size:10px;
+}
+
+.dynamic-fields{
+    grid-column:1/-1;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:18px;
+
+    padding:20px;
+
+    border:1px solid #252a35;
+
+    background:#0c0f15;
+
+    border-radius:14px;
+}
+
+.dynamic-fields-title{
+    grid-column:1/-1;
+
+    color:#00e5ff;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+}
+
+.project-file{
+    border:1px dashed #39404d !important;
+
+    padding:20px !important;
+
+    cursor:pointer;
+
+    background:#0b0e14 !important;
+}
+
+.project-file:hover{
+    border-color:#00e5ff !important;
+}
+
+.file-name{
+    color:#8d94a1;
+
+    font-size:11px;
+
+    margin-top:5px;
+}
+
+.delivery-address-wrap{
+    display:none;
+}
+
+.delivery-address-wrap.show{
+    display:flex;
+}
+
+.project-submit-area{
+    grid-column:1/-1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+    margin-top:8px;
+}
+
+.project-submit{
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:16px;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00e5ff,
+            #7c3cff
+        );
+
+    color:#050609;
+
+    font-weight:900;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+.project-submit:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 35px rgba(0,229,255,.18);
+}
+
+.project-submit:disabled{
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    transform:none;
+}
+
+.project-status{
+    display:none;
+
+    padding:13px 15px;
+
+    border-radius:9px;
+
+    font-size:12px;
+
+    text-align:center;
+}
+
+.project-status.show{
+    display:block;
+}
+
+.project-status.error{
+    background:rgba(255,70,70,.08);
+
+    border:1px solid rgba(255,70,70,.3);
+
+    color:#ff9292;
+}
+
+.project-status.success{
+    background:rgba(0,229,255,.07);
+
+    border:1px solid rgba(0,229,255,.3);
+
+    color:#00e5ff;
+}
+
+.project-success{
+    display:none;
+
+    text-align:center;
+
+    padding:25px 10px;
+}
+
+.project-success.show{
+    display:block;
+}
+
+.success-icon{
+    width:75px;
+    height:75px;
+
+    margin:0 auto 20px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e5ff,
+            #7c3cff
+        );
+
+    color:#050609;
+
+    font-size:34px;
+
+    font-weight:900;
+}
+
+.project-success h3{
+    font-size:30px;
+
+    margin-bottom:8px;
+}
+
+.project-success p{
+    color:#9197a3;
+
+    font-size:14px;
+
+    max-width:600px;
+
+    margin:0 auto 18px;
+}
+
+.reference-box{
+    display:inline-block;
+
+    padding:15px 25px;
+
+    margin:10px auto 25px;
+
+    border-radius:10px;
+
+    background:#11151d;
+
+    border:1px solid #00e5ff;
+
+    color:#00e5ff;
+
+    font-size:20px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+}
+
+.success-actions{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
 
 /* =========================================================
    PORTFOLIO
@@ -1168,7 +1547,6 @@ section{
     font-size:11px;
 }
 
-
 /* =========================================================
    HOW IT WORKS
 ========================================================= */
@@ -1241,7 +1619,6 @@ section{
 
     background:#343844;
 }
-
 
 /* =========================================================
    WHY US
@@ -1373,7 +1750,6 @@ section{
     font-size:13px;
 }
 
-
 /* =========================================================
    ABOUT
 ========================================================= */
@@ -1433,7 +1809,6 @@ section{
 
     font-size:11px;
 }
-
 
 /* =========================================================
    FAQ
@@ -1509,7 +1884,6 @@ details p{
     max-width:720px;
 }
 
-
 /* =========================================================
    CTA
 ========================================================= */
@@ -1555,7 +1929,6 @@ details p{
 
     margin:0 auto 27px;
 }
-
 
 /* =========================================================
    CONTACT
@@ -1623,7 +1996,6 @@ details p{
 
     margin-bottom:15px;
 }
-
 
 /* =========================================================
    FOOTER
@@ -1710,7 +2082,6 @@ footer{
     font-size:11px;
 }
 
-
 /* =========================================================
    FLOATING WHATSAPP
 ========================================================= */
@@ -1765,7 +2136,6 @@ footer{
 
 }
 
-
 /* =========================================================
    BACK TO TOP
 ========================================================= */
@@ -1811,7 +2181,6 @@ footer{
     color:#00e5ff;
     border-color:#00e5ff;
 }
-
 
 /* =========================================================
    MOBILE
@@ -1952,6 +2321,28 @@ footer{
 
 }
 
+@media(max-width:700px){
+
+    .project-box{
+        padding:20px;
+    }
+
+    .project-form,
+    .dynamic-fields{
+        grid-template-columns:1fr;
+    }
+
+    .dynamic-fields-title,
+    .form-group.full,
+    .project-submit-area{
+        grid-column:auto;
+    }
+
+    .project-progress-item{
+        font-size:8px;
+    }
+
+}
 
 @media(max-width:600px){
 
@@ -2077,8 +2468,16 @@ footer{
         bottom:82px;
     }
 
-}
+    .project-success h3{
+        font-size:25px;
+    }
 
+    .reference-box{
+        font-size:16px;
+        padding:13px 18px;
+    }
+
+}
 
 @media(max-width:380px){
 
@@ -2095,7 +2494,6 @@ footer{
     }
 
 }
-
 
 /* =========================================================
    REDUCED MOTION
@@ -2129,7 +2527,6 @@ footer{
 
 <div class="container navbar">
 
-
 <a href="#home" class="logo">
 
 <div class="logo-mark">
@@ -2162,24 +2559,41 @@ aria-expanded="false">
 
 <nav id="mainNav">
 
-<a href="#home">Home</a>
+<a href="#home">
+Home
+</a>
 
-<a href="#services">Services</a>
+<a href="#services">
+Services
+</a>
 
-<a href="#products">Products</a>
+<a href="#products">
+Products
+</a>
 
-<a href="#portfolio">Our Work</a>
+<a href="#portfolio">
+Our Work
+</a>
 
-<a href="#about">About</a>
+<a href="#start-project">
+Start Project
+</a>
 
-<a href="#faq">FAQ</a>
+<a href="#about">
+About
+</a>
 
-<a href="#contact">Contact</a>
+<a href="#faq">
+FAQ
+</a>
+
+<a href="#contact">
+Contact
+</a>
 
 <a
 class="nav-quote"
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20a%20quotation."
-target="_blank">
+href="#start-project">
 
 Get a Quote
 
@@ -2192,7 +2606,6 @@ Get a Quote
 </header>
 
 
-
 <!-- =========================================================
      HERO
 ========================================================= -->
@@ -2201,9 +2614,7 @@ Get a Quote
 
 <div class="hero-grid"></div>
 
-
 <div class="container hero-inner">
-
 
 <div class="hero-content reveal">
 
@@ -2240,10 +2651,9 @@ ideas into products people can see, wear and remember.
 
 <a
 class="btn btn-primary"
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20make%20an%20inquiry."
-target="_blank">
+href="#start-project">
 
-💬 Start Your Project
+🚀 Start Your Project
 
 </a>
 
@@ -2261,12 +2671,9 @@ Explore Our Work ↓
 </div>
 
 
-
 <div class="hero-visual reveal">
 
-
 <div class="hero-circle"></div>
-
 
 <div class="hero-orb one"></div>
 
@@ -2321,7 +2728,6 @@ Built Around You.
 </section>
 
 
-
 <!-- =========================================================
      TRUST BAR
 ========================================================= -->
@@ -2329,7 +2735,6 @@ Built Around You.
 <div class="trust">
 
 <div class="container trust-grid">
-
 
 <div class="trust-item">
 
@@ -2386,18 +2791,16 @@ EASY ORDERING
 </strong>
 
 <span>
-Talk to us directly
+Submit your project online
 </span>
 
 </div>
 
 </div>
 
-
 </div>
 
 </div>
-
 
 
 <!-- =========================================================
@@ -2409,7 +2812,6 @@ class="section-dark"
 id="services">
 
 <div class="container">
-
 
 <div class="section-heading reveal">
 
@@ -2449,10 +2851,10 @@ organizations, groups and personal occasions.
 </p>
 
 <a
-href="#products"
+href="#start-project"
 class="service-link">
 
-Explore → 
+Start project →
 
 </a>
 
@@ -2475,11 +2877,10 @@ business artwork and custom designs.
 </p>
 
 <a
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20graphic%20design%20services."
-target="_blank"
+href="#start-project"
 class="service-link">
 
-Discuss a project →
+Start project →
 
 </a>
 
@@ -2502,8 +2903,7 @@ your business look recognizable and consistent.
 </p>
 
 <a
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20business%20branding."
-target="_blank"
+href="#start-project"
 class="service-link">
 
 Start branding →
@@ -2529,8 +2929,7 @@ events, advertising and special occasions.
 </p>
 
 <a
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20a%20banner%20or%20poster."
-target="_blank"
+href="#start-project"
 class="service-link">
 
 Request a quote →
@@ -2556,8 +2955,7 @@ your products a professional appearance.
 </p>
 
 <a
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20stickers%20or%20labels."
-target="_blank"
+href="#start-project"
 class="service-link">
 
 Ask about labels →
@@ -2583,8 +2981,7 @@ businesses, events and organizations.
 </p>
 
 <a
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20branded%20caps%20or%20merchandise."
-target="_blank"
+href="#start-project"
 class="service-link">
 
 Get started →
@@ -2593,13 +2990,11 @@ Get started →
 
 </div>
 
-
 </div>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -2611,7 +3006,6 @@ class="products-section"
 id="products">
 
 <div class="container">
-
 
 <div class="products-top">
 
@@ -2662,11 +3056,365 @@ Loading our latest work...
 
 </div>
 
-
 </div>
 
 </section>
 
+
+<!-- =========================================================
+     START A PROJECT
+========================================================= -->
+
+<section
+class="project-section"
+id="start-project">
+
+<div class="container project-wrapper">
+
+<div class="section-heading reveal">
+
+<small>
+START A PROJECT
+</small>
+
+<h2>
+Let's Build Your Project.
+</h2>
+
+<p>
+Tell us what you need, upload your artwork if you have it,
+and we'll review your project and get back to you with
+the next steps and quotation.
+</p>
+
+</div>
+
+
+<div class="project-box reveal">
+
+
+<div class="project-progress">
+
+<div class="project-progress-item active">
+01 • PROJECT
+</div>
+
+<div class="project-progress-item">
+02 • ARTWORK
+</div>
+
+<div class="project-progress-item">
+03 • SUBMIT
+</div>
+
+</div>
+
+
+<form
+id="projectForm"
+class="project-form">
+
+
+<div class="form-group">
+
+<label>
+Service <span>*</span>
+</label>
+
+<select
+id="projectService"
+required>
+
+<option value="">
+Choose a service
+</option>
+
+<option value="T-Shirt Printing">
+T-Shirt Printing
+</option>
+
+<option value="Graphic Design">
+Graphic Design
+</option>
+
+<option value="Business Branding">
+Business Branding
+</option>
+
+<option value="Banners & Posters">
+Banners & Posters
+</option>
+
+<option value="Stickers & Labels">
+Stickers & Labels
+</option>
+
+<option value="Caps & Merchandise">
+Caps & Merchandise
+</option>
+
+<option value="Other / Custom">
+Other / Custom
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Quantity <span>*</span>
+</label>
+
+<input
+type="number"
+id="projectQuantity"
+min="1"
+value="1"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Full Name <span>*</span>
+</label>
+
+<input
+type="text"
+id="customerName"
+placeholder="Your full name"
+autocomplete="name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Phone / WhatsApp <span>*</span>
+</label>
+
+<input
+type="tel"
+id="customerPhone"
+placeholder="e.g. 0724 566 417"
+autocomplete="tel"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+id="customerEmail"
+placeholder="Optional"
+autocomplete="email">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Delivery Method <span>*</span>
+</label>
+
+<select
+id="deliveryMethod"
+required>
+
+<option value="">
+Choose an option
+</option>
+
+<option value="Pickup">
+Pickup
+</option>
+
+<option value="Delivery">
+Delivery
+</option>
+
+</select>
+
+</div>
+
+
+<div
+class="form-group delivery-address-wrap"
+id="deliveryAddressWrap">
+
+<label>
+Delivery Address <span>*</span>
+</label>
+
+<input
+type="text"
+id="deliveryAddress"
+placeholder="Where should we deliver?">
+
+</div>
+
+
+<div
+class="dynamic-fields"
+id="dynamicFields">
+
+<div class="dynamic-fields-title">
+PROJECT DETAILS
+</div>
+
+<div class="form-group full">
+
+<label>
+Tell us about your project
+</label>
+
+<input
+type="text"
+id="detailCustom"
+placeholder="Choose a service above to see more options">
+
+</div>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Project Requirements / Notes
+</label>
+
+<textarea
+id="projectNotes"
+placeholder="Tell us exactly what you need, preferred colours, sizes, quantities, deadline, or any other important details..."></textarea>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Upload Artwork
+</label>
+
+<input
+class="project-file"
+type="file"
+id="artworkFile"
+accept=".png,.jpg,.jpeg,.pdf,.svg">
+
+<div class="form-help">
+Accepted: PNG, JPG, JPEG, PDF or SVG. Maximum size: 15MB.
+</div>
+
+<div
+class="file-name"
+id="fileName">
+No artwork selected.
+</div>
+
+</div>
+
+
+<div class="project-submit-area">
+
+<div
+class="project-status"
+id="projectStatus">
+</div>
+
+<button
+type="submit"
+class="project-submit"
+id="projectSubmit">
+
+🚀 Submit My Project
+
+</button>
+
+</div>
+
+</form>
+
+
+<div
+class="project-success"
+id="projectSuccess">
+
+<div class="success-icon">
+✓
+</div>
+
+<h3>
+PROJECT RECEIVED
+</h3>
+
+<p>
+Your project has been submitted successfully.
+Keep your reference number safe when contacting
+Bossy Prints & Design.
+</p>
+
+
+<div
+class="reference-box"
+id="referenceNumber">
+BPD-000000-0000
+</div>
+
+
+<p>
+We will review your project details and contact you
+with the next steps and quotation.
+</p>
+
+
+<div class="success-actions">
+
+<a
+id="successWhatsApp"
+class="btn btn-primary"
+href="#"
+target="_blank">
+
+💬 Continue on WhatsApp
+
+</a>
+
+
+<button
+type="button"
+class="btn btn-secondary"
+id="newProjectBtn">
+
+Start Another Project
+
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
 
 
 <!-- =========================================================
@@ -2678,7 +3426,6 @@ class="section-dark"
 id="portfolio">
 
 <div class="container">
-
 
 <div class="section-heading reveal">
 
@@ -2833,7 +3580,6 @@ Give products a finished look.
 </section>
 
 
-
 <!-- =========================================================
      PROCESS
 ========================================================= -->
@@ -2842,7 +3588,6 @@ Give products a finished look.
 class="process-section">
 
 <div class="container">
-
 
 <div class="section-heading reveal">
 
@@ -2944,7 +3689,6 @@ Your finished project is prepared for you.
 </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -3091,7 +3835,6 @@ all be discussed together.
 </section>
 
 
-
 <!-- =========================================================
      ABOUT
 ========================================================= -->
@@ -3101,7 +3844,6 @@ class="about-section"
 id="about">
 
 <div class="container">
-
 
 <div class="about-content reveal">
 
@@ -3184,7 +3926,6 @@ Finished Product
 </section>
 
 
-
 <!-- =========================================================
      CTA
 ========================================================= -->
@@ -3205,17 +3946,15 @@ wear and remember.
 
 <a
 class="btn btn-primary"
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20have%20an%20idea%20and%20would%20like%20a%20quote."
-target="_blank">
+href="#start-project">
 
-💬 Get Your Quote
+🚀 Start Your Project
 
 </a>
 
 </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -3271,8 +4010,9 @@ Can I order a custom T-shirt?
 </summary>
 
 <p>
-Yes. Contact us on WhatsApp and discuss your design,
-quantity and requirements.
+Yes. Use our Start a Project form to tell us your
+quantity, sizes, colours, print position and other
+requirements.
 </p>
 
 </details>
@@ -3299,9 +4039,9 @@ How do I request a quotation?
 </summary>
 
 <p>
-Contact Bossy Prints & Design through WhatsApp and
-tell us what you need. We can then discuss your
-project and quotation.
+Use the Start a Project form on this website. Submit
+your requirements and we will review the project and
+contact you with the next steps and quotation.
 </p>
 
 </details>
@@ -3310,12 +4050,12 @@ project and quotation.
 <details class="reveal">
 
 <summary>
-Do you handle business branding?
+Can I upload my own artwork?
 </summary>
 
 <p>
-Yes. Business branding can include graphics, printed
-materials and other visual branding requirements.
+Yes. You can upload PNG, JPG, JPEG, PDF or SVG artwork
+with your project submission.
 </p>
 
 </details>
@@ -3326,7 +4066,6 @@ materials and other visual branding requirements.
 </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -3428,8 +4167,7 @@ Logos • Graphics • Business Branding • Custom Designs
 
 <a
 class="btn btn-secondary"
-href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20need%20design%20or%20branding%20services."
-target="_blank">
+href="#start-project">
 
 Discuss Your Project
 
@@ -3443,7 +4181,6 @@ Discuss Your Project
 </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -3471,16 +4208,12 @@ PRINTS & DESIGN
 </div>
 
 <p>
-
 PRINTING • BRANDING • DESIGN
-
 </p>
 
 <p>
-
 Turning ideas into something real through
 creative design, printing and branding.
-
 </p>
 
 </div>
@@ -3502,6 +4235,10 @@ Services
 
 <a href="#products">
 Products
+</a>
+
+<a href="#start-project">
+Start A Project
 </a>
 
 <a href="#portfolio">
@@ -3564,7 +4301,6 @@ PRINTING • BRANDING • DESIGN
 </footer>
 
 
-
 <!-- =========================================================
      BACK TO TOP
 ========================================================= -->
@@ -3577,7 +4313,6 @@ aria-label="Back to top">
 ↑
 
 </button>
-
 
 
 <!-- =========================================================
@@ -3593,7 +4328,6 @@ aria-label="Chat with Bossy Prints & Design on WhatsApp">
 💬
 
 </a>
-
 
 
 <script>
@@ -4070,10 +4804,9 @@ function renderProducts(){
 
                 <a
                     class="btn btn-primary"
-                    href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20would%20like%20to%20know%20what%20is%20available."
-                    target="_blank"
+                    href="#start-project"
                 >
-                    Ask Us on WhatsApp
+                    Start A Project
                 </a>
 
             </div>
@@ -4290,6 +5023,1393 @@ function escapeHtml(value){
 
 
 /* =========================================================
+   PROJECT SYSTEM
+========================================================= */
+
+const projectForm =
+    document.getElementById(
+        "projectForm"
+    );
+
+const projectService =
+    document.getElementById(
+        "projectService"
+    );
+
+const projectQuantity =
+    document.getElementById(
+        "projectQuantity"
+    );
+
+const customerName =
+    document.getElementById(
+        "customerName"
+    );
+
+const customerPhone =
+    document.getElementById(
+        "customerPhone"
+    );
+
+const customerEmail =
+    document.getElementById(
+        "customerEmail"
+    );
+
+const deliveryMethod =
+    document.getElementById(
+        "deliveryMethod"
+    );
+
+const deliveryAddress =
+    document.getElementById(
+        "deliveryAddress"
+    );
+
+const deliveryAddressWrap =
+    document.getElementById(
+        "deliveryAddressWrap"
+    );
+
+const artworkFile =
+    document.getElementById(
+        "artworkFile"
+    );
+
+const fileName =
+    document.getElementById(
+        "fileName"
+    );
+
+const projectNotes =
+    document.getElementById(
+        "projectNotes"
+    );
+
+const projectStatus =
+    document.getElementById(
+        "projectStatus"
+    );
+
+const projectSubmit =
+    document.getElementById(
+        "projectSubmit"
+    );
+
+const projectSuccess =
+    document.getElementById(
+        "projectSuccess"
+    );
+
+const referenceNumber =
+    document.getElementById(
+        "referenceNumber"
+    );
+
+const successWhatsApp =
+    document.getElementById(
+        "successWhatsApp"
+    );
+
+const newProjectBtn =
+    document.getElementById(
+        "newProjectBtn"
+    );
+
+const dynamicFields =
+    document.getElementById(
+        "dynamicFields"
+    );
+
+
+/* =========================================================
+   DYNAMIC SERVICE FIELDS
+========================================================= */
+
+function updateProjectFields(){
+
+    const service =
+        projectService.value;
+
+
+    let html = `
+
+        <div class="dynamic-fields-title">
+            PROJECT DETAILS
+        </div>
+
+    `;
+
+
+    if(service === "T-Shirt Printing"){
+
+        html += `
+
+            <div class="form-group">
+
+                <label>
+                    Shirt Type
+                </label>
+
+                <input
+                    type="text"
+                    id="detailShirtType"
+                    placeholder="e.g. Round neck, polo, hoodie">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Shirt Colour
+                </label>
+
+                <input
+                    type="text"
+                    id="detailShirtColour"
+                    placeholder="e.g. Black, white, red">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Sizes
+                </label>
+
+                <input
+                    type="text"
+                    id="detailSizes"
+                    placeholder="e.g. S 2, M 4, L 5, XL 2">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Print Position
+                </label>
+
+                <select id="detailPrintPosition">
+
+                    <option value="">
+                        Choose
+                    </option>
+
+                    <option value="Front">
+                        Front
+                    </option>
+
+                    <option value="Back">
+                        Back
+                    </option>
+
+                    <option value="Front & Back">
+                        Front & Back
+                    </option>
+
+                    <option value="Sleeve">
+                        Sleeve
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+        `;
+
+    }
+
+
+    else if(
+        service === "Banners & Posters"
+    ){
+
+        html += `
+
+            <div class="form-group">
+
+                <label>
+                    Width
+                </label>
+
+                <input
+                    type="text"
+                    id="detailWidth"
+                    placeholder="e.g. 3 metres">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Height
+                </label>
+
+                <input
+                    type="text"
+                    id="detailHeight"
+                    placeholder="e.g. 1 metre">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Print Type
+                </label>
+
+                <select id="detailPrintType">
+
+                    <option value="">
+                        Choose
+                    </option>
+
+                    <option value="Banner">
+                        Banner
+                    </option>
+
+                    <option value="Poster">
+                        Poster
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Intended Use
+                </label>
+
+                <select id="detailUse">
+
+                    <option value="">
+                        Choose
+                    </option>
+
+                    <option value="Indoor">
+                        Indoor
+                    </option>
+
+                    <option value="Outdoor">
+                        Outdoor
+                    </option>
+
+                    <option value="Both">
+                        Indoor & Outdoor
+                    </option>
+
+                </select>
+
+            </div>
+
+        `;
+
+    }
+
+
+    else if(
+        service === "Graphic Design"
+    ){
+
+        html += `
+
+            <div class="form-group">
+
+                <label>
+                    Design Type
+                </label>
+
+                <input
+                    type="text"
+                    id="detailDesignType"
+                    placeholder="e.g. Logo, flyer, poster">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Preferred Style
+                </label>
+
+                <input
+                    type="text"
+                    id="detailStyle"
+                    placeholder="e.g. Modern, simple, bold">
+
+            </div>
+
+        `;
+
+    }
+
+
+    else if(
+        service === "Business Branding"
+    ){
+
+        html += `
+
+            <div class="form-group">
+
+                <label>
+                    Business Name
+                </label>
+
+                <input
+                    type="text"
+                    id="detailBusinessName"
+                    placeholder="Your business name">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Branding Needed
+                </label>
+
+                <input
+                    type="text"
+                    id="detailBrandingNeeded"
+                    placeholder="e.g. Logo, signage, T-shirts">
+
+            </div>
+
+        `;
+
+    }
+
+
+    else if(
+        service === "Stickers & Labels"
+    ){
+
+        html += `
+
+            <div class="form-group">
+
+                <label>
+                    Sticker / Label Type
+                </label>
+
+                <input
+                    type="text"
+                    id="detailStickerType"
+                    placeholder="e.g. Product labels">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Size
+                </label>
+
+                <input
+                    type="text"
+                    id="detailStickerSize"
+                    placeholder="e.g. 5cm × 5cm">
+
+            </div>
+
+        `;
+
+    }
+
+
+    else if(
+        service === "Caps & Merchandise"
+    ){
+
+        html += `
+
+            <div class="form-group">
+
+                <label>
+                    Merchandise Type
+                </label>
+
+                <input
+                    type="text"
+                    id="detailMerchandiseType"
+                    placeholder="e.g. Caps, bags">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Colour / Style
+                </label>
+
+                <input
+                    type="text"
+                    id="detailMerchandiseStyle"
+                    placeholder="Preferred colour or style">
+
+            </div>
+
+        `;
+
+    }
+
+
+    else{
+
+        html += `
+
+            <div class="form-group full">
+
+                <label>
+                    Tell us about your project
+                </label>
+
+                <input
+                    type="text"
+                    id="detailCustom"
+                    placeholder="What would you like Bossy Prints & Design to create?">
+
+            </div>
+
+        `;
+
+    }
+
+
+    dynamicFields.innerHTML =
+        html;
+
+}
+
+
+projectService.addEventListener(
+    "change",
+    updateProjectFields
+);
+
+
+/* =========================================================
+   DELIVERY
+========================================================= */
+
+deliveryMethod.addEventListener(
+    "change",
+    function(){
+
+        if(
+            deliveryMethod.value ===
+            "Delivery"
+        ){
+
+            deliveryAddressWrap
+                .classList
+                .add("show");
+
+            deliveryAddress.required =
+                true;
+
+        }
+        else{
+
+            deliveryAddressWrap
+                .classList
+                .remove("show");
+
+            deliveryAddress.required =
+                false;
+
+            deliveryAddress.value =
+                "";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   FILE DISPLAY
+========================================================= */
+
+artworkFile.addEventListener(
+    "change",
+    function(){
+
+        const file =
+            artworkFile.files[0];
+
+
+        if(!file){
+
+            fileName.textContent =
+                "No artwork selected.";
+
+            return;
+
+        }
+
+
+        fileName.textContent =
+            "Selected: " +
+            file.name +
+            " (" +
+            formatFileSize(file.size) +
+            ")";
+
+    }
+);
+
+
+/* =========================================================
+   FILE SIZE
+========================================================= */
+
+function formatFileSize(bytes){
+
+    if(bytes < 1024){
+
+        return bytes + " B";
+
+    }
+
+    if(bytes < 1024 * 1024){
+
+        return (
+            (bytes / 1024).toFixed(1) +
+            " KB"
+        );
+
+    }
+
+    return (
+        (bytes / (1024 * 1024)).toFixed(1) +
+        " MB"
+    );
+
+}
+
+
+/* =========================================================
+   REFERENCE NUMBER
+========================================================= */
+
+function generateReference(){
+
+    const date =
+        new Date();
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+
+    const chars =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+
+    let random = "";
+
+
+    for(
+        let i = 0;
+        i < 4;
+        i++
+    ){
+
+        random +=
+            chars[
+                Math.floor(
+                    Math.random() *
+                    chars.length
+                )
+            ];
+
+    }
+
+
+    return (
+        "BPD-" +
+        year +
+        month +
+        day +
+        "-" +
+        random
+    );
+
+}
+
+
+/* =========================================================
+   SAFE FILE NAME
+========================================================= */
+
+function safeFileName(name){
+
+    return name
+        .replace(
+            /[^a-zA-Z0-9._-]/g,
+            "_"
+        )
+        .substring(0,120);
+
+}
+
+
+/* =========================================================
+   STATUS MESSAGE
+========================================================= */
+
+function showProjectStatus(
+    message,
+    type
+){
+
+    projectStatus.textContent =
+        message;
+
+    projectStatus.className =
+        "project-status show " +
+        type;
+
+}
+
+
+/* =========================================================
+   PROJECT DETAILS
+========================================================= */
+
+function collectProjectDetails(){
+
+    const service =
+        projectService.value;
+
+
+    const details = {
+        service:service
+    };
+
+
+    if(
+        service ===
+        "T-Shirt Printing"
+    ){
+
+        details.shirt_type =
+            document.getElementById(
+                "detailShirtType"
+            )?.value || "";
+
+        details.shirt_colour =
+            document.getElementById(
+                "detailShirtColour"
+            )?.value || "";
+
+        details.sizes =
+            document.getElementById(
+                "detailSizes"
+            )?.value || "";
+
+        details.print_position =
+            document.getElementById(
+                "detailPrintPosition"
+            )?.value || "";
+
+    }
+
+
+    else if(
+        service ===
+        "Banners & Posters"
+    ){
+
+        details.width =
+            document.getElementById(
+                "detailWidth"
+            )?.value || "";
+
+        details.height =
+            document.getElementById(
+                "detailHeight"
+            )?.value || "";
+
+        details.print_type =
+            document.getElementById(
+                "detailPrintType"
+            )?.value || "";
+
+        details.intended_use =
+            document.getElementById(
+                "detailUse"
+            )?.value || "";
+
+    }
+
+
+    else if(
+        service ===
+        "Graphic Design"
+    ){
+
+        details.design_type =
+            document.getElementById(
+                "detailDesignType"
+            )?.value || "";
+
+        details.preferred_style =
+            document.getElementById(
+                "detailStyle"
+            )?.value || "";
+
+    }
+
+
+    else if(
+        service ===
+        "Business Branding"
+    ){
+
+        details.business_name =
+            document.getElementById(
+                "detailBusinessName"
+            )?.value || "";
+
+        details.branding_needed =
+            document.getElementById(
+                "detailBrandingNeeded"
+            )?.value || "";
+
+    }
+
+
+    else if(
+        service ===
+        "Stickers & Labels"
+    ){
+
+        details.sticker_type =
+            document.getElementById(
+                "detailStickerType"
+            )?.value || "";
+
+        details.size =
+            document.getElementById(
+                "detailStickerSize"
+            )?.value || "";
+
+    }
+
+
+    else if(
+        service ===
+        "Caps & Merchandise"
+    ){
+
+        details.merchandise_type =
+            document.getElementById(
+                "detailMerchandiseType"
+            )?.value || "";
+
+        details.style =
+            document.getElementById(
+                "detailMerchandiseStyle"
+            )?.value || "";
+
+    }
+
+
+    else{
+
+        details.custom =
+            document.getElementById(
+                "detailCustom"
+            )?.value || "";
+
+    }
+
+
+    return details;
+
+}
+
+
+/* =========================================================
+   SUBMIT PROJECT
+========================================================= */
+
+projectForm.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        projectStatus.className =
+            "project-status";
+
+
+        const service =
+            projectService.value.trim();
+
+
+        const name =
+            customerName.value.trim();
+
+
+        const phone =
+            customerPhone.value.trim();
+
+
+        const email =
+            customerEmail.value.trim();
+
+
+        const quantity =
+            Number(
+                projectQuantity.value
+            );
+
+
+        const delivery =
+            deliveryMethod.value;
+
+
+        const address =
+            deliveryAddress.value.trim();
+
+
+        if(!service){
+
+            showProjectStatus(
+                "Please choose a service.",
+                "error"
+            );
+
+            projectService.focus();
+
+            return;
+
+        }
+
+
+        if(
+            !name ||
+            !phone
+        ){
+
+            showProjectStatus(
+                "Please enter your full name and phone number.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if(
+            !Number.isInteger(quantity) ||
+            quantity < 1
+        ){
+
+            showProjectStatus(
+                "Please enter a valid quantity.",
+                "error"
+            );
+
+            projectQuantity.focus();
+
+            return;
+
+        }
+
+
+        if(!delivery){
+
+            showProjectStatus(
+                "Please choose Pickup or Delivery.",
+                "error"
+            );
+
+            deliveryMethod.focus();
+
+            return;
+
+        }
+
+
+        if(
+            delivery === "Delivery" &&
+            !address
+        ){
+
+            showProjectStatus(
+                "Please enter your delivery address.",
+                "error"
+            );
+
+            deliveryAddress.focus();
+
+            return;
+
+        }
+
+
+        const file =
+            artworkFile.files[0];
+
+
+        if(file){
+
+            const allowedTypes = [
+                "image/png",
+                "image/jpeg",
+                "application/pdf",
+                "image/svg+xml"
+            ];
+
+
+            const allowedExtensions = [
+                ".png",
+                ".jpg",
+                ".jpeg",
+                ".pdf",
+                ".svg"
+            ];
+
+
+            const extension =
+                "." +
+                file.name
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
+
+
+            if(
+                !allowedTypes.includes(
+                    file.type
+                ) &&
+                !allowedExtensions.includes(
+                    extension
+                )
+            ){
+
+                showProjectStatus(
+                    "Please upload PNG, JPG, JPEG, PDF or SVG artwork.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if(
+                file.size >
+                15 * 1024 * 1024
+            ){
+
+                showProjectStatus(
+                    "Your artwork is too large. Maximum size is 15MB.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        projectSubmit.disabled =
+            true;
+
+        projectSubmit.textContent =
+            "Submitting Project...";
+
+
+        try{
+
+            let reference =
+                generateReference();
+
+
+            let artworkPath =
+                null;
+
+
+            /* =========================================
+               ARTWORK UPLOAD
+            ========================================= */
+
+            if(file){
+
+                showProjectStatus(
+                    "Uploading your artwork...",
+                    "success"
+                );
+
+
+                const filePath =
+                    reference +
+                    "/" +
+                    crypto.randomUUID() +
+                    "-" +
+                    safeFileName(
+                        file.name
+                    );
+
+
+                const {
+                    error:uploadError
+                } =
+                    await supabaseClient
+                        .storage
+                        .from(
+                            "customer-artwork"
+                        )
+                        .upload(
+                            filePath,
+                            file,
+                            {
+                                upsert:false,
+                                contentType:
+                                    file.type ||
+                                    "application/octet-stream"
+                            }
+                        );
+
+
+                if(uploadError){
+
+                    console.error(
+                        "Artwork upload error:",
+                        uploadError
+                    );
+
+                    throw new Error(
+                        "Artwork upload failed. Please try again."
+                    );
+
+                }
+
+
+                artworkPath =
+                    filePath;
+
+            }
+
+
+            showProjectStatus(
+                "Saving your project...",
+                "success"
+            );
+
+
+            const projectDetails =
+                collectProjectDetails();
+
+
+            const orderData = {
+
+                customer_name:
+                    name,
+
+                customer_phone:
+                    phone,
+
+                customer_email:
+                    email ||
+                    null,
+
+                product_name:
+                    null,
+
+                service:
+                    service,
+
+                quantity:
+                    quantity,
+
+                amount:
+                    0,
+
+                notes:
+                    projectNotes.value.trim() ||
+                    null,
+
+                status:
+                    "New",
+
+                reference_number:
+                    reference,
+
+                project_details:
+                    JSON.stringify(
+                        projectDetails
+                    ),
+
+                artwork_url:
+                    artworkPath,
+
+                delivery_method:
+                    delivery,
+
+                delivery_address:
+                    delivery === "Delivery"
+                        ? address
+                        : null,
+
+                quote_amount:
+                    null,
+
+                admin_notes:
+                    null
+
+            };
+
+
+            let insertResult =
+                await supabaseClient
+                    .from("orders")
+                    .insert(
+                        orderData
+                    )
+                    .select(
+                        "reference_number"
+                    )
+                    .single();
+
+
+            /*
+             * If the random reference happens to collide,
+             * generate a new one and retry.
+             */
+
+            if(
+                insertResult.error &&
+                insertResult.error.code ===
+                "23505"
+            ){
+
+                orderData.reference_number =
+                    generateReference();
+
+
+                insertResult =
+                    await supabaseClient
+                        .from("orders")
+                        .insert(
+                            orderData
+                        )
+                        .select(
+                            "reference_number"
+                        )
+                        .single();
+
+            }
+
+
+            if(insertResult.error){
+
+                console.error(
+                    "Order insert error:",
+                    insertResult.error
+                );
+
+                throw new Error(
+                    "We could not save your project. Please try again."
+                );
+
+            }
+
+
+            reference =
+                insertResult
+                    .data
+                    .reference_number;
+
+
+            /* =========================================
+               SUCCESS
+            ========================================= */
+
+            referenceNumber.textContent =
+                reference;
+
+
+            const whatsappMessage =
+                encodeURIComponent(
+                    "Hello Bossy Prints & Design. " +
+                    "I have just submitted a project through your website. " +
+                    "My reference number is " +
+                    reference +
+                    "."
+                );
+
+
+            successWhatsApp.href =
+                "https://wa.me/254724566417?text=" +
+                whatsappMessage;
+
+
+            projectForm.style.display =
+                "none";
+
+
+            projectSuccess.classList.add(
+                "show"
+            );
+
+
+            projectStatus.className =
+                "project-status";
+
+
+            document
+                .getElementById(
+                    "start-project"
+                )
+                .scrollIntoView({
+                    behavior:"smooth",
+                    block:"start"
+                });
+
+
+        }
+        catch(error){
+
+            console.error(
+                "Project submission error:",
+                error
+            );
+
+
+            showProjectStatus(
+                error.message ||
+                "Something went wrong. Please try again.",
+                "error"
+            );
+
+        }
+        finally{
+
+            projectSubmit.disabled =
+                false;
+
+            projectSubmit.textContent =
+                "🚀 Submit My Project";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   NEW PROJECT
+========================================================= */
+
+newProjectBtn.addEventListener(
+    "click",
+    function(){
+
+        projectForm.reset();
+
+
+        dynamicFields.innerHTML = `
+
+            <div class="dynamic-fields-title">
+                PROJECT DETAILS
+            </div>
+
+            <div class="form-group full">
+
+                <label>
+                    Tell us about your project
+                </label>
+
+                <input
+                    type="text"
+                    id="detailCustom"
+                    placeholder="Choose a service above to see more options">
+
+            </div>
+
+        `;
+
+
+        deliveryAddressWrap
+            .classList
+            .remove("show");
+
+
+        deliveryAddress.required =
+            false;
+
+
+        fileName.textContent =
+            "No artwork selected.";
+
+
+        projectStatus.className =
+            "project-status";
+
+
+        projectSuccess.classList.remove(
+            "show"
+        );
+
+
+        projectForm.style.display =
+            "grid";
+
+
+        document
+            .getElementById(
+                "start-project"
+            )
+            .scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+
+    }
+);
+
+
+/* =========================================================
    START
 ========================================================= */
 
@@ -4297,8 +6417,6 @@ loadPublicProducts();
 
 </script>
 
-
 </body>
 
 </html>
-```
