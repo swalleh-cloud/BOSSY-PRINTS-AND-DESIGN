@@ -27,17 +27,22 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 :root{
     --bg:#07080c;
-    --bg2:#0c0e14;
+    --bg2:#0b0d13;
     --card:#11141c;
     --card2:#151923;
     --text:#f5f7fb;
     --muted:#9ba3b5;
     --cyan:#00e5ff;
     --purple:#7c3cff;
+    --pink:#d83cff;
+    --green:#25d366;
     --border:rgba(255,255,255,.09);
-    --shadow:0 20px 60px rgba(0,0,0,.35);
+    --border-strong:rgba(255,255,255,.15);
+    --shadow:0 25px 80px rgba(0,0,0,.4);
+    --radius:24px;
 }
 
 *{
@@ -54,12 +59,26 @@ html{
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:
-        radial-gradient(circle at 10% 10%,rgba(0,229,255,.08),transparent 25%),
-        radial-gradient(circle at 90% 20%,rgba(124,60,255,.08),transparent 25%),
+        radial-gradient(circle at 8% 8%,rgba(0,229,255,.08),transparent 24%),
+        radial-gradient(circle at 92% 15%,rgba(124,60,255,.10),transparent 26%),
+        radial-gradient(circle at 50% 75%,rgba(216,60,255,.04),transparent 30%),
         var(--bg);
     color:var(--text);
     line-height:1.6;
     overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-1;
+    background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+    background-size:70px 70px;
+    mask-image:linear-gradient(to bottom,black,transparent 80%);
 }
 
 a{
@@ -80,25 +99,28 @@ textarea{
 }
 
 section{
-    padding:100px 0;
+    padding:110px 0;
+    position:relative;
 }
 
 .section-title{
     text-align:center;
-    margin-bottom:55px;
+    margin-bottom:60px;
 }
 
 .section-title span{
     color:var(--cyan);
-    font-size:.85rem;
-    font-weight:800;
-    letter-spacing:2px;
+    font-size:.78rem;
+    font-weight:900;
+    letter-spacing:2.5px;
     text-transform:uppercase;
 }
 
 .section-title h2{
-    font-size:clamp(2rem,5vw,3.4rem);
-    margin:10px 0;
+    font-size:clamp(2.2rem,5vw,4rem);
+    line-height:1;
+    margin:12px 0 16px;
+    letter-spacing:-2px;
 }
 
 .section-title p{
@@ -107,7 +129,45 @@ section{
     color:var(--muted);
 }
 
-/* HEADER */
+.gradient-text{
+    background:linear-gradient(90deg,var(--cyan),#fff,var(--purple));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+.delay-1{
+    transition-delay:.1s;
+}
+
+.delay-2{
+    transition-delay:.2s;
+}
+
+.delay-3{
+    transition-delay:.3s;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header{
     position:fixed;
@@ -115,9 +175,16 @@ header{
     left:0;
     width:100%;
     z-index:1000;
-    background:rgba(7,8,12,.75);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid var(--border);
+    background:rgba(7,8,12,.68);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+    transition:.3s;
+}
+
+header.scrolled{
+    background:rgba(7,8,12,.92);
+    box-shadow:0 10px 40px rgba(0,0,0,.25);
 }
 
 .navbar{
@@ -137,22 +204,40 @@ header{
 }
 
 .logo-mark{
-    width:43px;
-    height:43px;
+    width:44px;
+    height:44px;
     display:grid;
     place-items:center;
-    border-radius:12px;
+    border-radius:13px;
     background:linear-gradient(135deg,var(--cyan),var(--purple));
     color:#05060a;
     font-weight:1000;
-    font-size:1.3rem;
-    box-shadow:0 0 30px rgba(0,229,255,.25);
+    font-size:1.35rem;
+    box-shadow:
+        0 0 30px rgba(0,229,255,.2),
+        0 0 60px rgba(124,60,255,.12);
+    position:relative;
+    overflow:hidden;
+}
+
+.logo-mark::after{
+    content:"";
+    position:absolute;
+    width:80px;
+    height:10px;
+    background:rgba(255,255,255,.45);
+    transform:rotate(-45deg) translateX(-60px);
+    transition:.5s;
+}
+
+.logo:hover .logo-mark::after{
+    transform:rotate(-45deg) translateX(60px);
 }
 
 .logo-text small{
     display:block;
     color:var(--muted);
-    font-size:.6rem;
+    font-size:.58rem;
     letter-spacing:1.5px;
     margin-top:-2px;
 }
@@ -160,25 +245,42 @@ header{
 .nav-links{
     display:flex;
     align-items:center;
-    gap:24px;
+    gap:21px;
 }
 
 .nav-links a{
     color:#dce1eb;
-    font-size:.9rem;
+    font-size:.84rem;
+    transition:.25s;
+    position:relative;
+}
+
+.nav-links a:not(.nav-cta)::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:2px;
+    background:var(--cyan);
     transition:.25s;
 }
 
-.nav-links a:hover{
+.nav-links a:not(.nav-cta):hover{
     color:var(--cyan);
 }
 
+.nav-links a:not(.nav-cta):hover::after{
+    width:100%;
+}
+
 .nav-cta{
-    padding:11px 17px;
+    padding:11px 18px;
     border-radius:999px;
     background:linear-gradient(135deg,var(--cyan),var(--purple));
     color:#05060a!important;
     font-weight:900;
+    box-shadow:0 8px 25px rgba(0,229,255,.12);
 }
 
 .menu-btn{
@@ -190,54 +292,104 @@ header{
     cursor:pointer;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:100vh;
     display:flex;
     align-items:center;
-    padding-top:120px;
-    position:relative;
+    padding-top:125px;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:550px;
+    height:550px;
+    border-radius:50%;
+    background:var(--cyan);
+    filter:blur(180px);
+    opacity:.055;
+    left:-250px;
+    top:20%;
+    animation:floatGlow 8s ease-in-out infinite;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    background:var(--purple);
+    filter:blur(170px);
+    opacity:.07;
+    right:-200px;
+    bottom:0;
+    animation:floatGlow 10s ease-in-out infinite reverse;
+}
+
+@keyframes floatGlow{
+    0%,100%{
+        transform:translate(0,0) scale(1);
+    }
+    50%{
+        transform:translate(30px,-25px) scale(1.08);
+    }
 }
 
 .hero-grid{
     display:grid;
-    grid-template-columns:1.1fr .9fr;
+    grid-template-columns:1.05fr .95fr;
     align-items:center;
-    gap:60px;
+    gap:65px;
+    position:relative;
+    z-index:2;
 }
 
 .hero-badge{
     display:inline-flex;
     align-items:center;
-    gap:8px;
+    gap:9px;
     padding:9px 14px;
     border:1px solid rgba(0,229,255,.2);
     border-radius:999px;
     color:#c7faff;
-    background:rgba(0,229,255,.05);
-    font-size:.8rem;
-    margin-bottom:22px;
+    background:rgba(0,229,255,.045);
+    font-size:.76rem;
+    margin-bottom:23px;
+    box-shadow:0 0 25px rgba(0,229,255,.04);
+}
+
+.hero-badge::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 12px var(--cyan);
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:.45;transform:scale(.75);}
 }
 
 .hero h1{
-    font-size:clamp(3rem,7vw,6.5rem);
-    line-height:.95;
-    letter-spacing:-4px;
+    font-size:clamp(3.1rem,7vw,6.7rem);
+    line-height:.9;
+    letter-spacing:-5px;
     max-width:850px;
 }
 
-.gradient-text{
-    background:linear-gradient(90deg,var(--cyan),#fff,var(--purple));
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-}
-
 .hero p{
-    margin:28px 0;
+    margin:30px 0;
     color:var(--muted);
-    font-size:1.05rem;
+    font-size:1.04rem;
     max-width:650px;
 }
 
@@ -255,54 +407,183 @@ header{
     border:0;
     cursor:pointer;
     padding:14px 22px;
-    border-radius:12px;
+    border-radius:13px;
     font-weight:900;
-    transition:.25s;
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
 }
 
 .btn-primary{
     background:linear-gradient(135deg,var(--cyan),var(--purple));
     color:#05060a;
-    box-shadow:0 12px 35px rgba(0,229,255,.15);
+    box-shadow:0 14px 35px rgba(0,229,255,.14);
 }
 
 .btn-primary:hover{
-    transform:translateY(-2px);
+    transform:translateY(-3px);
+    box-shadow:0 18px 45px rgba(0,229,255,.2);
 }
 
 .btn-secondary{
-    background:rgba(255,255,255,.05);
+    background:rgba(255,255,255,.045);
     border:1px solid var(--border);
     color:white;
 }
 
 .btn-secondary:hover{
-    border-color:rgba(0,229,255,.4);
+    transform:translateY(-3px);
+    border-color:rgba(0,229,255,.35);
+    background:rgba(0,229,255,.05);
+}
+
+/* HERO VISUAL */
+
+.hero-visual{
+    position:relative;
 }
 
 .hero-card{
     position:relative;
-    min-height:500px;
-    border:1px solid var(--border);
-    border-radius:30px;
+    min-height:510px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:32px;
     overflow:hidden;
     background:
-        linear-gradient(145deg,rgba(0,229,255,.09),rgba(124,60,255,.09)),
+        linear-gradient(145deg,rgba(0,229,255,.08),rgba(124,60,255,.1)),
         var(--card);
     box-shadow:var(--shadow);
+    transform:perspective(1000px) rotateY(-3deg);
+    transition:.5s;
+}
+
+.hero-card:hover{
+    transform:perspective(1000px) rotateY(0deg) translateY(-5px);
 }
 
 .hero-card::before{
     content:"";
     position:absolute;
-    width:250px;
-    height:250px;
+    width:280px;
+    height:280px;
     border-radius:50%;
     background:var(--cyan);
     filter:blur(100px);
-    opacity:.15;
-    top:-80px;
-    right:-50px;
+    opacity:.13;
+    top:-100px;
+    right:-70px;
+}
+
+.hero-card::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:var(--purple);
+    filter:blur(100px);
+    opacity:.13;
+    bottom:-80px;
+    left:-50px;
+}
+
+.hero-ring{
+    position:absolute;
+    width:290px;
+    height:290px;
+    border:1px solid rgba(0,229,255,.16);
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation:spin 18s linear infinite;
+}
+
+.hero-ring::before,
+.hero-ring::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 25px var(--cyan);
+}
+
+.hero-ring::before{
+    width:9px;
+    height:9px;
+    top:28px;
+    left:35px;
+}
+
+.hero-ring::after{
+    width:6px;
+    height:6px;
+    right:25px;
+    bottom:50px;
+    background:var(--purple);
+    box-shadow:0 0 25px var(--purple);
+}
+
+@keyframes spin{
+    from{transform:translate(-50%,-50%) rotate(0deg);}
+    to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+.hero-center{
+    position:absolute;
+    width:180px;
+    height:180px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:
+        radial-gradient(circle,rgba(0,229,255,.16),rgba(124,60,255,.08) 50%,transparent 70%);
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.hero-center strong{
+    font-size:3.5rem;
+    letter-spacing:-4px;
+}
+
+.hero-floating{
+    position:absolute;
+    padding:13px 16px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(10,12,17,.78);
+    backdrop-filter:blur(12px);
+    border-radius:15px;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    font-size:.8rem;
+    font-weight:800;
+    z-index:4;
+}
+
+.float-one{
+    top:55px;
+    left:28px;
+    animation:floatCard 4s ease-in-out infinite;
+}
+
+.float-two{
+    top:130px;
+    right:25px;
+    animation:floatCard 5s ease-in-out infinite reverse;
+}
+
+.float-three{
+    bottom:125px;
+    left:25px;
+    animation:floatCard 4.5s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
 }
 
 .hero-card-content{
@@ -311,18 +592,106 @@ header{
     display:flex;
     flex-direction:column;
     justify-content:flex-end;
+    z-index:5;
 }
 
 .hero-card-title{
-    font-size:2rem;
+    font-size:2.1rem;
+    line-height:1.05;
     font-weight:900;
 }
 
 .hero-card-sub{
     color:var(--muted);
+    max-width:420px;
+    margin-top:8px;
 }
 
-/* CARDS */
+.hero-scroll{
+    position:absolute;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    color:var(--muted);
+    font-size:.7rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    z-index:5;
+}
+
+.hero-scroll span{
+    width:28px;
+    height:45px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:20px;
+    position:relative;
+}
+
+.hero-scroll span::before{
+    content:"";
+    position:absolute;
+    width:4px;
+    height:8px;
+    border-radius:5px;
+    background:var(--cyan);
+    left:50%;
+    top:8px;
+    transform:translateX(-50%);
+    animation:scrollDot 1.7s infinite;
+}
+
+@keyframes scrollDot{
+    0%{opacity:1;transform:translate(-50%,0);}
+    80%,100%{opacity:0;transform:translate(-50%,17px);}
+}
+
+/* =========================
+   MINI TRUST STRIP
+========================= */
+
+.trust-strip{
+    padding:0 0 35px;
+}
+
+.trust-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.025);
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.trust-item{
+    padding:22px;
+    text-align:center;
+    border-right:1px solid var(--border);
+}
+
+.trust-item:last-child{
+    border-right:0;
+}
+
+.trust-item strong{
+    display:block;
+    font-size:1.1rem;
+}
+
+.trust-item span{
+    color:var(--muted);
+    font-size:.78rem;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services-section{
+    padding-top:75px;
+}
 
 .grid{
     display:grid;
@@ -331,43 +700,211 @@ header{
 }
 
 .card{
-    background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
     border:1px solid var(--border);
-    border-radius:20px;
-    padding:28px;
-    transition:.3s;
+    border-radius:22px;
+    padding:29px;
+    transition:
+        transform .35s,
+        border-color .35s,
+        box-shadow .35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:var(--cyan);
+    filter:blur(70px);
+    opacity:0;
+    right:-60px;
+    top:-60px;
+    transition:.4s;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-8px);
     border-color:rgba(0,229,255,.3);
+    box-shadow:0 20px 55px rgba(0,0,0,.25);
+}
+
+.card:hover::before{
+    opacity:.08;
 }
 
 .icon{
-    width:52px;
-    height:52px;
-    border-radius:15px;
+    width:55px;
+    height:55px;
+    border-radius:16px;
     display:grid;
     place-items:center;
     background:rgba(0,229,255,.08);
     color:var(--cyan);
     font-size:1.4rem;
-    margin-bottom:18px;
+    margin-bottom:20px;
+    border:1px solid rgba(0,229,255,.08);
 }
 
 .card h3{
     margin-bottom:10px;
+    font-size:1.2rem;
 }
 
 .card p{
     color:var(--muted);
+    font-size:.92rem;
 }
 
-/* START PROJECT */
+/* =========================
+   WEBSITE PROMO
+========================= */
+
+.web-promo-section{
+    padding-top:45px;
+    padding-bottom:70px;
+}
+
+.web-promo{
+    position:relative;
+    overflow:hidden;
+    border-radius:28px;
+    padding:42px;
+    border:1px solid rgba(0,229,255,.16);
+    background:
+        radial-gradient(circle at 85% 20%,rgba(124,60,255,.2),transparent 32%),
+        radial-gradient(circle at 15% 90%,rgba(0,229,255,.13),transparent 35%),
+        linear-gradient(135deg,#0d1119,#11101a);
+    box-shadow:var(--shadow);
+}
+
+.web-promo::before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    border:1px solid rgba(0,229,255,.08);
+    border-radius:50%;
+    right:-180px;
+    top:-190px;
+}
+
+.web-promo::after{
+    content:"";
+    position:absolute;
+    width:280px;
+    height:280px;
+    border:1px solid rgba(124,60,255,.08);
+    border-radius:50%;
+    right:-100px;
+    top:-90px;
+}
+
+.web-promo-grid{
+    display:grid;
+    grid-template-columns:1fr .8fr;
+    align-items:center;
+    gap:35px;
+    position:relative;
+    z-index:2;
+}
+
+.web-promo-label{
+    color:var(--cyan);
+    font-size:.75rem;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.web-promo h2{
+    font-size:clamp(2rem,4vw,3.5rem);
+    line-height:1;
+    letter-spacing:-2px;
+    margin-bottom:15px;
+}
+
+.web-promo p{
+    color:var(--muted);
+    max-width:600px;
+}
+
+.price-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin:22px 0;
+    padding:10px 15px;
+    border-radius:999px;
+    background:rgba(0,229,255,.07);
+    border:1px solid rgba(0,229,255,.16);
+    color:#c7faff;
+    font-weight:900;
+}
+
+.browser{
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:18px;
+    background:#080a0f;
+    padding:12px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+    transform:rotate(2deg);
+}
+
+.browser-top{
+    display:flex;
+    gap:6px;
+    padding:3px 4px 10px;
+}
+
+.browser-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+}
+
+.browser-screen{
+    min-height:175px;
+    border-radius:12px;
+    background:
+        linear-gradient(135deg,rgba(0,229,255,.12),rgba(124,60,255,.16)),
+        #11141c;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.browser-screen small{
+    color:var(--cyan);
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.browser-screen strong{
+    font-size:1.8rem;
+    line-height:1.05;
+    margin:7px 0;
+}
+
+/* =========================
+   START PROJECT
+========================= */
 
 .project-section{
     background:
-        linear-gradient(180deg,transparent,rgba(0,229,255,.025),transparent);
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(0,229,255,.025),
+            transparent
+        );
 }
 
 .project-wrapper{
@@ -383,18 +920,19 @@ header{
 }
 
 .project-info h3{
-    font-size:2rem;
+    font-size:2.2rem;
+    line-height:1.05;
     margin-bottom:15px;
 }
 
-.project-info p{
+.project-info>p{
     color:var(--muted);
 }
 
 .project-points{
-    margin-top:25px;
+    margin-top:28px;
     display:grid;
-    gap:14px;
+    gap:16px;
 }
 
 .project-point{
@@ -404,19 +942,27 @@ header{
 }
 
 .project-point-icon{
-    min-width:34px;
-    height:34px;
+    min-width:35px;
+    height:35px;
     display:grid;
     place-items:center;
-    border-radius:10px;
+    border-radius:11px;
     background:rgba(0,229,255,.08);
     color:var(--cyan);
+    border:1px solid rgba(0,229,255,.1);
+}
+
+.project-point p{
+    color:var(--muted);
+    font-size:.82rem;
+    margin-top:2px;
 }
 
 .project-form-card{
-    background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
     border:1px solid var(--border);
-    border-radius:25px;
+    border-radius:26px;
     padding:30px;
     box-shadow:var(--shadow);
 }
@@ -426,7 +972,7 @@ header{
 }
 
 .form-title h3{
-    font-size:1.7rem;
+    font-size:1.8rem;
 }
 
 .form-title p{
@@ -451,7 +997,7 @@ header{
 .form-group label{
     display:block;
     margin-bottom:7px;
-    font-size:.86rem;
+    font-size:.84rem;
     font-weight:700;
     color:#dfe4ed;
 }
@@ -459,7 +1005,7 @@ header{
 .form-control{
     width:100%;
     padding:13px 14px;
-    border-radius:11px;
+    border-radius:12px;
     border:1px solid rgba(255,255,255,.1);
     background:#090b10;
     color:white;
@@ -486,7 +1032,7 @@ select.form-control{
     grid-template-columns:1fr 1fr;
     gap:18px;
     padding:20px;
-    border-radius:15px;
+    border-radius:16px;
     background:rgba(0,0,0,.2);
     border:1px solid var(--border);
     margin-bottom:18px;
@@ -510,7 +1056,7 @@ select.form-control{
 
 .file-box{
     border:1px dashed rgba(0,229,255,.35);
-    border-radius:15px;
+    border-radius:16px;
     padding:20px;
     background:rgba(0,229,255,.025);
 }
@@ -572,15 +1118,17 @@ select.form-control{
 }
 
 .success-icon{
-    width:70px;
-    height:70px;
+    width:75px;
+    height:75px;
     display:grid;
     place-items:center;
     margin:0 auto 20px;
     border-radius:50%;
     background:rgba(0,229,255,.1);
     color:var(--cyan);
-    font-size:2rem;
+    font-size:2.2rem;
+    border:1px solid rgba(0,229,255,.18);
+    box-shadow:0 0 40px rgba(0,229,255,.1);
 }
 
 .reference{
@@ -595,7 +1143,9 @@ select.form-control{
     letter-spacing:1px;
 }
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 
 .product-toolbar{
     display:flex;
@@ -612,6 +1162,7 @@ select.form-control{
     background:rgba(255,255,255,.03);
     color:#dfe4ed;
     cursor:pointer;
+    transition:.25s;
 }
 
 .filter-btn.active,
@@ -631,33 +1182,49 @@ select.form-control{
     overflow:hidden;
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:20px;
+    border-radius:22px;
+    transition:.35s;
+}
+
+.product-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(0,229,255,.25);
+    box-shadow:0 20px 55px rgba(0,0,0,.25);
 }
 
 .product-image{
-    height:240px;
+    height:245px;
     background:#0a0c11;
     overflow:hidden;
+    position:relative;
+}
+
+.product-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent 60%,rgba(0,0,0,.2));
+    pointer-events:none;
 }
 
 .product-image img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:.4s;
+    transition:.5s;
 }
 
-.product-card:hover img{
-    transform:scale(1.05);
+.product-card:hover .product-image img{
+    transform:scale(1.07);
 }
 
 .product-body{
-    padding:20px;
+    padding:21px;
 }
 
 .product-category{
     color:var(--cyan);
-    font-size:.75rem;
+    font-size:.72rem;
     font-weight:800;
     text-transform:uppercase;
     letter-spacing:1px;
@@ -673,7 +1240,7 @@ select.form-control{
 }
 
 .product-price{
-    margin:12px 0;
+    margin:13px 0;
     font-size:1.15rem;
     font-weight:900;
 }
@@ -686,59 +1253,138 @@ select.form-control{
 .product-actions .btn{
     flex:1;
     padding:11px;
-    font-size:.85rem;
+    font-size:.83rem;
 }
 
-/* PORTFOLIO */
+/* =========================
+   PORTFOLIO
+========================= */
 
 .portfolio-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:110px;
+    gap:16px;
 }
 
 .portfolio-item{
-    min-height:280px;
     border-radius:20px;
     overflow:hidden;
     position:relative;
     border:1px solid var(--border);
     background:#111;
+    min-width:0;
+}
+
+.portfolio-item:nth-child(1){
+    grid-column:span 5;
+    grid-row:span 3;
+}
+
+.portfolio-item:nth-child(2){
+    grid-column:span 4;
+    grid-row:span 2;
+}
+
+.portfolio-item:nth-child(3){
+    grid-column:span 3;
+    grid-row:span 2;
+}
+
+.portfolio-item:nth-child(4){
+    grid-column:span 4;
+    grid-row:span 2;
+}
+
+.portfolio-item:nth-child(5){
+    grid-column:span 4;
+    grid-row:span 3;
+}
+
+.portfolio-item:nth-child(6){
+    grid-column:span 4;
+    grid-row:span 2;
 }
 
 .portfolio-item img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:.4s;
+    transition:.55s;
+    filter:saturate(.85);
 }
 
 .portfolio-item:hover img{
-    transform:scale(1.06);
+    transform:scale(1.09);
+    filter:saturate(1.1);
 }
 
 .portfolio-overlay{
     position:absolute;
-    inset:auto 0 0;
-    padding:25px;
-    background:linear-gradient(transparent,rgba(0,0,0,.85));
+    inset:0;
+    display:flex;
+    align-items:flex-end;
+    padding:22px;
+    background:linear-gradient(
+        transparent 35%,
+        rgba(0,0,0,.85)
+    );
+    opacity:.9;
+    transition:.3s;
 }
 
-/* PROCESS */
+.portfolio-item:hover .portfolio-overlay{
+    background:linear-gradient(
+        transparent 20%,
+        rgba(0,0,0,.9)
+    );
+}
+
+.portfolio-overlay h3{
+    font-size:1.05rem;
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.process-section{
+    overflow:hidden;
+}
 
 .process-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:20px;
+    gap:0;
+    position:relative;
+}
+
+.process-grid::before{
+    content:"";
+    position:absolute;
+    top:29px;
+    left:12%;
+    right:12%;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,229,255,.35),
+        rgba(124,60,255,.35),
+        transparent
+    );
 }
 
 .step{
     text-align:center;
+    position:relative;
+    z-index:2;
+    padding:0 15px;
 }
 
 .step-number{
-    width:58px;
-    height:58px;
+    width:59px;
+    height:59px;
     margin:0 auto 18px;
     display:grid;
     place-items:center;
@@ -747,42 +1393,63 @@ select.form-control{
     color:#05060a;
     font-weight:1000;
     font-size:1.2rem;
+    box-shadow:0 0 30px rgba(0,229,255,.12);
+}
+
+.step h3{
+    margin-bottom:7px;
 }
 
 .step p{
     color:var(--muted);
-    font-size:.9rem;
+    font-size:.88rem;
 }
 
-/* ABOUT */
+/* =========================
+   ABOUT
+========================= */
 
 .about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:40px;
+    gap:45px;
     align-items:center;
 }
 
 .about-box{
-    padding:35px;
-    border-radius:25px;
-    background:linear-gradient(145deg,rgba(0,229,255,.06),rgba(124,60,255,.05));
+    padding:36px;
+    border-radius:26px;
+    background:
+        radial-gradient(circle at 100% 0,rgba(124,60,255,.15),transparent 35%),
+        linear-gradient(145deg,rgba(0,229,255,.06),rgba(124,60,255,.05));
     border:1px solid var(--border);
+    position:relative;
+    overflow:hidden;
+}
+
+.about-box::after{
+    content:"B";
+    position:absolute;
+    right:-20px;
+    bottom:-70px;
+    font-size:14rem;
+    line-height:1;
+    font-weight:1000;
+    color:rgba(255,255,255,.025);
 }
 
 .about-box h3{
     font-size:2rem;
-    margin-bottom:15px;
-}
-
-.about-box p{
-    color:var(--muted);
-    margin-bottom:18px;
+    margin-bottom:20px;
+    position:relative;
+    z-index:2;
 }
 
 .check-list{
     display:grid;
-    gap:12px;
+    gap:14px;
+    position:relative;
+    z-index:2;
 }
 
 .check{
@@ -794,7 +1461,33 @@ select.form-control{
     color:var(--cyan);
 }
 
-/* FAQ */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:25px;
+}
+
+.stat{
+    padding:18px;
+    border-radius:15px;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+}
+
+.stat strong{
+    display:block;
+    font-size:1.4rem;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:.72rem;
+}
+
+/* =========================
+   FAQ
+========================= */
 
 .faq{
     max-width:850px;
@@ -804,9 +1497,15 @@ select.form-control{
 details{
     background:rgba(255,255,255,.025);
     border:1px solid var(--border);
-    border-radius:14px;
+    border-radius:15px;
     margin-bottom:12px;
     padding:18px 20px;
+    transition:.25s;
+}
+
+details[open]{
+    border-color:rgba(0,229,255,.22);
+    background:rgba(0,229,255,.025);
 }
 
 summary{
@@ -819,7 +1518,54 @@ details p{
     padding-top:12px;
 }
 
-/* CONTACT */
+/* =========================
+   CTA
+========================= */
+
+.cta-section{
+    padding-top:60px;
+}
+
+.cta{
+    text-align:center;
+    padding:85px 25px;
+    border-radius:30px;
+    background:
+        radial-gradient(circle at 20% 30%,rgba(0,229,255,.15),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(124,60,255,.17),transparent 30%),
+        var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+}
+
+.cta::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.06);
+    top:-160px;
+    left:-100px;
+}
+
+.cta h2{
+    font-size:clamp(2.2rem,5vw,4rem);
+    margin-bottom:15px;
+    letter-spacing:-2px;
+}
+
+.cta p{
+    color:var(--muted);
+    max-width:650px;
+    margin:0 auto 27px;
+}
+
+/* =========================
+   CONTACT
+========================= */
 
 .contact-grid{
     display:grid;
@@ -829,9 +1575,15 @@ details p{
 
 .contact-card{
     padding:30px;
-    border-radius:20px;
+    border-radius:22px;
     border:1px solid var(--border);
     background:var(--card);
+    transition:.3s;
+}
+
+.contact-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(0,229,255,.25);
 }
 
 .contact-card p{
@@ -846,34 +1598,12 @@ details p{
     font-weight:800;
 }
 
-/* CTA */
-
-.cta{
-    text-align:center;
-    padding:75px 25px;
-    border-radius:30px;
-    background:
-        radial-gradient(circle at 20% 30%,rgba(0,229,255,.14),transparent 30%),
-        radial-gradient(circle at 80% 70%,rgba(124,60,255,.14),transparent 30%),
-        var(--card);
-    border:1px solid var(--border);
-}
-
-.cta h2{
-    font-size:clamp(2rem,5vw,3.5rem);
-    margin-bottom:15px;
-}
-
-.cta p{
-    color:var(--muted);
-    max-width:650px;
-    margin:0 auto 25px;
-}
-
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    padding:60px 0 30px;
+    padding:65px 0 30px;
     border-top:1px solid var(--border);
     background:#05060a;
 }
@@ -915,28 +1645,35 @@ footer h4{
     text-align:center;
 }
 
-/* FLOATING */
+/* =========================
+   FLOATING
+========================= */
 
 .whatsapp{
     position:fixed;
     right:20px;
     bottom:20px;
-    width:58px;
-    height:58px;
+    width:59px;
+    height:59px;
     display:grid;
     place-items:center;
     border-radius:50%;
-    background:#25d366;
+    background:var(--green);
     color:white;
     font-size:1.5rem;
     z-index:900;
     box-shadow:0 10px 30px rgba(0,0,0,.35);
+    transition:.25s;
+}
+
+.whatsapp:hover{
+    transform:translateY(-4px) scale(1.05);
 }
 
 .back-top{
     position:fixed;
     right:20px;
-    bottom:90px;
+    bottom:91px;
     width:40px;
     height:40px;
     border:1px solid var(--border);
@@ -953,7 +1690,25 @@ footer h4{
     place-items:center;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1050px){
+
+    .nav-links{
+        gap:14px;
+    }
+
+    .nav-links a{
+        font-size:.78rem;
+    }
+
+    .hero-grid{
+        gap:40px;
+    }
+
+}
 
 @media(max-width:950px){
 
@@ -974,13 +1729,18 @@ footer h4{
         display:flex;
     }
 
+    .nav-links a{
+        font-size:.9rem;
+    }
+
     .menu-btn{
         display:block;
     }
 
     .hero-grid,
     .project-wrapper,
-    .about-grid{
+    .about-grid,
+    .web-promo-grid{
         grid-template-columns:1fr;
     }
 
@@ -989,36 +1749,59 @@ footer h4{
     }
 
     .grid,
-    .products-grid,
-    .portfolio-grid{
+    .products-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
     .process-grid{
         grid-template-columns:repeat(2,1fr);
+        gap:35px;
+    }
+
+    .process-grid::before{
+        display:none;
     }
 
     .hero-card{
-        min-height:380px;
+        min-height:400px;
+    }
+
+    .portfolio-grid{
+        grid-template-columns:repeat(2,1fr);
+        grid-auto-rows:220px;
+    }
+
+    .portfolio-item:nth-child(n){
+        grid-column:span 1;
+        grid-row:span 1;
+    }
+
+    .portfolio-item:first-child{
+        grid-column:span 2;
+        grid-row:span 2;
     }
 
     .footer-grid{
         grid-template-columns:1fr 1fr;
     }
+
 }
 
 @media(max-width:650px){
 
     section{
-        padding:75px 0;
+        padding:78px 0;
     }
 
     .hero{
         padding-top:110px;
+        min-height:auto;
+        padding-bottom:80px;
     }
 
     .hero h1{
-        letter-spacing:-2px;
+        letter-spacing:-2.5px;
+        font-size:clamp(3rem,15vw,5rem);
     }
 
     .hero-buttons{
@@ -1029,9 +1812,55 @@ footer h4{
         width:100%;
     }
 
+    .hero-card{
+        min-height:340px;
+    }
+
+    .hero-center{
+        width:145px;
+        height:145px;
+    }
+
+    .hero-center strong{
+        font-size:2.7rem;
+    }
+
+    .hero-ring{
+        width:230px;
+        height:230px;
+    }
+
+    .hero-floating{
+        font-size:.7rem;
+        padding:10px 12px;
+    }
+
+    .float-one{
+        top:30px;
+    }
+
+    .float-two{
+        top:90px;
+    }
+
+    .float-three{
+        bottom:110px;
+    }
+
+    .trust-inner{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .trust-item:nth-child(2){
+        border-right:0;
+    }
+
+    .trust-item:nth-child(-n+2){
+        border-bottom:1px solid var(--border);
+    }
+
     .grid,
     .products-grid,
-    .portfolio-grid,
     .process-grid,
     .contact-grid,
     .footer-grid,
@@ -1052,33 +1881,84 @@ footer h4{
         flex-direction:column;
     }
 
-    .hero-card{
-        min-height:300px;
+    .portfolio-grid{
+        grid-template-columns:1fr;
+        grid-auto-rows:230px;
     }
 
-    .logo-text{
-        font-size:.9rem;
+    .portfolio-item:nth-child(n),
+    .portfolio-item:first-child{
+        grid-column:span 1;
+        grid-row:span 1;
     }
+
+    .web-promo{
+        padding:28px 22px;
+    }
+
+    .browser{
+        transform:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .cta{
+        padding:65px 20px;
+    }
+
+    .section-title{
+        margin-bottom:42px;
+    }
+
 }
+
+/* Reduce motion for accessibility */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+        transition-duration:.01ms!important;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
+<header id="siteHeader">
+
     <div class="container navbar">
 
         <a href="#home" class="logo">
+
             <div class="logo-mark">B</div>
+
             <div class="logo-text">
                 BOSSY PRINTS
                 <small>PRINTING • BRANDING • DESIGN</small>
             </div>
+
         </a>
 
-        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
 
         <nav class="nav-links" id="navLinks">
+
             <a href="#home">Home</a>
             <a href="#services">Services</a>
             <a href="#start-project">Start a Project</a>
@@ -1087,24 +1967,35 @@ footer h4{
             <a href="#about">About</a>
             <a href="#faq">FAQ</a>
             <a href="#contact">Contact</a>
-            <a href="#start-project" class="nav-cta">Get a Quote</a>
+
+            <a
+                href="#start-project"
+                class="nav-cta"
+            >
+                Get a Quote
+            </a>
+
         </nav>
 
     </div>
+
 </header>
+
 
 <main>
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="home">
 
     <div class="container hero-grid">
 
-        <div>
+        <div class="reveal">
 
             <div class="hero-badge">
-                ✦ PRINTING • BRANDING • DESIGN
+                PRINTING • BRANDING • DESIGN
             </div>
 
             <h1>
@@ -1114,18 +2005,24 @@ footer h4{
             </h1>
 
             <p>
-                Professional T-shirt printing, graphic design, business branding,
-                banners, posters, stickers, labels, caps and custom printing
-                solutions in Kenya.
+                Professional T-shirt printing, graphic design,
+                business branding, banners, posters, stickers,
+                labels, caps and custom printing solutions in Kenya.
             </p>
 
             <div class="hero-buttons">
 
-                <a href="#start-project" class="btn btn-primary">
+                <a
+                    href="#start-project"
+                    class="btn btn-primary"
+                >
                     🚀 Start Your Project
                 </a>
 
-                <a href="#products" class="btn btn-secondary">
+                <a
+                    href="#products"
+                    class="btn btn-secondary"
+                >
                     Explore Products
                 </a>
 
@@ -1133,20 +2030,87 @@ footer h4{
 
         </div>
 
-        <div class="hero-card">
 
-            <div class="hero-card-content">
+        <div class="hero-visual reveal delay-2">
 
-                <div class="hero-card-title">
-                    Your Idea.<br>
-                    Our Creativity.
+            <div class="hero-card">
+
+                <div class="hero-ring"></div>
+
+                <div class="hero-center">
+                    <strong>B.</strong>
                 </div>
 
-                <p class="hero-card-sub">
-                    From concept to finished product, Bossy Prints & Design
-                    helps bring your vision to life.
-                </p>
+                <div class="hero-floating float-one">
+                    👕 T-Shirt Printing
+                </div>
 
+                <div class="hero-floating float-two">
+                    🎨 Creative Design
+                </div>
+
+                <div class="hero-floating float-three">
+                    🏢 Business Branding
+                </div>
+
+                <div class="hero-card-content">
+
+                    <div class="hero-card-title">
+                        Your Idea.<br>
+                        Our Creativity.
+                    </div>
+
+                    <p class="hero-card-sub">
+                        From concept to finished product,
+                        Bossy Prints & Design helps bring
+                        your vision to life.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-scroll">
+        SCROLL
+        <span></span>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TRUST STRIP
+========================= -->
+
+<section class="trust-strip">
+
+    <div class="container">
+
+        <div class="trust-inner reveal">
+
+            <div class="trust-item">
+                <strong>Custom</strong>
+                <span>Made around your idea</span>
+            </div>
+
+            <div class="trust-item">
+                <strong>Professional</strong>
+                <span>Designed to stand out</span>
+            </div>
+
+            <div class="trust-item">
+                <strong>Online</strong>
+                <span>Submit your project online</span>
+            </div>
+
+            <div class="trust-item">
+                <strong>Direct</strong>
+                <span>Talk to Bossy on WhatsApp</span>
             </div>
 
         </div>
@@ -1156,59 +2120,70 @@ footer h4{
 </section>
 
 
-<!-- SERVICES -->
+<!-- =========================
+     SERVICES
+========================= -->
 
-<section id="services">
+<section id="services" class="services-section">
 
     <div class="container">
 
-        <div class="section-title">
+        <div class="section-title reveal">
+
             <span>What We Do</span>
-            <h2>Professional Services</h2>
+
+            <h2>
+                Professional
+                <span class="gradient-text">Services</span>
+            </h2>
+
             <p>
-                Everything you need to make your brand, event or idea stand out.
+                Everything you need to make your brand,
+                event or idea stand out.
             </p>
+
         </div>
+
 
         <div class="grid">
 
-            <div class="card">
+            <div class="card reveal">
                 <div class="icon">👕</div>
                 <h3>T-Shirt Printing</h3>
                 <p>
-                    Custom T-shirts for businesses, teams, events,
-                    campaigns, gifts and personal projects.
+                    Custom T-shirts for businesses, teams,
+                    events, campaigns, gifts and personal projects.
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card reveal delay-1">
                 <div class="icon">🎨</div>
                 <h3>Graphic Design</h3>
                 <p>
-                    Logos, posters, social media artwork, flyers,
-                    promotional graphics and custom designs.
+                    Logos, posters, social media artwork,
+                    flyers, promotional graphics and custom designs.
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card reveal delay-2">
                 <div class="icon">🏢</div>
                 <h3>Business Branding</h3>
                 <p>
-                    Build a stronger brand with professional visual
-                    identity and branded materials.
+                    Build a stronger brand with professional
+                    visual identity and branded materials.
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card reveal">
                 <div class="icon">🖼️</div>
                 <h3>Banners & Posters</h3>
                 <p>
-                    High-impact banners and posters for businesses,
-                    events, campaigns and promotions.
+                    High-impact banners and posters for
+                    businesses, events, campaigns and promotions.
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card reveal delay-1">
                 <div class="icon">🏷️</div>
                 <h3>Stickers & Labels</h3>
                 <p>
@@ -1217,7 +2192,7 @@ footer h4{
                 </p>
             </div>
 
-            <div class="card">
+            <div class="card reveal delay-2">
                 <div class="icon">🧢</div>
                 <h3>Caps & Merchandise</h3>
                 <p>
@@ -1233,64 +2208,218 @@ footer h4{
 </section>
 
 
-<!-- START A PROJECT -->
+<!-- =========================
+     WEBSITE DESIGN PROMO
+========================= -->
 
-<section id="start-project" class="project-section">
+<section class="web-promo-section">
 
     <div class="container">
 
-        <div class="section-title">
-            <span>Let's Work Together</span>
-            <h2>Start a Project</h2>
-            <p>
-                Tell us what you need. Submit your project details and
-                artwork, and we'll review it and get back to you.
-            </p>
+        <div class="web-promo reveal">
+
+            <div class="web-promo-grid">
+
+                <div>
+
+                    <div class="web-promo-label">
+                        LIKE THIS WEBSITE? 👀
+                    </div>
+
+                    <h2>
+                        We Can Build
+                        <span class="gradient-text">
+                            One For You.
+                        </span>
+                    </h2>
+
+                    <p>
+                        Need a modern website for your business,
+                        organization, brand or personal project?
+                        Bossy can create a professional,
+                        mobile-friendly website designed around you.
+                    </p>
+
+                    <div class="price-tag">
+                        ✦ From KSh 8,000
+                    </div>
+
+                    <br>
+
+                    <a
+                        href="https://wa.me/254724566417?text=Hello%20Bossy%20Prints%20%26%20Design.%20I%20am%20interested%20in%20having%20a%20website%20built."
+                        target="_blank"
+                        rel="noopener"
+                        class="btn btn-primary"
+                    >
+                        🌐 GET YOUR WEBSITE
+                    </a>
+
+                </div>
+
+
+                <div class="browser">
+
+                    <div class="browser-top">
+
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+                        <div class="browser-dot"></div>
+
+                    </div>
+
+                    <div class="browser-screen">
+
+                        <small>BOSSY WEB DESIGN</small>
+
+                        <strong>
+                            Your Business.<br>
+                            Online.
+                        </strong>
+
+                        <span style="color:var(--muted);font-size:.78rem;">
+                            Modern • Professional • Mobile-Friendly
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     START PROJECT
+========================= -->
+
+<section
+    id="start-project"
+    class="project-section"
+>
+
+    <div class="container">
+
+        <div class="section-title reveal">
+
+            <span>Let's Work Together</span>
+
+            <h2>
+                Start a
+                <span class="gradient-text">
+                    Project
+                </span>
+            </h2>
+
+            <p>
+                Tell us what you need. Submit your project
+                details and artwork, and we'll review it
+                and get back to you.
+            </p>
+
+        </div>
+
 
         <div class="project-wrapper">
 
-            <div class="project-info">
+            <div class="project-info reveal">
 
-                <h3>Bring Your Idea to Life.</h3>
+                <h3>
+                    Bring Your Idea
+                    <span class="gradient-text">
+                        to Life.
+                    </span>
+                </h3>
 
                 <p>
-                    Whether you need one custom T-shirt or complete
-                    business branding, start your project here.
+                    Whether you need one custom T-shirt
+                    or complete business branding,
+                    start your project here.
                 </p>
 
                 <div class="project-points">
 
                     <div class="project-point">
-                        <div class="project-point-icon">✓</div>
-                        <div>
-                            <strong>Tell us what you need</strong>
-                            <p>Choose your service and provide the details.</p>
+
+                        <div class="project-point-icon">
+                            ✓
                         </div>
+
+                        <div>
+                            <strong>
+                                Tell us what you need
+                            </strong>
+
+                            <p>
+                                Choose your service
+                                and provide the details.
+                            </p>
+                        </div>
+
                     </div>
 
-                    <div class="project-point">
-                        <div class="project-point-icon">✓</div>
-                        <div>
-                            <strong>Upload your artwork</strong>
-                            <p>Send PNG, JPG, PDF or SVG files.</p>
-                        </div>
-                    </div>
 
                     <div class="project-point">
-                        <div class="project-point-icon">✓</div>
-                        <div>
-                            <strong>Receive your reference</strong>
-                            <p>Keep your project reference for communication.</p>
+
+                        <div class="project-point-icon">
+                            ✓
                         </div>
+
+                        <div>
+                            <strong>
+                                Upload your artwork
+                            </strong>
+
+                            <p>
+                                Send PNG, JPG, PDF or SVG files.
+                            </p>
+                        </div>
+
                     </div>
 
+
                     <div class="project-point">
-                        <div class="project-point-icon">✓</div>
-                        <div>
-                            <strong>We review your project</strong>
-                            <p>We'll discuss the details and prepare your quote.</p>
+
+                        <div class="project-point-icon">
+                            ✓
                         </div>
+
+                        <div>
+                            <strong>
+                                Receive your reference
+                            </strong>
+
+                            <p>
+                                Keep your project reference
+                                for communication.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-point">
+
+                        <div class="project-point-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>
+                                We review your project
+                            </strong>
+
+                            <p>
+                                We'll discuss the details
+                                and prepare your quote.
+                            </p>
+                        </div>
+
                     </div>
 
                 </div>
@@ -1298,18 +2427,25 @@ footer h4{
             </div>
 
 
-            <div class="project-form-card">
+            <div class="project-form-card reveal delay-1">
 
                 <div id="projectFormContainer">
 
                     <div class="form-title">
-                        <h3>Project Details</h3>
-                        <p>Fields marked with * are required.</p>
+
+                        <h3>
+                            Project Details
+                        </h3>
+
+                        <p>
+                            Fields marked with * are required.
+                        </p>
+
                     </div>
+
 
                     <form id="projectForm">
 
-                        <!-- Honeypot -->
                         <input
                             type="text"
                             id="website"
@@ -1319,29 +2455,63 @@ footer h4{
                             style="position:absolute;left:-9999px;opacity:0;"
                         >
 
+
                         <div class="form-grid">
 
                             <div class="form-group">
-                                <label for="service">Service *</label>
+
+                                <label for="service">
+                                    Service *
+                                </label>
 
                                 <select
                                     id="service"
                                     class="form-control"
                                     required
                                 >
-                                    <option value="">Select a service</option>
-                                    <option value="T-Shirt Printing">T-Shirt Printing</option>
-                                    <option value="Graphic Design">Graphic Design</option>
-                                    <option value="Business Branding">Business Branding</option>
-                                    <option value="Banners & Posters">Banners & Posters</option>
-                                    <option value="Stickers & Labels">Stickers & Labels</option>
-                                    <option value="Caps & Merchandise">Caps & Merchandise</option>
-                                    <option value="Other / Custom">Other / Custom</option>
+
+                                    <option value="">
+                                        Select a service
+                                    </option>
+
+                                    <option value="T-Shirt Printing">
+                                        T-Shirt Printing
+                                    </option>
+
+                                    <option value="Graphic Design">
+                                        Graphic Design
+                                    </option>
+
+                                    <option value="Business Branding">
+                                        Business Branding
+                                    </option>
+
+                                    <option value="Banners & Posters">
+                                        Banners & Posters
+                                    </option>
+
+                                    <option value="Stickers & Labels">
+                                        Stickers & Labels
+                                    </option>
+
+                                    <option value="Caps & Merchandise">
+                                        Caps & Merchandise
+                                    </option>
+
+                                    <option value="Other / Custom">
+                                        Other / Custom
+                                    </option>
+
                                 </select>
+
                             </div>
 
+
                             <div class="form-group">
-                                <label for="quantity">Quantity *</label>
+
+                                <label for="quantity">
+                                    Quantity *
+                                </label>
 
                                 <input
                                     type="number"
@@ -1352,10 +2522,15 @@ footer h4{
                                     value="1"
                                     required
                                 >
+
                             </div>
 
+
                             <div class="form-group">
-                                <label for="customerName">Full Name *</label>
+
+                                <label for="customerName">
+                                    Full Name *
+                                </label>
 
                                 <input
                                     type="text"
@@ -1366,10 +2541,15 @@ footer h4{
                                     placeholder="Your full name"
                                     required
                                 >
+
                             </div>
 
+
                             <div class="form-group">
-                                <label for="customerPhone">Phone Number *</label>
+
+                                <label for="customerPhone">
+                                    Phone Number *
+                                </label>
 
                                 <input
                                     type="tel"
@@ -1380,10 +2560,15 @@ footer h4{
                                     placeholder="07XXXXXXXX"
                                     required
                                 >
+
                             </div>
 
+
                             <div class="form-group">
-                                <label for="customerEmail">Email Address</label>
+
+                                <label for="customerEmail">
+                                    Email Address
+                                </label>
 
                                 <input
                                     type="email"
@@ -1393,31 +2578,46 @@ footer h4{
                                     autocomplete="email"
                                     placeholder="you@example.com"
                                 >
+
                             </div>
 
+
                             <div class="form-group">
-                                <label for="deliveryMethod">Delivery Method *</label>
+
+                                <label for="deliveryMethod">
+                                    Delivery Method *
+                                </label>
 
                                 <select
                                     id="deliveryMethod"
                                     class="form-control"
                                     required
                                 >
-                                    <option value="">Choose an option</option>
-                                    <option value="Pickup">Pickup</option>
-                                    <option value="Delivery">Delivery</option>
+
+                                    <option value="">
+                                        Choose an option
+                                    </option>
+
+                                    <option value="Pickup">
+                                        Pickup
+                                    </option>
+
+                                    <option value="Delivery">
+                                        Delivery
+                                    </option>
+
                                 </select>
+
                             </div>
 
                         </div>
 
 
-                        <!-- Dynamic service fields -->
+                        <div
+                            id="dynamicFields"
+                            class="dynamic-fields"
+                        ></div>
 
-                        <div id="dynamicFields" class="dynamic-fields"></div>
-
-
-                        <!-- Delivery address -->
 
                         <div
                             class="form-group delivery-address"
@@ -1439,11 +2639,11 @@ footer h4{
                         </div>
 
 
-                        <!-- Artwork -->
-
                         <div class="form-group">
 
-                            <label>Artwork / Design File</label>
+                            <label>
+                                Artwork / Design File
+                            </label>
 
                             <div class="file-box">
 
@@ -1468,8 +2668,6 @@ footer h4{
 
                         </div>
 
-
-                        <!-- Notes -->
 
                         <div class="form-group">
 
@@ -1511,13 +2709,18 @@ footer h4{
                 </div>
 
 
-                <!-- SUCCESS -->
+                <div
+                    id="successPanel"
+                    class="success-panel"
+                >
 
-                <div id="successPanel" class="success-panel">
+                    <div class="success-icon">
+                        ✓
+                    </div>
 
-                    <div class="success-icon">✓</div>
-
-                    <h2>PROJECT RECEIVED</h2>
+                    <h2>
+                        PROJECT RECEIVED
+                    </h2>
 
                     <p>
                         Your project has been submitted successfully.
@@ -1574,25 +2777,47 @@ footer h4{
 </section>
 
 
-<!-- PRODUCTS -->
+<!-- =========================
+     PRODUCTS
+========================= -->
 
 <section id="products">
 
     <div class="container">
 
-        <div class="section-title">
+        <div class="section-title reveal">
+
             <span>Shop & Explore</span>
-            <h2>Featured Products</h2>
+
+            <h2>
+                Featured
+                <span class="gradient-text">
+                    Products
+                </span>
+            </h2>
+
             <p>
-                Browse products available from Bossy Prints & Design.
+                Browse products available from
+                Bossy Prints & Design.
             </p>
+
         </div>
 
-        <div class="product-toolbar" id="productFilters">
-            <button class="filter-btn active" data-category="all">
+
+        <div
+            class="product-toolbar reveal"
+            id="productFilters"
+        >
+
+            <button
+                class="filter-btn active"
+                data-category="all"
+            >
                 All
             </button>
+
         </div>
+
 
         <div
             class="products-grid"
@@ -1600,8 +2825,15 @@ footer h4{
         >
 
             <div class="card">
-                <h3>Loading products...</h3>
-                <p>Please wait.</p>
+
+                <h3>
+                    Loading products...
+                </h3>
+
+                <p>
+                    Please wait.
+                </p>
+
             </div>
 
         </div>
@@ -1611,87 +2843,122 @@ footer h4{
 </section>
 
 
-<!-- OUR WORK -->
+<!-- =========================
+     OUR WORK
+========================= -->
 
 <section id="work">
 
     <div class="container">
 
-        <div class="section-title">
+        <div class="section-title reveal">
+
             <span>Our Work</span>
-            <h2>Ideas Made Real</h2>
+
+            <h2>
+                Ideas Made
+                <span class="gradient-text">
+                    Real
+                </span>
+            </h2>
+
             <p>
-                A glimpse of the type of creative work Bossy Prints & Design
-                can help you produce.
+                A glimpse of the type of creative work
+                Bossy Prints & Design can help you produce.
             </p>
+
         </div>
+
 
         <div class="portfolio-grid">
 
-            <div class="portfolio-item">
+            <div class="portfolio-item reveal">
+
                 <img
                     src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
                     alt="Custom T-shirt printing"
                     loading="lazy"
                 >
+
                 <div class="portfolio-overlay">
                     <h3>Custom T-Shirts</h3>
                 </div>
+
             </div>
 
-            <div class="portfolio-item">
+
+            <div class="portfolio-item reveal delay-1">
+
                 <img
                     src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=900&q=80"
                     alt="Business branding"
                     loading="lazy"
                 >
+
                 <div class="portfolio-overlay">
                     <h3>Business Branding</h3>
                 </div>
+
             </div>
 
-            <div class="portfolio-item">
+
+            <div class="portfolio-item reveal delay-2">
+
                 <img
                     src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80"
                     alt="Creative design work"
                     loading="lazy"
                 >
+
                 <div class="portfolio-overlay">
                     <h3>Creative Design</h3>
                 </div>
+
             </div>
 
-            <div class="portfolio-item">
+
+            <div class="portfolio-item reveal">
+
                 <img
                     src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=900&q=80"
                     alt="Printed promotional material"
                     loading="lazy"
                 >
+
                 <div class="portfolio-overlay">
                     <h3>Promotional Printing</h3>
                 </div>
+
             </div>
 
-            <div class="portfolio-item">
+
+            <div class="portfolio-item reveal delay-1">
+
                 <img
                     src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80"
                     alt="Fashion printing"
                     loading="lazy"
                 >
+
                 <div class="portfolio-overlay">
                     <h3>Merchandise</h3>
                 </div>
+
             </div>
 
-            <div class="portfolio-item">
+
+            <div class="portfolio-item reveal delay-2">
+
                 <img
                     src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=900&q=80"
                     alt="Custom products"
                     loading="lazy"
                 >
+
                 <div class="portfolio-overlay">
                     <h3>Custom Products</h3>
                 </div>
+
             </div>
 
         </div>
@@ -1701,52 +2968,104 @@ footer h4{
 </section>
 
 
-<!-- PROCESS -->
+<!-- =========================
+     PROCESS
+========================= -->
 
-<section>
+<section class="process-section">
 
     <div class="container">
 
-        <div class="section-title">
+        <div class="section-title reveal">
+
             <span>Simple Process</span>
-            <h2>How It Works</h2>
+
+            <h2>
+                How It
+                <span class="gradient-text">
+                    Works
+                </span>
+            </h2>
+
             <p>
-                We keep the process simple from your first idea to the final product.
+                We keep the process simple from your
+                first idea to the final product.
             </p>
+
         </div>
+
 
         <div class="process-grid">
 
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Start a Project</h3>
+            <div class="step reveal">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h3>
+                    Start a Project
+                </h3>
+
                 <p>
-                    Tell us what you want through our project form.
+                    Tell us what you want through
+                    our project form.
                 </p>
+
             </div>
 
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Review & Discuss</h3>
+
+            <div class="step reveal delay-1">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h3>
+                    Review & Discuss
+                </h3>
+
                 <p>
-                    We review your requirements and discuss the details.
+                    We review your requirements
+                    and discuss the details.
                 </p>
+
             </div>
 
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Approve</h3>
+
+            <div class="step reveal delay-2">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h3>
+                    Approve
+                </h3>
+
                 <p>
-                    We agree on the design, quantity and quotation.
+                    We agree on the design,
+                    quantity and quotation.
                 </p>
+
             </div>
 
-            <div class="step">
-                <div class="step-number">4</div>
-                <h3>Print & Deliver</h3>
+
+            <div class="step reveal delay-3">
+
+                <div class="step-number">
+                    4
+                </div>
+
+                <h3>
+                    Print & Deliver
+                </h3>
+
                 <p>
-                    Your project moves into production and delivery.
+                    Your project moves into
+                    production and delivery.
                 </p>
+
             </div>
 
         </div>
@@ -1756,62 +3075,139 @@ footer h4{
 </section>
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
 
 <section id="about">
 
     <div class="container about-grid">
 
-        <div>
+        <div class="reveal">
 
-            <div class="section-title" style="text-align:left;margin-bottom:25px;">
-                <span>About Bossy</span>
-                <h2>Built Around Your Ideas</h2>
+            <div
+                class="section-title"
+                style="text-align:left;margin-bottom:25px;"
+            >
+
+                <span>
+                    About Bossy
+                </span>
+
+                <h2>
+                    Built Around
+                    <span class="gradient-text">
+                        Your Ideas
+                    </span>
+                </h2>
+
             </div>
 
+
             <p style="color:var(--muted);">
-                Bossy Prints & Design is focused on helping individuals,
-                businesses, teams, organizations and events turn ideas
-                into professional printed and branded products.
+
+                Bossy Prints & Design is focused on helping
+                individuals, businesses, teams, organizations
+                and events turn ideas into professional
+                printed and branded products.
+
             </p>
 
-            <p style="color:var(--muted);margin-top:15px;">
-                From a single custom T-shirt to complete branding,
-                our goal is simple: quality work, clear communication
+
+            <p
+                style="
+                    color:var(--muted);
+                    margin-top:15px;
+                "
+            >
+
+                From a single custom T-shirt to complete
+                branding, our goal is simple:
+                quality work, clear communication
                 and professional results.
+
             </p>
+
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <strong>01</strong>
+
+                    <span>
+                        Idea
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <strong>02</strong>
+
+                    <span>
+                        Design
+                    </span>
+
+                </div>
+
+                <div class="stat">
+
+                    <strong>03</strong>
+
+                    <span>
+                        Result
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="about-box">
 
-            <h3>Why Choose Bossy?</h3>
+        <div class="about-box reveal delay-1">
+
+            <h3>
+                Why Choose Bossy?
+            </h3>
 
             <div class="check-list">
 
                 <div class="check">
                     <b>✓</b>
-                    <span>Professional design and presentation</span>
+                    <span>
+                        Professional design and presentation
+                    </span>
                 </div>
 
                 <div class="check">
                     <b>✓</b>
-                    <span>Custom solutions for different needs</span>
+                    <span>
+                        Custom solutions for different needs
+                    </span>
                 </div>
 
                 <div class="check">
                     <b>✓</b>
-                    <span>Simple project submission process</span>
+                    <span>
+                        Simple project submission process
+                    </span>
                 </div>
 
                 <div class="check">
                     <b>✓</b>
-                    <span>Direct communication through WhatsApp</span>
+                    <span>
+                        Direct communication through WhatsApp
+                    </span>
                 </div>
 
                 <div class="check">
                     <b>✓</b>
-                    <span>Growing range of printing and branding services</span>
+                    <span>
+                        Growing range of printing
+                        and branding services
+                    </span>
                 </div>
 
             </div>
@@ -1823,57 +3219,104 @@ footer h4{
 </section>
 
 
-<!-- FAQ -->
+<!-- =========================
+     FAQ
+========================= -->
 
 <section id="faq">
 
     <div class="container">
 
-        <div class="section-title">
-            <span>Questions</span>
-            <h2>Frequently Asked Questions</h2>
+        <div class="section-title reveal">
+
+            <span>
+                Questions
+            </span>
+
+            <h2>
+                Frequently Asked
+                <span class="gradient-text">
+                    Questions
+                </span>
+            </h2>
+
         </div>
 
-        <div class="faq">
+
+        <div class="faq reveal">
 
             <details>
-                <summary>Can I submit my own artwork?</summary>
+
+                <summary>
+                    Can I submit my own artwork?
+                </summary>
+
                 <p>
-                    Yes. You can upload your artwork when starting a project.
-                    We currently accept PNG, JPG, PDF and SVG files.
+                    Yes. You can upload your artwork when
+                    starting a project. We currently accept
+                    PNG, JPG, PDF and SVG files.
                 </p>
+
             </details>
 
-            <details>
-                <summary>Can you design something for me?</summary>
-                <p>
-                    Yes. Select Graphic Design or the relevant service
-                    and explain what you need in the project form.
-                </p>
-            </details>
 
             <details>
-                <summary>Can I order only one item?</summary>
+
+                <summary>
+                    Can you design something for me?
+                </summary>
+
                 <p>
-                    Yes, depending on the product and service. Tell us
-                    your quantity when submitting your project.
+                    Yes. Select Graphic Design or the
+                    relevant service and explain what
+                    you need in the project form.
                 </p>
+
             </details>
 
-            <details>
-                <summary>How do I get a quotation?</summary>
-                <p>
-                    Submit your project details. We review the requirements
-                    and communicate the quotation with you.
-                </p>
-            </details>
 
             <details>
-                <summary>Can I pick up my order?</summary>
+
+                <summary>
+                    Can I order only one item?
+                </summary>
+
                 <p>
-                    Yes. Select Pickup when submitting your project.
-                    Delivery can also be requested where available.
+                    Yes, depending on the product and service.
+                    Tell us your quantity when submitting
+                    your project.
                 </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    How do I get a quotation?
+                </summary>
+
+                <p>
+                    Submit your project details.
+                    We review the requirements and
+                    communicate the quotation with you.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Can I pick up my order?
+                </summary>
+
+                <p>
+                    Yes. Select Pickup when submitting
+                    your project. Delivery can also be
+                    requested where available.
+                </p>
+
             </details>
 
         </div>
@@ -1883,18 +3326,26 @@ footer h4{
 </section>
 
 
-<!-- CTA -->
+<!-- =========================
+     CTA
+========================= -->
 
-<section>
+<section class="cta-section">
 
     <div class="container">
 
-        <div class="cta">
+        <div class="cta reveal">
 
-            <h2>Ready to Start?</h2>
+            <h2>
+                Ready to
+                <span class="gradient-text">
+                    Start?
+                </span>
+            </h2>
 
             <p>
-                Don't just imagine it. Let's turn your idea into something
+                Don't just imagine it.
+                Let's turn your idea into something
                 real, professional and memorable.
             </p>
 
@@ -1912,25 +3363,44 @@ footer h4{
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
 
 <section id="contact">
 
     <div class="container">
 
-        <div class="section-title">
-            <span>Get In Touch</span>
-            <h2>Let's Talk</h2>
+        <div class="section-title reveal">
+
+            <span>
+                Get In Touch
+            </span>
+
+            <h2>
+                Let's
+                <span class="gradient-text">
+                    Talk
+                </span>
+            </h2>
+
             <p>
-                Have a question or want to discuss something before starting?
+                Have a question or want to discuss
+                something before starting?
                 Contact Bossy directly.
             </p>
+
         </div>
+
 
         <div class="contact-grid">
 
-            <div class="contact-card">
-                <h3>WhatsApp</h3>
+            <div class="contact-card reveal">
+
+                <h3>
+                    WhatsApp
+                </h3>
+
                 <p>
                     The fastest way to discuss your project.
                 </p>
@@ -1943,12 +3413,19 @@ footer h4{
                 >
                     Chat on WhatsApp →
                 </a>
+
             </div>
 
-            <div class="contact-card">
-                <h3>Start Online</h3>
+
+            <div class="contact-card reveal delay-1">
+
+                <h3>
+                    Start Online
+                </h3>
+
                 <p>
-                    Submit your project details and receive a project reference.
+                    Submit your project details and
+                    receive a project reference.
                 </p>
 
                 <a
@@ -1957,6 +3434,7 @@ footer h4{
                 >
                     Start a Project →
                 </a>
+
             </div>
 
         </div>
@@ -1968,7 +3446,9 @@ footer h4{
 </main>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1980,42 +3460,72 @@ footer h4{
 
                 <a href="#home" class="logo">
 
-                    <div class="logo-mark">B</div>
+                    <div class="logo-mark">
+                        B
+                    </div>
 
                     <div class="logo-text">
                         BOSSY PRINTS
-                        <small>PRINTING • BRANDING • DESIGN</small>
+                        <small>
+                            PRINTING • BRANDING • DESIGN
+                        </small>
                     </div>
 
                 </a>
 
                 <p>
-                    Turning ideas into professional printed,
-                    branded and designed products.
+                    Turning ideas into professional
+                    printed, branded and designed products.
                 </p>
 
             </div>
 
+
             <div>
 
-                <h4>Quick Links</h4>
+                <h4>
+                    Quick Links
+                </h4>
 
                 <div class="footer-links">
-                    <a href="#services">Services</a>
-                    <a href="#start-project">Start a Project</a>
-                    <a href="#products">Products</a>
-                    <a href="#work">Our Work</a>
-                    <a href="#about">About</a>
+
+                    <a href="#services">
+                        Services
+                    </a>
+
+                    <a href="#start-project">
+                        Start a Project
+                    </a>
+
+                    <a href="#products">
+                        Products
+                    </a>
+
+                    <a href="#work">
+                        Our Work
+                    </a>
+
+                    <a href="#about">
+                        About
+                    </a>
+
                 </div>
 
             </div>
 
+
             <div>
 
-                <h4>Contact</h4>
+                <h4>
+                    Contact
+                </h4>
 
                 <div class="footer-links">
-                    <a href="#start-project">Start a Project</a>
+
+                    <a href="#start-project">
+                        Start a Project
+                    </a>
+
                     <a
                         href="https://wa.me/254724566417"
                         target="_blank"
@@ -2023,15 +3533,25 @@ footer h4{
                     >
                         WhatsApp
                     </a>
-                    <a href="#faq">FAQ</a>
+
+                    <a href="#faq">
+                        FAQ
+                    </a>
+
                 </div>
 
             </div>
 
         </div>
 
+
         <div class="copyright">
-            © <span id="year"></span> Bossy Prints & Design. All rights reserved.
+
+            ©
+            <span id="year"></span>
+            Bossy Prints & Design.
+            All rights reserved.
+
         </div>
 
     </div>
@@ -2039,7 +3559,9 @@ footer h4{
 </footer>
 
 
-<!-- FLOATING WHATSAPP -->
+<!-- =========================
+     FLOATING WHATSAPP
+========================= -->
 
 <a
     href="https://wa.me/254724566417"
@@ -2050,6 +3572,7 @@ footer h4{
 >
     💬
 </a>
+
 
 <button
     id="backTop"
@@ -2088,6 +3611,32 @@ document.getElementById("year").textContent =
 
 
 /* =========================================
+   HEADER SCROLL EFFECT
+========================================= */
+
+const siteHeader =
+    document.getElementById("siteHeader");
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(window.scrollY > 30){
+
+            siteHeader.classList.add("scrolled");
+
+        }else{
+
+            siteHeader.classList.remove("scrolled");
+
+        }
+
+    },
+    {passive:true}
+);
+
+
+/* =========================================
    MOBILE MENU
 ========================================= */
 
@@ -2097,21 +3646,32 @@ const menuBtn =
 const navLinks =
     document.getElementById("navLinks");
 
-menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener(
+    "click",
+    () => {
 
-    navLinks.classList.toggle("open");
+        navLinks.classList.toggle("open");
 
-});
+    }
+);
 
-document.querySelectorAll("#navLinks a").forEach(link => {
 
-    link.addEventListener("click", () => {
+document.querySelectorAll(
+    "#navLinks a"
+).forEach(
+    link => {
 
-        navLinks.classList.remove("open");
+        link.addEventListener(
+            "click",
+            () => {
 
-    });
+                navLinks.classList.remove("open");
 
-});
+            }
+        );
+
+    }
+);
 
 
 /* =========================================
@@ -2121,28 +3681,82 @@ document.querySelectorAll("#navLinks a").forEach(link => {
 const backTop =
     document.getElementById("backTop");
 
-window.addEventListener("scroll", () => {
+window.addEventListener(
+    "scroll",
+    () => {
 
-    if(window.scrollY > 500){
+        if(window.scrollY > 500){
 
-        backTop.classList.add("show");
+            backTop.classList.add("show");
 
-    }else{
+        }else{
 
-        backTop.classList.remove("show");
+            backTop.classList.remove("show");
+
+        }
+
+    },
+    {passive:true}
+);
+
+
+backTop.addEventListener(
+    "click",
+    () => {
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
 
     }
+);
 
-});
 
-backTop.addEventListener("click", () => {
+/* =========================================
+   SCROLL REVEAL
+========================================= */
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+const revealElements =
+    document.querySelectorAll(".reveal");
 
-});
+
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+revealElements.forEach(
+    element => {
+
+        revealObserver.observe(element);
+
+    }
+);
 
 
 /* =========================================
@@ -2167,7 +3781,9 @@ function formatPrice(value){
         Number(value);
 
     if(!Number.isFinite(number)){
+
         return "Price on request";
+
     }
 
     return "KSh " +
@@ -2197,7 +3813,11 @@ function generateReference(){
 
     let random = "";
 
-    for(let i=0;i<4;i++){
+    for(
+        let i=0;
+        i<4;
+        i++
+    ){
 
         random +=
             chars[
@@ -2216,7 +3836,10 @@ function generateReference(){
 function safeFileName(name){
 
     return name
-        .replace(/[^a-zA-Z0-9._-]/g,"_")
+        .replace(
+            /[^a-zA-Z0-9._-]/g,
+            "_"
+        )
         .slice(0,120);
 
 }
@@ -2226,17 +3849,19 @@ function getRandomId(){
 
     if(
         window.crypto &&
-        typeof window.crypto.randomUUID === "function"
+        typeof window.crypto.randomUUID ===
+        "function"
     ){
 
         return window.crypto.randomUUID();
 
     }
 
-    return Date.now() + "-" +
+    return Date.now() +
+        "-" +
         Math.random()
-        .toString(36)
-        .substring(2);
+            .toString(36)
+            .substring(2);
 
 }
 
@@ -2251,7 +3876,9 @@ let allProducts = [];
 async function loadPublicProducts(){
 
     const grid =
-        document.getElementById("productsGrid");
+        document.getElementById(
+            "productsGrid"
+        );
 
     try{
 
@@ -2262,9 +3889,13 @@ async function loadPublicProducts(){
         await supabaseClient
             .from("products")
             .select("*")
-            .order("created_at",{
-                ascending:false
-            });
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
+
 
         if(error){
 
@@ -2275,23 +3906,31 @@ async function loadPublicProducts(){
 
             grid.innerHTML = `
                 <div class="card">
-                    <h3>Products unavailable</h3>
+                    <h3>
+                        Products unavailable
+                    </h3>
+
                     <p>
-                        Please contact Bossy Prints & Design
-                        directly for available products.
+                        Please contact Bossy Prints
+                        & Design directly for
+                        available products.
                     </p>
                 </div>
             `;
 
             return;
+
         }
+
 
         allProducts =
             data || [];
 
+
         buildProductFilters();
 
         renderProducts("all");
+
 
     }catch(error){
 
@@ -2299,10 +3938,16 @@ async function loadPublicProducts(){
 
         grid.innerHTML = `
             <div class="card">
-                <h3>Products unavailable</h3>
+
+                <h3>
+                    Products unavailable
+                </h3>
+
                 <p>
-                    Please contact us for available products.
+                    Please contact us for
+                    available products.
                 </p>
+
             </div>
         `;
 
@@ -2314,68 +3959,97 @@ async function loadPublicProducts(){
 function buildProductFilters(){
 
     const filters =
-        document.getElementById("productFilters");
+        document.getElementById(
+            "productFilters"
+        );
+
 
     const categories =
         [
             ...new Set(
                 allProducts
-                    .map(product => product.category)
+                    .map(
+                        product =>
+                            product.category
+                    )
                     .filter(Boolean)
             )
         ];
 
+
     filters.innerHTML = `
+
         <button
             class="filter-btn active"
             data-category="all"
         >
             All
         </button>
+
     `;
 
-    categories.forEach(category => {
 
-        const button =
-            document.createElement("button");
+    categories.forEach(
+        category => {
 
-        button.className =
-            "filter-btn";
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-        button.dataset.category =
-            category;
+            button.className =
+                "filter-btn";
 
-        button.textContent =
-            category;
+            button.dataset.category =
+                category;
 
-        filters.appendChild(button);
+            button.textContent =
+                category;
 
-    });
-
-    filters
-        .querySelectorAll(".filter-btn")
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    filters
-                        .querySelectorAll(".filter-btn")
-                        .forEach(btn =>
-                            btn.classList.remove("active")
-                        );
-
-                    button.classList.add("active");
-
-                    renderProducts(
-                        button.dataset.category
-                    );
-
-                }
+            filters.appendChild(
+                button
             );
 
-        });
+        }
+    );
+
+
+    filters
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        filters
+                            .querySelectorAll(
+                                ".filter-btn"
+                            )
+                            .forEach(
+                                btn =>
+                                    btn.classList
+                                        .remove(
+                                            "active"
+                                        )
+                            );
+
+                        button.classList.add(
+                            "active"
+                        );
+
+                        renderProducts(
+                            button.dataset.category
+                        );
+
+                    }
+                );
+
+            }
+        );
 
 }
 
@@ -2383,133 +4057,160 @@ function buildProductFilters(){
 function renderProducts(category){
 
     const grid =
-        document.getElementById("productsGrid");
+        document.getElementById(
+            "productsGrid"
+        );
+
 
     const products =
         category === "all"
-            ? allProducts
-            : allProducts.filter(
+            ?
+            allProducts
+            :
+            allProducts.filter(
                 product =>
-                    product.category === category
+                    product.category ===
+                    category
             );
+
 
     if(!products.length){
 
         grid.innerHTML = `
+
             <div class="card">
-                <h3>No products yet</h3>
+
+                <h3>
+                    No products yet
+                </h3>
+
                 <p>
                     Contact Bossy Prints & Design
                     for available products.
                 </p>
+
             </div>
+
         `;
 
         return;
+
     }
 
+
     grid.innerHTML =
-        products.map(product => {
+        products.map(
+            product => {
 
-            const image =
-                product.image_url ||
-                product.image ||
-                "";
+                const image =
+                    product.image_url ||
+                    product.image ||
+                    "";
 
-            const name =
-                product.name ||
-                "Custom Product";
 
-            const categoryText =
-                product.category ||
-                "Custom";
+                const name =
+                    product.name ||
+                    "Custom Product";
 
-            const description =
-                product.description ||
-                "Custom printing product.";
 
-            const price =
-                formatPrice(product.price);
+                const categoryText =
+                    product.category ||
+                    "Custom";
 
-            const message =
-                encodeURIComponent(
-                    `Hello Bossy Prints & Design. I am interested in ${name}.`
-                );
 
-            return `
+                const description =
+                    product.description ||
+                    "Custom printing product.";
 
-                <div class="product-card">
 
-                    <div class="product-image">
+                const price =
+                    formatPrice(
+                        product.price
+                    );
 
-                        ${
-                            image
-                            ?
-                            `<img
-                                src="${escapeHtml(image)}"
-                                alt="${escapeHtml(name)}"
-                                loading="lazy"
-                            >`
-                            :
-                            `<div
-                                style="
-                                    height:100%;
-                                    display:grid;
-                                    place-items:center;
-                                    color:var(--muted);
-                                "
-                            >
-                                BOSSY PRINTS
-                            </div>`
-                        }
+
+                const message =
+                    encodeURIComponent(
+                        `Hello Bossy Prints & Design. I am interested in ${name}.`
+                    );
+
+
+                return `
+
+                    <div class="product-card reveal visible">
+
+                        <div class="product-image">
+
+                            ${
+                                image
+                                ?
+                                `<img
+                                    src="${escapeHtml(image)}"
+                                    alt="${escapeHtml(name)}"
+                                    loading="lazy"
+                                >`
+                                :
+                                `<div
+                                    style="
+                                        height:100%;
+                                        display:grid;
+                                        place-items:center;
+                                        color:var(--muted);
+                                    "
+                                >
+                                    BOSSY PRINTS
+                                </div>`
+                            }
+
+                        </div>
+
+
+                        <div class="product-body">
+
+                            <div class="product-category">
+                                ${escapeHtml(categoryText)}
+                            </div>
+
+                            <h3>
+                                ${escapeHtml(name)}
+                            </h3>
+
+                            <p>
+                                ${escapeHtml(description)}
+                            </p>
+
+                            <div class="product-price">
+                                ${price}
+                            </div>
+
+                            <div class="product-actions">
+
+                                <a
+                                    href="#start-project"
+                                    class="btn btn-primary"
+                                >
+                                    Start Project
+                                </a>
+
+                                <a
+                                    href="https://wa.me/254724566417?text=${message}"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="btn btn-secondary"
+                                >
+                                    Enquire
+                                </a>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
-                    <div class="product-body">
+                `;
 
-                        <div class="product-category">
-                            ${escapeHtml(categoryText)}
-                        </div>
-
-                        <h3>
-                            ${escapeHtml(name)}
-                        </h3>
-
-                        <p>
-                            ${escapeHtml(description)}
-                        </p>
-
-                        <div class="product-price">
-                            ${price}
-                        </div>
-
-                        <div class="product-actions">
-
-                            <a
-                                href="#start-project"
-                                class="btn btn-primary"
-                            >
-                                Start Project
-                            </a>
-
-                            <a
-                                href="https://wa.me/254724566417?text=${message}"
-                                target="_blank"
-                                rel="noopener"
-                                class="btn btn-secondary"
-                            >
-                                Enquire
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }).join("");
+            }
+        ).join("");
 
 }
 
@@ -2522,52 +4223,84 @@ loadPublicProducts();
 ========================================= */
 
 const projectForm =
-    document.getElementById("projectForm");
+    document.getElementById(
+        "projectForm"
+    );
 
 const serviceInput =
-    document.getElementById("service");
+    document.getElementById(
+        "service"
+    );
 
 const quantityInput =
-    document.getElementById("quantity");
+    document.getElementById(
+        "quantity"
+    );
 
 const dynamicFields =
-    document.getElementById("dynamicFields");
+    document.getElementById(
+        "dynamicFields"
+    );
 
 const deliveryMethod =
-    document.getElementById("deliveryMethod");
+    document.getElementById(
+        "deliveryMethod"
+    );
 
 const deliveryAddressGroup =
-    document.getElementById("deliveryAddressGroup");
+    document.getElementById(
+        "deliveryAddressGroup"
+    );
 
 const deliveryAddress =
-    document.getElementById("deliveryAddress");
+    document.getElementById(
+        "deliveryAddress"
+    );
 
 const artworkInput =
-    document.getElementById("artwork");
+    document.getElementById(
+        "artwork"
+    );
 
 const fileStatus =
-    document.getElementById("fileStatus");
+    document.getElementById(
+        "fileStatus"
+    );
 
 const submitProject =
-    document.getElementById("submitProject");
+    document.getElementById(
+        "submitProject"
+    );
 
 const formMessage =
-    document.getElementById("formMessage");
+    document.getElementById(
+        "formMessage"
+    );
 
 const projectFormContainer =
-    document.getElementById("projectFormContainer");
+    document.getElementById(
+        "projectFormContainer"
+    );
 
 const successPanel =
-    document.getElementById("successPanel");
+    document.getElementById(
+        "successPanel"
+    );
 
 const referenceDisplay =
-    document.getElementById("referenceDisplay");
+    document.getElementById(
+        "referenceDisplay"
+    );
 
 const successWhatsApp =
-    document.getElementById("successWhatsApp");
+    document.getElementById(
+        "successWhatsApp"
+    );
 
 const newProjectBtn =
-    document.getElementById("newProjectBtn");
+    document.getElementById(
+        "newProjectBtn"
+    );
 
 
 /* =========================================
@@ -2602,10 +4335,11 @@ function field(
                     </option>
 
                     ${
-                        options.map(option =>
-                            `<option value="${escapeHtml(option)}">
-                                ${escapeHtml(option)}
-                            </option>`
+                        options.map(
+                            option =>
+                                `<option value="${escapeHtml(option)}">
+                                    ${escapeHtml(option)}
+                                </option>`
                         ).join("")
                     }
 
@@ -2616,6 +4350,7 @@ function field(
         `;
 
     }
+
 
     return `
 
@@ -2647,6 +4382,7 @@ function updateDynamicFields(){
 
     let html = "";
 
+
     if(service === "T-Shirt Printing"){
 
         html += field(
@@ -2663,12 +4399,14 @@ function updateDynamicFields(){
             ]
         );
 
+
         html += field(
             "sizes",
             "Sizes / Size Breakdown",
             "text",
             "e.g. M x2, L x3, XL x1"
         );
+
 
         html += field(
             "printPosition",
@@ -2684,12 +4422,14 @@ function updateDynamicFields(){
             ]
         );
 
+
         html += field(
             "shirtColour",
             "Shirt Colour",
             "text",
             "e.g. Black"
         );
+
 
         html += field(
             "artworkStatus",
@@ -2702,6 +4442,7 @@ function updateDynamicFields(){
                 "Not sure"
             ]
         );
+
 
     }else if(service === "Graphic Design"){
 
@@ -2720,12 +4461,14 @@ function updateDynamicFields(){
             ]
         );
 
+
         html += field(
             "designPurpose",
             "Purpose",
             "text",
             "What will the design be used for?"
         );
+
 
         html += field(
             "artworkStatus",
@@ -2739,6 +4482,7 @@ function updateDynamicFields(){
             ]
         );
 
+
     }else if(service === "Business Branding"){
 
         html += field(
@@ -2748,12 +4492,14 @@ function updateDynamicFields(){
             "e.g. Shop, restaurant, company"
         );
 
+
         html += field(
             "brandingItems",
             "What Needs Branding?",
             "text",
             "e.g. T-shirts, signage, stickers"
         );
+
 
         html += field(
             "artworkStatus",
@@ -2768,6 +4514,7 @@ function updateDynamicFields(){
             ]
         );
 
+
     }else if(service === "Banners & Posters"){
 
         html += field(
@@ -2777,12 +4524,14 @@ function updateDynamicFields(){
             "e.g. 2 metres"
         );
 
+
         html += field(
             "height",
             "Height",
             "text",
             "e.g. 1 metre"
         );
+
 
         html += field(
             "bannerType",
@@ -2797,6 +4546,7 @@ function updateDynamicFields(){
             ]
         );
 
+
         html += field(
             "artworkStatus",
             "Artwork Status",
@@ -2808,6 +4558,7 @@ function updateDynamicFields(){
                 "Not sure"
             ]
         );
+
 
     }else if(service === "Stickers & Labels"){
 
@@ -2825,12 +4576,14 @@ function updateDynamicFields(){
             ]
         );
 
+
         html += field(
             "stickerSize",
             "Approximate Size",
             "text",
             "e.g. 5cm x 5cm"
         );
+
 
         html += field(
             "stickerFinish",
@@ -2844,6 +4597,7 @@ function updateDynamicFields(){
             ]
         );
 
+
         html += field(
             "artworkStatus",
             "Artwork Status",
@@ -2855,6 +4609,7 @@ function updateDynamicFields(){
                 "Not sure"
             ]
         );
+
 
     }else if(service === "Caps & Merchandise"){
 
@@ -2872,12 +4627,14 @@ function updateDynamicFields(){
             ]
         );
 
+
         html += field(
             "capColour",
             "Colour",
             "text",
             "e.g. Black"
         );
+
 
         html += field(
             "brandingPosition",
@@ -2892,6 +4649,7 @@ function updateDynamicFields(){
             ]
         );
 
+
         html += field(
             "artworkStatus",
             "Artwork Status",
@@ -2904,6 +4662,7 @@ function updateDynamicFields(){
             ]
         );
 
+
     }else if(service === "Other / Custom"){
 
         html += field(
@@ -2914,6 +4673,7 @@ function updateDynamicFields(){
         );
 
     }
+
 
     dynamicFields.innerHTML =
         html;
@@ -2935,16 +4695,23 @@ deliveryMethod.addEventListener(
     "change",
     () => {
 
-        if(deliveryMethod.value === "Delivery"){
+        if(
+            deliveryMethod.value ===
+            "Delivery"
+        ){
 
-            deliveryAddressGroup.classList.add("show");
+            deliveryAddressGroup
+                .classList
+                .add("show");
 
             deliveryAddress.required =
                 true;
 
         }else{
 
-            deliveryAddressGroup.classList.remove("show");
+            deliveryAddressGroup
+                .classList
+                .remove("show");
 
             deliveryAddress.required =
                 false;
@@ -2976,8 +4743,10 @@ artworkInput.addEventListener(
             return;
         }
 
+
         const maxSize =
             15 * 1024 * 1024;
+
 
         const allowedTypes = [
             "image/png",
@@ -2986,11 +4755,13 @@ artworkInput.addEventListener(
             "image/svg+xml"
         ];
 
+
         const extension =
             file.name
                 .split(".")
                 .pop()
                 .toLowerCase();
+
 
         const allowedExtensions = [
             "png",
@@ -2999,6 +4770,7 @@ artworkInput.addEventListener(
             "pdf",
             "svg"
         ];
+
 
         if(
             !allowedTypes.includes(file.type) &&
@@ -3012,7 +4784,9 @@ artworkInput.addEventListener(
                 "❌ File type not supported.";
 
             return;
+
         }
+
 
         if(file.size > maxSize){
 
@@ -3023,7 +4797,9 @@ artworkInput.addEventListener(
                 "❌ File is larger than 15MB.";
 
             return;
+
         }
+
 
         fileStatus.textContent =
             `✓ ${file.name} selected`;
@@ -3046,6 +4822,7 @@ function showFormError(message){
 
 }
 
+
 function clearFormMessage(){
 
     formMessage.className =
@@ -3066,46 +4843,66 @@ function collectDynamicDetails(){
     const service =
         serviceInput.value;
 
+
     const ids = [
+
         "shirtType",
         "sizes",
         "printPosition",
         "shirtColour",
         "artworkStatus",
+
         "designType",
         "designPurpose",
+
         "businessType",
         "brandingItems",
+
         "width",
         "height",
         "bannerType",
+
         "stickerType",
         "stickerSize",
         "stickerFinish",
+
         "capType",
         "capColour",
         "brandingPosition",
+
         "customDetails"
+
     ];
 
+
     const details = {};
+
 
     details.service =
         service;
 
-    ids.forEach(id => {
 
-        const element =
-            document.getElementById(id);
+    ids.forEach(
+        id => {
 
-        if(element && element.value){
+            const element =
+                document.getElementById(
+                    id
+                );
 
-            details[id] =
-                element.value;
+            if(
+                element &&
+                element.value
+            ){
+
+                details[id] =
+                    element.value;
+
+            }
 
         }
+    );
 
-    });
 
     return details;
 
@@ -3120,46 +4917,53 @@ function resetProjectForm(){
 
     projectForm.reset();
 
+
     quantityInput.value =
         "1";
 
+
     dynamicFields.innerHTML =
         "";
+
 
     deliveryAddressGroup
         .classList
         .remove("show");
 
+
     deliveryAddress.required =
         false;
+
 
     fileStatus.textContent =
         "";
 
+
     clearFormMessage();
+
 
     projectFormContainer.style.display =
         "block";
+
 
     successPanel.classList.remove(
         "show"
     );
 
+
     submitProject.disabled =
         false;
 
+
     submitProject.innerHTML =
         "🚀 Submit Project";
+
 
     window.location.hash =
         "start-project";
 
 }
 
-
-/* =========================================
-   START ANOTHER PROJECT
-========================================= */
 
 newProjectBtn.addEventListener(
     "click",
@@ -3173,16 +4977,18 @@ newProjectBtn.addEventListener(
 
 projectForm.addEventListener(
     "submit",
-    async (event) => {
+    async event => {
 
         event.preventDefault();
 
         clearFormMessage();
 
-        /* Spam honeypot */
 
         const honeypot =
-            document.getElementById("website");
+            document.getElementById(
+                "website"
+            );
+
 
         if(honeypot.value){
 
@@ -3194,46 +5000,62 @@ projectForm.addEventListener(
         const service =
             serviceInput.value.trim();
 
+
         const customerName =
             document
-                .getElementById("customerName")
+                .getElementById(
+                    "customerName"
+                )
                 .value
                 .trim();
+
 
         const customerPhone =
             document
-                .getElementById("customerPhone")
+                .getElementById(
+                    "customerPhone"
+                )
                 .value
                 .trim();
 
+
         const customerEmail =
             document
-                .getElementById("customerEmail")
+                .getElementById(
+                    "customerEmail"
+                )
                 .value
                 .trim();
+
 
         const quantity =
             Number(
                 quantityInput.value
             );
 
+
         const notes =
             document
-                .getElementById("notes")
+                .getElementById(
+                    "notes"
+                )
                 .value
                 .trim();
+
 
         const delivery =
             deliveryMethod.value;
 
+
         const address =
             deliveryAddress.value.trim();
+
 
         const file =
             artworkInput.files[0];
 
 
-        /* Validation */
+        /* VALIDATION */
 
         if(!service){
 
@@ -3245,6 +5067,7 @@ projectForm.addEventListener(
 
         }
 
+
         if(!customerName){
 
             showFormError(
@@ -3255,6 +5078,7 @@ projectForm.addEventListener(
 
         }
 
+
         if(!customerPhone){
 
             showFormError(
@@ -3264,6 +5088,7 @@ projectForm.addEventListener(
             return;
 
         }
+
 
         if(
             !Number.isInteger(quantity) ||
@@ -3278,6 +5103,7 @@ projectForm.addEventListener(
 
         }
 
+
         if(!delivery){
 
             showFormError(
@@ -3287,6 +5113,7 @@ projectForm.addEventListener(
             return;
 
         }
+
 
         if(
             delivery === "Delivery" &&
@@ -3302,18 +5129,20 @@ projectForm.addEventListener(
         }
 
 
-        /* File validation again */
+        /* FILE VALIDATION AGAIN */
 
         if(file){
 
             const maxSize =
                 15 * 1024 * 1024;
 
+
             const extension =
                 file.name
                     .split(".")
                     .pop()
                     .toLowerCase();
+
 
             const allowedExtensions = [
                 "png",
@@ -3322,6 +5151,7 @@ projectForm.addEventListener(
                 "pdf",
                 "svg"
             ];
+
 
             if(
                 !allowedExtensions.includes(
@@ -3337,6 +5167,7 @@ projectForm.addEventListener(
 
             }
 
+
             if(file.size > maxSize){
 
                 showFormError(
@@ -3350,7 +5181,7 @@ projectForm.addEventListener(
         }
 
 
-        /* Disable button */
+        /* DISABLE BUTTON */
 
         submitProject.disabled =
             true;
@@ -3361,41 +5192,31 @@ projectForm.addEventListener(
 
         try{
 
-            /*
-             IMPORTANT:
-
-             We DO NOT query the orders table here.
-
-             Customers are intentionally not allowed
-             to read orders.
-
-             The database already has a UNIQUE constraint
-             on reference_number.
-            */
-
             let referenceNumber =
                 generateReference();
+
 
             let uploadedArtworkPath =
                 null;
 
 
-            /* =====================================
-               UPLOAD ARTWORK
-            ===================================== */
+            /* UPLOAD ARTWORK */
 
             if(file){
 
                 fileStatus.textContent =
                     "⏳ Uploading artwork...";
 
+
                 const safeName =
                     safeFileName(
                         file.name
                     );
 
+
                 const filePath =
                     `${referenceNumber}/${getRandomId()}-${safeName}`;
+
 
                 const {
                     error:
@@ -3403,16 +5224,20 @@ projectForm.addEventListener(
                 } =
                 await supabaseClient
                     .storage
-                    .from("customer-artwork")
+                    .from(
+                        "customer-artwork"
+                    )
                     .upload(
                         filePath,
                         file,
                         {
                             upsert:false,
                             contentType:
-                                file.type || undefined
+                                file.type ||
+                                undefined
                         }
                     );
+
 
                 if(uploadError){
 
@@ -3427,8 +5252,10 @@ projectForm.addEventListener(
 
                 }
 
+
                 uploadedArtworkPath =
                     filePath;
+
 
                 fileStatus.textContent =
                     "✓ Artwork uploaded";
@@ -3436,9 +5263,7 @@ projectForm.addEventListener(
             }
 
 
-            /* =====================================
-               PROJECT DETAILS
-            ===================================== */
+            /* PROJECT DETAILS */
 
             const projectDetails =
                 collectDynamicDetails();
@@ -3447,8 +5272,10 @@ projectForm.addEventListener(
             projectDetails.quantity =
                 quantity;
 
+
             projectDetails.delivery_method =
                 delivery;
+
 
             if(address){
 
@@ -3458,9 +5285,7 @@ projectForm.addEventListener(
             }
 
 
-            /* =====================================
-               ORDER DATA
-            ===================================== */
+            /* ORDER DATA */
 
             const orderData = {
 
@@ -3471,7 +5296,8 @@ projectForm.addEventListener(
                     customerPhone,
 
                 customer_email:
-                    customerEmail || null,
+                    customerEmail ||
+                    null,
 
                 product_name:
                     null,
@@ -3483,7 +5309,8 @@ projectForm.addEventListener(
                     quantity,
 
                 notes:
-                    notes || null,
+                    notes ||
+                    null,
 
                 reference_number:
                     referenceNumber,
@@ -3500,7 +5327,8 @@ projectForm.addEventListener(
                     delivery,
 
                 delivery_address:
-                    address || null
+                    address ||
+                    null
 
             };
 
@@ -3511,9 +5339,7 @@ projectForm.addEventListener(
             );
 
 
-            /* =====================================
-               INSERT ORDER
-            ===================================== */
+            /* INSERT ORDER */
 
             let insertResult =
                 await supabaseClient
@@ -3525,37 +5351,21 @@ projectForm.addEventListener(
                     .single();
 
 
-            /*
-             If the extremely unlikely event occurs that
-             the generated reference already exists,
-             generate another reference and retry.
-
-             We don't perform a public SELECT.
-            */
+            /* UNIQUE REFERENCE RETRY */
 
             if(
                 insertResult.error &&
-                insertResult.error.code === "23505"
+                insertResult.error.code ===
+                "23505"
             ){
 
                 referenceNumber =
                     generateReference();
 
-                if(uploadedArtworkPath){
-
-                    fileStatus.textContent =
-                        "⏳ Preparing new project reference...";
-
-                    /*
-                     A collision is extremely unlikely.
-                     Because the first insert did not happen,
-                     the uploaded file remains harmlessly stored.
-                    */
-
-                }
 
                 orderData.reference_number =
                     referenceNumber;
+
 
                 insertResult =
                     await supabaseClient
@@ -3584,9 +5394,7 @@ projectForm.addEventListener(
             }
 
 
-            /* =====================================
-               SUCCESS
-            ===================================== */
+            /* SUCCESS */
 
             console.log(
                 "Project saved successfully:",
@@ -3611,6 +5419,7 @@ projectForm.addEventListener(
             projectFormContainer.style.display =
                 "none";
 
+
             successPanel.classList.add(
                 "show"
             );
@@ -3627,13 +5436,16 @@ projectForm.addEventListener(
                 error
             );
 
+
             showFormError(
                 error.message ||
                 "We could not save your project. Please try again."
             );
 
+
             submitProject.disabled =
                 false;
+
 
             submitProject.innerHTML =
                 "🚀 Submit Project";
